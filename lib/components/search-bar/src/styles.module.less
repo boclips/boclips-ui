@@ -1,0 +1,179 @@
+@import '~@boclips-ui/styles/styles/_colours';
+
+:root {
+  --primaryColour: @blue-shade-5;
+  --borderRadius: 8px;
+  --fontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+  --searchInputBorder: 1.5px solid @lti-gray;
+  --searchInputBorderHover: 1.5px solid @blue-shade-4;
+  --searchInputBorderRadius: 4px 0px 0px 4px;
+  --searchInputButtonRadius: 0 4px 4px 0;
+  --searchIconFill: rgba(#3e4664, 0.3);
+  --searchInputTextColour: @shade-2;
+  --searchButtonBackground: #346fb6;
+}
+
+.clearInput {
+  position: absolute;
+  right: 95px;
+  top: 8px;
+  z-index: 1;
+  cursor: pointer;
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.searchWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+}
+
+.dropdownWrapper :global .ant-select-item-option {
+  background-color: white;
+  line-height: 32px;
+  padding: 0 0 0 30px;
+
+  &:hover {
+    background: @shade-2;
+  }
+
+  &:not(:first-child) {
+    border-top: 1px solid @shade-3;
+  }
+}
+
+.searchButton {
+  height: 100%;
+  width: 102px;
+  font-weight: bold;
+  border-radius: var(--searchInputButtonRadius);
+  font-size: 16px;
+  background-color: var(--searchButtonBackground);
+  box-shadow: none;
+  border: 0;
+  font-family: var(--fontFamily);
+}
+
+.dropdownWrapper {
+  background: transparent;
+  border-radius: 8px;
+  border: 2px solid @shade-3;
+  padding: 0;
+}
+
+.autoCompleteWrapper {
+  max-width: 875px;
+  justify-content: center;
+  width: 80%;
+
+  :global .ant-select-selector {
+    height: 100%;
+  }
+
+  :global .ant-input-affix-wrapper {
+    background-color: @shade-1;
+    border-right: none;
+    align-items: center;
+  }
+
+  input {
+    background-color: @shade-1;
+    font-size: 16px;
+    font-weight: bold;
+    height: 100%;
+    font-family: var(--fontFamily);
+    &::placeholder {
+      color: @shade-6;
+      font-weight: normal;
+    }
+  }
+
+  span[role='img'] {
+    padding-right: 4px;
+    height: 100%;
+
+    svg[data-icon='search'] {
+      width: 16px;
+      height: 16px;
+      fill: @blue-shade-4;
+    }
+  }
+}
+
+.autoCompleteWrapper.lti {
+  :global .ant-input-affix-wrapper {
+    background-color: @shade-1;
+    border-radius: var(--searchInputBorderRadius);
+    border-left: var(--searchInputBorder);
+    border-top: var(--searchInputBorder);
+    border-bottom: var(--searchInputBorder);
+    border-right: none;
+    height: 100%;
+
+    &:hover {
+      border-left: var(--searchInputBorderHover);
+      border-top: var(--searchInputBorderHover);
+      border-bottom: var(--searchInputBorderHover);
+    }
+  }
+
+  :global .ant-input-affix-wrapper-focused {
+    border-left: var(--searchInputBorderHover);
+    border-top: var(--searchInputBorderHover);
+    border-bottom: var(--searchInputBorderHover);
+    color: var(--searchInputTextColour);
+  }
+}
+
+.autoCompleteWrapper.custom {
+  :global .ant-input-affix-wrapper {
+    background-color: @shade-1;
+    border-radius: var(--searchInputBorderRadius);
+    border-left: var(--searchInputBorder);
+    border-top: var(--searchInputBorder);
+    border-bottom: var(--searchInputBorder);
+    border-right: none;
+    height: 100%;
+
+    &:hover {
+      border-left: var(--searchInputBorderHover);
+      border-top: var(--searchInputBorderHover);
+      border-bottom: var(--searchInputBorderHover);
+    }
+  }
+
+  :global .ant-input-affix-wrapper-focused {
+    border-left: var(--searchInputBorderHover);
+    border-top: var(--searchInputBorderHover);
+    border-bottom: var(--searchInputBorderHover);
+    color: var(--searchInputTextColour);
+  }
+}
+
+.result {
+  color: @neutral-shade-1;
+  font-weight: bold;
+  padding: 4px 8px;
+  font-size: 16px;
+  font-family: var(--fontFamily);
+  &:hover {
+    font-weight: normal;
+  }
+}
+
+.completionAffix {
+  color: @cta-blue;
+}
+.channelAffix {
+  color: @shade-6;
+}
+.hideMe {
+  display: none;
+}
