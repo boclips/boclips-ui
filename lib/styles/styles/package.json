@@ -7,7 +7,7 @@
     "build-dep": "lerna run build --stream --scope=@boclips-ui/styles --include-dependencies"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.0"
+    "@boclips-ui/ts-config": "^0.0.0"
   },
   "peerDependencies": {
     "antd": "^4.3.1"
