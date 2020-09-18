@@ -1,0 +1,11 @@
+{
+  "extends": "@boclips-ui/ts-config/tsconfig.json",
+  "include": ["./**/*.ts"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "exclude": [
+    "dist"
+  ]
+}
