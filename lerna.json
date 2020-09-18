@@ -4,5 +4,11 @@
   ],
   "version": "independent",
   "npmClient": "npm",
-  "private": true
+  "private": true,
+  "command": {
+    "publish": {
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "allowBranch": "master"
+    }
+  }
 }
