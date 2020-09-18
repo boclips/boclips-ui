@@ -1,0 +1,8 @@
+37 warn complete Waiting for 1 child process to exit. CTRL-C to exit immediately.
+38 error Error: Command failed: git tag @boclips-ui/styles@1.0.8 -m @boclips-ui/styles@1.0.8
+38 error fatal: tag '@boclips-ui/styles@1.0.8' already exists
+38 error
+38 error     at makeError (/Users/tattie/workspace/work/boclips-lerna-test/node_modules/@lerna/child-process/node_modules/execa/index.js:174:9)
+38 error     at /Users/tattie/workspace/work/boclips-lerna-test/node_modules/@lerna/child-process/node_modules/execa/index.js:278:16
+38 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+38 error     at async Promise.all (index 0)

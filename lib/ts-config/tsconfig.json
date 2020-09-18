@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2019"],
+    "module": "esnext",
+    "removeComments": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "target": "ES2019",
+    "strict": true,
+    "jsx": "react",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "incremental": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": [
+    "node_modules/**/*",
+    ".idea/**/*",
+    "dist"
+  ]
+}
