@@ -1,13 +1,13 @@
 {
   "name": "@boclips-ui/styles",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "dist/index.less",
   "scripts": {
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
     "build-dep": "lerna run build --stream --scope=@boclips-ui/styles --include-dependencies"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^0.0.0"
+    "@boclips-ui/ts-config": "^1.0.0"
   },
   "peerDependencies": {
     "antd": "^4.3.1"
