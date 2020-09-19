@@ -15,6 +15,11 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".less"],
   },
+  externals: {
+    react: "react",
+    reactDOM: "react-dom",
+    antd: "antd",
+  },
   module: {
     rules: [
       {
