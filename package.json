@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "version:git:patch": "lerna version patch --conventional-commits --create-release github",
     "check": "lerna run check && eslint . --ext .js,.ts",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
