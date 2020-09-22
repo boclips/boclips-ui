@@ -1,0 +1,84 @@
+@import '~@boclips-ui/styles/src/_colours';
+
+:root {
+  --primaryColour: @blue-shade-5;
+  --borderRadius: 8px;
+  --fontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+  --badgeValueColour: @neutral-shade-1;
+  --badgeBackground: @shade-2;
+  --badgeIconColour: @blue-shade-5;
+  --badgeBorder: none;
+}
+
+.badge {
+  font-family: var(--fontFamily);
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: var(--borderRadius);
+  border: var(--badgeBorder);
+  border: none;
+  font-size: 14px;
+  height: 32px;
+  line-height: 16px;
+  font-weight: 500;
+  padding: 0 8px;
+  margin: 0 8px 8px 0;
+  max-width: 200px;
+  transition: all 300ms ease-in-out;
+  position: relative;
+  z-index: 1;
+
+  svg {
+    height: 24px;
+    position: relative;
+  }
+}
+
+.value {
+  color: var(--badgeValueColour);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.label {
+  margin-right: 4px;
+}
+
+.custom {
+  background-color: var(--badgeBackground);
+
+  svg {
+    fill: var(--badgeIconColour);
+  }
+
+  .label {
+    color: var(--primaryColour);
+  }
+}
+
+.teachers {
+  background-color: @shade-2;
+
+  svg {
+    fill: @blue-shade-5;
+  }
+
+  .label {
+    color: @blue-shade-5;
+  }
+}
+
+.backoffice {
+  background-color: @shade-1;
+
+  svg {
+    fill: @dark-orange;
+  }
+
+  .label {
+    color: @dark-orange;
+  }
+}
