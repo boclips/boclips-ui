@@ -4,7 +4,7 @@
   "main": "dist/index.less",
   "scripts": {
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
-    "build-dep": "lerna run build --stream --scope=@boclips-ui/styles --include-dependencies"
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/styles --include-dependencies"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.0"

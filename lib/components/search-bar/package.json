@@ -9,7 +9,7 @@
   "scripts": {
     "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
-    "build-dep": "lerna run build --stream --scope=@boclips-ui/search-bar --include-dependencies"
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/search-bar --include-dependencies"
   },
   "dependencies": {
     "@boclips-ui/styles": "^1.0.0",
@@ -24,9 +24,6 @@
     "@testing-library/react": "^10.4.5",
     "antd": "^4.3.1",
     "react": "16.13.1"
-  },
-  "resolutions": {
-    "css-animation": "1.5.0"
   },
   "publishConfig": {
     "access": "public"
