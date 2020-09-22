@@ -9,6 +9,20 @@ module.exports = {
     "@storybook/addon-essentials"
   ],
   webpackFinal: async (config, { configType }) => {
+    let rule = config.module.rules.find(
+        r =>
+            r.test &&
+            r.test.toString().includes("svg") &&
+            r.loader &&
+            r.loader.includes("file-loader")
+    );
+    rule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+
     config.module.rules.push(
         {
           test: /\.module.less$/,
