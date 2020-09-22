@@ -25,5 +25,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "SEE LICENSE IN LICENSE",
+  "gitHead": "56bf706fb0c2c08a65f7ac46f3e5c6fec8944e29"
 }
