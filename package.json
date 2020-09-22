@@ -4,7 +4,6 @@
   "scripts": {
     "publish:git": "lerna publish from-git",
     "version:git:patch": "lerna version patch --conventional-commits --create-release github",
-    "version:git:major": "lerna version major --conventional-commits --create-release github",
     "check": "lerna run check && eslint . --ext .js,.ts",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
