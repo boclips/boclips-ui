@@ -18,6 +18,7 @@ module.exports = {
     react: "react",
     reactDOM: "react-dom",
     antd: "antd",
+    "@testing-library/react": "@testing-library/react",
   },
   module: {
     rules: [
