@@ -1,0 +1,30 @@
+{
+  "name": "@boclips-ui/provider-badge",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack -p --config ../../../webpack/webpack.config.js",
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/provider-badge --include-dependencies"
+  },
+  "dependencies": {
+    "@boclips-ui/badge": "^1.0.0",
+    "@boclips-ui/styles": "^1.0.1",
+    "classnames": "2.2.6"
+  },
+  "devDependencies": {
+    "@boclips-ui/ts-config": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@testing-library/react": "10.4.7",
+    "react": "16.13.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE"
+}
