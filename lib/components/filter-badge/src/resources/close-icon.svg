@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>6500F1A8-7C57-4B61-963F-5823257526BE</title>
+    <g id="Phase-1-design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Selection-controls" transform="translate(-807.000000, -216.000000)" fill="#3370B6">
+            <g id="tags-/-filters-applied" transform="translate(638.000000, 206.000000)">
+                <g id="Rectangle" transform="translate(169.000000, 10.000000)">
+                    <rect transform="translate(6.000000, 6.000000) rotate(45.000000) translate(-6.000000, -6.000000) " x="0" y="5" width="12" height="2" rx="1"></rect>
+                    <rect transform="translate(6.000000, 6.000000) scale(-1, 1) rotate(45.000000) translate(-6.000000, -6.000000) " x="0" y="5" width="12" height="2" rx="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
