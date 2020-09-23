@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/content-warning-badge",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "files": [
     "dist/**/*"
   ],
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@bit/boclips.boclips-ui.types.video": "1.0.6",
-    "@boclips-ui/styles": "^1.0.3",
+    "@boclips-ui/styles": "^1.0.4",
     "classnames": "2.2.6"
   },
   "devDependencies": {

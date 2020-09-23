@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/styles",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index.less",
   "scripts": {
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
