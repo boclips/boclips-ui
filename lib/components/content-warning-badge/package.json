@@ -25,5 +25,6 @@
     "react": "^16.13.1",
     "urijs": "^1.19.2"
   },
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "SEE LICENSE IN LICENSE",
+  "gitHead": "b93a3bf0b073dcfb9c06ccbfabdf7df017ae071a"
 }
