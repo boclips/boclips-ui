@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/no-results",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "files": [
     "dist/**/*"
   ],
@@ -11,7 +11,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/no-results --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^1.1.0",
+    "@boclips-ui/styles": "^1.0.0",
     "classnames": "2.2.6"
   },
   "devDependencies": {
