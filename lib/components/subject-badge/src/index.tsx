@@ -6,7 +6,7 @@ interface Subject {
   name: string;
 }
 
-interface SubjectBadgeProps {
+export interface SubjectBadgeProps {
   subject: Subject;
   theme?: "backoffice" | "lti" | "custom";
 }
