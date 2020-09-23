@@ -8,6 +8,8 @@
     "version:git:minor": "lerna version minor --conventional-commits --create-release github",
     "version:git:major": "lerna version major --conventional-commits --create-release github",
     "check": "lerna run check && eslint . --ext .js,.ts",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "npm run lint -- --fix",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest"
