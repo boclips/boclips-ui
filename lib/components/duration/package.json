@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/duration",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/duration --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^2.0.0",
+    "@boclips-ui/styles": "^2.0.1",
     "classnames": "2.2.6"
   },
   "devDependencies": {
