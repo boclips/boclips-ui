@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/styles",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "main": "dist/index.less",
   "scripts": {
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
@@ -16,5 +16,5 @@
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "a6c71134cd993ebedf541e53a6e5f8800705f808"
+  "gitHead": "50e2f0cf361ef259e298261a24173d3096ae81a4"
 }
