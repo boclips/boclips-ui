@@ -23,5 +23,5 @@ const Template: Story<AttachmentBadgeProps> = ({
 export const Sample = Template.bind({});
 
 Sample.args = {
-  theme: "lti",
+  theme: "backoffice",
 };

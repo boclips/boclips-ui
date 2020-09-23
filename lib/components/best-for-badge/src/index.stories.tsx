@@ -25,5 +25,5 @@ export const Sample = Template.bind({});
 
 Sample.args = {
   bestFor: "Explainer",
-  theme: "lti",
+  theme: "backoffice",
 };

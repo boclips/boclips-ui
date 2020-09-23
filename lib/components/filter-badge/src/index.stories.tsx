@@ -39,5 +39,5 @@ Sample.args = {
   id: "subject-id",
   label: "Subject:",
   value: "History",
-  theme: "lti",
+  theme: "backoffice",
 };

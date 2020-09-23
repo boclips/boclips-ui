@@ -7,6 +7,14 @@ import AgeRangeBadge, { AgeRangeBadgeProps } from "./index";
 export default {
   title: "Age Range Badge",
   component: AgeRangeBadge,
+  argTypes: {
+    theme: {
+      control: {
+        type: "select",
+        options: ["lti", "backoffice", "custom"],
+      },
+    },
+  },
 } as Meta;
 
 interface Props extends AgeRangeBadgeProps {
@@ -18,10 +26,10 @@ const Template: Story<Props> = ({ min, max, theme }: Props) => (
   <AgeRangeBadge ageRange={new AgeRange(min, max)} theme={theme} />
 );
 
-export const LTI = Template.bind({});
+export const Sample = Template.bind({});
 export const BACKOFFICE = Template.bind({});
 
-LTI.args = {
+Sample.args = {
   min: 5,
   max: 16,
   theme: "lti",

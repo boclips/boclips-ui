@@ -19,12 +19,12 @@ const Template: Story<Props> = ({ isLicensed }: Props) => (
   <ProviderBadge isLicensed={isLicensed} />
 );
 
-export const Licensed = Template.bind({});
-Licensed.args = {
-  isLicensed: true,
-};
-
 export const Youtube = Template.bind({});
 Youtube.args = {
   isLicensed: false,
+};
+
+export const Licensed = Template.bind({});
+Licensed.args = {
+  isLicensed: true,
 };

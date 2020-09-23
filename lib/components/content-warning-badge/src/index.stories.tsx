@@ -25,7 +25,7 @@ NoWarnings.args = {
 };
 
 OneWarning.args = {
-  contentWarnings: [{ id: "123", label: "Lots and lots and lots of swearing" }],
+  contentWarnings: [{ id: "321", label: "Lots and lots and lots of swearing" }],
 };
 
 TwoWarnings.args = {
