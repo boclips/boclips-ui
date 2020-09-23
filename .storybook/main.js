@@ -35,7 +35,14 @@ module.exports = {
                 importLoaders: 1,
               },
             },
-            require.resolve('less-loader')
+            {
+              loader:   require.resolve('less-loader'),
+              options: {
+                lessOptions: {
+                  javascriptEnabled: true,
+                },
+              },
+            },
           ]
         },
     );
