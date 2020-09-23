@@ -1,0 +1,49 @@
+@import '~@boclips-ui/styles/src/_colours';
+@import '~@boclips-ui/styles/src/_antd-theme';
+
+:root {
+  --releasedOnColour: @neutral-shade-1;
+  --releasedOnDateFontWeight: light;
+  --releasedOnByFontWeight: bold;
+}
+
+.releasedOn {
+  display: inline-block;
+  padding-left: 8px;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 12px;
+  @media (max-width: @screen-md) {
+    display: none;
+  }
+}
+
+.custom {
+  color: var(--releasedOnColour);
+  .releasedOnDate {
+    font-weight: var(--releasedOnDateFontWeight);
+  }
+  .releasedOnBy {
+    font-weight: var(--releasedOnByFontWeight);
+  }
+}
+
+.lti {
+  color: rgba(@neutral-shade-1, 0.5);
+  .releasedOnDate {
+    font-weight: normal;
+  }
+  .releasedOnBy {
+    font-weight: bold;
+  }
+}
+
+.backoffice {
+  color: @neutral-shade-1;
+  .releasedOnDate {
+    font-weight: bold;
+  }
+  .releasedOnBy {
+    font-weight: bold;
+  }
+}
