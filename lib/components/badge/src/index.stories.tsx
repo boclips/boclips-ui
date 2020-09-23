@@ -15,14 +15,14 @@ const Template: Story<Props> = ({ icon, label, value, theme }: Props) => (
 export const LTI = Template.bind({});
 export const BACKOFFICE = Template.bind({});
 
-LTI.args = {
-  label: "test",
-  value: "lti",
-  theme: "lti",
-};
-
 BACKOFFICE.args = {
   label: "test",
   value: "backoffice",
   theme: "backoffice",
+};
+
+LTI.args = {
+  label: "test",
+  value: "lti",
+  theme: "lti",
 };
