@@ -1,0 +1,21 @@
+{
+  "name": "@boclips-ui/select-option",
+  "version": "0.0.0",
+  "files": [
+    "dist/**/*"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack -p --config ../../../webpack/webpack.config.js",
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/select-option --include-dependencies"
+  },
+  "devDependencies": {
+    "@boclips-ui/ts-config": "^1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE"
+}
