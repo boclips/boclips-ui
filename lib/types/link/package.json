@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/link",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "files": [
     "dist/**/*"
   ],
@@ -11,7 +11,6 @@
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/link --include-dependencies"
   },
-  "dependencies": {},
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.0"
   },
