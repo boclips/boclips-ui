@@ -11,14 +11,14 @@
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/link --include-dependencies"
   },
-  "dependencies": {
-    "boclips-api-client": "^17.4.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.0"
   },
   "peerDependencies": {
-    "react": "16.13.1"
+    "boclips-api-client": "^17.4.2",
+    "react": "16.13.1",
+    "urijs": "^1.19.2"
   },
   "publishConfig": {
     "access": "public"
