@@ -1,0 +1,16 @@
+{
+  "extends": "@boclips-ui/ts-config/tsconfig.json",
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "rootDir": "src",
+    "outDir": "dist",
+    "lib": [
+      "dom"
+    ]
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
