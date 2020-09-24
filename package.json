@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "publish:git": "lerna publish from-git",
-    "version": "lerna version --conventional-commits --no-push --force-git-tag",
+    "runVersion": "lerna version --no-push --force-git-tag",
     "check": "lerna run check && eslint . --ext .js,.ts",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "npm run lint -- --fix",
