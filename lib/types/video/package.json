@@ -1,0 +1,31 @@
+{
+  "name": "@boclips-ui/video",
+  "version": "0.0.0",
+  "files": [
+    "dist/**/*"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack -p --config ../../../webpack/webpack.config.js",
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/video --include-dependencies"
+  },
+  "dependencies": {
+    "@boclips-ui/link": "^1.0.1",
+    "@boclips-ui/age-range": "^1.0.0"
+  },
+  "devDependencies": {
+    "@boclips-ui/ts-config": "^1.0.0"
+  },
+  "peerDependencies": {
+    "boclips-api-client": "^17.4.2",
+    "react": "16.13.1",
+    "moment": "^2.26.0"
+
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE"
+}
