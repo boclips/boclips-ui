@@ -1,43 +1,79 @@
-import URI from "urijs";
-import "urijs/src/URITemplate";
-import { Link as ApiLink } from "boclips-api-client/dist/types";
+import AgeRange from "@boclips-ui/age-range";
+import { Playback } from "boclips-api-client/dist/sub-clients/common/model/Playback";
+import { Attachment } from "boclips-api-client/dist/sub-clients/common/model/Attachment";
+import { Link } from "@boclips-ui/link";
+import { Types } from "boclips-api-client";
+import moment from "moment";
 
-export class Link {
-  private link: RawLink;
+type Subject = Types.Subject;
 
-  public constructor(link: RawLink) {
-    this.link = link;
-  }
-
-  public getOriginalLink() {
-    return this.link.href;
-  }
-
-  public get isTemplated(): boolean {
-    return this.link.templated === true;
-  }
-
-  public getTemplatedLink(paramKeysValues: {
-    [paramName: string]: any;
-  }): string {
-    if (URI.expand) {
-      return URI.expand(this.link.href, paramKeysValues).toString();
-    }
-    return "";
-  }
+export interface ContentWarning {
+  id: string;
+  label: string;
 }
 
-export interface RawLink {
-  href: string;
-  templated?: boolean;
+export interface Language {
+  code: string;
+  displayName: string;
 }
 
-export const convertToApiClientLink = (link?: Link): ApiLink | undefined =>
-  link
-    ? new ApiLink({ href: link.getOriginalLink(), templated: link.isTemplated })
-    : undefined;
+export enum CaptionStatus {
+  REQUESTED,
+  PROCESSING,
+  AVAILABLE,
+  NOT_AVAILABLE,
+  UNKNOWN,
+}
 
-export const convertFromApiClientLink = (link?: ApiLink): Link | undefined =>
-  link
-    ? new Link({ href: link.getOriginalLink(), templated: link.isTemplated })
-    : undefined;
+export interface BestForTag {
+  id?: string;
+  label: string;
+}
+
+export interface Video {
+  id: string;
+  title: string;
+  description: string;
+  additionalDescription?: string;
+  releasedOn: Date;
+  playback: Playback;
+  subjects: Subject[];
+  badges: string[];
+  legalRestrictions: string;
+  ageRange: AgeRange;
+  rating?: number;
+  yourRating?: number;
+  bestFor?: BestForTag[];
+  createdBy: string;
+  promoted: boolean;
+  language: Language;
+  attachments: Attachment[];
+  links: {
+    self: Link;
+    logInteraction: Link;
+    update?: Link;
+    rate?: Link;
+    tag?: Link;
+    transcript?: Link;
+    addAttachment?: Link;
+    captions?: Link;
+    assets?: Link;
+  };
+  channel?: string;
+  channelId?: string;
+  channelVideoId?: string;
+  types?: VideoType[];
+  captionStatus?: CaptionStatus;
+  contentWarnings?: ContentWarning[];
+}
+
+export enum VideoType {
+  NEWS = "NEWS",
+  STOCK = "STOCK",
+  INSTRUCTIONAL = "INSTRUCTIONAL",
+}
+
+export interface ExtendedVideo extends Video {
+  thumbnailUrl?: string;
+  duration?: moment.Duration;
+}
