@@ -31,8 +31,11 @@ module.exports = {
             {
               loader: require.resolve('css-loader'),
               options: {
-                modules: true,
-                importLoaders: 1,
+                sourceMap: true,
+                modules: {
+                  localIdentName: "[name]__[local]--[hash:base64:5]",
+                  mode: "local",
+                },
               },
             },
             {
