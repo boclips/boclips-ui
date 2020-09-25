@@ -7,7 +7,7 @@
   "private": true,
   "command": {
     "publish": {
-      "ignoreChanges": ["ignored-file", "*.md"],
+      "ignoreChanges": ["ignored-file", "*.md", "*.stories.tsx"],
       "allowBranch": "master"
     }
   }
