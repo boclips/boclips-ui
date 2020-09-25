@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/age-range",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
     "dist/**/*"
   ],
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/age-range --include-dependencies"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.0"
+    "@boclips-ui/ts-config": "^1.0.1"
   },
   "publishConfig": {
     "access": "public"
