@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/select --include-dependencies"
   },
   "dependencies": {
-    "@bit/boclips.boclips-ui.types.select-option": "^1.0.0",
+    "@boclips-ui/select-option": "^1.0.0",
     "@boclips-ui/styles": "^1.0.5",
     "classnames": "2.2.6"
   },

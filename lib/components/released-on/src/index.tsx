@@ -10,7 +10,7 @@ export interface ReleasedOnProps {
 const ReleasedOn = ({
   releasedOn,
   createdBy,
-  theme = "teachers",
+  theme = "lti",
 }: ReleasedOnProps): ReactElement => {
   const date = new Date(releasedOn);
   const month = date.toLocaleDateString("en-Gb", { month: "short" });

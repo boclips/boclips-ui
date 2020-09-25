@@ -1,0 +1,224 @@
+@import '~@boclips-ui/styles/src/_antd-theme';
+
+@video-width: 268px;
+@video-height: 240px;
+@video-border-radius: 8px;
+
+:root {
+  --boxShadow: none;
+  --borderRadius: 8px;
+  --border: 1px solid #e8e8e8;
+  --fontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+  --descriptionColor: @neutral-shade-1;
+  --titleColour: @neutral-shade-1;
+}
+
+.videoCard {
+  font-family: var(--fontFamily);
+  box-shadow: var(--boxShadow);
+  max-width: 977px;
+  margin: 7px auto;
+  border-radius: var(--borderRadius);
+  border: var(--border);
+  :global .ant-card-body {
+    padding: 16px;
+  }
+
+  @media (max-width: @screen-sm-max) {
+    padding: 0;
+    flex-direction: column;
+
+    .buttons-row {
+      display: none;
+    }
+
+    .video-preview {
+      margin-top: 3px;
+      height: 0;
+      // the aspect should be 16:9
+      padding-bottom: 100% / 16 * 9;
+    }
+  }
+}
+
+.subHeader {
+  div:only-child {
+    padding: 0;
+  }
+}
+
+.headerTitle {
+  color: var(--titleColour);
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+  margin-right: 12px;
+  margin-bottom: 0;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardBody {
+  display: flex;
+  height: 100%;
+  @media (max-width: @screen-sm-max) {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+.videoPlayer {
+  background-color: black;
+
+  @media (min-width: @screen-md) {
+    height: 151px;
+    width: @video-width;
+  }
+
+  @media (max-width: @screen-sm-max) {
+    width: 100%;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+  }
+
+  :global .small-player{
+    :global .plyr__menu,
+    :global .plyr__progress__container,
+    :global .plyr__time
+    {
+      display:none;
+    }
+  }
+  :global .plyr--fullscreen{
+    :global .plyr__menu,
+    :global .plyr__time
+    {
+      display:flex;
+    }
+    :global .plyr__progress__container{
+      display: inline-grid;
+    }
+
+  }
+}
+
+.stream {
+  overflow: hidden;
+  display: flex;
+}
+
+.bodyRight {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 0 24px;
+  width: calc(100% - (@video-width + 24px));
+
+  @media (max-width: @screen-md) {
+    width: 100%;
+    margin: 0;
+    padding: 12px 0;
+  }
+
+  .videoActionButtons {
+    display: flex;
+    align-self: flex-end;
+    padding-bottom: 10px;
+    width: 100%;
+
+    @media (max-width: @screen-md) {
+      position: absolute;
+      top: 12px;
+      right: 0;
+      width: auto;
+    }
+  }
+
+  .description {
+    word-break: break-word;
+    white-space: pre-line;
+    font-size: 16px;
+    color: var(--descriptionColor);
+
+    @media (min-width: @screen-md) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      max-height: 72px;
+    }
+
+    @media (max-width: @screen-sm-max) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      max-height: 120px;
+    }
+  }
+}
+
+.rating {
+  display: inline-block;
+  width: auto;
+  font-size: 14px;
+  color: @blue-shade-4;
+  font-weight: bold;
+  line-height: 24px;
+  margin-bottom: 4px;
+  text-decoration: underline;
+}
+
+.badgeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding-right: 10px;
+  position: relative;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @media (max-width: @screen-md) {
+    padding-right: 40px;
+  }
+}
+
+.videoPromotedSvg {
+  margin-top: 4px;
+  svg {
+    height: 24px;
+  }
+}
+
+.input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 0 4px;
+  margin-right: 15px;
+  &:hover {
+    border: 1px solid @dark-orange;
+  }
+}
+
+.ltiButtons {
+  align-items: flex-end;
+  display: flex;
+  .ltiButton{
+    margin-left: 8px;
+  }
+}

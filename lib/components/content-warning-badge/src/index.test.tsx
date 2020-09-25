@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { ContentWarning } from "@bit/boclips.boclips-ui.types.video/index";
+import { ContentWarning } from "@boclips-ui/video";
 import React from "react";
 import ContentWarningBadge from "./index";
 
@@ -15,6 +15,6 @@ describe(`ContentWarningBadge`, () => {
   it(`does not render the badge when no content warnings are provided`, () => {
     const wrapper = render(<ContentWarningBadge contentWarnings={[]} />);
 
-    expect(wrapper.queryByText("Content Warning")).toBeNull()
+    expect(wrapper.queryByText("Content Warning")).toBeNull();
   });
 });

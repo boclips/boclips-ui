@@ -1,5 +1,5 @@
 import React from "react";
-import c from "classnames";
+import Badge from "@boclips-ui/badge";
 import s from "./style.module.less";
 import CloseIcon from "./resources/close-icon.svg";
 
@@ -11,24 +11,21 @@ export interface Props {
   theme?: "backoffice" | "lti" | "custom";
 }
 
-const FilterBadge = ({ id, value, label, onClick, theme = "lti" }: Props) => (
-  <span
-    className={c(s.badge, {
-      [s.backoffice]: theme === "backoffice",
-      [s.teachers]: theme === "lti",
-      [s.custom]: theme === "custom",
-    })}
-  >
-    {label && <div className={s.label}>{label}</div>}
-    {value && <div className={s.value}>{value}</div>}
+const FilterBadge = ({ id, value, label, onClick, theme = "lti" }: Props) => {
+  const closeAction = (
     <div
+      className={s.closeIcon}
       role="presentation"
       data-qa={`${id}-remove-button`}
       onClick={() => onClick(id)}
     >
       <CloseIcon />
     </div>
-  </span>
-);
+  );
+
+  return (
+    <Badge value={value} label={label} theme={theme} closeIcon={closeAction} />
+  );
+};
 
 export default FilterBadge;

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["ES2019"],
+    "target": "esnext",
     "module": "esnext",
     "removeComments": true,
     "moduleResolution": "node",
@@ -8,7 +8,6 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "target": "ES2019",
     "strict": true,
     "jsx": "react",
     "noImplicitReturns": true,
@@ -19,7 +18,6 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "incremental": true,
-    "rootDir": "src",
     "outDir": "dist"
   },
   "include": ["./**/*.ts", "./**/*.tsx"],

@@ -12,7 +12,7 @@
     "build-dep": "lerna run build --stream --scope=@boclips-ui/content-warning-badge --include-dependencies"
   },
   "dependencies": {
-    "@bit/boclips.boclips-ui.types.video": "1.0.6",
+    "@boclips-ui/video": "1.0.2",
     "@boclips-ui/styles": "^2.0.4",
     "classnames": "2.2.6"
   },

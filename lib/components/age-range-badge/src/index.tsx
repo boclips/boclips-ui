@@ -1,6 +1,6 @@
 import React from "react";
 import Badge from "@boclips-ui/badge";
-import AgeRange from "@bit/boclips.boclips-ui.types.age-range";
+import AgeRange from "@boclips-ui/age-range";
 
 export interface AgeRangeBadgeProps {
   ageRange: AgeRange;
