@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { ContentWarning } from "@boclips-ui/types/video";
+import { ContentWarning } from "@boclips-ui/video";
 import ContentWarningBadge from "../src";
 
 export default {
