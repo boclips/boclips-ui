@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import s from "./styles.module.less";
 
-interface DurationProps {
+export interface DurationProps {
   duration?: string;
 }
 
