@@ -7,4 +7,3 @@ lerna-debug.log
 .DS_Store
 */**/.DS_Store
 .envrc
-lib/components/video-card/

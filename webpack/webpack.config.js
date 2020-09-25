@@ -24,7 +24,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
+        exclude: ["/node_modules/", "/storybook"],
         use: [
           {
             loader: "babel-loader",
@@ -70,9 +70,9 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              sourceMap: true,
               modules: {
-                localIdentName: "[name]__[local]--[hash:base64:5]",
+                localIdentContext: __dirname,
+                localIdentName: "[local]--[hash:base64:5]",
                 mode: "local",
               },
             },

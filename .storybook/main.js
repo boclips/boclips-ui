@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   "stories": [
-    "../lib/**/*.stories.@(js|jsx|ts|tsx)"
+    "../lib/**/storybook/*.stories.@(ts|tsx)"
   ],
   "addons": [
     "@storybook/addon-links",
@@ -31,10 +31,10 @@ module.exports = {
             {
               loader: require.resolve('css-loader'),
               options: {
-                sourceMap: true,
+                importLoaders: 1,
                 modules: {
-                  localIdentName: "[name]__[local]--[hash:base64:5]",
-                  mode: "local",
+                  mode: 'local',
+                  localIdentName: '[path][name]__[local]--[hash:base64:5]',
                 },
               },
             },
