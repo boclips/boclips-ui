@@ -2,7 +2,7 @@ import React from "react";
 import s from "./styles.module.less";
 import NoResultsSVG from "./resources/no-results.svg";
 
-interface NoResultsProps {
+export interface NoResultsProps {
   searchQuery: string;
   filtersApplied?: boolean;
 }
