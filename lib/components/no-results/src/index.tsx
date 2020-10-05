@@ -23,7 +23,7 @@ const NoResults = ({ searchQuery, filtersApplied }: NoResultsProps) => (
     ) : (
       <>
         <p className={s.noResultsText}>
-          Sorry, we could&apos;t find any results for{" "}
+          Sorry, we couldn&apos;t find any results for{" "}
           <em>&quot;{searchQuery}&quot;</em>
         </p>
         <p className={s.noResultsSuggestions}>
