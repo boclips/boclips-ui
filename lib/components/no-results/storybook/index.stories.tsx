@@ -5,18 +5,27 @@ import NoResults from "../src";
 export default {
   title: "No Results",
   component: NoResults,
+  argTypes: {
+    filtersApplied: { control: { type: "boolean" }, defaultValue: false },
+    searchQuery: {
+      control: { type: "string" },
+      defaultValue: "bad search query",
+    },
+  },
 } as Meta;
 
 interface Props {
   searchQuery: string;
+  filtersApplied?: boolean;
 }
 
-const Template: Story<Props> = ({ searchQuery }: Props) => (
-  <NoResults searchQuery={searchQuery} />
+const Template: Story<Props> = ({ searchQuery, filtersApplied }: Props) => (
+  <NoResults searchQuery={searchQuery} filtersApplied={filtersApplied} />
 );
 
-export const Sample = Template.bind({});
+export const WithoutFilters = Template.bind({});
+export const WithFiltersApplied = Template.bind({});
 
-Sample.args = {
-  searchQuery: "bad search query",
+WithFiltersApplied.args = {
+  filtersApplied: true,
 };
