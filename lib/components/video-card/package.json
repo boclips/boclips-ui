@@ -9,7 +9,7 @@
   "scripts": {
     "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
-    "build:dep": "lerna run build --stream --scope=@boclips-ui/search-bar --include-dependencies"
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/video-card --include-dependencies"
   },
   "dependencies": {
     "@boclips-ui/age-range-badge": "^1.0.7",
