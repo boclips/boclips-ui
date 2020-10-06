@@ -18,13 +18,8 @@ const ContentWarningBadge = ({ contentWarnings }: Props) =>
       })}
       placement="bottom"
     >
-      <span className={s.badge}>
-        <span className={s.badgeContent}>
-          <span className={s.icon}>
-            <WarningSVG />
-          </span>
-          <span className={s.label}>Content Warning</span>
-        </span>
+      <span data-qa="content-warning">
+        <WarningSVG />
       </span>
     </Tooltip>
   ) : null;

@@ -4,12 +4,12 @@
   "files": [
     "dist/**/*"
   ],
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
-    "build-dep": "lerna run build --stream --scope=@boclips-ui/content-warning-badge --include-dependencies"
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/content-warning-badge --include-dependencies"
   },
   "dependencies": {
     "@boclips-ui/styles": "^2.0.5",
