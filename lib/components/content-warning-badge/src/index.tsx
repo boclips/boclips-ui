@@ -9,19 +9,36 @@ interface Props {
   contentWarnings: ContentWarning[] | undefined;
 }
 
-const ContentWarningBadge = ({ contentWarnings }: Props) =>
-  contentWarnings && contentWarnings.length > 0 ? (
+const ContentWarningBadge = ({ contentWarnings }: Props) => {
+  if (contentWarnings === undefined || contentWarnings.length === 0)
+    return null;
+
+  let classes: string[];
+  let renderedText: JSX.Element[] | JSX.Element;
+
+  if (contentWarnings.length > 1) {
+    classes = [s.tooltip, s.leftAligned];
+    renderedText = contentWarnings.map((warning) => (
+      <span className={s.hasFullStop} key={warning.id}>
+        {warning.label}
+      </span>
+    ));
+  } else {
+    classes = [s.tooltip];
+    renderedText = <>{contentWarnings[0].label}</>;
+  }
+
+  return (
     <Tooltip
-      title={contentWarnings.map((warning) => warning.label).join("\n")}
-      overlayClassName={c(s.tooltip, {
-        [s.leftAligned]: contentWarnings.length > 1,
-      })}
+      title={renderedText}
+      overlayClassName={c(classes)}
       placement="bottom"
     >
       <span data-qa="content-warning">
         <WarningSVG />
       </span>
     </Tooltip>
-  ) : null;
+  );
+};
 
 export default ContentWarningBadge;
