@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/use-media-breakpoints",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "files": [
     "dist/**/*"
   ],
@@ -12,10 +12,10 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/use-media-breakpoints --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/media-breakpoints": "^1.0.2"
+    "@boclips-ui/media-breakpoints": "^1.0.3"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.2"
+    "@boclips-ui/ts-config": "^1.0.3"
   },
   "peerDependencies": {
     "enzyme": "^3.11.0",
