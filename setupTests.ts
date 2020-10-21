@@ -1,8 +1,8 @@
-import '@testing-library/jest-dom/extend-expect';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import 'jest-enzyme';
-import { configure } from '@testing-library/dom';
+import "@testing-library/jest-dom/extend-expect";
+import Enzyme from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import "jest-enzyme";
+import { configure } from "@testing-library/dom";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -13,7 +13,7 @@ window.open = jest.fn();
 
 window.open = jest.fn();
 
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
     matches: false,
@@ -27,4 +27,4 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-configure({ testIdAttribute: 'data-qa' });
+configure({ testIdAttribute: "data-qa" });
