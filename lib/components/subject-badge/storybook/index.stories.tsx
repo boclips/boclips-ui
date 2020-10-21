@@ -19,7 +19,7 @@ export const CUSTOM = Template.bind({});
 
 BACKOFFICE.args = {
   subject: { id: "hello", name: "yes" },
-  theme: "backoffice",
+  theme: "hq",
 };
 
 LTI.args = {

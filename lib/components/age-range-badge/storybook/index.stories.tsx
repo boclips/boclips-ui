@@ -11,7 +11,7 @@ export default {
     theme: {
       control: {
         type: "select",
-        options: ["lti", "backoffice", "custom"],
+        options: ["lti", "hq", "custom"],
       },
     },
   },
@@ -38,5 +38,5 @@ Sample.args = {
 BACKOFFICE.args = {
   min: 5,
   max: 16,
-  theme: "backoffice",
+  theme: "hq",
 };

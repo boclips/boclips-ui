@@ -32,7 +32,7 @@ export interface Props {
   loading?: boolean;
   hideBadges?: boolean;
   handleOnClick?: () => void;
-  theme?: "backoffice" | "lti" | "custom";
+  theme?: "hq" | "lti" | "custom";
   editMode?: boolean;
   setEditValues?: MutableRefObject<EditValues | null>;
   hideAgeRange?: boolean;
@@ -204,7 +204,7 @@ export const VideoCard = ({
                   <AttachmentBadge theme={theme} />
                 )}
 
-              {theme === "backoffice" && video?.promoted && (
+              {theme === "hq" && video?.promoted && (
                 <div className={s.videoPromotedSvg}>
                   <VideoPromotedSvg />
                 </div>

@@ -20,7 +20,7 @@ const ReleasedOn = ({
     <div
       className={c(s.releasedOn, {
         [s.lti]: theme === "lti",
-        [s.backoffice]: theme === "backoffice",
+        [s.hq]: theme === "hq",
         [s.custom]: theme === "custom",
       })}
     >

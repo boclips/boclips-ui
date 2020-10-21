@@ -10,7 +10,7 @@ export default {
     theme: {
       control: {
         type: "select",
-        options: ["lti", "backoffice", "custom"],
+        options: ["lti", "hq", "custom"],
       },
     },
     onClick: { action: "clicked" },

@@ -6,14 +6,14 @@ export interface Props {
   icon?: React.ReactElement;
   label?: string;
   value?: string;
-  theme?: "backoffice" | "lti" | "custom";
+  theme?: "hq" | "lti" | "custom";
   closeIcon?: React.ReactElement;
 }
 
 const Badge = ({ icon, label, value, theme = "lti", closeIcon }: Props) => (
   <span
     className={c(s.badge, {
-      [s.backoffice]: theme === "backoffice",
+      [s.hq]: theme === "hq",
       [s.lti]: theme === "lti",
       [s.custom]: theme === "custom",
       withCloseIcon: !!closeIcon,

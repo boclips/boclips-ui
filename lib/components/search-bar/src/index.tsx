@@ -11,7 +11,7 @@ export interface Props {
   onSearch: (query: string, page: number) => void;
   placeholder?: string;
   initialQuery?: string;
-  theme?: "backoffice" | "lti" | "custom";
+  theme?: "hq" | "lti" | "custom";
 }
 
 const getCompletions = completionsFor({
@@ -97,7 +97,7 @@ const SearchBar = ({
         className={c(s.autoCompleteWrapper, {
           [s.custom]: theme === "custom",
           [s.lti]: theme === "lti",
-          [s.backoffice]: theme === "backoffice",
+          [s.hq]: theme === "hq",
         })}
         dropdownClassName={s.dropdownWrapper}
         value={inputValue}

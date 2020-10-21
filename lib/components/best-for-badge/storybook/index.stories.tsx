@@ -10,7 +10,7 @@ export default {
     theme: {
       control: {
         type: "select",
-        options: ["lti", "backoffice", "custom"],
+        options: ["lti", "hq", "custom"],
       },
     },
   },
@@ -25,5 +25,5 @@ export const Sample = Template.bind({});
 
 Sample.args = {
   bestFor: "Explainer",
-  theme: "backoffice",
+  theme: "hq",
 };

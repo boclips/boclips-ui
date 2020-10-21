@@ -17,8 +17,8 @@ export const BACKOFFICE = Template.bind({});
 
 BACKOFFICE.args = {
   label: "test",
-  value: "backoffice",
-  theme: "backoffice",
+  value: "hq",
+  theme: "hq",
 };
 
 LTI.args = {

@@ -10,7 +10,7 @@ export default {
     theme: {
       control: {
         type: "select",
-        options: ["lti", "backoffice", "custom"],
+        options: ["lti", "hq", "custom"],
       },
     },
   },
@@ -23,5 +23,5 @@ const Template: Story<AttachmentBadgeProps> = ({
 export const Sample = Template.bind({});
 
 Sample.args = {
-  theme: "backoffice",
+  theme: "hq",
 };

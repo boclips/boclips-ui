@@ -8,7 +8,7 @@ export interface Props {
   value: string;
   label: string;
   onClick: (value: string) => any;
-  theme?: "backoffice" | "lti" | "custom";
+  theme?: "hq" | "lti" | "custom";
 }
 
 const FilterBadge = ({ id, value, label, onClick, theme = "lti" }: Props) => {
