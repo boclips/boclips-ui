@@ -1,13 +1,13 @@
 {
   "name": "@boclips-ui/styles",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "main": "dist/index.less",
   "scripts": {
     "build": "webpack -p --config ../../../webpack/webpack.config.js",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/styles --include-dependencies"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.1"
+    "@boclips-ui/ts-config": "^1.0.2"
   },
   "peerDependencies": {
     "antd": "^4.3.1"
@@ -16,5 +16,5 @@
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "12590564be041db597c86708b0fef8c689b47e16"
+  "gitHead": "aaa8d3e7091249909f72096dda4625d4d0a4e19e"
 }
