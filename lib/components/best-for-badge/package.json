@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/best-for-badge",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,12 +12,12 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/best-for-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/badge": "^1.1.4",
-    "@boclips-ui/styles": "^2.0.5",
+    "@boclips-ui/badge": "^1.1.5",
+    "@boclips-ui/styles": "^2.0.6",
     "classnames": "2.2.6"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.1"
+    "@boclips-ui/ts-config": "^1.0.2"
   },
   "peerDependencies": {
     "@testing-library/react": "10.4.7",
