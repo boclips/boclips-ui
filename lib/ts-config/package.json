@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/ts-config",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "src/index.js",
   "peerDependencies": {
     "typescript": "^3.2.4"

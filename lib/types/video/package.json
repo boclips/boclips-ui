@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "files": [
     "dist/**/*"
   ],
@@ -12,11 +12,11 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/video --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/age-range": "^1.0.3",
-    "@boclips-ui/link": "^1.0.4"
+    "@boclips-ui/age-range": "^1.0.4",
+    "@boclips-ui/link": "^1.0.5"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.3"
+    "@boclips-ui/ts-config": "^1.0.4"
   },
   "peerDependencies": {
     "boclips-api-client": "^17.4.2",
