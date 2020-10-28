@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import { AutoComplete, Input, Button } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import c from "classnames";
 import { Completion, completionsFor } from "./completions/completions";
 import completionsCreatedBy from "./json/completionsCreatedBy.json";

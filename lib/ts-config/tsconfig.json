@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "commonjs",
-    "lib": ["ES2019"],
+    "lib": ["ES2019", "DOM"],
     "removeComments": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
