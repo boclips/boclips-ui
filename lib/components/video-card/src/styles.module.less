@@ -147,16 +147,16 @@
   .description {
     word-break: break-word;
     white-space: pre-line;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--descriptionColor);
 
     @media (min-width: @screen-md) {
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
-      max-height: 72px;
+      line-height: 24px;
     }
 
     @media (max-width: @screen-sm-max) {
@@ -168,6 +168,10 @@
       max-height: 120px;
     }
   }
+}
+
+.short{
+  -webkit-line-clamp: 3 !important;
 }
 
 .rating {

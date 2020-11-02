@@ -221,7 +221,15 @@ export const VideoCard = ({
               onChange={onInputChange}
             />
           ) : (
-            <section className={s.description}>{video?.description}</section>
+            <section
+              role="presentation"
+              onClick={(e) => e.stopPropagation()}
+              className={c(s.description, {
+                [s.short]: videoActionButtons && renderVideoButtons,
+              })}
+            >
+              {video?.description}
+            </section>
           )}
 
           {videoActionButtons && renderVideoButtons && (
