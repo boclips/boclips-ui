@@ -225,22 +225,27 @@ export const VideoCard = ({
               role="presentation"
               onClick={(e) => e.stopPropagation()}
               className={c(s.description, {
-                [s.short]: videoActionButtons && renderVideoButtons,
+                [s.short]:
+                  videoActionButtons &&
+                  videoActionButtons.filter((b) => !!b).length > 0 &&
+                  renderVideoButtons,
               })}
             >
               {video?.description}
             </section>
           )}
 
-          {videoActionButtons && renderVideoButtons && (
-            <section
-              role="presentation"
-              onClick={(e) => e.stopPropagation()}
-              className={s.videoActionButtons}
-            >
-              {videoActionButtons}
-            </section>
-          )}
+          {videoActionButtons &&
+            videoActionButtons.filter((b) => !!b).length > 0 &&
+            renderVideoButtons && (
+              <section
+                role="presentation"
+                onClick={(e) => e.stopPropagation()}
+                className={s.videoActionButtons}
+              >
+                {videoActionButtons}
+              </section>
+            )}
           <span />
         </div>
       </section>
