@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Button, Input, Select } from "antd";
 import c from "classnames";
-import { SelectOption } from "@bit/boclips.boclips-ui.types.select-option";
+import { SelectOption } from "@boclips-ui/select-option";
 import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import IconOpen from "./resources/icon-down.svg";
 import s from "./styles.module.less";
