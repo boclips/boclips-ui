@@ -61,7 +61,7 @@ lerna run build:dep
 npm run version:no-push
 ```
 
-#### AD 5. Version the component 
+#### AD 5. Publish to npm
 
 Log in to npm (credentials can be found in LastPass - look for 'npmjs')
 
