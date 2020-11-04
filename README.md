@@ -1,4 +1,4 @@
-
+## First run
 #### 1. Install all the packages from the root package.json:
 ```
 npm i
@@ -28,3 +28,49 @@ npm run storybook
 ```
 
 The storybook should be accessible at http://localhost:6006/ 
+
+## Development process:
+
+1. Do the code changes
+1. Build the component
+1. Commit the changes
+1. Version the component 
+1. Publish to npm
+
+#### AD 2. Building a component
+
+Building one of the components:
+
+```
+lerna run build:dep --scope=@boclips-ui/<name-of-component>
+```
+e.g.
+```
+ lerna run build:dep --scope=@boclips-ui/search-bar
+```
+
+To build all of the packages:
+
+```
+lerna run build:dep
+```
+
+#### AD 4. Version the component 
+
+```
+npm run version:no-push
+```
+
+#### AD 5. Version the component 
+
+Log in to npm (credentials can be found in LastPass - look for 'npmjs')
+
+```
+npm login
+```
+
+Do the actual publishing with:
+
+```
+npm run publish:git
+```
