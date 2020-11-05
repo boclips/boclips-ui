@@ -11,7 +11,8 @@ export interface Props {
   onSearch: (query: string, page: number) => void;
   placeholder?: string;
   initialQuery?: string;
-  theme?: "hq" | "lti" | "custom";
+  autocomplete?: boolean;
+  theme?: "lti" | "publishers";
 }
 
 const getCompletions = completionsFor({
@@ -24,6 +25,7 @@ const SearchBar = ({
   placeholder = "Search...",
   theme = "lti",
   initialQuery,
+  autocomplete = true,
 }: Props): ReactElement => {
   const [result, setResult] = useState<Completion[]>();
   const [inputValue, setInputValue] = useState<string | undefined>(
@@ -59,7 +61,7 @@ const SearchBar = ({
   const renderResult = (r: Completion) => (
     <div
       data-qa={`result-${r.text.replace(" ", "-").toLowerCase()}`}
-      className={s.result}
+      className={s.autocompleteResults}
       tabIndex={0}
       onClick={(e) => onClickAutosuggestion(e, r)}
       onKeyDown={(e) => onClickAutosuggestion(e, r)}
@@ -88,16 +90,20 @@ const SearchBar = ({
     }));
 
   return (
-    <div className={s.searchWrapper}>
+    <div
+      className={c({
+        [s.autoCompleteSearchWrapper]: theme === "lti",
+        [s.searchWrapper]: theme === "publishers",
+      })}
+    >
       <AutoComplete
         backfill
-        options={optionsRender()}
+        options={autocomplete ? optionsRender() : []}
         onChange={onChange}
         onKeyDown={onKeyDown}
         className={c(s.autoCompleteWrapper, {
-          [s.custom]: theme === "custom",
           [s.lti]: theme === "lti",
-          [s.hq]: theme === "hq",
+          [s.publishers]: theme === "publishers",
         })}
         dropdownClassName={s.dropdownWrapper}
         value={inputValue}
@@ -108,7 +114,7 @@ const SearchBar = ({
           data-qa="search-input"
           aria-label="search"
           allowClear
-          prefix={<SearchOutlined />}
+          prefix={theme === "lti" ? <SearchOutlined /> : null}
           value={inputValue}
           placeholder={placeholder}
         />
