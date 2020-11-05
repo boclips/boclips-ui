@@ -13,12 +13,16 @@ const Template: Story<Props> = ({
   placeholder,
   theme,
   autocomplete,
+  onlySearchIconInButton,
+  size,
 }: Props) => (
   <SearchBar
     onSearch={onSearch}
     placeholder={placeholder}
     theme={theme}
     autocomplete={autocomplete}
+    onlySearchIconInButton={onlySearchIconInButton}
+    size={size}
   />
 );
 
@@ -27,6 +31,8 @@ export const LTI = Template.bind({});
 LTI.args = {
   onSearch: () => console.log("search"),
   placeholder: "Search...",
-  theme: "lti",
-  autocomplete: true,
+  theme: "publishers",
+  autocomplete: false,
+  onlySearchIconInButton: true,
+  size: "big",
 };
