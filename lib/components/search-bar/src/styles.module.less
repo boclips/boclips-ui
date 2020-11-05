@@ -1,11 +1,10 @@
 @import '~@boclips-ui/styles/src/_LTIColours';
 
 :root {
-  --primaryColour: @blue-shade-5;
-  --borderRadius: 8px;
 
-  /* LTI style vars */
+  /* LTI STYLE VARS */
   --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --LTIBorderRadius: 8px;
   --LTISearchInputBorder: 1.5px solid @lti-gray;
   --LTISearchInputBorderHover: 1.5px solid @blue-shade-4;
   --LTISearchInputBorderRadius: 4px 0px 0px 4px;
@@ -13,8 +12,10 @@
   --LTISearchIconFill: rgba(#3e4664, 0.3);
   --LTISearchInputTextColour: @shade-2;
   --LTISearchButtonBackground: #346fb6;
-}
 
+  /* PUBLISHERS STYLE VARS */
+
+}
 /* LTI AUTOCOMPLETE START */
 .autoCompleteSearchWrapper {
   display: flex;
@@ -54,7 +55,7 @@
 
     .dropdownWrapper {
       background: transparent;
-      border-radius: 8px;
+      border-radius: var(--LTIBorderRadius);
       border: 2px solid @shade-3;
       padding: 0;
     }
@@ -139,10 +140,11 @@
 }
 /* LTI AUTOCOMPLETE END */
 
+/* PUBLISHERS START */
 .searchWrapper{
 
 }
-
+/* PUBLISHERS END */
 .hideMe {
   display: none;
 }
