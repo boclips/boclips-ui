@@ -1,7 +1,7 @@
 @import '~@boclips-ui/styles/src/_antd-theme';
 
-@video-width: 268px;
-@video-height: 240px;
+@video-width: 304px;
+@video-height: 171px;
 @video-border-radius: 8px;
 
 :root {
@@ -78,7 +78,7 @@
   background-color: black;
 
   @media (min-width: @screen-md) {
-    height: 151px;
+    height: @video-height;
     width: @video-width;
   }
 
@@ -154,7 +154,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
       line-height: 24px;
     }
