@@ -2,6 +2,8 @@ import React, { ReactElement, useState } from "react";
 import { AutoComplete, Input, Button } from "antd";
 import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import c from "classnames";
+import SearchIcon from "./resources/search-icon.svg";
+import CloseIcon from "./resources/close-icon.svg";
 import { Completion, completionsFor } from "./completions/completions";
 import completionsCreatedBy from "./json/completionsCreatedBy.json";
 import completionsTopics from "./json/completionsTopics.json";
@@ -12,7 +14,9 @@ export interface Props {
   placeholder?: string;
   initialQuery?: string;
   autocomplete?: boolean;
+  onlySearchIconInButton?: boolean;
   theme?: "lti" | "publishers";
+  size?: "big" | "small";
 }
 
 const getCompletions = completionsFor({
@@ -26,6 +30,8 @@ const SearchBar = ({
   theme = "lti",
   initialQuery,
   autocomplete = true,
+  onlySearchIconInButton = false,
+  size = "big",
 }: Props): ReactElement => {
   const [result, setResult] = useState<Completion[]>();
   const [inputValue, setInputValue] = useState<string | undefined>(
@@ -92,8 +98,12 @@ const SearchBar = ({
   return (
     <div
       className={c({
-        [s.autoCompleteSearchWrapper]: theme === "lti",
-        [s.searchWrapper]: theme === "publishers",
+        [s.autoCompleteSearchWrapper]: autocomplete === true,
+        [s.searchWrapper]: autocomplete === false,
+        [s.ltiWrapper]: theme === "lti",
+        [s.publishersWrapper]: theme === "publishers",
+        [s.publishersBig]: theme === "publishers" && size === "big",
+        [s.publishersSmall]: theme === "publishers" && size === "small",
       })}
     >
       <AutoComplete
@@ -101,7 +111,7 @@ const SearchBar = ({
         options={autocomplete ? optionsRender() : []}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        className={c(s.autoCompleteWrapper, {
+        className={c({
           [s.lti]: theme === "lti",
           [s.publishers]: theme === "publishers",
         })}
@@ -113,8 +123,18 @@ const SearchBar = ({
           onChange={getInputValue}
           data-qa="search-input"
           aria-label="search"
-          allowClear
           prefix={theme === "lti" ? <SearchOutlined /> : null}
+          suffix={
+            <CloseIcon
+              className={c(s.closeIcon, {
+                [s.hideMe]:
+                  inputValue?.length === 0 || inputValue?.length === undefined,
+              })}
+              onClick={() => setInputValue("")}
+            />
+          }
+          allowClear={false}
+          bordered={false}
           value={inputValue}
           placeholder={placeholder}
         />
@@ -123,9 +143,12 @@ const SearchBar = ({
         onClick={handleSearchButton}
         data-qa="search-button"
         type="primary"
-        className={s.searchButton}
+        className={c(s.searchButton, {
+          [s.iconButton]: onlySearchIconInButton,
+        })}
       >
-        Search
+        {theme === "publishers" ? <SearchIcon /> : null}
+        {onlySearchIconInButton ? null : "Search"}
       </Button>
     </div>
   );
