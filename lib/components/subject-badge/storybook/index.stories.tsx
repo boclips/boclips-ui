@@ -18,16 +18,16 @@ export const LTI = Template.bind({});
 export const CUSTOM = Template.bind({});
 
 BACKOFFICE.args = {
-  subject: { id: "hello", name: "Maths" },
+  subject: { id: "hello", name: "Technology and computing" },
   theme: "hq",
 };
 
 LTI.args = {
-  subject: { id: "hello", name: "Maths" },
+  subject: { id: "hello", name: "Technology and computing" },
   theme: "lti",
 };
 
 CUSTOM.args = {
-  subject: { id: "hello", name: "Maths" },
+  subject: { id: "hello", name: "Technology and computing" },
   theme: "custom",
 };
