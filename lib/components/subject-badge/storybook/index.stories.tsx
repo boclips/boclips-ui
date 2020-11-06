@@ -4,7 +4,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import SubjectBadge, { SubjectBadgeProps } from "../src";
 
 export default {
-  title: "Badge",
+  title: "Subject Badge",
   component: SubjectBadge,
 } as Meta;
 
@@ -18,16 +18,16 @@ export const LTI = Template.bind({});
 export const CUSTOM = Template.bind({});
 
 BACKOFFICE.args = {
-  subject: { id: "hello", name: "yes" },
+  subject: { id: "hello", name: "Maths" },
   theme: "hq",
 };
 
 LTI.args = {
-  subject: { id: "hello", name: "yes" },
+  subject: { id: "hello", name: "Maths" },
   theme: "lti",
 };
 
 CUSTOM.args = {
-  subject: { id: "hello", name: "yes" },
+  subject: { id: "hello", name: "Maths" },
   theme: "custom",
 };
