@@ -14,7 +14,7 @@ const AgeRangeBadge = ({ ageRange, theme = "lti" }: AgeRangeBadgeProps) => {
     <>
       {getAgeRange && (
         <div data-qa="age-range-badge">
-          <Badge value={getAgeRange} label="Ages:" theme={theme} />
+          <Badge value={`Ages ${getAgeRange}`} theme={theme} />
         </div>
       )}
     </>

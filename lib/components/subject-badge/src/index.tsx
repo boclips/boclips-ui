@@ -16,7 +16,7 @@ const SubjectBadge = ({
   theme = "lti",
 }: SubjectBadgeProps): ReactElement => (
   <div data-qa="subject-badge">
-    <Badge value={subject.name} label="Subject:" theme={theme} />
+    <Badge value={subject.name} theme={theme} />
   </div>
 );
 
