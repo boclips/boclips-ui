@@ -17,7 +17,6 @@ import ProviderBadge from "@boclips-ui/provider-badge";
 import c from "classnames";
 import ContentWarningBadge from "@boclips-ui/content-warning-badge";
 import VideoPromotedSvg from "./resources/promoted-icon.svg";
-
 import s from "./styles.module.less";
 
 interface EditValues {
