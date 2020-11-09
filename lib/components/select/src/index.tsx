@@ -6,6 +6,11 @@ import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import IconOpen from "./resources/icon-down.svg";
 import s from "./styles.module.less";
 
+export enum DropdownAligment {
+  LEFT,
+  RIGHT,
+}
+
 export interface Props {
   options: SelectOption[];
   title: string;
@@ -15,6 +20,7 @@ export interface Props {
   showFacets?: boolean;
   searchPlaceholder?: string;
   touched?: (touched: boolean) => void;
+  dropdownAlignment?: DropdownAligment;
 }
 
 const SelectFilter = ({
@@ -26,6 +32,7 @@ const SelectFilter = ({
   touched,
   showFacets,
   updatedSelected,
+  dropdownAlignment = DropdownAligment.LEFT,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
   const [showCount, setShowCount] = useState<number>(0);
@@ -164,6 +171,11 @@ const SelectFilter = ({
           manageSelected(it.value);
         }}
         dropdownMatchSelectWidth={false}
+        dropdownAlign={
+          dropdownAlignment === DropdownAligment.LEFT
+            ? { points: ["tl", "bl"] }
+            : { points: ["tr", "br"] }
+        }
         dropdownRender={(i) => (
           <>
             <div className={s.optionsWrapper}>
