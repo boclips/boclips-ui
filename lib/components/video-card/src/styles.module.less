@@ -151,8 +151,6 @@
   .videoActionButtons {
     display: flex;
     align-self: flex-end;
-    padding-top: 4px;
-    padding-bottom: 10px;
     width: 100%;
 
     @media (max-width: @screen-md) {
@@ -168,6 +166,7 @@
     white-space: pre-line;
     font-size: 14px;
     color: var(--descriptionColor);
+    flex-grow: 1;
 
     @media (min-width: @screen-md) {
       overflow: hidden;
