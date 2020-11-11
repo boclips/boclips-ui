@@ -18,8 +18,6 @@
   font-family: var(--LTIFontFamily);
   box-shadow: var(--boxShadow);
   margin: 7px auto;
-  border-radius: var(--LTIBorderRadius);
-  border: var(--border);
   :global .ant-card-body {
     padding: 16px;
   }
@@ -39,6 +37,27 @@
       padding-bottom: 100% / 16 * 9;
     }
   }
+}
+
+.border{
+  border-radius: var(--LTIBorderRadius);
+  border:var(--border);
+}
+
+.leftBorder{
+  border-left: var(--border);
+}
+
+.rightBorder{
+  border-right: var(--border);
+}
+
+.topBorder{
+  border-top: var(--border);
+}
+
+.bottomBorder{
+  border-bottom: var(--border);
 }
 
 .subHeader {

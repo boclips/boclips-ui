@@ -24,6 +24,7 @@ const Template: Story<Props & Components> = ({
   hideSubjects,
   hideBestFor,
   hideAttachments,
+  border,
 }: Props & Components) => (
   <VideoCard
     video={video}
@@ -42,6 +43,7 @@ const Template: Story<Props & Components> = ({
     hideSubjects={hideSubjects}
     hideBestFor={hideBestFor}
     hideAttachments={hideAttachments}
+    border={border}
   />
 );
 
@@ -119,4 +121,5 @@ Sample.args = {
   rating: <div />,
   videoActionButtons: [<div />],
   theme: "lti",
+  hideBorder: true,
 };

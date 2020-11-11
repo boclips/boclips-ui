@@ -38,6 +38,7 @@ export interface Props {
   hideSubjects?: boolean;
   hideBestFor?: boolean;
   hideAttachments?: boolean;
+  border?: "top" | "bottom" | "left" | "right" | "none" | "all";
 }
 
 export interface Components {
@@ -82,6 +83,7 @@ export const VideoCard = ({
   hideSubjects,
   hideBestFor,
   hideAttachments,
+  border = "all",
 }: Props & Components): any => {
   const breakpoint = useMediaBreakPoint();
   const smallCard = breakpoint.width < MediaBreakpoints.md.width;
@@ -112,7 +114,13 @@ export const VideoCard = ({
   const ClickableCard = () => (
     <Card
       bodyStyle={{ width: "100%" }}
-      className={s.videoCard}
+      className={c(s.videoCard, {
+        [s.border]: border === "all",
+        [s.leftBorder]: border === "left",
+        [s.rightBorder]: border === "right",
+        [s.topBorder]: border === "top",
+        [s.bottomBorder]: border === "bottom",
+      })}
       bordered={false}
       data-qa="video-card"
       onMouseDown={analytics}
