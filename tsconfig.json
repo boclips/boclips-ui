@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ES2015",
+    "module": "commonjs",
     "lib": ["ES2020", "DOM"],
     "removeComments": true,
     "moduleResolution": "node",
@@ -10,7 +10,6 @@
     "declaration": true,
     "declarationMap": true,
     "strict": true,
-    "jsx": "react",
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,

@@ -1,4 +1,3 @@
-const tsImportPluginFactory = require("ts-import-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -8,8 +7,6 @@ module.exports = {
   output: {
     filename: "index.js",
     libraryTarget: "umd",
-    globalObject: "this",
-    umdNamedDefine: true,
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".less"],
@@ -30,26 +27,24 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ["@babel/preset-env", "@babel/preset-react"],
+              presets: [
+                "@babel/typescript",
+                "@babel/preset-env",
+                "@babel/preset-react",
+              ],
               plugins: [
                 "@babel/plugin-syntax-jsx",
                 "@babel/plugin-transform-react-jsx",
-              ],
-            },
-          },
-          {
-            loader: "ts-loader",
-            options: {
-              transpileOnly: true,
-              getCustomTransformers: () => ({
-                before: [
-                  tsImportPluginFactory({
+                "@babel/proposal-class-properties",
+                "@babel/proposal-object-rest-spread",
+                [
+                  "import",
+                  {
                     libraryName: "antd",
-                    libraryDirectory: "lib",
                     style: true,
-                  }),
+                  },
                 ],
-              }),
+              ],
             },
           },
         ],
