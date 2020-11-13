@@ -1,4 +1,5 @@
 const tsImportPluginFactory = require("ts-import-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src",
@@ -56,9 +57,7 @@ module.exports = {
       {
         test: /^((?!\.module).)*less$/,
         use: [
-          {
-            loader: "style-loader",
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
           },
@@ -127,4 +126,5 @@ module.exports = {
       },
     ],
   },
+  plugins: [new MiniCssExtractPlugin({ filename: "[name]-[hash:20].css" })],
 };
