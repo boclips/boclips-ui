@@ -1,10 +1,9 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-//   .BundleAnalyzerPlugin;
+const tsImportPluginFactory = require("ts-import-plugin");
 
 module.exports = {
   entry: "./src",
   target: "web",
+  mode: "production",
   output: {
     filename: "index.js",
     libraryTarget: "umd",
@@ -14,12 +13,13 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".less"],
   },
-  externals: {
-    react: "react",
-    reactDOM: "react-dom",
-    antd: "antd",
-    "@testing-library/react": "@testing-library/react",
-  },
+  externals: [
+    {
+      react: "react",
+      reactDOM: "react-dom",
+    },
+    /^antd[.]*/,
+  ],
   module: {
     rules: [
       {
@@ -39,7 +39,16 @@ module.exports = {
           {
             loader: "ts-loader",
             options: {
-              transpileOnly: false,
+              transpileOnly: true,
+              getCustomTransformers: () => ({
+                before: [
+                  tsImportPluginFactory({
+                    libraryName: "antd",
+                    libraryDirectory: "lib",
+                    style: true,
+                  }),
+                ],
+              }),
             },
           },
         ],
@@ -47,7 +56,9 @@ module.exports = {
       {
         test: /^((?!\.module).)*less$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: "style-loader",
+          },
           {
             loader: "css-loader",
           },
@@ -116,8 +127,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: "[name]-[hash:20].css" }),
-    // new BundleAnalyzerPlugin(),
-  ],
 };

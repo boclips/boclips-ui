@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "commonjs",
-    "lib": ["ES2019", "DOM"],
+    "target": "ES2020",
+    "module": "ES2015",
+    "lib": ["ES2020", "DOM"],
     "removeComments": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -22,9 +22,5 @@
     "outDir": "dist"
   },
   "include": ["./**/*.ts", "./**/*.tsx"],
-  "exclude": [
-    "node_modules/**/*",
-    ".idea/**/*",
-    "dist"
-  ]
+  "exclude": ["node_modules/**/*", ".idea/**/*", "dist"]
 }
