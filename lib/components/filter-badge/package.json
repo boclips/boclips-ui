@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/filter-badge",
-  "version": "1.0.17-alpha.0",
+  "version": "1.0.17-alpha.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,12 +12,12 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/filter-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/badge": "^1.1.14-alpha.0",
-    "@boclips-ui/styles": "^2.1.2-alpha.0",
+    "@boclips-ui/badge": "^1.1.14-alpha.1",
+    "@boclips-ui/styles": "^2.1.2-alpha.1",
     "classnames": "2.2.6"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.5-alpha.0"
+    "@boclips-ui/ts-config": "^1.0.5-alpha.1"
   },
   "peerDependencies": {
     "@testing-library/react": "10.4.7",
