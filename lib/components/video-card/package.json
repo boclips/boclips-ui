@@ -23,6 +23,7 @@
     "@boclips-ui/subject-badge": "^1.0.15-alpha.3",
     "@boclips-ui/use-media-breakpoints": "^1.0.5-alpha.3",
     "@boclips-ui/video": "^1.0.7-alpha.3",
+    "@boclips-ui/video-card-placeholder": "^1.1.14",
     "classnames": "2.2.6"
   },
   "devDependencies": {

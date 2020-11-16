@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@boclips-ui/styles": "^2.1.2-alpha.3",
-    "@boclips-ui/video-card": "^1.1.6",
     "classnames": "2.2.6"
   },
   "devDependencies": {

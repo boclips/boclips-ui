@@ -5,7 +5,7 @@ import React, {
   useRef,
 } from "react";
 import { ExtendedVideo } from "@boclips-ui/video";
-import { Card, Skeleton } from "antd";
+import { Card } from "antd";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
 import SubjectBadge from "@boclips-ui/subject-badge";
 import BestForBadge from "@boclips-ui/best-for-badge";
@@ -16,6 +16,7 @@ import { MediaBreakpoints } from "@boclips-ui/media-breakpoints";
 import ProviderBadge from "@boclips-ui/provider-badge";
 import c from "classnames";
 import ContentWarningBadge from "@boclips-ui/content-warning-badge";
+import { VideoCardSkeleton } from "@boclips-ui/video-card-placeholder";
 import VideoPromotedSvg from "./resources/promoted-icon.svg";
 import s from "./styles.module.less";
 
@@ -50,21 +51,10 @@ export interface Components {
 interface ValueHTMLInput extends HTMLInputElement {
   value: string;
 }
+
 interface TextAreaHTMLInput extends HTMLTextAreaElement {
   value: string;
 }
-
-export const VideoCardSkeleton = () => (
-  <Card className={s.videoCard} bordered={false}>
-    <Skeleton
-      loading
-      active
-      title={{ width: "150px" }}
-      paragraph={{ rows: 5 }}
-      avatar={{ shape: "square", size: 200 }}
-    />
-  </Card>
-);
 
 export const VideoCard = ({
   video,
