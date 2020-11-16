@@ -5,7 +5,7 @@ import React, {
   useRef,
 } from "react";
 import { ExtendedVideo } from "@boclips-ui/video";
-import { Card, Skeleton as AntSkeleton } from "antd";
+import { Card, Skeleton } from "antd";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
 import SubjectBadge from "@boclips-ui/subject-badge";
 import BestForBadge from "@boclips-ui/best-for-badge";
@@ -56,12 +56,12 @@ interface TextAreaHTMLInput extends HTMLTextAreaElement {
 
 export const VideoCardSkeleton = () => (
   <Card className={s.videoCard} bordered={false}>
-    <AntSkeleton
+    <Skeleton
       loading
       active
       title={{ width: "150px" }}
       paragraph={{ rows: 5 }}
-      avatar={{ shape: "square", size: "large" }}
+      avatar={{ shape: "square", size: 200 }}
     />
   </Card>
 );

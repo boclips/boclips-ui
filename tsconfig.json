@@ -18,7 +18,8 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "incremental": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "jsx": "react"
   },
   "include": ["./**/*.ts", "./**/*.tsx"],
   "exclude": ["node_modules/**/*", ".idea/**/*", "dist"]
