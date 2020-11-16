@@ -39,7 +39,24 @@ module.exports = {
               },
             },
             {
-              loader:   require.resolve('less-loader'),
+              loader: require.resolve('less-loader'),
+              options: {
+                lessOptions: {
+                  javascriptEnabled: true,
+                },
+              },
+            },
+          ]
+        },
+        {
+          test: /^((?!\.module).)*less$/,
+          use: [
+            require.resolve('style-loader'),
+            {
+              loader: require.resolve('css-loader')
+            },
+            {
+              loader: require.resolve('less-loader'),
               options: {
                 lessOptions: {
                   javascriptEnabled: true,
