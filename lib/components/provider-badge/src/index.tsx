@@ -13,7 +13,8 @@ const ProviderBadge = ({ isLicensed }: Props) => (
     {isLicensed ? (
       <Tooltip
         overlayClassName={s.badge}
-        placement="bottom"
+        placement="bottomRight"
+        autoAdjustOverflow
         title="This video is fully licensed and is ready to use"
       >
         <LicensedSVG data-qa="boclips-license" />
@@ -21,7 +22,8 @@ const ProviderBadge = ({ isLicensed }: Props) => (
     ) : (
       <Tooltip
         overlayClassName={s.badge}
-        placement="bottom"
+        placement="bottomRight"
+        autoAdjustOverflow
         title="This video is streamed from YouTube (not under license) and may include advertising"
       >
         <YoutubeSVG data-qa="youtube-license" />
