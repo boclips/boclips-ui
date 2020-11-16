@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/age-range-badge",
-  "version": "1.0.20-alpha.3",
+  "version": "1.0.20",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,10 +12,10 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/age-range-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/age-range": "^1.0.5-alpha.3",
-    "@boclips-ui/badge": "^1.1.14-alpha.3",
-    "@boclips-ui/styles": "^2.1.2-alpha.3",
-    "@boclips-ui/video": "^1.0.7-alpha.3",
+    "@boclips-ui/age-range": "^1.0.5",
+    "@boclips-ui/badge": "^1.1.14",
+    "@boclips-ui/styles": "^2.1.2",
+    "@boclips-ui/video": "^1.0.7",
     "classnames": "2.2.6"
   },
   "devDependencies": {
