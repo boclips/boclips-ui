@@ -3,7 +3,8 @@
   "include": ["./**/*.ts", "./**/*.tsx"],
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist",
+    "jsx": "react"
   },
   "exclude": [
     "dist",
