@@ -5,6 +5,7 @@ module.exports = {
     "ts-jest": {
       tsConfig: "tsconfig.jest.json",
       diagnostics: false,
+      babelConfig: true,
     },
   },
   moduleFileExtensions: ["ts", "tsx", "js", "less"],
@@ -20,7 +21,7 @@ module.exports = {
       "<rootDir>/__mocks__/fileMock.js",
   },
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(ts|tsx)$": "babel-jest",
     "^.+\\.svg$": "<rootDir>/__mocks__/svgTransform.js",
   },
 };
