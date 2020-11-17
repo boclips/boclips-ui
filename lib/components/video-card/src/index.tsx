@@ -32,7 +32,7 @@ export interface Props {
   loading?: boolean;
   hideBadges?: boolean;
   handleOnClick?: () => void;
-  theme?: "hq" | "lti" | "custom";
+  theme?: "hq" | "lti" | "publishers";
   editMode?: boolean;
   setEditValues?: MutableRefObject<EditValues | null>;
   hideAgeRange?: boolean;
@@ -105,6 +105,9 @@ export const VideoCard = ({
     <Card
       bodyStyle={{ width: "100%" }}
       className={c(s.videoCard, {
+        [s.lti]: theme === "lti",
+        [s.hq]: theme === "hq",
+        [s.publishers]: theme === "publishers",
         [s.border]: border === "all",
         [s.leftBorder]: border === "left",
         [s.rightBorder]: border === "right",
@@ -120,18 +123,18 @@ export const VideoCard = ({
         {editMode ? (
           <input
             data-qa="input-title"
-            className={s.input}
+            className={s.editModeInput}
             ref={titleInput}
             type="text"
             defaultValue={video?.title}
             onChange={onInputChange}
           />
         ) : (
-          <h1 data-qa="video-title" className={s.headerTitle}>
+          <h1 data-qa="video-title" className={s.cardHeaderTitle}>
             {video?.title}
           </h1>
         )}
-
+        {/* TODO: TAKE IT OUT OF CARD AND PASS AS PROP */}
         {theme === "lti" && (
           <span className={s.ltiButtons}>
             <span className={s.ltiButton}>
@@ -144,7 +147,7 @@ export const VideoCard = ({
         )}
       </section>
 
-      <section className={s.subHeader}>
+      <section className={s.cardSubHeader}>
         {rating && (
           <section
             role="presentation"
@@ -165,7 +168,7 @@ export const VideoCard = ({
 
       <section className={s.cardBody}>
         {videoPlayer && (
-          <section
+          <div
             role="presentation"
             onClick={(e) => e.stopPropagation()}
             className={c(s.videoPlayer, {
@@ -173,7 +176,7 @@ export const VideoCard = ({
             })}
           >
             {videoPlayer}
-          </section>
+          </div>
         )}
 
         <div className={s.bodyRight}>
@@ -201,6 +204,7 @@ export const VideoCard = ({
                   <AttachmentBadge theme={theme} />
                 )}
 
+              {/* TODO: TAKE IT OUT OF CARD AND PASS AS PROP */}
               {theme === "hq" && video?.promoted && (
                 <div className={s.videoPromotedSvg}>
                   <VideoPromotedSvg />

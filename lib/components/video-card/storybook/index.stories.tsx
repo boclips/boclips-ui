@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { VideoCard, Props, Components } from "../src";
+import AgeRange from "../../../types/age-range/src";
 
 export default {
   title: "VideoCard",
@@ -80,10 +81,9 @@ const video = {
   ],
   badges: ["youtube"],
   legalRestrictions: "",
-  ageRange: null,
+  ageRange: new AgeRange(5, 8),
   rating: null,
   yourRating: null,
-  bestFor: ["Hook"],
   createdBy: "StorylineOnline",
   promoted: null,
   language: null,
@@ -112,14 +112,36 @@ const video = {
   },
 };
 
-export const Sample = Template.bind({});
+export const LTI = Template.bind({});
+export const HQ = Template.bind({});
 
-Sample.args = {
+export const PUBLISHERS = Template.bind({});
+
+PUBLISHERS.args = {
   // @ts-ignore
   video,
   videoPlayer: <div />,
-  rating: <div />,
-  videoActionButtons: [<div />],
-  theme: "lti",
+  rating: undefined,
+  videoActionButtons: [],
+  theme: "publishers",
   hideBorder: true,
+  border: "bottom",
+};
+
+LTI.args = {
+  // @ts-ignore
+  video,
+  videoPlayer: <div />,
+  rating: undefined,
+  videoActionButtons: [],
+  theme: "lti",
+};
+
+HQ.args = {
+  // @ts-ignore
+  video,
+  videoPlayer: <div />,
+  rating: undefined,
+  videoActionButtons: [],
+  theme: "hq",
 };

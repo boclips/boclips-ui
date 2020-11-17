@@ -1,25 +1,196 @@
 @import '~@boclips-ui/styles/src/_antd-theme';
+@import '~@boclips-ui/styles/src/_publishersColours';
 
 @video-width: 304px;
 @video-height: 171px;
 @video-border-radius: 8px;
 
 :root {
-  --boxShadow: none;
-  --LTIBorderRadius: 8px;
-  --border: 1px solid #e8e8e8;
-  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
-
   --descriptionColor: @neutral-shade-1;
+
   --titleColour: @neutral-shade-1;
+
+  --LTIBorder: 1px solid #e8e8e8;
+  --LTIBorderRadius: 8px;
+  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --LTIDescription: @neutral-shade-1;
+
+  --HQFontFamily: Proxima Nova, Roboto, Helvetica, Arial, sans-serif;
+
+  --PublishersBorderRadius: 4px;
+  --PublishersBorder: 1.5px solid @blue-300;
+  --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
+  --PublishersFontSize: 16px; // TODO: change to rem
 }
 
 .videoCard {
-  font-family: var(--LTIFontFamily);
-  box-shadow: var(--boxShadow);
-  margin: 7px auto;
-  :global .ant-card-body {
-    padding: 16px;
+  box-shadow: none;
+
+  .cardHeader {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+
+    .editModeInput {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      padding: 0 4px;
+      margin-right: 15px;
+
+      &:hover {
+        border: 1px solid @dark-orange;
+      }
+    }
+
+    .cardHeaderTitle {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 22px;
+      margin-right: 12px;
+      margin-bottom: 0;
+    }
+  }
+
+  .cardSubHeader {
+    div:only-child {
+      padding: 0;
+    }
+
+    .rating {
+      display: inline-block;
+      width: auto;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 24px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+  }
+
+  .cardBody {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+    @media (max-width: @screen-sm-max) {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .videoPlayer {
+      background-color: black;
+
+      @media (min-width: @screen-md) {
+        height: @video-height;
+        width: @video-width;
+      }
+
+      @media (max-width: @screen-sm-max) {
+        width: 100%;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+      }
+
+      :global .small-player {
+        :global .plyr__menu,
+        :global .plyr__progress__container,
+        :global .plyr__time {
+          display: none;
+        }
+      }
+
+      :global .plyr--fullscreen {
+        :global .plyr__menu,
+        :global .plyr__time {
+          display: flex;
+        }
+
+        :global .plyr__progress__container {
+          display: inline-grid;
+        }
+
+      }
+    }
+
+    .bodyRight {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 0 15px;
+      width: calc(100% - (@video-width + 15px));
+
+      @media (max-width: @screen-md) {
+        width: 100%;
+        margin: 0;
+        padding: 12px 0;
+      }
+
+      .description {
+        word-break: break-word;
+        white-space: pre-line;
+        font-size: 14px;
+        line-height: 21px;
+
+        .short {
+          -webkit-line-clamp: 3 !important;
+        }
+
+        @media (min-width: @screen-md) {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+        }
+
+        @media (max-width: @screen-sm-max) {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          max-height: 120px;
+        }
+      }
+
+      .videoActionButtons {
+        display: flex;
+        align-self: flex-end;
+        width: 100%;
+
+        @media (max-width: @screen-md) {
+          position: absolute;
+          top: 12px;
+          right: 0;
+          width: auto;
+        }
+      }
+
+      .badgeList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        flex-direction: row;
+        padding-right: 10px;
+        position: relative;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        @media (max-width: @screen-md) {
+          padding-right: 40px;
+        }
+      }
+
+    }
+
   }
 
   @media (max-width: @screen-sm-max) {
@@ -39,203 +210,147 @@
   }
 }
 
-.border{
+.videoCard {
+  &.lti {
+    font-family: var(--LTIFontFamily);
+
+    :global .ant-card-body {
+      padding: 16px;
+    }
+
+    .cardHeader {
+      .cardHeaderTitle {
+        color: #000;
+      }
+    }
+
+    .cardSubHeader {
+      .rating {
+        color: @blue-shade-4;
+      }
+    }
+
+    .cardBody {
+      .bodyRight {
+        .description {
+          color: var(--LTIDescription);
+        }
+
+        .ltiButtons {
+          align-items: flex-end;
+          display: flex;
+
+          .ltiButton {
+            margin-left: 8px;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.videoCard {
+  &.hq {
+    font-family: var(--HQFontFamily);
+
+    :global .ant-card-body {
+      padding: 16px;
+    }
+
+    .cardHeader {
+      .cardHeaderTitle {
+        color: #595959;
+      }
+    }
+
+    .cardSubHeader {
+      .rating {
+        color: @blue-shade-4;
+      }
+
+      .videoPromotedSvg {
+        margin-top: 4px;
+
+        svg {
+          height: 24px;
+        }
+      }
+    }
+
+    .cardBody {
+      .bodyRight {
+        .description {
+          color: var(--LTIDescription);
+        }
+      }
+    }
+  }
+}
+
+.videoCard {
+  &.publishers {
+    font-family: var(--PublishersFontFamily);
+    border-width: 2px;
+    border-color: @blue-300;
+
+    :global .ant-card-body {
+      padding: 0 0 15px 0;
+    }
+
+    .cardHeader {
+      .cardHeaderTitle {
+        color: @gray-900;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 500;
+      }
+    }
+
+    .cardSubHeader {
+      .rating {
+        color: @blue-shade-4;
+      }
+    }
+
+    .cardBody {
+      .bodyRight {
+        .description {
+          color: var(--LTIDescription);
+        }
+
+        .ltiButtons {
+          align-items: flex-end;
+          display: flex;
+
+          .ltiButton {
+            margin-left: 8px;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+
+.border {
   border-radius: var(--LTIBorderRadius);
-  border:var(--border);
+  border: var(--LTIBorder);
 }
 
-.leftBorder{
-  border-left: var(--border);
+.leftBorder {
+  border-left: var(--LTIBorder);
 }
 
-.rightBorder{
-  border-right: var(--border);
+.rightBorder {
+  border-right: var(--LTIBorder);
 }
 
-.topBorder{
-  border-top: var(--border);
+.topBorder {
+  border-top: var(--LTIBorder);
 }
 
-.bottomBorder{
-  border-bottom: var(--border);
-}
-
-.subHeader {
-  div:only-child {
-    padding: 0;
-  }
-}
-
-.headerTitle {
-  color: var(--titleColour);
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 24px;
-  margin-right: 12px;
-  margin-bottom: 0;
-}
-
-.cardHeader {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cardBody {
-  display: flex;
-  height: 100%;
-  @media (max-width: @screen-sm-max) {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-}
-
-.videoPlayer {
-  background-color: black;
-
-  @media (min-width: @screen-md) {
-    height: @video-height;
-    width: @video-width;
-  }
-
-  @media (max-width: @screen-sm-max) {
-    width: 100%;
-  }
-
-  video {
-    width: 100%;
-    height: 100%;
-    background-color: black;
-  }
-
-  :global .small-player{
-    :global .plyr__menu,
-    :global .plyr__progress__container,
-    :global .plyr__time
-    {
-      display:none;
-    }
-  }
-  :global .plyr--fullscreen{
-    :global .plyr__menu,
-    :global .plyr__time
-    {
-      display:flex;
-    }
-    :global .plyr__progress__container{
-      display: inline-grid;
-    }
-
-  }
-}
-
-.bodyRight {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 0 24px;
-  width: calc(100% - (@video-width + 24px));
-
-  @media (max-width: @screen-md) {
-    width: 100%;
-    margin: 0;
-    padding: 12px 0;
-  }
-
-  .videoActionButtons {
-    display: flex;
-    align-self: flex-end;
-    width: 100%;
-
-    @media (max-width: @screen-md) {
-      position: absolute;
-      top: 12px;
-      right: 0;
-      width: auto;
-    }
-  }
-
-  .description {
-    word-break: break-word;
-    white-space: pre-line;
-    font-size: 14px;
-    color: var(--descriptionColor);
-    flex-grow: 1;
-
-    @media (min-width: @screen-md) {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      line-height: 24px;
-    }
-
-    @media (max-width: @screen-sm-max) {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      max-height: 120px;
-    }
-  }
-}
-
-.short{
-  -webkit-line-clamp: 3 !important;
-}
-
-.rating {
-  display: inline-block;
-  width: auto;
-  font-size: 14px;
-  color: @blue-shade-4;
-  font-weight: bold;
-  line-height: 24px;
-  margin-bottom: 4px;
-  text-decoration: underline;
-}
-
-.badgeList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  flex-direction: row;
-  padding-right: 10px;
-  position: relative;
-  &:last-child {
-    margin-right: 0;
-  }
-
-  @media (max-width: @screen-md) {
-    padding-right: 40px;
-  }
-}
-
-.videoPromotedSvg {
-  margin-top: 4px;
-  svg {
-    height: 24px;
-  }
-}
-
-.input {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  padding: 0 4px;
-  margin-right: 15px;
-  &:hover {
-    border: 1px solid @dark-orange;
-  }
-}
-
-.ltiButtons {
-  align-items: flex-end;
-  display: flex;
-  .ltiButton{
-    margin-left: 8px;
-  }
+.bottomBorder {
+  border-bottom: var(--LTIBorder);
 }
