@@ -21,6 +21,8 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
     "incremental": true,
     "outDir": "dist"
   },

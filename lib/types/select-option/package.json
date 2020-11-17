@@ -8,7 +8,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
-    "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --rootDir ./src --outDir ./dist --emitDeclarationOnly --declarationMap --skipLibCheck",
+    "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/select-option --include-dependencies"
   },
   "devDependencies": {

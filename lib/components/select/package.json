@@ -8,18 +8,18 @@
   ],
   "scripts": {
     "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
-    "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --rootDir ./src --outDir ./dist --emitDeclarationOnly --declarationMap --skipLibCheck",
+    "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/select --include-dependencies"
   },
   "dependencies": {
     "@boclips-ui/select-option": "^1.0.5",
-    "@boclips-ui/styles": "^1.0.5",
-    "classnames": "2.2.6"
+    "@boclips-ui/styles": "^1.0.5"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.5-alpha.3"
   },
   "peerDependencies": {
+    "classnames": "2.2.6",
     "@testing-library/react": "10.4.7",
     "react": "16.13.1"
   },
