@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2019",
     "module": "commonjs",
-    "lib": ["ES2020", "DOM"],
+    "lib": ["ES2019", "DOM"],
     "removeComments": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -10,6 +10,7 @@
     "declaration": true,
     "declarationMap": true,
     "strict": true,
+    "jsx": "react",
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
@@ -18,9 +19,8 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "incremental": true,
-    "outDir": "dist",
-    "jsx": "react"
+    "outDir": "dist"
   },
   "include": ["./**/*.ts", "./**/*.tsx"],
-  "exclude": ["node_modules/**/*", ".idea/**/*", "dist"]
+  "exclude": ["node_modules/**/*", ".idea/**/*", "dist", "./**/module.d.ts"]
 }
