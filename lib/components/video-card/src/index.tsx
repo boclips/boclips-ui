@@ -135,7 +135,7 @@ export const VideoCard = ({
           </h1>
         )}
         {/* TODO: TAKE IT OUT OF CARD AND PASS AS PROP */}
-        {theme === "lti" || "publishers" && (
+        {theme === "lti" && (
           <span className={s.ltiButtons}>
             <span className={s.ltiButton}>
               <ContentWarningBadge contentWarnings={video?.contentWarnings} />
