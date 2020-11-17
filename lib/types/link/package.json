@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/link",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "files": [
     "dist/**/*"
   ],
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/link --include-dependencies"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.7"
+    "@boclips-ui/ts-config": "^1.0.8"
   },
   "peerDependencies": {
     "boclips-api-client": "^17.4.2",
@@ -23,5 +23,5 @@
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "f4e1fcdbbb27f333f3bf97466d5a1ca324ca4acc"
+  "gitHead": "0a66ccda0477d27057aef0bc1b10168f16b6275c"
 }

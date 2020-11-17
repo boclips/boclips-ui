@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/subject-badge",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,11 +12,11 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/subject-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/badge": "^1.2.4",
-    "@boclips-ui/styles": "^2.1.5"
+    "@boclips-ui/badge": "^1.2.5",
+    "@boclips-ui/styles": "^2.1.6"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.7"
+    "@boclips-ui/ts-config": "^1.0.8"
   },
   "peerDependencies": {
     "@testing-library/react": "10.4.7",
@@ -27,5 +27,5 @@
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "f4e1fcdbbb27f333f3bf97466d5a1ca324ca4acc"
+  "gitHead": "0a66ccda0477d27057aef0bc1b10168f16b6275c"
 }
