@@ -20,7 +20,7 @@ export const VideoCardSkeleton = () => (
       active
       title={{ width: "150px" }}
       paragraph={{ rows: 5 }}
-      avatar={{ shape: "square", size: 200 }}
+      avatar={{ shape: "square", size: "large" }}
     />
   </Card>
 );
