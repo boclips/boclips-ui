@@ -3,7 +3,7 @@ import Badge from "@boclips-ui/badge";
 
 export interface BestForBadgeProps {
   bestFor: string;
-  theme?: "hq" | "lti" | "custom";
+  theme?: "lti" | "hq" | "publishers";
 }
 const BestForBadge = ({ bestFor, theme }: BestForBadgeProps) => (
   <div data-qa="best-for-badge">

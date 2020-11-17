@@ -1,4 +1,5 @@
 @import '~@boclips-ui/styles/src/_antd-theme';
+@import '~@boclips-ui/styles/src/_publishersColours';
 
 :root {
   --releasedOnColour: @neutral-shade-1;
@@ -17,32 +18,45 @@
   }
 }
 
-.custom {
-  color: var(--releasedOnColour);
-  .releasedOnDate {
-    font-weight: var(--releasedOnDateFontWeight);
-  }
-  .releasedOnBy {
-    font-weight: var(--releasedOnByFontWeight);
+.releasedOn {
+  &.lti {
+    color: #8C8C8C;
+
+    .releasedOnDate {
+      font-weight: normal;
+    }
+
+    .releasedOnBy {
+      font-weight: bold;
+    }
   }
 }
 
-.lti {
-  color: rgba(@neutral-shade-1, 0.5);
-  .releasedOnDate {
-    font-weight: normal;
-  }
-  .releasedOnBy {
-    font-weight: bold;
+.releasedOn {
+  &.hq {
+    color: #8C8C8C;
+
+    .releasedOnDate {
+      font-weight: bold;
+    }
+
+    .releasedOnBy {
+      font-weight: bold;
+    }
   }
 }
 
-.hq {
-  color: @neutral-shade-1;
-  .releasedOnDate {
-    font-weight: bold;
-  }
-  .releasedOnBy {
-    font-weight: bold;
+.releasedOn {
+  margin-bottom: 6px;
+  &.publishers {
+    color: @gray-700 ;
+
+    .releasedOnDate {
+      font-weight: normal;
+    }
+
+    .releasedOnBy {
+      font-weight: normal;
+    }
   }
 }

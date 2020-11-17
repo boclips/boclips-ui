@@ -13,9 +13,10 @@ const Template: Story<Props> = ({ icon, label, value, theme }: Props) => (
 );
 
 export const LTI = Template.bind({});
-export const BACKOFFICE = Template.bind({});
+export const HQ = Template.bind({});
+export const PUBLISHERS = Template.bind({});
 
-BACKOFFICE.args = {
+HQ.args = {
   label: "test",
   value: "hq",
   theme: "hq",
@@ -25,4 +26,10 @@ LTI.args = {
   label: "test",
   value: "lti",
   theme: "lti",
+};
+
+PUBLISHERS.args = {
+  label: "",
+  value: "Elementary science",
+  theme: "publishers",
 };

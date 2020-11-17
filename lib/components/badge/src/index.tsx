@@ -6,7 +6,7 @@ export interface Props {
   icon?: React.ReactElement;
   label?: string;
   value?: string;
-  theme?: "hq" | "lti" | "custom";
+  theme?: "hq" | "lti" | "publishers";
   closeIcon?: React.ReactElement;
 }
 
@@ -15,7 +15,7 @@ const Badge = ({ icon, label, value, theme = "lti", closeIcon }: Props) => (
     className={c(s.badge, {
       [s.hq]: theme === "hq",
       [s.lti]: theme === "lti",
-      [s.custom]: theme === "custom",
+      [s.publishers]: theme === "publishers",
       withCloseIcon: !!closeIcon,
     })}
   >

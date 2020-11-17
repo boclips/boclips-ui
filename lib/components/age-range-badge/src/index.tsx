@@ -4,7 +4,7 @@ import AgeRange from "@boclips-ui/age-range";
 
 export interface AgeRangeBadgeProps {
   ageRange: AgeRange;
-  theme: "lti" | "hq" | "custom";
+  theme?: "lti" | "hq" | "publishers";
 }
 
 const AgeRangeBadge = ({ ageRange, theme = "lti" }: AgeRangeBadgeProps) => {

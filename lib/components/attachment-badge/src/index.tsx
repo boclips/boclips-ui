@@ -3,7 +3,7 @@ import Badge from "@boclips-ui/badge";
 import PaperclipSVG from "./resources/activity-tag.svg";
 
 export interface AttachmentBadgeProps {
-  theme?: "hq" | "lti" | "custom";
+  theme?: "lti" | "hq" | "publishers";
 }
 
 const AttachmentBadge = ({ theme }: AttachmentBadgeProps): ReactElement => (

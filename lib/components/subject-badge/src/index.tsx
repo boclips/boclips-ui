@@ -8,7 +8,7 @@ interface Subject {
 
 export interface SubjectBadgeProps {
   subject: Subject;
-  theme?: "hq" | "lti" | "custom";
+  theme?: "lti" | "hq" | "publishers";
 }
 
 const SubjectBadge = ({

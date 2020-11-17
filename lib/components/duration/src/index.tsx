@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { ClockCircleOutlined } from "@ant-design/icons";
+import ClockCircleOutlined from "@ant-design/icons/ClockCircleOutlined";
 import s from "./styles.module.less";
 
 export interface DurationProps {

@@ -5,7 +5,7 @@ import s from "./style.module.less";
 export interface ReleasedOnProps {
   releasedOn: Date;
   createdBy: string;
-  theme?: string;
+  theme?: 'lti' | 'hq' | 'publishers';
 }
 const ReleasedOn = ({
   releasedOn,
@@ -21,7 +21,7 @@ const ReleasedOn = ({
       className={c(s.releasedOn, {
         [s.lti]: theme === "lti",
         [s.hq]: theme === "hq",
-        [s.custom]: theme === "custom",
+        [s.publishers]: theme === "publishers",
       })}
     >
       <span className={s.releasedOnDate}>

@@ -1,30 +1,26 @@
 @import '~@boclips-ui/styles/src/_LTIColours';
+@import '~@boclips-ui/styles/src/_publishersColours';
 
 :root {
   --primaryColour: @blue-shade-5;
-  --LTIBorderRadius: 8px;
-  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --borderRadius: 8px;
 
-  --badgeValueColour: @neutral-shade-1;
-  --badgeBackground: @shade-2;
-  --badgeIconColour: @blue-shade-5;
-  --badgeBorder: none;
+  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --HQFontFamily: Proxima Nova, Roboto, Helvetica, Arial, sans-serif;
+  --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
+
 }
 
 .badge {
-  font-family: var(--LTIFontFamily);
   display: inline-flex;
   align-items: center;
   flex-direction: row;
-  border-radius: var(--LTIBorderRadius);
-  border: var(--badgeBorder);
   font-size: 14px;
   height: 32px;
   line-height: 16px;
   font-weight: 500;
   padding: 0 8px;
   margin: 0 8px 8px 0;
-  transition: all 300ms ease-in-out;
   position: relative;
   z-index: 1;
 
@@ -32,48 +28,73 @@
     height: 24px;
     position: relative;
   }
-}
-
-.value {
-  color: var(--badgeValueColour);
-}
-
-.label {
-  margin-right: 4px;
-}
-
-.custom {
-  background-color: var(--badgeBackground);
-
-  svg {
-    fill: var(--badgeIconColour);
-  }
 
   .label {
-    color: var(--primaryColour);
+    margin-right: 4px;
   }
 }
 
-.lti {
-  background-color: @shade-2;
+.badge {
+  &.lti {
+    background-color: @shade-2;
+    font-family: var(--LTIFontFamily);
+    border-radius: var(--borderRadius);
+    border: var(--badgeBorder);
 
-  svg {
-    fill: @blue-shade-5;
-  }
+    svg {
+      fill: @blue-shade-5;
+    }
 
-  .label {
-    color: @blue-shade-5;
+    .label {
+      color: @blue-shade-5;
+    }
+
+    .value {
+      color: var(--badgeValueColour);
+    }
   }
 }
 
-.hq {
-  background-color: @shade-1;
+.badge {
+  &.hq {
+    background-color: #F5F5F5;
+    font-family: var(--HQFontFamily);
+    border-radius: var(--borderRadius);
+    border: none;
 
-  svg {
-    fill: @dark-orange;
+    svg {
+      fill: @dark-orange;
+    }
+
+    .label {
+      color: @dark-orange;
+    }
+
+    .value {
+      color: var(--badgeValueColour);
+    }
   }
+}
 
-  .label {
-    color: @dark-orange;
+.badge {
+  &.publishers {
+    padding: 7px 14px;
+    line-height: 21px;
+    background-color: @blue-100;
+    font-family: var(--HQFontFamily);
+    border-radius: calc(var(--borderRadius) / 2);
+    border: 1px solid @blue-400;
+
+    svg {
+      fill: @dark-orange;
+    }
+
+    .label {
+      color: @gray-900;
+    }
+
+    .value {
+      color: @gray-700;
+    }
   }
 }
