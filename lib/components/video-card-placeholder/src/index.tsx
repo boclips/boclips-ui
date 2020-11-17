@@ -14,7 +14,7 @@ export const VideoCardsPlaceholder = React.memo(() => (
 ));
 
 export const VideoCardSkeleton = () => (
-  <Card className={s.videoCard} bordered={false}>
+  <Card className={s.videoCardSkeleton} bordered={false}>
     <Skeleton
       loading
       active
