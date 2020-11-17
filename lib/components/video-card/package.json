@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video-card",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "files": [
     "dist/**/*"
   ],
@@ -23,7 +23,7 @@
     "@boclips-ui/subject-badge": "^1.0.20",
     "@boclips-ui/use-media-breakpoints": "^1.0.8",
     "@boclips-ui/video": "^1.0.10",
-    "@boclips-ui/video-card-placeholder": "^1.2.5"
+    "@boclips-ui/video-card-placeholder": "^1.2.6"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.7"
