@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/ts-config",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "src/index.js",
   "peerDependencies": {
     "typescript": "^3.2.4"
@@ -8,5 +8,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "aaa8d3e7091249909f72096dda4625d4d0a4e19e"
+  "gitHead": "f4e1fcdbbb27f333f3bf97466d5a1ca324ca4acc"
 }
