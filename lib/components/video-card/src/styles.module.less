@@ -18,7 +18,7 @@
   --HQFontFamily: Proxima Nova, Roboto, Helvetica, Arial, sans-serif;
 
   --PublishersBorderRadius: 4px;
-  --PublishersBorder: 1.5px solid @blue-300;
+  --PublishersBorder: 2px solid @blue-300;
   --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
   --PublishersFontSize: 16px; // TODO: change to rem
 }
@@ -291,8 +291,6 @@
 .videoCard {
   &.publishers {
     font-family: var(--PublishersFontFamily);
-    border-width: 2px;
-    border-color: @blue-300;
 
     :global .ant-card-body {
       padding: 0 0 15px 0;
@@ -333,24 +331,29 @@
   }
 }
 
-
 .border {
   border-radius: var(--LTIBorderRadius);
-  border: var(--LTIBorder);
+  border: var(--PublishersBorder);
+  padding: 15px 14px 0 14px;
 }
 
 .leftBorder {
-  border-left: var(--LTIBorder);
+  border-left: var(--PublishersBorder);
+  border-width: 2px;
+  border-color: @blue-300;
+  padding-left: 14px;
 }
 
 .rightBorder {
-  border-right: var(--LTIBorder);
+  border-right: var(--PublishersBorder);
+  padding-right: 14px;
 }
 
 .topBorder {
-  border-top: var(--LTIBorder);
+  padding-top: 14px;
+  border-top: var(--PublishersBorder);
 }
 
 .bottomBorder {
-  border-bottom: var(--LTIBorder);
+  border-bottom: var(--PublishersBorder);
 }
