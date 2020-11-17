@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video-card",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "files": [
     "dist/**/*"
   ],
@@ -12,21 +12,21 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/video-card --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/age-range-badge": "^1.0.27",
-    "@boclips-ui/attachment-badge": "^1.0.24",
-    "@boclips-ui/best-for-badge": "^1.0.24",
-    "@boclips-ui/content-warning-badge": "^1.0.22",
-    "@boclips-ui/media-breakpoints": "^1.0.10",
-    "@boclips-ui/provider-badge": "^1.0.26",
-    "@boclips-ui/released-on": "^1.0.19",
-    "@boclips-ui/styles": "^2.1.7",
-    "@boclips-ui/subject-badge": "^1.0.22",
-    "@boclips-ui/use-media-breakpoints": "^1.0.10",
-    "@boclips-ui/video": "^1.0.12",
-    "@boclips-ui/video-card-placeholder": "^1.2.6"
+    "@boclips-ui/age-range-badge": "^1.0.28",
+    "@boclips-ui/attachment-badge": "^1.0.25",
+    "@boclips-ui/best-for-badge": "^1.0.25",
+    "@boclips-ui/content-warning-badge": "^1.0.23",
+    "@boclips-ui/media-breakpoints": "^1.0.11",
+    "@boclips-ui/provider-badge": "^1.0.27",
+    "@boclips-ui/released-on": "^1.0.20",
+    "@boclips-ui/styles": "^2.1.8",
+    "@boclips-ui/subject-badge": "^1.0.23",
+    "@boclips-ui/use-media-breakpoints": "^1.0.11",
+    "@boclips-ui/video": "^1.0.13",
+    "@boclips-ui/video-card-placeholder": "^1.2.7"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.9"
+    "@boclips-ui/ts-config": "^1.0.10"
   },
   "peerDependencies": {
     "antd": "^4.3.1",
@@ -37,5 +37,5 @@
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "ab29b19c3f5e1ad6d15a4b975d05b6c019a6ae17"
+  "gitHead": "b6a7aa614a67950faf8c17b189a1468e703f65e2"
 }

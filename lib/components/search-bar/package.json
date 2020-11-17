@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/search-bar",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "files": [
     "dist/**/*"
   ],
@@ -12,10 +12,10 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/search-bar --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^2.1.7"
+    "@boclips-ui/styles": "^2.1.8"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.9"
+    "@boclips-ui/ts-config": "^1.0.10"
   },
   "peerDependencies": {
     "@ant-design/icons": "^4.1.0",
@@ -29,5 +29,5 @@
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "ab29b19c3f5e1ad6d15a4b975d05b6c019a6ae17"
+  "gitHead": "b6a7aa614a67950faf8c17b189a1468e703f65e2"
 }
