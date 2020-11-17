@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/content-warning-badge",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "files": [
     "dist/**/*"
   ],
@@ -12,16 +12,16 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/content-warning-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^2.1.2",
-    "@boclips-ui/video": "^1.0.7"
+    "@boclips-ui/styles": "^2.1.3",
+    "@boclips-ui/video": "^1.0.8"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.5-alpha.3"
+    "@boclips-ui/ts-config": "^1.0.5"
   },
   "peerDependencies": {
-    "classnames": "2.2.6",
     "@testing-library/react": "^10.4.5",
     "antd": "4.3.1",
+    "classnames": "2.2.6",
     "react": "^16.13.1",
     "urijs": "^1.19.2"
   },
