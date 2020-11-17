@@ -26,6 +26,26 @@ module.exports = {
         use: [
           {
             loader: "babel-loader",
+            options: {
+              presets: [
+                "@babel/preset-env",
+                "@babel/preset-react",
+                "@babel/preset-typescript",
+              ],
+              plugins: [
+                "@babel/plugin-syntax-jsx",
+                "@babel/plugin-transform-react-jsx",
+                "@babel/proposal-class-properties",
+                "@babel/proposal-object-rest-spread",
+                [
+                  "import",
+                  {
+                    libraryName: "antd",
+                    style: true,
+                  },
+                ],
+              ],
+            },
           },
         ],
       },
