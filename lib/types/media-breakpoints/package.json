@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/media-breakpoints",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "files": [
     "dist/**/*"
   ],
@@ -12,11 +12,11 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/media-breakpoints --include-dependencies"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.8"
+    "@boclips-ui/ts-config": "^1.0.9"
   },
   "publishConfig": {
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "0a66ccda0477d27057aef0bc1b10168f16b6275c"
+  "gitHead": "ab29b19c3f5e1ad6d15a4b975d05b6c019a6ae17"
 }
