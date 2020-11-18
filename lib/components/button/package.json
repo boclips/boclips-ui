@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/button",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -19,8 +19,8 @@
   },
   "peerDependencies": {
     "@testing-library/react": "10.4.7",
-    "classnames": "2.2.6",
     "antd": "^4.3.1",
+    "classnames": "2.2.6",
     "react": "16.13.1"
   },
   "publishConfig": {
