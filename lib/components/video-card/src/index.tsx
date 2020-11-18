@@ -40,6 +40,7 @@ export interface Props {
   hideBestFor?: boolean;
   hideAttachments?: boolean;
   border?: "top" | "bottom" | "left" | "right" | "none" | "all";
+  videoRoundedCorners?: boolean;
 }
 
 export interface Components {
@@ -73,6 +74,7 @@ export const VideoCard = ({
   hideSubjects,
   hideBestFor,
   hideAttachments,
+  videoRoundedCorners,
   border = "all",
 }: Props & Components): any => {
   const breakpoint = useMediaBreakPoint();
@@ -173,6 +175,7 @@ export const VideoCard = ({
             onClick={(e) => e.stopPropagation()}
             className={c(s.videoPlayer, {
               [s.stream]: video?.playback.type === "STREAM",
+              [s.videoRoundedCorners]: videoRoundedCorners,
             })}
           >
             {videoPlayer}

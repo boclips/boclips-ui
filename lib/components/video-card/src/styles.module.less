@@ -83,6 +83,13 @@
     .videoPlayer {
       background-color: black;
 
+      &.videoRoundedCorners {
+        border-radius: 4px;
+        &:first-child{
+          border-radius: 4px;
+        }
+      }
+
       @media (min-width: @screen-md) {
         height: @video-height;
         width: @video-width;

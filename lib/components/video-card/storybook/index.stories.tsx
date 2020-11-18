@@ -26,6 +26,7 @@ const Template: Story<Props & Components> = ({
   hideBestFor,
   hideAttachments,
   border,
+  videoRoundedCorners,
 }: Props & Components) => (
   <VideoCard
     video={video}
@@ -45,6 +46,7 @@ const Template: Story<Props & Components> = ({
     hideBestFor={hideBestFor}
     hideAttachments={hideAttachments}
     border={border}
+    videoRoundedCorners={videoRoundedCorners}
   />
 );
 
@@ -126,6 +128,7 @@ PUBLISHERS.args = {
   theme: "publishers",
   hideBorder: true,
   border: "bottom",
+  videoRoundedCorners: true,
 };
 
 LTI.args = {
@@ -135,6 +138,7 @@ LTI.args = {
   rating: undefined,
   videoActionButtons: [],
   theme: "lti",
+  videoRoundedCorners: false,
 };
 
 HQ.args = {
@@ -144,4 +148,5 @@ HQ.args = {
   rating: undefined,
   videoActionButtons: [],
   theme: "hq",
+  videoRoundedCorners: false,
 };
