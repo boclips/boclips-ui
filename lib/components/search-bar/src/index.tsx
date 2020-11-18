@@ -1,8 +1,8 @@
 import React, { ReactElement, useState } from "react";
-import { AutoComplete, Input, Button } from "antd";
+import { AutoComplete, Input } from "antd";
 import SearchOutlined from "@ant-design/icons/SearchOutlined";
+import Button from "@boclips-ui/button";
 import c from "classnames";
-import SearchIcon from "./resources/search-icon.svg";
 import CloseIcon from "./resources/close-icon.svg";
 import { Completion, completionsFor } from "./completions/completions";
 import completionsCreatedBy from "./json/completionsCreatedBy.json";
@@ -17,6 +17,7 @@ export interface Props {
   onlySearchIconInButton?: boolean;
   theme?: "lti" | "publishers";
   size?: "big" | "small";
+  buttonIcon?: React.ReactElement;
 }
 
 const getCompletions = completionsFor({
@@ -31,6 +32,7 @@ const SearchBar = ({
   initialQuery,
   autocomplete = true,
   onlySearchIconInButton = false,
+  buttonIcon,
   size = "big",
 }: Props): ReactElement => {
   const [result, setResult] = useState<Completion[]>();
@@ -139,17 +141,14 @@ const SearchBar = ({
           placeholder={placeholder}
         />
       </AutoComplete>
+
       <Button
-        onClick={handleSearchButton}
-        data-qa="search-button"
         type="primary"
-        className={c(s.searchButton, {
-          [s.iconButton]: onlySearchIconInButton,
-        })}
-      >
-        {theme === "publishers" ? <SearchIcon /> : null}
-        {onlySearchIconInButton ? null : "Search"}
-      </Button>
+        onClick={handleSearchButton}
+        theme={theme}
+        icon={buttonIcon}
+        iconOnly={onlySearchIconInButton}
+      />
     </div>
   );
 };

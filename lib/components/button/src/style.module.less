@@ -1,0 +1,159 @@
+@import '~@boclips-ui/styles/src/_LTIColours';
+@import '~@boclips-ui/styles/src/_publishersColours';
+
+:root {
+  --primaryColour: @blue-shade-5;
+  --borderRadius: 8px;
+  --fontSize: 16px; // TODO: change to rem
+
+
+  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --HQFontFamily: Proxima Nova, Roboto, Helvetica, Arial, sans-serif;
+  --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
+
+  --LTIButtonRadius: 0 4px 4px 0;
+  --LTISearchButtonBackground: #346fb6;
+
+  --PublishersBorderRadius: 4px;
+  --PublishersBorder: 1.5px solid @blue-300;
+
+}
+
+
+.button {
+  border: 0;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: @white;
+  font-size: 16px;
+  padding: 0;
+  cursor: pointer;
+
+  .copy {
+    margin-left: 4px;
+  }
+
+  svg {
+    height: 16.5px;
+    width: 16.5px;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+
+}
+
+.button {
+  &.lti {
+    height: 100%;
+    width: 102px;
+    font-size: var(--fontSize);
+    border-radius: var(--LTIButtonRadius);
+
+    &.primary {
+      background-color: var(--LTISearchButtonBackground);
+
+      &:hover {
+        background-color: @blue-700;
+      }
+
+      .copy {
+        font-weight: 500;
+        color: white;
+      }
+    }
+
+    &.secondary {
+      background: white;
+      border: 2px solid var(--LTISearchButtonBackground);
+
+      .copy {
+        font-weight: 500;
+        color: var(--LTISearchButtonBackground);
+      }
+    }
+
+    &.iconOnly {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+
+.button {
+  &.publishers {
+    width: 124px;
+    height: 100%;
+    font-size: var(--fontSize);
+    border-radius: var(--PublishersBorderRadius);
+
+    &.primary {
+      background: @blue-800;
+
+      &:hover {
+        background-color: @blue-700;
+      }
+
+      &:active {
+        background-color: @blue-900;
+        box-shadow: none !important;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0px 0px 6px @blue-800;
+      }
+
+      svg {
+        stroke: @white;
+        stroke-width: 2;
+      }
+    }
+
+    &.secondary {
+      background: white;
+      border: 2px solid @gray-500;
+      color: @blue-800;
+
+      &:hover {
+        border: 2px solid @blue-800;
+      }
+
+      &:active {
+        color: @blue-900;
+        border: 2px solid @blue-900;
+        box-shadow: none !important;
+        svg {
+          stroke: @blue-900;
+        }
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0px 0px 6px @blue-800;
+      }
+
+      svg {
+        stroke: @blue-800;
+        stroke-width: 2;
+      }
+    }
+
+
+    .copy {
+      margin-left: 10px;
+      font-weight: 500;
+    }
+  }
+
+  &.iconOnly {
+    padding: 12px;
+    height: auto;
+    width: auto;
+  }
+}
