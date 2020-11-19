@@ -36,8 +36,8 @@
   }
 
   svg {
-    height: 16.5px;
-    width: 16.5px;
+    height: 16px;
+    width: 16px;
   }
 
   &:disabled {
@@ -128,6 +128,7 @@
         color: @blue-900;
         border: 2px solid @blue-900;
         box-shadow: none !important;
+
         svg {
           stroke: @blue-900;
         }
@@ -152,8 +153,9 @@
   }
 
   &.iconOnly {
-    padding: 12px;
+    padding: 12px 10px;
     height: auto;
+    min-width: auto;
     width: auto;
   }
 }
