@@ -107,6 +107,23 @@
       }
     }
 
+    .closeIcon {
+      width:22px;
+      height:22px;
+      padding: 4px;
+      border-radius: var(--PublishersBorderRadius);
+      stroke: @gray-600;
+      cursor: pointer;
+      &.hideMe{
+        pointer-events: none;
+      }
+
+      &:hover {
+        background-color: @blue-300;
+        stroke: @blue-700;
+      }
+    }
+
     :global .ant-input-affix-wrapper {
       background-color: @shade-1;
       border-right: none;
