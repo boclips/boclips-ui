@@ -25,6 +25,7 @@
 
 .videoCard {
   box-shadow: none;
+  max-height: 263px;
 
   .cardHeader {
     display: flex;
@@ -127,6 +128,7 @@
     }
 
     .bodyRight {
+      max-height: @video-height;
       display: flex;
       flex-direction: column;
       margin: 0 0 0 15px;
@@ -335,13 +337,16 @@
       }
 
     }
+    &.border{
+      padding: 15px 14px 0 14px;
+    }
   }
 }
 
 .border {
   border-radius: var(--LTIBorderRadius);
   border: var(--PublishersBorder);
-  padding: 15px 14px 0 14px;
+
 }
 
 .leftBorder {
