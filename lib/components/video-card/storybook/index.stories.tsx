@@ -54,11 +54,26 @@ const video = {
   id: "5c54d7cdd8eafeecae20ee58",
   title: "TED-ED: Distorting Madonna in Medieval art - James Earle",
   description:
-    "After Rome was destroyed, people were wary of attachment to physical beauty. As Christianity gained traction, Romans instead began to focus on the metaphysical beauty of virtue, and art began to follow suit.  James Earle discusses how Medieval paintings of Madonna were affected by this shift.",
+    "After 52 years of war between the FARC guerrillas and the Colombian government, this short film explores the tricky relationship between conflict and conservation. Did war unexpectedly benefit nature?\n" +
+    "➡ Subscribe: http://bit.ly/NatGeoSubscribe\n" +
+    "\n" +
+    "About National Geographic:\n" +
+    "National Geographic is the world's premium destination for science, exploration, and adventure. Through their world-class scientists, photographers, journalists, and filmmakers, Nat Geo gets you closer to the stories that matter and past the edge of what's possible.\n" +
+    "\n" +
+    "Get More National Geographic:\n" +
+    "Official Site: http://bit.ly/NatGeoOfficialSite\n" +
+    "Facebook: http://bit.ly/FBNatGeo\n" +
+    "Twitter: http://bit.ly/NatGeoTwitter\n" +
+    "Instagram: http://bit.ly/NatGeoInsta\n" +
+    "\n" +
+    "The Nature of War | WILDxRED\n" +
+    "https://youtu.be/ejWN9wG4g4E\n" +
+    "\n" +
+    "National Geographic\n" +
+    "https://www.youtube.com/natgeo",
   additionalDescription: null,
   releasedOn: "2013-02-19",
   playback: {
-    type: "STREAM",
     type: "STREAM",
     id: "0_0r24xtco",
     duration: "PT3M7S",
