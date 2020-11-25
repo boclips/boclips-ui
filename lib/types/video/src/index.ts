@@ -3,7 +3,7 @@ import { Playback } from "boclips-api-client/dist/sub-clients/common/model/Playb
 import { Attachment } from "boclips-api-client/dist/sub-clients/common/model/Attachment";
 import { Link } from "@boclips-ui/link";
 import { Types } from "boclips-api-client";
-import moment from "moment";
+import { Duration } from "dayjs/plugin/duration";
 
 type Subject = Types.Subject;
 
@@ -75,5 +75,5 @@ export enum VideoType {
 
 export interface ExtendedVideo extends Video {
   thumbnailUrl?: string;
-  duration?: moment.Duration;
+  duration?: Duration;
 }

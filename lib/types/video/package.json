@@ -20,7 +20,7 @@
   },
   "peerDependencies": {
     "boclips-api-client": "^17.4.2",
-    "moment": "^2.26.0",
+    "dayjs": "^1.9.5",
     "react": "16.13.1"
   },
   "publishConfig": {
