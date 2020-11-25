@@ -41,6 +41,7 @@ export interface Props {
   hideAttachments?: boolean;
   border?: "top" | "bottom" | "left" | "right" | "none" | "all";
   videoRoundedCorners?: boolean;
+  price?: string;
 }
 
 export interface Components {
@@ -76,6 +77,7 @@ export const VideoCard = ({
   hideAttachments,
   videoRoundedCorners,
   border = "all",
+  price,
 }: Props & Components): any => {
   const breakpoint = useMediaBreakPoint();
   const smallCard = breakpoint.width < MediaBreakpoints.md.width;
@@ -147,6 +149,7 @@ export const VideoCard = ({
             </span>
           </span>
         )}
+        {price && <span className={s.price}>{price}</span>}
       </section>
 
       <section className={s.cardSubHeader}>

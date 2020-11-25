@@ -28,6 +28,7 @@ const Template: Story<Props & Components> = ({
   hideAttachments,
   border,
   videoRoundedCorners,
+  price,
 }: Props & Components) => (
   <VideoCard
     video={video}
@@ -48,6 +49,7 @@ const Template: Story<Props & Components> = ({
     hideAttachments={hideAttachments}
     border={border}
     videoRoundedCorners={videoRoundedCorners}
+    price={price}
   />
 );
 
@@ -213,6 +215,7 @@ PUBLISHERS.args = {
   hideBorder: true,
   border: "bottom",
   videoRoundedCorners: true,
+  price: "$600",
 };
 
 LTI.args = {
