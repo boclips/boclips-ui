@@ -18,6 +18,7 @@ const Template: Story<Props> = ({
   width,
   disabled,
   icon,
+  text,
 }: Props) => (
   <div style={{ height: "55px" }}>
     <Button
@@ -29,6 +30,7 @@ const Template: Story<Props> = ({
       width={width}
       disabled={disabled}
       icon={icon}
+      text={text}
     />
   </div>
 );
@@ -45,6 +47,7 @@ LTI.args = {
   width: undefined,
   disabled: false,
   icon: undefined,
+  text: "Search",
 };
 
 PUBLISHERS.args = {
@@ -56,4 +59,5 @@ PUBLISHERS.args = {
   width: undefined,
   disabled: false,
   icon: <SearchIcon />,
+  text: "Search",
 };

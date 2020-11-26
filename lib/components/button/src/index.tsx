@@ -11,6 +11,7 @@ export interface Props {
   height?: string;
   width?: string;
   disabled?: boolean;
+  text: string;
 }
 
 const Button = ({
@@ -22,6 +23,7 @@ const Button = ({
   height,
   width,
   icon,
+  text,
 }: Props) => (
   <button
     onClick={onClick}
@@ -38,7 +40,7 @@ const Button = ({
     type="button"
   >
     {icon}
-    {!iconOnly && <span className={s.copy}>Search</span>}
+    {!iconOnly && <span className={s.copy}>{text}</span>}
   </button>
 );
 

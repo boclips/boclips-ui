@@ -148,6 +148,7 @@ const SearchBar = ({
         theme={theme}
         icon={buttonIcon}
         iconOnly={onlySearchIconInButton}
+        text="Search"
       />
     </div>
   );
