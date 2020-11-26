@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { VideoCard, Props, Components } from "../src";
 import AgeRange from "../../../types/age-range/src";
+import Button from "../../button/src";
 
 export default {
   title: "VideoCard",
@@ -198,7 +199,16 @@ PUBLISHERS.args = {
   video,
   videoPlayer: <div />,
   rating: undefined,
-  videoActionButtons: [],
+  videoActionButtons: [
+    <div style={{ height: "54px", padding: "4px" }}>
+      <Button
+        onClick={() => null}
+        theme="publishers"
+        type="primary"
+        text="Add to cart"
+      />
+    </div>,
+  ],
   theme: "publishers",
   hideBorder: true,
   border: "bottom",
@@ -210,7 +220,7 @@ LTI.args = {
   video,
   videoPlayer: <div />,
   rating: undefined,
-  videoActionButtons: [],
+  videoActionButtons: undefined,
   theme: "lti",
   videoRoundedCorners: false,
 };
@@ -220,7 +230,7 @@ HQ.args = {
   video,
   videoPlayer: <div />,
   rating: undefined,
-  videoActionButtons: [],
+  videoActionButtons: undefined,
   theme: "hq",
   videoRoundedCorners: false,
   border: "none",

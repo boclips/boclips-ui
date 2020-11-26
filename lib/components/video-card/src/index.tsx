@@ -181,8 +181,7 @@ export const VideoCard = ({
             {videoPlayer}
           </div>
         )}
-
-        <div className={s.bodyRight}>
+        <div className={c(s.bodyRight)}>
           {!hideBadges && (
             <div className={s.badgeList} data-qa="video-badge-list">
               {!hideAgeRange && video?.ageRange && (
@@ -229,28 +228,22 @@ export const VideoCard = ({
               role="presentation"
               onClick={(e) => e.stopPropagation()}
               className={c(s.description, {
-                [s.short]:
-                  videoActionButtons &&
-                  videoActionButtons.filter((b) => !!b).length > 0 &&
-                  renderVideoButtons,
+                [s.short]: !!videoActionButtons && authenticated,
               })}
             >
               {video?.description}
             </section>
           )}
 
-          {videoActionButtons &&
-            videoActionButtons.filter((b) => !!b).length > 0 &&
-            renderVideoButtons && (
-              <section
-                role="presentation"
-                onClick={(e) => e.stopPropagation()}
-                className={s.videoActionButtons}
-              >
-                {videoActionButtons}
-              </section>
-            )}
-          <span />
+          {videoActionButtons && renderVideoButtons && (
+            <section
+              role="presentation"
+              onClick={(e) => e.stopPropagation()}
+              className={s.videoActionButtons}
+            >
+              {videoActionButtons}
+            </section>
+          )}
         </div>
       </section>
     </Card>
