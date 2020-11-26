@@ -228,7 +228,7 @@ export const VideoCard = ({
               role="presentation"
               onClick={(e) => e.stopPropagation()}
               className={c(s.description, {
-                [s.short]: !!videoActionButtons && authenticated,
+                [s.short]: !!videoActionButtons && renderVideoButtons,
               })}
             >
               {video?.description}
