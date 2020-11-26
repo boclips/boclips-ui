@@ -140,10 +140,6 @@
       margin: 0 0 0 15px;
       width: calc(100% - (@video-width + 15px));
 
-      &.spaceBetween {
-        justify-content: space-between;
-      }
-
       @media (max-width: @screen-md) {
         width: 100%;
         margin: 0;
@@ -159,9 +155,16 @@
         line-height: 21px;
         overflow: hidden;
         height: calc(21px * var(--lineClampRegular));
+        position: relative;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
 
         &.short {
           height: calc(21px * var(--lineClampSmall));
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
         }
       }
 
