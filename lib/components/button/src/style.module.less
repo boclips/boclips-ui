@@ -33,6 +33,15 @@
 
   .copy {
     margin-left: 4px;
+    height: 100%;
+    align-items: center;
+    display: flex;
+  }
+
+  .icon {
+    height: 100%;
+    align-items: center;
+    display: flex;
   }
 
   svg {
@@ -87,10 +96,16 @@
 
 .button {
   &.publishers {
-    min-width: 124px;
+    min-width: 100px;
     height: 100%;
     font-size: var(--fontSize);
     border-radius: var(--PublishersBorderRadius);
+    padding: 0 18px;
+
+    .copy {
+      margin-left: 10px;
+      font-weight: 500;
+    }
 
     &.primary {
       background: @blue-800;
@@ -109,10 +124,15 @@
         box-shadow: 0px 0px 6px @blue-800;
       }
 
-      svg {
-        stroke: @white;
-        stroke-width: 2;
+      .icon {
+        width: 16px;
+
+        svg {
+          stroke: @white;
+          stroke-width: 2;
+        }
       }
+
     }
 
     &.secondary {
@@ -143,12 +163,6 @@
         stroke: @blue-800;
         stroke-width: 2;
       }
-    }
-
-
-    .copy {
-      margin-left: 10px;
-      font-weight: 500;
     }
   }
 

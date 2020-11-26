@@ -39,7 +39,7 @@ const Button = ({
     })}
     type="button"
   >
-    {icon}
+    <div className={s.icon}>{icon}</div>
     {!iconOnly && <span className={s.copy}>{text}</span>}
   </button>
 );
