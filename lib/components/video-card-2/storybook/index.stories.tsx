@@ -1,15 +1,14 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import BestForBadge from "@boclips-ui/best-for-badge";
 import AttachmentBadge from "@boclips-ui/attachment-badge";
+import ContentWarningBadge from "@boclips-ui/content-warning-badge";
+import ProviderBadge from "@boclips-ui/provider-badge";
 import { Props, Components, VideoCardTwo } from "../src";
 import AgeRange from "../../../types/age-range/src";
 import Button from "../../button/src";
+// @ts-ignore
 import VideoPromotedSvg from "../src/resources/promoted-icon.svg";
-import ContentWarningBadge from "@boclips-ui/content-warning-badge";
-import ProviderBadge from "@boclips-ui/provider-badge";
-import c from "classnames";
-import s from "../src/styles.module.less";
+import BestForBadge from "../../best-for-badge/src";
 
 export default {
   title: "VideoCardTwo",
@@ -26,8 +25,6 @@ const Template: Story<Props & Components> = ({
   handleOnClick,
   theme,
   border,
-    title,
-    description,
   videoRoundedCorners,
   bestForBadges,
   attachmentBadge,
@@ -49,8 +46,6 @@ const Template: Story<Props & Components> = ({
     attachmentBadge={attachmentBadge}
     promotedSVG={promotedSVG}
     additionalBadges={additionalBadges}
-    title={title}
-    description={description}
   />
 );
 
@@ -194,9 +189,7 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
 
 export const LTI = Template.bind({});
 export const HQ = Template.bind({});
-
 export const PUBLISHERS = Template.bind({});
-export const EDITMODE = Template.bind({});
 
 PUBLISHERS.args = {
   // @ts-ignore
@@ -252,31 +245,4 @@ HQ.args = {
   )),
   attachmentBadge: <AttachmentBadge />,
   promotedSVG: <VideoPromotedSvg />,
-};
-
-EDITMODE.args = {
-  // @ts-ignore
-  video,
-  videoPlayer: <div />,
-  rating: undefined,
-  videoActionButtons: undefined,
-  theme: "hq",
-  videoRoundedCorners: false,
-  border: "none",
-  bestForBadges: video.bestFor.map((tag) => (
-      <BestForBadge bestFor={tag.label} />
-  )),
-  attachmentBadge: <AttachmentBadge />,
-  promotedSVG: <VideoPromotedSvg />,
-  description: <textarea
-      data-qa="textarea-description"
-      className={s.input}
-      defaultValue={video?.description}
-  />,
-  title: <input
-      data-qa="input-title"
-      className={s.editModeInput}
-      type="text"
-      defaultValue={video?.title}
-  />
 };
