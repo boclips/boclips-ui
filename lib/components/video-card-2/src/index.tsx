@@ -1,6 +1,4 @@
-import React, {
-  ReactElement, ReactNode,
-} from "react";
+import React, { ReactElement } from "react";
 import { ExtendedVideo } from "@boclips-ui/video";
 import { Card } from "antd";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
@@ -30,8 +28,6 @@ export interface Components {
   attachmentBadge?: ReactElement;
   promotedSVG?: React.ReactNode;
   additionalBadges?: ReactElement[];
-  title?: React.ReactNode;
-  description?: React.ReactNode;
 }
 
 export const VideoCardTwo = ({
@@ -42,8 +38,6 @@ export const VideoCardTwo = ({
   videoActionButtons,
   loading,
   handleOnClick,
-  title,
-  description,
   theme = "lti",
   bestForBadges,
   attachmentBadge,
@@ -76,7 +70,9 @@ export const VideoCardTwo = ({
       onClick={handleOnClick}
     >
       <section className={s.cardHeader}>
-        {title && (<span>{ title }</span>)}
+        <h1 data-qa="video-title" className={s.cardHeaderTitle}>
+          {video?.title}
+        </h1>
         {additionalBadges && (
           <span className={s.additionalBadges}>
             {additionalBadges.map((badge) => {
@@ -130,9 +126,14 @@ export const VideoCardTwo = ({
             )}
           </div>
 
-          {description &&
-              <span>{description}</span>
-          }
+          <section
+            className={c(s.description, {
+              [s.short]: !!videoActionButtons && renderVideoButtons,
+            })}
+          >
+            {video?.description}
+          </section>
+
           {videoActionButtons && renderVideoButtons && (
             <section
               role="presentation"
