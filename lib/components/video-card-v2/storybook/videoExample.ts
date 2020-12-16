@@ -1,55 +1,6 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
-import AttachmentBadge from "@boclips-ui/attachment-badge";
-import ContentWarningBadge from "@boclips-ui/content-warning-badge";
-import ProviderBadge from "@boclips-ui/provider-badge";
-import { Props, Components, VideoCardTwo } from "../src";
 import AgeRange from "../../../types/age-range/src";
-import Button from "../../button/src";
-// @ts-ignore
-import VideoPromotedSvg from "../src/resources/promoted-icon.svg";
-import BestForBadge from "../../best-for-badge/src";
 
-export default {
-  title: "VideoCardTwo",
-  component: VideoCardTwo,
-} as Meta;
-
-const Template: Story<Props & Components> = ({
-  video,
-  authenticated,
-  analytics,
-  videoPlayer,
-  videoActionButtons,
-  loading,
-  handleOnClick,
-  theme,
-  border,
-  videoRoundedCorners,
-  bestForBadges,
-  attachmentBadge,
-  promotedSVG,
-  additionalBadges,
-}: Props & Components) => (
-  <VideoCardTwo
-    video={video}
-    authenticated={authenticated}
-    analytics={analytics}
-    videoPlayer={videoPlayer}
-    videoActionButtons={videoActionButtons}
-    loading={loading}
-    handleOnClick={handleOnClick}
-    theme={theme}
-    border={border}
-    videoRoundedCorners={videoRoundedCorners}
-    bestForBadges={bestForBadges}
-    attachmentBadge={attachmentBadge}
-    promotedSVG={promotedSVG}
-    additionalBadges={additionalBadges}
-  />
-);
-
-const video = {
+export const exampleVideo = {
   id: "5c54d7cdd8eafeecae20ee58",
   title: "TED-ED: Distorting Madonna in Medieval art - James Earle",
   description: `How has the process of declaring war changed throughout the United States' history? What prompted Congress to enact the War Powers Resolution in the '70s, and what effect did it have?
@@ -130,7 +81,7 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
   promoted: null,
   language: null,
   attachments: [],
-  contentWarnings: [],
+  contentWarnings: [{ id: "1", label: "This is a warning" }],
   channel: "TED-Ed",
   channelId: "5cf141cbc1475c47f717870d",
   channelVideoId: "1212_06_A",
@@ -185,64 +136,4 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
       templated: false,
     },
   },
-};
-
-export const LTI = Template.bind({});
-export const HQ = Template.bind({});
-export const PUBLISHERS = Template.bind({});
-
-PUBLISHERS.args = {
-  // @ts-ignore
-  video,
-  videoPlayer: <div />,
-  rating: undefined,
-  videoActionButtons: [
-    <div style={{ height: "54px", padding: "4px" }}>
-      <Button
-        onClick={() => null}
-        theme="publishers"
-        type="primary"
-        text="Add to cart"
-      />
-    </div>,
-  ],
-  theme: "publishers",
-  hideBorder: true,
-  border: "bottom",
-  videoRoundedCorners: true,
-  additionalBadges: [
-    <span style={{ fontWeight: "bold", fontSize: "20px" }}>$600</span>,
-  ],
-  title: <h1>title</h1>,
-  description: <section>this is a description</section>,
-};
-
-LTI.args = {
-  // @ts-ignore
-  video,
-  videoPlayer: <div />,
-  rating: undefined,
-  videoActionButtons: undefined,
-  theme: "lti",
-  videoRoundedCorners: false,
-  additionalBadges: [
-    <ContentWarningBadge contentWarnings={video?.contentWarnings} />,
-    <ProviderBadge isLicensed={video?.playback?.type === "STREAM"} />,
-  ],
-};
-
-HQ.args = {
-  // @ts-ignore
-  video,
-  videoPlayer: <div />,
-  rating: undefined,
-  videoActionButtons: undefined,
-  theme: "hq",
-  videoRoundedCorners: false,
-  border: "none",
-  bestForBadges: video.bestFor.map((tag) => (
-    <BestForBadge bestFor={tag.label} />
-  )),
-  attachmentBadge: <AttachmentBadge />,
-  promotedSVG: <VideoPromotedSvg />,
 };
