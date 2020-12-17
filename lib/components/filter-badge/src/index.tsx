@@ -8,10 +8,9 @@ export interface Props {
   value: string;
   label: string;
   onClick: (value: string) => any;
-  theme?: "lti" | "hq" | "publishers";
 }
 
-const FilterBadge = ({ id, value, label, onClick, theme = "lti" }: Props) => {
+const FilterBadge = ({ id, value, label, onClick }: Props) => {
   const closeAction = (
     <div
       className={s.closeIcon}
@@ -23,9 +22,7 @@ const FilterBadge = ({ id, value, label, onClick, theme = "lti" }: Props) => {
     </div>
   );
 
-  return (
-    <Badge value={value} label={label} theme={theme} closeIcon={closeAction} />
-  );
+  return <Badge value={value} label={label} closeIcon={closeAction} />;
 };
 
 export default FilterBadge;

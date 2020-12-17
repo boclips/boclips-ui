@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 
 import FilterBadge, { Props } from "../src";
+import s from "./style.module.less";
 
 export default {
   title: "Filter Badge",
@@ -17,20 +18,20 @@ export default {
   },
 } as Meta;
 
-const Template: Story<Props> = ({
+interface StoryBookProps extends Props {
+  theme?: "lti" | "hq" | "publishers";
+}
+
+const Template: Story<StoryBookProps> = ({
   theme,
   id,
   value,
   label,
   onClick,
-}: Props) => (
-  <FilterBadge
-    theme={theme}
-    id={id}
-    onClick={onClick}
-    value={value}
-    label={label}
-  />
+}: StoryBookProps) => (
+  <div className={s[theme]}>
+    <FilterBadge id={id} onClick={onClick} value={value} label={label} />
+  </div>
 );
 
 export const Sample = Template.bind({});

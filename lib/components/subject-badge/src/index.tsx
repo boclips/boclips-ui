@@ -8,15 +8,11 @@ interface Subject {
 
 export interface SubjectBadgeProps {
   subject: Subject;
-  theme?: "lti" | "hq" | "publishers";
 }
 
-const SubjectBadge = ({
-  subject,
-  theme = "lti",
-}: SubjectBadgeProps): ReactElement => (
+const SubjectBadge = ({ subject }: SubjectBadgeProps): ReactElement => (
   <div data-qa="subject-badge">
-    <Badge value={subject.name} theme={theme} />
+    <Badge value={subject.name} />
   </div>
 );
 

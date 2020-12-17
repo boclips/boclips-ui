@@ -1,7 +1,8 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-
 import AgeRange from "@boclips-ui/age-range";
+import s from "./style.module.less";
+
 import AgeRangeBadge, { AgeRangeBadgeProps } from "../src";
 
 export default {
@@ -20,16 +21,19 @@ export default {
 interface Props extends AgeRangeBadgeProps {
   min: number;
   max: number;
+  theme?: "lti" | "hq" | "publishers";
 }
 
 const Template: Story<Props> = ({ min, max, theme }: Props) => (
-  <AgeRangeBadge ageRange={new AgeRange(min, max)} theme={theme} />
+  <div className={s[theme]}>
+    <AgeRangeBadge ageRange={new AgeRange(min, max)} />
+  </div>
 );
 
-export const Sample = Template.bind({});
+export const LTI = Template.bind({});
 export const BACKOFFICE = Template.bind({});
 
-Sample.args = {
+LTI.args = {
   min: 5,
   max: 16,
   theme: "lti",

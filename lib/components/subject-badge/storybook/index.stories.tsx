@@ -2,16 +2,22 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 
 import SubjectBadge, { SubjectBadgeProps } from "../src";
+import s from "./style.module.less";
 
 export default {
   title: "Subject Badge",
   component: SubjectBadge,
 } as Meta;
 
-const Template: Story<SubjectBadgeProps> = ({
-  subject,
-  theme,
-}: SubjectBadgeProps) => <SubjectBadge subject={subject} theme={theme} />;
+interface Props extends SubjectBadgeProps {
+  theme?: "lti" | "hq" | "publishers";
+}
+
+const Template: Story<Props> = ({ subject, theme }: Props) => (
+  <div className={s[theme]}>
+    <SubjectBadge subject={subject} />
+  </div>
+);
 
 export const BACKOFFICE = Template.bind({});
 export const LTI = Template.bind({});
