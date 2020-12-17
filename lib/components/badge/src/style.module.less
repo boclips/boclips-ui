@@ -1,103 +1,32 @@
-@import '~@boclips-ui/styles/src/_LTIColours';
-@import '~@boclips-ui/styles/src/_publishersColours';
-
-:root {
-  --primaryColour: @blue-shade-5;
-  --borderRadius: 8px;
-
-  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
-  --HQFontFamily: Proxima Nova, Roboto, Helvetica, Arial, sans-serif;
-  --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
-
-}
-
 .badge {
   display: inline-flex;
   align-items: center;
   flex-direction: row;
   font-size: 14px;
   height: 32px;
-  line-height: 16px;
-  padding: 0 8px;
+  line-height: var(--bo-ui-badge-line-height, 16px);
+  padding: var(--bo-ui-badge-padding-y, 0px) var(--bo-ui-badge-padding-x, 8px);
   margin: 0 8px 8px 0;
   position: relative;
   z-index: 1;
+  background-color: var(--bo-ui-badge-background-color, #f5f5f5);
+  border-radius: var(--bo-ui-badge-border-radius, 8px);
+  border: var(--bo-ui-badge-border, none);
 
   svg {
     height: 24px;
     position: relative;
+    color: var(--bo-ui-badge-label-color);
   }
 
   .label {
     margin-right: 4px;
+    color: var(--bo-ui-badge-label-color);
+    font-weight: var(--bo-ui-badge-font-weight);
   }
-}
 
-.badge {
-  &.lti {
-    background-color: @shade-2;
-    font-family: var(--LTIFontFamily);
-    border-radius: var(--borderRadius);
-    border: var(--badgeBorder);
-
-    svg {
-      fill: @blue-shade-5;
-    }
-
-    .label {
-      font-family: var(--LTIFontFamily);
-      color: @blue-shade-5;
-    }
-
-    .value {
-      font-family: var(--LTIFontFamily);
-      color: var(--badgeValueColour);
-    }
-  }
-}
-
-.badge {
-  &.hq {
-    background-color: #F5F5F5;
-    font-family: var(--HQFontFamily);
-    border-radius: var(--borderRadius);
-    border: none;
-
-    svg {
-      fill: @dark-orange;
-    }
-
-    .label {
-      color: @dark-orange;
-      font-weight: 500;
-    }
-
-    .value {
-      color: var(--badgeValueColour);
-      font-weight: 500;
-    }
-  }
-}
-
-.badge {
-  &.publishers {
-    padding: 7px 14px;
-    line-height: 21px;
-    background-color: @blue-100;
-    font-family: var(--PublishersFontFamily);
-    border-radius: calc(var(--borderRadius) / 2);
-    border: 1px solid @blue-400;
-
-    svg {
-      fill: @dark-orange;
-    }
-
-    .label {
-      color: @gray-900;
-    }
-
-    .value {
-      color: @gray-700;
-    }
+  .value {
+    color: var(--bo-ui-badge-value-color);
+    font-weight: var(--bo-ui-badge-font-weight);
   }
 }

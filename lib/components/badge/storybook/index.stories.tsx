@@ -1,5 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
+import s from "./style.module.less";
 
 import Badge, { Props } from "../src";
 
@@ -9,12 +10,15 @@ export default {
 } as Meta;
 
 const Template: Story<Props> = ({ icon, label, value, theme }: Props) => (
-  <Badge icon={icon} label={label} value={value} theme={theme} />
+  <div className={s[theme]}>
+    <Badge icon={icon} label={label} value={value} />
+  </div>
 );
 
 export const LTI = Template.bind({});
 export const HQ = Template.bind({});
 export const PUBLISHERS = Template.bind({});
+export const DEFAULT = Template.bind({});
 
 HQ.args = {
   label: "test",
@@ -32,4 +36,9 @@ PUBLISHERS.args = {
   label: "",
   value: "Elementary science",
   theme: "publishers",
+};
+
+DEFAULT.args = {
+  label: "Hello",
+  value: "Boclips",
 };
