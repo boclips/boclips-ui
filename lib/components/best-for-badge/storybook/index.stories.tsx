@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 
 import BestForBadge, { BestForBadgeProps } from "../src";
+import s from "./style.module.less";
 
 export default {
   title: "Best For Badge",
@@ -16,10 +17,15 @@ export default {
   },
 } as Meta;
 
-const Template: Story<BestForBadgeProps> = ({
-  bestFor,
-  theme,
-}: BestForBadgeProps) => <BestForBadge theme={theme} bestFor={bestFor} />;
+interface Props extends BestForBadgeProps {
+  theme?: "lti" | "hq" | "publishers";
+}
+
+const Template: Story<Props> = ({ bestFor, theme }: Props) => (
+  <div className={s[theme]}>
+    <BestForBadge bestFor={bestFor} />
+  </div>
+);
 
 export const Sample = Template.bind({});
 
