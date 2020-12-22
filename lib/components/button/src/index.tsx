@@ -39,8 +39,10 @@ const Button = ({
     })}
     type="button"
   >
-    <div className={s.icon}>{icon}</div>
-    {!iconOnly && <span className={s.copy}>{text}</span>}
+    {icon && <div className={s.icon}>{icon}</div>}
+    {!iconOnly && (
+      <span className={c(s.copy, { [s.copyWithIcon]: icon })}>{text}</span>
+    )}
   </button>
 );
 
