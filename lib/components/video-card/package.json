@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video-card",
-  "version": "2.1.22",
+  "version": "3.0.0-alpha.0",
   "files": [
     "dist/**/*"
   ],
@@ -12,15 +12,15 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/video-card --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/age-range-badge": "^1.0.32",
-    "@boclips-ui/attachment-badge": "^1.0.28",
-    "@boclips-ui/best-for-badge": "^1.0.29",
+    "@boclips-ui/age-range-badge": "^2.0.0-alpha.0",
+    "@boclips-ui/attachment-badge": "^2.0.0-alpha.0",
+    "@boclips-ui/best-for-badge": "^2.0.0-alpha.0",
     "@boclips-ui/content-warning-badge": "^1.0.24",
     "@boclips-ui/media-breakpoints": "^1.0.11",
-    "@boclips-ui/provider-badge": "^1.0.30",
+    "@boclips-ui/provider-badge": "^2.0.0-alpha.0",
     "@boclips-ui/released-on": "^1.0.20",
     "@boclips-ui/styles": "^2.1.8",
-    "@boclips-ui/subject-badge": "^1.0.26",
+    "@boclips-ui/subject-badge": "^2.0.0-alpha.0",
     "@boclips-ui/use-media-breakpoints": "^1.0.11",
     "@boclips-ui/video": "^2.0.0",
     "@boclips-ui/video-card-placeholder": "^1.2.8"
