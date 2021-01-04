@@ -11,7 +11,6 @@ import s from "./styles.module.less";
 export interface Props {
   video: ExtendedVideo | null;
   handleOnClick?: () => void;
-  theme?: "hq" | "lti" | "publishers";
   border?: "top" | "bottom" | "left" | "right" | "none" | "all";
 }
 
@@ -31,18 +30,11 @@ const borderClass = {
   none: undefined,
 };
 
-const themeClass = {
-  lti: s.lti,
-  hq: s.hq,
-  publishers: s.publishers,
-};
-
 export const VideoCardV2 = ({
   video,
   videoPlayer,
   actions,
   handleOnClick,
-  theme = "lti",
   border = "all",
   topBadge,
   additionalBadges,
@@ -51,7 +43,7 @@ export const VideoCardV2 = ({
     return (
       <Card
         bodyStyle={{ width: "100%" }}
-        className={c(s.videoCard, borderClass[border], themeClass[theme])}
+        className={c(s.videoCard, borderClass[border])}
         bordered={false}
         data-qa="video-card"
         onClick={handleOnClick}

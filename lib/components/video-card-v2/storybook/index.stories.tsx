@@ -1,19 +1,23 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import AttachmentBadge from "@boclips-ui/attachment-badge";
-import ContentWarningBadge from "@boclips-ui/content-warning-badge";
 import ProviderBadge from "@boclips-ui/provider-badge";
 import { Props, Components, VideoCardV2 } from "../src";
 import Button from "../../button/src";
 import BestForBadge from "../../best-for-badge/src";
 import { exampleVideo } from "./videoExample";
+import s from "./styles.module.less";
 
 export default {
   title: "VideoCardTwo",
   component: VideoCardV2,
 } as Meta;
 
-const Template: Story<Props & Components> = ({
+interface StorybookProps {
+  theme: "lti" | "publishers" | "hq";
+}
+
+const Template: Story<Props & Components & StorybookProps> = ({
   video,
   videoPlayer,
   actions,
@@ -22,17 +26,18 @@ const Template: Story<Props & Components> = ({
   border,
   topBadge,
   additionalBadges,
-}: Props & Components) => (
-  <VideoCardV2
-    video={video}
-    videoPlayer={videoPlayer}
-    actions={actions}
-    handleOnClick={handleOnClick}
-    theme={theme}
-    border={border}
-    topBadge={topBadge}
-    additionalBadges={additionalBadges}
-  />
+}: Props & Components & StorybookProps) => (
+  <div className={s[theme]}>
+    <VideoCardV2
+      video={video}
+      videoPlayer={videoPlayer}
+      actions={actions}
+      handleOnClick={handleOnClick}
+      border={border}
+      topBadge={topBadge}
+      additionalBadges={additionalBadges}
+    />
+  </div>
 );
 
 export const LTI = Template.bind({});
@@ -70,10 +75,6 @@ LTI.args = {
   theme: "lti",
   topBadge: (
     <div>
-      <ContentWarningBadge
-        contentWarnings={exampleVideo?.contentWarnings}
-        key="warning-badge"
-      />
       <ProviderBadge
         isLicensed={exampleVideo?.playback?.type === "STREAM"}
         key="provider-badge"
