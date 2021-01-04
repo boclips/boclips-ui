@@ -85,12 +85,10 @@ export const VideoCardV2 = ({
           )}
           <div className={s.bodyRight}>
             <div className={s.badgeList} data-qa="video-badge-list">
-              {video.ageRange && (
-                <AgeRangeBadge ageRange={video.ageRange} theme={theme} />
-              )}
+              {video.ageRange && <AgeRangeBadge ageRange={video.ageRange} />}
 
               {video.subjects?.map((it) => (
-                <SubjectBadge key={it.id} subject={it} theme={theme} />
+                <SubjectBadge key={it.id} subject={it} />
               ))}
 
               {additionalBadges?.map((element) => (

@@ -188,26 +188,22 @@ export const VideoCard = ({
           {!hideBadges && (
             <div className={s.badgeList} data-qa="video-badge-list">
               {!hideAgeRange && video?.ageRange && (
-                <AgeRangeBadge ageRange={video.ageRange} theme={theme} />
+                <AgeRangeBadge ageRange={video.ageRange} />
               )}
 
               {!hideSubjects &&
                 video?.subjects &&
                 video?.subjects.map((it) => (
-                  <SubjectBadge key={it.id} subject={it} theme={theme} />
+                  <SubjectBadge key={it.id} subject={it} />
                 ))}
 
               {!hideBestFor &&
                 video?.bestFor &&
-                video?.bestFor.map((it) => (
-                  <BestForBadge bestFor={it.label} theme={theme} />
-                ))}
+                video?.bestFor.map((it) => <BestForBadge bestFor={it.label} />)}
 
               {!hideAttachments &&
                 video?.attachments &&
-                video?.attachments?.length > 0 && (
-                  <AttachmentBadge theme={theme} />
-                )}
+                video?.attachments?.length > 0 && <AttachmentBadge />}
 
               {/* TODO: TAKE IT OUT OF CARD AND PASS AS PROP */}
               {theme === "hq" && video?.promoted && (

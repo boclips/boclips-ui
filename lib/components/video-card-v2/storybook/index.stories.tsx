@@ -85,9 +85,9 @@ LTI.args = {
 const getHqAdditionalBadges = () => {
   const badges = [];
   exampleVideo.bestFor.forEach((tag) =>
-    badges.push(<BestForBadge bestFor={tag.label} theme="hq" key={tag.id} />)
+    badges.push(<BestForBadge bestFor={tag.label} key={tag.id} />)
   );
-  badges.push(<AttachmentBadge theme="hq" key="attachment-badge" />);
+  badges.push(<AttachmentBadge key="attachment-badge" />);
   return badges;
 };
 
