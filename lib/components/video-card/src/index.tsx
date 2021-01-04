@@ -166,7 +166,6 @@ export const VideoCard = ({
           <ReleasedOn
             releasedOn={video?.releasedOn}
             createdBy={video?.createdBy}
-            theme={theme}
           />
         )}
       </section>

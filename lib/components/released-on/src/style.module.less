@@ -1,62 +1,14 @@
-@import '~@boclips-ui/styles/src/_antd-theme';
-@import '~@boclips-ui/styles/src/_publishersColours';
-
-:root {
-  --releasedOnColour: @neutral-shade-1;
-  --releasedOnDateFontWeight: light;
-  --releasedOnByFontWeight: bold;
-}
+@import "variables.less";
+@import "~@boclips-ui/styles/src/_antd-theme";
 
 .releasedOn {
   display: inline-block;
   padding-left: 8px;
   font-size: 14px;
   line-height: 24px;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   @media (max-width: @screen-md) {
     display: none;
   }
-}
-
-.releasedOn {
-  &.lti {
-    color: #8C8C8C;
-
-    .releasedOnDate {
-      font-weight: normal;
-    }
-
-    .releasedOnBy {
-      font-weight: bold;
-    }
-  }
-}
-
-.releasedOn {
-  &.hq {
-    color: #8C8C8C;
-
-    .releasedOnDate {
-      font-weight: bold;
-    }
-
-    .releasedOnBy {
-      font-weight: bold;
-    }
-  }
-}
-
-.releasedOn {
-  margin-bottom: 6px;
-  &.publishers {
-    color: @gray-700 ;
-
-    .releasedOnDate {
-      font-weight: normal;
-    }
-
-    .releasedOnBy {
-      font-weight: normal;
-    }
-  }
+  color: @font-color;
 }

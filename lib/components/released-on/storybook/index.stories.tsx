@@ -11,9 +11,8 @@ export default {
 const Template: Story<ReleasedOnProps> = ({
   createdBy,
   releasedOn,
-  theme,
 }: ReleasedOnProps) => (
-  <ReleasedOn createdBy={createdBy} releasedOn={releasedOn} theme={theme} />
+  <ReleasedOn createdBy={createdBy} releasedOn={releasedOn} />
 );
 
 export const LTI = Template.bind({});
@@ -21,5 +20,4 @@ export const LTI = Template.bind({});
 LTI.args = {
   releasedOn: new Date("2020-09-23"),
   createdBy: "John Doe",
-  theme: "lti",
 };
