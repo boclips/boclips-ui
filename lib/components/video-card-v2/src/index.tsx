@@ -15,6 +15,7 @@ export interface Props {
 }
 
 export interface Components {
+  title?: ReactElement;
   videoPlayer?: ReactElement;
   actions?: ReactElement[];
   topBadge?: ReactElement;
@@ -38,6 +39,7 @@ export const VideoCardV2 = ({
   border = "all",
   topBadge,
   additionalBadges,
+  title,
 }: Props & Components): any => {
   if (video) {
     return (
@@ -49,9 +51,7 @@ export const VideoCardV2 = ({
         onClick={handleOnClick}
       >
         <section className={s.cardHeader}>
-          <h1 data-qa="video-title" className={s.cardHeaderTitle}>
-            {video.title}
-          </h1>
+          <section className={s.cardHeaderTitle}>{title}</section>
           {topBadge}
         </section>
 

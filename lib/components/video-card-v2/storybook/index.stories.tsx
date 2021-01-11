@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import AttachmentBadge from "@boclips-ui/attachment-badge";
 import ProviderBadge from "@boclips-ui/provider-badge";
+import { Link } from "@storybook/router";
 import { Props, Components, VideoCardV2 } from "../src";
 import Button from "../../button/src";
 import BestForBadge from "../../best-for-badge/src";
@@ -26,6 +27,7 @@ const Template: Story<Props & Components & StorybookProps> = ({
   border,
   topBadge,
   additionalBadges,
+  title,
 }: Props & Components & StorybookProps) => (
   <div className={s[theme]}>
     <VideoCardV2
@@ -35,6 +37,7 @@ const Template: Story<Props & Components & StorybookProps> = ({
       handleOnClick={handleOnClick}
       border={border}
       topBadge={topBadge}
+      title={title}
       additionalBadges={additionalBadges}
     />
   </div>
@@ -66,6 +69,11 @@ PUBLISHERS.args = {
       $600
     </span>
   ),
+  title: (
+    <Link to="/">
+      <h1 data-qa="video-title">{exampleVideo.title}</h1>
+    </Link>
+  ),
 };
 
 LTI.args = {
@@ -81,6 +89,7 @@ LTI.args = {
       />
     </div>
   ),
+  title: <h1 data-qa="video-title">{exampleVideo?.title}</h1>,
 };
 
 const getHqAdditionalBadges = () => {
@@ -99,6 +108,7 @@ HQ.args = {
   theme: "hq",
   border: "none",
   additionalBadges: getHqAdditionalBadges(),
+  title: <h1 data-qa="video-title">{exampleVideo?.title}</h1>,
 };
 
 loading.args = {
