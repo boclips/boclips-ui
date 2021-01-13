@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video-card-v2",
-  "version": "2.0.1-alpha.0",
+  "version": "2.0.2-alpha.0",
   "files": [
     "dist/**/*"
   ],
@@ -17,7 +17,7 @@
     "@boclips-ui/content-warning-badge": "^1.0.25-alpha.0",
     "@boclips-ui/media-breakpoints": "^1.0.11",
     "@boclips-ui/provider-badge": "^2.0.1-alpha.0",
-    "@boclips-ui/released-on": "^2.0.1-alpha.0",
+    "@boclips-ui/released-on": "^2.0.2-alpha.0",
     "@boclips-ui/styles": "^2.1.9-alpha.0",
     "@boclips-ui/subject-badge": "^2.0.1-alpha.0",
     "@boclips-ui/use-media-breakpoints": "^1.0.11",
