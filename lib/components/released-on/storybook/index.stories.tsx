@@ -1,5 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
+import s from "./styles.module.less";
 
 import ReleasedOn, { ReleasedOnProps } from "../src";
 
@@ -8,16 +9,31 @@ export default {
   component: ReleasedOn,
 } as Meta;
 
-const Template: Story<ReleasedOnProps> = ({
+interface StorybookProps {
+  theme: string;
+}
+
+const Template: Story<ReleasedOnProps & StorybookProps> = ({
   createdBy,
   releasedOn,
-}: ReleasedOnProps) => (
-  <ReleasedOn createdBy={createdBy} releasedOn={releasedOn} />
+  theme,
+}: ReleasedOnProps & StorybookProps) => (
+  <div className={s[theme]}>
+    <ReleasedOn createdBy={createdBy} releasedOn={releasedOn} />
+  </div>
 );
 
 export const LTI = Template.bind({});
+export const HQ = Template.bind({});
 
 LTI.args = {
   releasedOn: new Date("2020-09-23"),
   createdBy: "John Doe",
+  theme: "lti",
+};
+
+HQ.args = {
+  releasedOn: new Date("2020-09-23"),
+  createdBy: "John Doe",
+  theme: "hq",
 };
