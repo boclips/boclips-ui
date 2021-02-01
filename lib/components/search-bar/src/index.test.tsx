@@ -101,7 +101,7 @@ describe("LTI view", () => {
       target: { value: secondCreatedByWord },
     });
 
-    const searchButton = screen.getByTestId("search-button");
+    const searchButton = screen.getByText("Search");
 
     fireEvent.click(searchButton);
 
