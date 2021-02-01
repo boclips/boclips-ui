@@ -6,6 +6,7 @@ import { Props, Components, VideoCardV2 } from "../src";
 import Button from "../../button/src";
 import BestForBadge from "../../best-for-badge/src";
 import { exampleVideo } from "./videoExample";
+// @ts-ignore
 import s from "./styles.module.less";
 
 export default {
@@ -51,12 +52,7 @@ PUBLISHERS.args = {
   videoPlayer: <div />,
   actions: [
     <div style={{ height: "48px" }}>
-      <Button
-        onClick={() => null}
-        theme="publishers"
-        type="primary"
-        text="Add to cart"
-      />
+      <Button onClick={() => null} text="Add to cart" />
     </div>,
   ],
   theme: "publishers",

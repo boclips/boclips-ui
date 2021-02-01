@@ -1,35 +1,18 @@
-@import '~@boclips-ui/styles/src/LTIColours';
-@import '~@boclips-ui/styles/src/publishersColours';
-
-:root {
-  --primaryColour: @blue-shade-5;
-  --borderRadius: 8px;
-  --fontSize: 16px; // TODO: change to rem
-
-
-  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
-  --HQFontFamily: Proxima Nova, Roboto, Helvetica, Arial, sans-serif;
-  --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
-
-  --LTIButtonRadius: 0 4px 4px 0;
-  --LTISearchButtonBackground: #346fb6;
-
-  --PublishersBorderRadius: 4px;
-  --PublishersBorder: 1.5px solid @blue-300;
-
-}
-
+@import "./variables.less";
 
 .button {
-  border: 0;
+  padding: @padding;
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: @white;
-  font-size: 16px;
-  padding: 0;
+  font-size: @font-size;
+  font-weight: @font-weight;
+  color: @text-colour;
   cursor: pointer;
+  border: @border;
+  border-radius: @border-radius;
+  background: @background-color;
 
   .copy {
     height: 100%;
@@ -37,7 +20,7 @@
     display: flex;
   }
 
-  .copyWithIcon{
+  .copyWithIcon {
     margin-left: 10px;
   }
 
@@ -45,11 +28,28 @@
     height: 100%;
     align-items: center;
     display: flex;
+    width: 16px;
+
+    svg {
+      stroke: @svg-stroke-colour;
+      stroke-width: 2;
+      height: 16px;
+      width: 16px;
+    }
   }
 
-  svg {
-    height: 16px;
-    width: 16px;
+  &:hover {
+    background-color: @background-color-hover;
+  }
+
+  &:active {
+    background-color: @background-color-active;
+    box-shadow: none !important;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 6px @box-shadow-color;
   }
 
   &:disabled {
@@ -57,113 +57,33 @@
     cursor: not-allowed;
   }
 
+  &.outline {
+    background: @outline-background-color;
+    border: @outline-border;
+    color: @outline-text-colour;
 
-}
-
-.button {
-  &.lti {
-    height: 100%;
-    min-width: 102px;
-    font-size: var(--fontSize);
-    border-radius: var(--LTIButtonRadius);
-
-    &.primary {
-      background-color: var(--LTISearchButtonBackground);
-
-      &:hover {
-        background-color: @blue-700;
-      }
-
-      .copy {
-        font-weight: 500;
-        color: white;
-      }
+    &:hover {
+      border: @outline-border-hover;
     }
 
-    &.secondary {
-      background: white;
-      border: 2px solid var(--LTISearchButtonBackground);
-
-      .copy {
-        font-weight: 500;
-        color: var(--LTISearchButtonBackground);
-      }
-    }
-
-    &.iconOnly {
-      height: 100%;
-      width: auto;
-    }
-  }
-}
-
-.button {
-  &.publishers {
-    height: 100%;
-    font-size: var(--fontSize);
-    border-radius: var(--PublishersBorderRadius);
-    padding: 0 18px;
-
-    .copy {
-      font-weight: 500;
-    }
-
-    &.primary {
-      background: @blue-800;
-
-      &:hover {
-        background-color: @blue-700;
-      }
-
-      &:active {
-        background-color: @blue-900;
-        box-shadow: none !important;
-      }
-
-      &:focus {
-        outline: none;
-        box-shadow: 0px 0px 6px @blue-800;
-      }
-
-      .icon {
-        width: 16px;
-
-        svg {
-          stroke: @white;
-          stroke-width: 2;
-        }
-      }
-
-    }
-
-    &.secondary {
-      background: white;
-      border: 2px solid @gray-500;
-      color: @blue-800;
-
-      &:hover {
-        border: 2px solid @blue-800;
-      }
-
-      &:active {
-        color: @blue-900;
-        border: 2px solid @blue-900;
-        box-shadow: none !important;
-
-        svg {
-          stroke: @blue-900;
-        }
-      }
-
-      &:focus {
-        outline: none;
-        box-shadow: 0px 0px 6px @blue-800;
-      }
+    &:active {
+      color: @outline-color-active;
+      border: @outline-border-active;
+      box-shadow: none !important;
 
       svg {
-        stroke: @blue-800;
-        stroke-width: 2;
+        stroke: @outline-svg-stroke;
       }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 6px @outline-box-shadow-color;
+    }
+
+    svg {
+      stroke: @outline-svg-stroke;
+      stroke-width: 2;
     }
   }
 

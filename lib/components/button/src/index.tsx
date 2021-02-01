@@ -4,10 +4,9 @@ import s from "./style.module.less";
 
 export interface Props {
   onClick: () => void;
-  theme: "lti" | "hq" | "publishers";
   iconOnly?: boolean;
   icon?: React.ReactElement;
-  type: "primary" | "secondary";
+  type?: "outline";
   height?: string;
   width?: string;
   disabled?: boolean;
@@ -16,9 +15,8 @@ export interface Props {
 
 const Button = ({
   onClick,
-  theme,
   iconOnly,
-  type = "primary",
+  type,
   disabled = false,
   height,
   width,
@@ -30,11 +28,7 @@ const Button = ({
     style={{ height, width }}
     disabled={disabled}
     className={c(s.button, {
-      [s.primary]: type === "primary",
-      [s.secondary]: type === "secondary",
-      [s.publishers]: theme === "publishers",
-      [s.lti]: theme === "lti",
-      [s.hq]: theme === "hq",
+      [s.outline]: type === "outline",
       [s.iconOnly]: iconOnly,
     })}
     type="button"

@@ -143,9 +143,7 @@ const SearchBar = ({
       </AutoComplete>
 
       <Button
-        type="primary"
         onClick={handleSearchButton}
-        theme={theme}
         icon={buttonIcon}
         iconOnly={onlySearchIconInButton}
         text="Search"
