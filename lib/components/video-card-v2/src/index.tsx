@@ -18,6 +18,7 @@ export interface Components {
   actions?: ReactElement[];
   topBadge?: ReactElement;
   additionalBadges?: ReactElement[];
+  title?: ReactElement | string;
 }
 
 const borderClass = {
@@ -37,6 +38,7 @@ export const VideoCardV2 = ({
   border = "all",
   topBadge,
   additionalBadges,
+  title,
 }: Props & Components): any => {
   return (
     <Card
@@ -48,7 +50,7 @@ export const VideoCardV2 = ({
     >
       <section className={s.cardHeader}>
         <h1 data-qa="video-title" className={s.cardHeaderTitle}>
-          {video.title}
+          {title || video.title}
         </h1>
         {topBadge}
       </section>

@@ -27,6 +27,7 @@ const Template: Story<Props & Components & StorybookProps> = ({
   border,
   topBadge,
   additionalBadges,
+  title,
 }: Props & Components & StorybookProps) => (
   <div className={s[theme]}>
     <VideoCardV2
@@ -37,6 +38,7 @@ const Template: Story<Props & Components & StorybookProps> = ({
       border={border}
       topBadge={topBadge}
       additionalBadges={additionalBadges}
+      title={title}
     />
   </div>
 );
@@ -50,6 +52,7 @@ PUBLISHERS.args = {
   // @ts-ignore
   video: exampleVideo,
   videoPlayer: <div />,
+  title: <div>This is a title</div>,
   actions: [
     <div style={{ height: "48px" }}>
       <Button onClick={() => null} text="Add to cart" />
@@ -95,8 +98,4 @@ HQ.args = {
   theme: "hq",
   border: "none",
   additionalBadges: getHqAdditionalBadges(),
-};
-
-loading.args = {
-  video: null,
 };
