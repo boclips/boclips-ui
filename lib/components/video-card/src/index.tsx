@@ -16,7 +16,6 @@ import { MediaBreakpoints } from "@boclips-ui/media-breakpoints";
 import ProviderBadge from "@boclips-ui/provider-badge";
 import c from "classnames";
 import ContentWarningBadge from "@boclips-ui/content-warning-badge";
-import { VideoCardSkeleton } from "@boclips-ui/video-card-placeholder";
 import VideoPromotedSvg from "./resources/promoted-icon.svg";
 import s from "./styles.module.less";
 
@@ -65,7 +64,6 @@ export const VideoCard = ({
   rating,
   videoPlayer,
   videoActionButtons,
-  loading,
   handleOnClick,
   hideBadges,
   theme = "lti",
@@ -247,5 +245,5 @@ export const VideoCard = ({
     </Card>
   );
 
-  return loading ? <VideoCardSkeleton /> : <ClickableCard />;
+  return <ClickableCard />;
 };

@@ -1,12 +1,12 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { VideoCardsPlaceholder } from "../src";
+import VideoCardPlaceholder from "../src";
 
 export default {
   title: "Video Card Placeholder",
-  component: VideoCardsPlaceholder,
+  component: VideoCardPlaceholder,
 } as Meta;
 
-const Template: Story = () => <VideoCardsPlaceholder />;
+const Template: Story = () => <VideoCardPlaceholder />;
 
 export const Default = Template.bind({});

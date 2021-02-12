@@ -1,19 +1,8 @@
 import React from "react";
-import { Card, Col, Skeleton, Spin } from "antd";
+import { Card, Skeleton } from "antd";
 import s from "./styles.module.less";
 
-export const VideoCardsPlaceholder = React.memo(() => (
-  <div className={s.placeholderContainer}>
-    <Spin />
-    {[1, 2, 3, 4, 5, 6].map((number) => (
-      <Col span={24} key={number}>
-        <VideoCardSkeleton />
-      </Col>
-    ))}
-  </div>
-));
-
-export const VideoCardSkeleton = () => (
+const VideoCardPlaceholder = React.memo(() => (
   <Card className={s.videoCardSkeleton} bordered={false}>
     <Skeleton
       loading
@@ -23,4 +12,6 @@ export const VideoCardSkeleton = () => (
       avatar={{ shape: "square", size: "large" }}
     />
   </Card>
-);
+));
+
+export default VideoCardPlaceholder;
