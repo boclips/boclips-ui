@@ -1,17 +1,26 @@
 import React from "react";
-import { Card, Skeleton } from "antd";
 import s from "./styles.module.less";
 
 const VideoCardPlaceholder = React.memo(() => (
-  <Card className={s.videoCardSkeleton} bordered={false}>
-    <Skeleton
-      loading
-      active
-      title={{ width: "150px" }}
-      paragraph={{ rows: 5 }}
-      avatar={{ shape: "square", size: "large" }}
-    />
-  </Card>
+  <div className={s.videoCardSkeleton}>
+    <div className={s.header} style={{ width: "70%" }}>
+      <div className={s.blockLine} />
+      <div className={s.blockLine} />
+    </div>
+    <div className={s.body}>
+      <div className={s.videoplayer} />
+
+      <div className={s.right}>
+        <div className={s.badges}>
+          <div className={s.badge} />
+          <div className={s.badge} />
+        </div>
+        <div className={s.blockLine} />
+        <div className={s.blockLine} />
+        <div className={s.blockLine} />
+      </div>
+    </div>
+  </div>
 ));
 
 export default VideoCardPlaceholder;
