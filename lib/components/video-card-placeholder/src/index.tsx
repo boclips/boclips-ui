@@ -1,12 +1,18 @@
 import React from "react";
 import s from "./styles.module.less";
 
-const VideoCardPlaceholder = React.memo(() => (
+interface Props {
+  displayHeader?: boolean;
+}
+
+const VideoCardPlaceholder = ({ displayHeader = true }: Props) => (
   <div className={s.videoCardSkeleton}>
-    <div className={s.header} style={{ width: "70%" }}>
-      <div className={s.blockLine} />
-      <div className={s.blockLine} />
-    </div>
+    {displayHeader && (
+      <div className={s.header} style={{ width: "70%" }}>
+        <div className={s.blockLine} />
+        <div className={s.blockLine} />
+      </div>
+    )}
     <div className={s.body}>
       <div className={s.videoplayer} />
 
@@ -21,6 +27,6 @@ const VideoCardPlaceholder = React.memo(() => (
       </div>
     </div>
   </div>
-));
+);
 
 export default VideoCardPlaceholder;
