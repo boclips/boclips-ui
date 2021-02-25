@@ -37,7 +37,7 @@ const SearchBar = ({
 }: Props): ReactElement => {
   const [result, setResult] = useState<Completion[]>();
   const [inputValue, setInputValue] = useState<string | undefined>(
-    initialQuery
+    initialQuery || ""
   );
 
   const onChange = (txt: string) => {
@@ -49,13 +49,13 @@ const SearchBar = ({
   };
 
   const handleSearchButton = () => {
-    if (inputValue) {
+    if (inputValue || inputValue === "") {
       onSearch(inputValue, 0);
     }
   };
 
   const onKeyDown = (e: any) => {
-    if (e.key === "Enter" && inputValue && inputValue.length > 2) {
+    if (e.key === "Enter" && (inputValue || inputValue === "")) {
       handleSearchButton();
     }
   };

@@ -33,7 +33,7 @@ export const LTI = Template.bind({});
 export const PUBLISHERS = Template.bind({});
 
 PUBLISHERS.args = {
-  onSearch: () => console.log("search"),
+  onSearch: () => console.log("search triggered <- it's from storybook"),
   placeholder: "Search...",
   theme: "publishers",
   autocomplete: false,
@@ -43,7 +43,7 @@ PUBLISHERS.args = {
 };
 
 LTI.args = {
-  onSearch: () => console.log("search"),
+  onSearch: () => console.log("search triggered <- it's from storybook"),
   placeholder: "Search...",
   theme: "lti",
   autocomplete: true,
