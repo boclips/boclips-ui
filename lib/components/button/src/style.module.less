@@ -44,7 +44,11 @@
 
   &:active {
     background-color: @background-color-active;
+    color: @text-colour-active;
     box-shadow: none !important;
+    svg {
+      stroke: @svg-stroke-colour-active;
+    }
   }
 
   &:focus {
