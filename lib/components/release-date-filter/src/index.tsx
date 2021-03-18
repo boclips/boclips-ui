@@ -6,27 +6,27 @@ import CalendarSVG from "./resources/calendar.svg";
 
 export interface ReleaseDateFilterProps {
   releaseDate?: string;
-  onClick?: (value: Dayjs | null, dateString: string) => void;
+  onChange?: (value: Dayjs | null, dateString: string) => void;
 }
 
-const dateFormat = "DD-MM-YYYY";
+const dateFormat = "MM-DD-YYYY";
 
 const ReleaseDateFilter = ({
   releaseDate,
-  onClick,
+  onChange,
 }: ReleaseDateFilterProps) => {
-  const formattedDate = dayjs(releaseDate);
+  const formattedDate = releaseDate ? dayjs(releaseDate) : undefined;
 
   return (
     <div role="button" className={s.datePicker}>
       <DatePicker
         suffixIcon={<CalendarSVG />}
         format={dateFormat}
-        placeholder="DD-MM-YYYY"
+        placeholder="MM-DD-YYYY"
         showToday={false}
-        defaultValue={formattedDate.isValid() ? formattedDate : undefined}
+        defaultValue={formattedDate?.isValid() ? formattedDate : undefined}
         dropdownClassName={s.datePickerDropdown}
-        onChange={onClick}
+        onChange={onChange}
       />
     </div>
   );

@@ -9,14 +9,14 @@ export default {
 
 const Template: Story<ReleaseDateFilterProps> = ({
   releaseDate,
-  onClick,
+  onChange,
 }: ReleaseDateFilterProps) => (
-  <ReleaseDateFilter onClick={onClick} releaseDate={releaseDate} />
+  <ReleaseDateFilter onChange={onChange} releaseDate={releaseDate} />
 );
 
 export const DEFAULT = Template.bind({});
 
 DEFAULT.args = {
-  releaseDate: "2014-06-24",
-  onClick: (value, dateString) => console.log(`${value} ${dateString}`),
+  releaseDate: "04-22-2010",
+  onChange: (value, dateString) => console.log(`${value} ${dateString}`),
 };
