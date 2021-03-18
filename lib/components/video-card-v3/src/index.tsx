@@ -69,6 +69,9 @@ const VideoCardV3 = ({
         <div> {video.channel} </div>
       </section>
 
+      {additionalBadges && (
+        <section className={s.additionalBadges}>{additionalBadges}</section>
+      )}
       {actions && <section className={s.buttons}>{actions}</section>}
 
       <div className={s.price}>{price}</div>

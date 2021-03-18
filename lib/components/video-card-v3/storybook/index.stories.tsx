@@ -54,6 +54,20 @@ export const LTI = Template.bind({});
 // export const PUBLISHERS = Template.bind({});
 // export const loading = Template.bind({});
 
+const AdditionalBadges = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+      }}
+    >
+      <span>YouTube</span>
+      <span>Kaltura</span>
+    </div>
+  );
+};
+
 const ActionButtons = () => {
   const onClick = () => null;
 
@@ -113,6 +127,7 @@ LTI.args = {
   theme: "lti",
   price: "$600",
   actions: [<ActionButtons />],
+  additionalBadges: [<AdditionalBadges />],
   topBadge: (
     <div>
       <ProviderBadge

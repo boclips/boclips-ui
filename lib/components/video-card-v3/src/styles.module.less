@@ -50,6 +50,12 @@
   }
 }
 
+.additionalBadges {
+  margin-top: 0.5rem;
+  height: 0rem; // FIZME - I do not know how to do it better
+  overflow: hidden; // FIZME - I do not know how to do it better
+}
+
 .price{
   position: relative;
   z-index: 99;
@@ -65,18 +71,65 @@
   font-weight: bold;
 }
 
-@media screen and (min-width: @screen-sm) {
+@media screen and (min-width: @screen-sm-min) {
   .grid {
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(4, auto);
     grid-column-gap: .5rem;
 
-
-    // might change
-    & > section {
-      grid-column-start: 1;
-      grid-column-end: 25;
+    & > :not(section:first-child){
+      padding: 0 .25rem;
     }
+  }
+
+  .videoPlayer {
+    grid-column-start: 1;
+    grid-column-end: 25;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  .header {
+    grid-column-start: 1;
+    grid-column-end: 25;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+
+  .subheader {
+    grid-column-start: 1;
+    grid-column-end: 25;
+    grid-row-start: 3;
+    grid-row-end: 3;
+  }
+
+  .additionalBadges {
+    grid-column-start: 1;
+    grid-column-end: 25;
+    grid-row-start: 4;
+    grid-row-end: 4;
+  }
+
+  .buttons {
+    grid-column-start: 1;
+    grid-column-end: 25;
+    grid-row-start: 5;
+    grid-row-end: 5;
+  }
+
+  .price{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 21;
+    grid-column-end: 25;
+  }
+}
+
+@media screen and (min-width: @screen-md) {
+  .grid {
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-column-gap: .5rem;
 
     & > :not(section:first-child){
       padding: 0 .25rem;
@@ -85,23 +138,45 @@
 
   .videoPlayer {
     grid-row-start: 1;
-    grid-row-end: 1;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 12;
   }
 
   .header {
-    grid-row-start: 2;
-    grid-row-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 12;
+    grid-column-end: 25;
   }
 
   .subheader {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 12;
+    grid-column-end: 25;
+  }
+
+  .additionalBadges {
     grid-row-start: 3;
     grid-row-end: 3;
+    grid-column-start: 12;
+    grid-column-end: 25;
+    height: auto; // FIZME - I do not know how to do it better
+    overflow: auto; // FIZME - I do not know how to do it better
+  }
+
+  .buttons {
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 12;
+    grid-column-end: 25;
   }
 
   .price{
     grid-row-start: 1;
     grid-row-end: 2;
-    grid-column-start: 21;
-    grid-column-end: 25;
+    grid-column-start: 9;
+    grid-column-end: 11;
   }
 }
