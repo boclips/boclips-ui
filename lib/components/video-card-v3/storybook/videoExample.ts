@@ -2,7 +2,7 @@ import AgeRange from "../../../types/age-range/src";
 
 export const exampleVideo = {
   id: "5c54d7cdd8eafeecae20ee58",
-  title: "TED-ED: Distorting Madonna in Medieval art - James Earle",
+  title: "TED-ED: Distorting Madonna in Medieval art - James Earle TED-ED: Distorting Madonna in Medieval art - James Earle",
   description: `How has the process of declaring war changed throughout the United States' history? What prompted Congress to enact the War Powers Resolution in the '70s, and what effect did it have?
 
 Subscribe for more HISTORY:
@@ -21,7 +21,7 @@ Whether you're looking for more on American Revolution battles, WWII generals, a
 
 HISTORY®, now reaching more than 98 million homes, is the leading destination for award-winning original series and specials that connect viewers with history in an informative, immersive, and entertaining manner across all platforms. The network’s all-original programming slate features a roster of hit series, epic miniseries, and scripted event programming. Visit us at HISTORY.com for more info.`,
   additionalDescription: null,
-  releasedOn: "2013-02-19",
+  releasedOn: new Date("2013-02-19"),
   playback: {
     type: "STREAM",
     id: "0_0r24xtco",

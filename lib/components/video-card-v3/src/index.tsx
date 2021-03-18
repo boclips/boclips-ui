@@ -3,9 +3,14 @@ import { ExtendedVideo } from "@boclips-ui/video";
 import { Card } from "antd";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
 import SubjectBadge from "@boclips-ui/subject-badge";
+import * as dayjs from "dayjs";
 import ReleasedOn from "@boclips-ui/released-on";
 import c from "classnames";
 import s from "./styles.module.less";
+
+const durationPlugin = require("dayjs/plugin/duration");
+
+dayjs.extend(durationPlugin);
 
 export interface Props {
   video: ExtendedVideo;
@@ -19,6 +24,7 @@ export interface Components {
   topBadge?: ReactElement;
   additionalBadges?: ReactElement[];
   title?: ReactElement | string;
+  price?: string;
 }
 
 const borderClass = {
@@ -38,8 +44,11 @@ const VideoCardV3 = ({
   border = "all",
   topBadge,
   additionalBadges,
+  price,
   title,
 }: Props & Components): any => {
+  const duration = dayjs.duration(video.playback.duration).format("mm:ss");
+
   return (
     <div
       onClick={handleOnClick}
@@ -49,16 +58,20 @@ const VideoCardV3 = ({
       <section className={s.videoPlayer}>{videoPlayer}</section>
       <section className={s.header}>{title}</section>
       <section className={s.subheader}>
+        {video && video.playback.duration && <div>{duration}</div>}
+
         {video.releasedOn && video.createdBy && (
-          <ReleasedOn
-            releasedOn={video.releasedOn}
-            createdBy={video.createdBy}
-          />
+          <div>
+            <ReleasedOn releasedOn={video.releasedOn} />
+          </div>
         )}
+
+        <div> {video.channel} </div>
       </section>
-      {/* <section className={s.price}>price</section> */}
-      {/* <section className={s.buttons}>buttons</section> */}
-      {/* <section className={s.body}>body</section> */}
+
+      {actions && <section className={s.buttons}>{actions}</section>}
+
+      <div className={s.price}>{price}</div>
     </div>
   );
 };
