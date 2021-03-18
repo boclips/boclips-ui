@@ -1,0 +1,14 @@
+{
+  "extends": "@boclips-ui/ts-config/tsconfig.json",
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "compilerOptions": {
+    "jsx": "react",
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "storybook"
+  ]
+}

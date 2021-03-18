@@ -62,6 +62,8 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.1",
     "boclips-api-client": "^17.4.2",
+    "boclips-player": "^6.4.0",
+    "boclips-player-react": "^1.2.4",
     "css-loader": "^4.2.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
