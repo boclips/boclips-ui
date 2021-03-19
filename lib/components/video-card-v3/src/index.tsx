@@ -1,11 +1,11 @@
 import React, { ReactElement } from "react";
 import { ExtendedVideo } from "@boclips-ui/video";
-import { Card } from "antd";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
 import SubjectBadge from "@boclips-ui/subject-badge";
 import * as dayjs from "dayjs";
 import ReleasedOn from "@boclips-ui/released-on";
 import c from "classnames";
+import ProviderBadge from "@boclips-ui/provider-badge";
 import s from "./styles.module.less";
 
 const durationPlugin = require("dayjs/plugin/duration");
@@ -26,7 +26,6 @@ export interface Components {
   title?: ReactElement | string;
   price?: string;
   duration?: string;
-  preBadges?: ReactElement[];
 }
 
 const borderClass = {
@@ -49,7 +48,6 @@ const VideoCardV3 = ({
   price,
   duration,
   title,
-  preBadges,
 }: Props & Components): any => {
   return (
     <div
@@ -72,6 +70,8 @@ const VideoCardV3 = ({
       </section>
 
       <section className={s.badges}>
+        {video.playback.type === "YOUTUBE" && <ProviderBadge isLicensed />}
+
         {video.ageRange && <AgeRangeBadge ageRange={video.ageRange} />}
 
         {video.subjects?.map((it) => (

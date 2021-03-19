@@ -126,7 +126,6 @@ LTI.args = {
   // @ts-ignore
   video: exampleVideo,
   duration,
-  preBadges: PreBadges(),
   title: exampleVideo.title,
   videoPlayer: <Player videoUri={exampleVideo._links.self.href} />,
   theme: "lti",

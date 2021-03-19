@@ -23,7 +23,7 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
   additionalDescription: null,
   releasedOn: new Date("2013-02-19"),
   playback: {
-    type: "STREAM",
+    type: "YOUTUBE",
     id: "0_0r24xtco",
     duration: "PT3M7S",
     referenceId: "2e4fbf0c-d0eb-4cdc-a6aa-534df1f15400",
