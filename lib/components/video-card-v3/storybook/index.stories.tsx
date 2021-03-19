@@ -4,14 +4,17 @@ import ProviderBadge from "@boclips-ui/provider-badge";
 // @ts-ignore
 import Button from "@boclips-ui/button";
 import { Player } from "boclips-player-react";
+import * as dayjs from "dayjs";
 import VideoCardV3, { Props, Components } from "../src";
 import { exampleVideo } from "./videoExample";
 // @ts-ignore
 import SearchIcon from "../resources/search-icon.svg";
+import YTIcon from "../resources/yt.svg";
 import PlusIcon from "../resources/plus.svg";
 
 // @ts-ignore
 import s from "./styles.module.less";
+import Badge from "../../badge/dist";
 
 export default {
   title: "VideoCardThree",
@@ -32,11 +35,13 @@ const Template: Story<Props & Components & StorybookProps> = ({
   topBadge,
   additionalBadges,
   title,
+  duration,
   price,
 }: Props & Components & StorybookProps) => (
   <div className={s[theme]}>
     <VideoCardV3
       video={video}
+      duration={duration}
       videoPlayer={videoPlayer}
       actions={actions}
       handleOnClick={handleOnClick}
@@ -55,17 +60,13 @@ export const LTI = Template.bind({});
 // export const loading = Template.bind({});
 
 const AdditionalBadges = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-      }}
-    >
-      <span>YouTube</span>
-      <span>Kaltura</span>
-    </div>
-  );
+  return [
+    <Badge label="Badge one" />,
+    <Badge label="Badge two" />,
+    <Badge label="Badge three" />,
+    <Badge label="Badge four" />,
+    <Badge label="Badge five" />,
+  ];
 };
 
 const ActionButtons = () => {
@@ -119,15 +120,19 @@ const ActionButtons = () => {
   );
 };
 
+const duration = dayjs.duration(exampleVideo.playback.duration).format("mm:ss");
+
 LTI.args = {
   // @ts-ignore
   video: exampleVideo,
+  duration,
+  preBadges: PreBadges(),
   title: exampleVideo.title,
   videoPlayer: <Player videoUri={exampleVideo._links.self.href} />,
   theme: "lti",
   price: "$600",
   actions: [<ActionButtons />],
-  additionalBadges: [<AdditionalBadges />],
+  additionalBadges: AdditionalBadges(),
   topBadge: (
     <div>
       <ProviderBadge

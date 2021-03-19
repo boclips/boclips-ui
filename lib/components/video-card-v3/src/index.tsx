@@ -25,6 +25,8 @@ export interface Components {
   additionalBadges?: ReactElement[];
   title?: ReactElement | string;
   price?: string;
+  duration?: string;
+  preBadges?: ReactElement[];
 }
 
 const borderClass = {
@@ -45,10 +47,10 @@ const VideoCardV3 = ({
   topBadge,
   additionalBadges,
   price,
+  duration,
   title,
+  preBadges,
 }: Props & Components): any => {
-  const duration = dayjs.duration(video.playback.duration).format("mm:ss");
-
   return (
     <div
       onClick={handleOnClick}
@@ -69,9 +71,16 @@ const VideoCardV3 = ({
         <div> {video.channel} </div>
       </section>
 
-      {additionalBadges && (
-        <section className={s.additionalBadges}>{additionalBadges}</section>
-      )}
+      <section className={s.badges}>
+        {video.ageRange && <AgeRangeBadge ageRange={video.ageRange} />}
+
+        {video.subjects?.map((it) => (
+          <SubjectBadge key={it.id} subject={it} />
+        ))}
+
+        {additionalBadges && additionalBadges}
+      </section>
+
       {actions && <section className={s.buttons}>{actions}</section>}
 
       <div className={s.price}>{price}</div>
