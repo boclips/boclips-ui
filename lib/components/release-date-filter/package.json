@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/release-date-filter",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-y.0",
   "files": [
     "dist/**/*"
   ],
