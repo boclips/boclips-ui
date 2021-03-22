@@ -15,7 +15,7 @@ const ReleaseDateFilter = ({
   releaseDate,
   onChange,
 }: ReleaseDateFilterProps) => {
-  const formattedDate = releaseDate && dayjs(releaseDate);
+  const formattedDate = releaseDate ? dayjs(releaseDate) : undefined;
 
   return (
     <div role="button" className={s.datePicker}>
