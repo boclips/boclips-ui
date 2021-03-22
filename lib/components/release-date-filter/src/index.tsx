@@ -15,18 +15,19 @@ const ReleaseDateFilter = ({
   releaseDate,
   onChange,
 }: ReleaseDateFilterProps) => {
-  const formattedDate = releaseDate ? dayjs(releaseDate) : undefined;
+  const formattedDate = releaseDate && dayjs(releaseDate);
 
   return (
     <div role="button" className={s.datePicker}>
       <DatePicker
         suffixIcon={<CalendarSVG />}
         format={dateFormat}
-        placeholder="MM-DD-YYYY"
+        placeholder={dateFormat}
         showToday={false}
-        defaultValue={formattedDate?.isValid() ? formattedDate : undefined}
+        value={formattedDate?.isValid() ? formattedDate : undefined}
         dropdownClassName={s.datePickerDropdown}
         onChange={onChange}
+        clearIcon={undefined}
       />
     </div>
   );
