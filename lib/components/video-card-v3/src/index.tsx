@@ -99,6 +99,8 @@ const VideoCardV3 = ({
         )}
       </section>
 
+      <section className={s.description}>{video.description}</section>
+
       {actions && <section className={s.buttons}>{actions}</section>}
 
       <div className={s.price}>{price}</div>
