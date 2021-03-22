@@ -1,6 +1,7 @@
 @import "variables.less";
 @import '~@boclips-ui/styles/src/breakpoints';
 @import '~@boclips-ui/styles/src/publishersColours';
+@import '~@boclips-ui/badge/src/variables.less';
 
 
 .videoCard {
@@ -165,6 +166,14 @@
     grid-column-start: 12;
     grid-column-end: 25;
     display: flex;
+    max-height: @badge-height; // FIXME - the height is not picked
+    //max-height: 64px;
+    overflow: hidden;
+  }
+
+  .showMoreLabel {
+    font-weight: bold;
+    padding-left: 0.25rem;
   }
 
   .buttons {

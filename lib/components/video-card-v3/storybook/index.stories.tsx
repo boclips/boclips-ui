@@ -66,6 +66,9 @@ const AdditionalBadges = () => {
     <Badge label="Badge three" />,
     <Badge label="Badge four" />,
     <Badge label="Badge five" />,
+    <Badge label="Badge six" />,
+    <Badge label="Badge seven" />,
+    <Badge label="Badge eight" />,
   ];
 };
 

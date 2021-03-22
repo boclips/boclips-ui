@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, {ReactElement, useState} from "react";
 import { ExtendedVideo } from "@boclips-ui/video";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
 import SubjectBadge from "@boclips-ui/subject-badge";
@@ -49,6 +49,24 @@ const VideoCardV3 = ({
   duration,
   title,
 }: Props & Components): any => {
+  const [showMoreGadges, setShowMoreBadges] = useState<boolean>(false);
+
+  const buildBadges = () => {
+    const badges = [
+      video.playback.type === "YOUTUBE" ? [<ProviderBadge />] : [],
+      video.ageRange ? [<AgeRangeBadge ageRange={video.ageRange} />] : [],
+      video.subjects?.map((it) => <SubjectBadge key={it.id} subject={it} />),
+      additionalBadges,
+    ].flat();
+
+    if (showMoreGadges) {
+      return badges;
+    }
+    return badges.slice(0, 2);
+  };
+
+  const badgesToShow = buildBadges();
+
   return (
     <div
       onClick={handleOnClick}
@@ -70,15 +88,15 @@ const VideoCardV3 = ({
       </section>
 
       <section className={s.badges}>
-        {video.playback.type === "YOUTUBE" && <ProviderBadge isLicensed />}
-
-        {video.ageRange && <AgeRangeBadge ageRange={video.ageRange} />}
-
-        {video.subjects?.map((it) => (
-          <SubjectBadge key={it.id} subject={it} />
-        ))}
-
-        {additionalBadges && additionalBadges}
+        {badgesToShow}
+        {!showMoreGadges && (
+          <span
+            className={s.showMoreLabel}
+            onClick={() => setShowMoreBadges(true)}
+          >
+            More...
+          </span>
+        )}
       </section>
 
       {actions && <section className={s.buttons}>{actions}</section>}
