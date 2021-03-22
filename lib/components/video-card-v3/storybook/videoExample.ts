@@ -3,7 +3,7 @@ import AgeRange from "../../../types/age-range/src";
 export const exampleVideo = {
   id: "5c54d7cdd8eafeecae20ee58",
   title:
-    "TED-ED: Distorting Madonna in Medieval art - James Earle - James Earle",
+    "TED-ED: Distorting Madonna in Medieval art - James Earle - James Earle Distorting Madonna in Medieval art Distorting Madonna in Medieval art Distorting Madonna in Medieval art Distorting Madonna in Medieval art Distorting Madonna in Medieval art",
   description: `How has the process of declaring war changed throughout the United States' history? What prompted Congress to enact the War Powers Resolution in the '70s, and what effect did it have?
 
 Subscribe for more HISTORY:

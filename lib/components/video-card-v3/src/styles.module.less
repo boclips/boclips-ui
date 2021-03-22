@@ -76,6 +76,7 @@
 
 .showMoreLabel {
   margin-top: 4px;
+  cursor: pointer;
 }
 
 @media screen and (min-width: @screen-sm) {
@@ -270,6 +271,78 @@
     color: @blue-800;
     padding: @badge-padding;
     background: white;
+  }
+
+  .buttons {
+    grid-row-start: 6;
+    grid-row-end: last;
+    grid-column-start: 9;
+    grid-column-end: -1;
+  }
+
+  .price {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 16;
+    grid-column-end: -1;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: @screen-xxl) {
+  .videoPlayer {
+    grid-row-start: 1;
+    grid-row-end: last;
+    grid-column-start: 1;
+    grid-column-end: 9;
+  }
+
+  .header {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    -webkit-line-clamp: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 9;
+    grid-column-end: 18;
+  }
+
+  .subheader {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 9;
+    grid-column-end: 16;
+    font-size: 0.75rem;
+  }
+
+  .badges {
+    grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 9;
+    grid-column-end: -1;
+    display: flex;
+    overflow: hidden;
+    max-height: 58px;
+  }
+
+  .description {
+    display: block;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 9;
+    grid-column-end: -1;
+    white-space: break-spaces;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 1rem;
+    margin-top: .5rem;
+  }
+
+
+  .showMoreLabel {
+    display:none;
   }
 
   .buttons {

@@ -7,6 +7,7 @@ import ReleasedOn from "@boclips-ui/released-on";
 import c from "classnames";
 import ProviderBadge from "@boclips-ui/provider-badge";
 import s from "./styles.module.less";
+import {useMediaBreakPoint} from "@boclips-ui/use-media-breakpoints";
 
 const durationPlugin = require("dayjs/plugin/duration");
 
@@ -41,6 +42,7 @@ const VideoCardV3 = ({
   title,
 }: Props & Components): any => {
   const [showMoreBadges, setShowMoreBadges] = useState<boolean>(false);
+  const breakpoint = useMediaBreakPoint();
 
   const renderBadges = useMemo(() => {
     const badges = [];
