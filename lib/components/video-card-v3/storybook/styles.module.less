@@ -1,5 +1,6 @@
 @import "~@boclips-ui/styles/src/publishersColours";
 @import "~@boclips-ui/styles/src/LTIColours";
+@import '~@boclips-ui/styles/src/breakpoints';
 
 .publishers {
   font-family: "Rubik", Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -33,4 +34,8 @@
   --bo-ui-badge-height: 24px;
   --bo-ui-badge-margin: 0 2px 2px 0;
   --bo-ui-badge-svg-height: 12px;
+
+  @media screen and (min-width: @screen-sm) {
+    --bo-ui-badge-margin: 4px 4px 0 0;
+  }
 }

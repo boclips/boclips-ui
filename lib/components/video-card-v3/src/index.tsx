@@ -1,4 +1,4 @@
-import React, {ReactElement, useState} from "react";
+import React, { ReactElement, useMemo, useState } from "react";
 import { ExtendedVideo } from "@boclips-ui/video";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
 import SubjectBadge from "@boclips-ui/subject-badge";
@@ -11,6 +11,9 @@ import s from "./styles.module.less";
 const durationPlugin = require("dayjs/plugin/duration");
 
 dayjs.extend(durationPlugin);
+
+const DEFAULT_VISIBLE_BADGES = 3;
+const YOUTUBE = "YOUTUBE";
 
 export interface Props {
   video: ExtendedVideo;
@@ -28,80 +31,93 @@ export interface Components {
   duration?: string;
 }
 
-const borderClass = {
-  all: s.border,
-  left: s.leftBorder,
-  right: s.rightBorder,
-  top: s.topBorder,
-  bottom: s.bottomBorder,
-  none: undefined,
-};
-
 const VideoCardV3 = ({
   video,
   videoPlayer,
   actions,
   handleOnClick,
-  border = "all",
-  topBadge,
-  additionalBadges,
   price,
   duration,
   title,
 }: Props & Components): any => {
-  const [showMoreGadges, setShowMoreBadges] = useState<boolean>(false);
+  const [showMoreBadges, setShowMoreBadges] = useState<boolean>(false);
 
-  const buildBadges = () => {
-    const badges = [
-      video.playback.type === "YOUTUBE" ? [<ProviderBadge />] : [],
-      video.ageRange ? [<AgeRangeBadge ageRange={video.ageRange} />] : [],
-      video.subjects?.map((it) => <SubjectBadge key={it.id} subject={it} />),
-      additionalBadges,
-    ].flat();
+  const renderBadges = useMemo(() => {
+    const badges = [];
 
-    if (showMoreGadges) {
-      return badges;
+    if (video.playback.type === YOUTUBE) {
+      badges.push(<ProviderBadge />);
     }
-    return badges.slice(0, 2);
-  };
 
-  const badgesToShow = buildBadges();
+    if (video.ageRange) {
+      badges.push(<AgeRangeBadge ageRange={video.ageRange} />);
+    }
+
+    if (video.subjects) {
+      video.subjects.forEach((it) => {
+        badges.push(<SubjectBadge key={it.id} subject={it} />);
+      });
+    }
+
+    return badges
+      .slice(0, showMoreBadges ? badges.length : DEFAULT_VISIBLE_BADGES)
+      .map((badge, key) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <React.Fragment key={`badge-${key}`}>{badge}</React.Fragment>
+      ));
+  }, [video, showMoreBadges]);
 
   return (
     <div
+      role="presentation"
       onClick={handleOnClick}
       data-qa="video-card"
       className={c(s.grid, s.videoCard)}
     >
       <section className={s.videoPlayer}>{videoPlayer}</section>
+
       <section className={s.header}>{title}</section>
+
       <section className={s.subheader}>
         {video && video.playback.duration && <div>{duration}</div>}
 
         {video.releasedOn && video.createdBy && (
-          <div>
-            <ReleasedOn releasedOn={video.releasedOn} />
-          </div>
+          <ReleasedOn releasedOn={video.releasedOn} />
         )}
 
         <div> {video.channel} </div>
       </section>
 
-      <section className={s.badges}>
-        {badgesToShow}
-        {!showMoreGadges && (
+      <section className={c(s.badges, { [s.badgesClosed]: !showMoreBadges })}>
+        {renderBadges}
+
+        {!showMoreBadges && (
           <span
+            role="presentation"
             className={s.showMoreLabel}
-            onClick={() => setShowMoreBadges(true)}
+            onClick={() => setShowMoreBadges(!showMoreBadges)}
           >
             More...
           </span>
         )}
       </section>
 
-      {actions && <section className={s.buttons}>{actions}</section>}
+      <section
+        className={c(s.description, { [s.twoLineClamp]: showMoreBadges })}
+      >
+        {video.description}
+      </section>
 
-      <div className={s.price}>{price}</div>
+      {actions && (
+        <section className={s.buttons}>
+          {actions.map((action, key) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <React.Fragment key={`${key}-action`}>{action}</React.Fragment>
+          ))}
+        </section>
+      )}
+
+      {price && <div className={s.price}>{price}</div>}
     </div>
   );
 };

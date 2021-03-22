@@ -59,19 +59,6 @@ export const LTI = Template.bind({});
 // export const PUBLISHERS = Template.bind({});
 // export const loading = Template.bind({});
 
-const AdditionalBadges = () => {
-  return [
-    <Badge label="Badge one" />,
-    <Badge label="Badge two" />,
-    <Badge label="Badge three" />,
-    <Badge label="Badge four" />,
-    <Badge label="Badge five" />,
-    <Badge label="Badge six" />,
-    <Badge label="Badge seven" />,
-    <Badge label="Badge eight" />,
-  ];
-};
-
 const ActionButtons = () => {
   const onClick = () => null;
 
@@ -134,13 +121,4 @@ LTI.args = {
   theme: "lti",
   price: "$600",
   actions: [<ActionButtons />],
-  additionalBadges: AdditionalBadges(),
-  topBadge: (
-    <div>
-      <ProviderBadge
-        isLicensed={exampleVideo?.playback?.type === "STREAM"}
-        key="provider-badge"
-      />
-    </div>
-  ),
 };

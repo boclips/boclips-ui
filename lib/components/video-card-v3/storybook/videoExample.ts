@@ -2,7 +2,8 @@ import AgeRange from "../../../types/age-range/src";
 
 export const exampleVideo = {
   id: "5c54d7cdd8eafeecae20ee58",
-  title: "TED-ED: Distorting Madonna in Medieval art - James Earle THIS-IS-STILL-A-TITLE: Distorting Madonna in Medieval art - James Earle YET-ANOTHER-LINE-OF-TITLE: Distorting Madonna in Medieval art - James Earle",
+  title:
+    "TED-ED: Distorting Madonna in Medieval art - James Earle - James Earle",
   description: `How has the process of declaring war changed throughout the United States' history? What prompted Congress to enact the War Powers Resolution in the '70s, and what effect did it have?
 
 Subscribe for more HISTORY:
@@ -69,7 +70,14 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
       },
     },
   },
-  subjects: [{ id: "5cb1f6ba5c9cb675c59df37b", name: "Art History" }],
+  subjects: [
+    { id: "5cb1f6ba5c9cb675c59df37b", name: "Art History" },
+    { id: "5cb1f6ba35c9cb675c59df37b", name: "Art History 1" },
+    { id: "5cb1f6ba5c9cb675c259df37b", name: "Art History 2" },
+    { id: "5cb1f6ba5c9cb675c59df37123b", name: "Art History 3" },
+    { id: "5cb1f6ba5c9cb675c59df3447b", name: "Art History 4" },
+    { id: "5cb1f6ba5c9cb675c59d2211f37b", name: "Art History 5" },
+  ],
   badges: ["ad-free"],
   legalRestrictions:
     "No editing permitted. Please contact boclips for full pricing and availability of TED-Ed videos.",
