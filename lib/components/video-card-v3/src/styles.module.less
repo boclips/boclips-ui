@@ -166,8 +166,7 @@
     grid-column-start: 12;
     grid-column-end: 25;
     display: flex;
-    max-height: @badge-height; // FIXME - the height is not picked
-    //max-height: 64px;
+    max-height: calc(2 * (@badge-height + @badge-padding)); // FIXME - is this OK?
     overflow: hidden;
   }
 
