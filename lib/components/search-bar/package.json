@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/search-bar",
-  "version": "1.4.5-alpha.0",
+  "version": "1.4.6-alpha.0",
   "files": [
     "dist/**/*"
   ],
@@ -12,8 +12,8 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/search-bar --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/button": "^2.0.4-alpha.0",
-    "@boclips-ui/styles": "^2.1.9"
+    "@boclips-ui/button": "^2.0.5-alpha.0",
+    "@boclips-ui/styles": "^2.2.0"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.10"
@@ -30,5 +30,5 @@
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "b6a7aa614a67950faf8c17b189a1468e703f65e2"
+  "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/content-warning-badge",
-  "version": "1.0.26-alpha.0",
+  "version": "1.0.27-alpha.0",
   "files": [
     "dist/**/*"
   ],
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/content-warning-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^2.1.9",
+    "@boclips-ui/styles": "^2.2.0",
     "@boclips-ui/video": "^2.0.0"
   },
   "devDependencies": {
@@ -29,5 +29,5 @@
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "b6a7aa614a67950faf8c17b189a1468e703f65e2"
+  "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2"
 }
