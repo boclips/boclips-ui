@@ -20,7 +20,7 @@ Season 1
 Whether you're looking for more on American Revolution battles, WWII generals, architectural wonders, secrets of the ancient world, U.S. presidents, Civil War leaders, famous explorers or the stories behind your favorite holidays.
 
 HISTORY®, now reaching more than 98 million homes, is the leading destination for award-winning original series and specials that connect viewers with history in an informative, immersive, and entertaining manner across all platforms. The network’s all-original programming slate features a roster of hit series, epic miniseries, and scripted event programming. Visit us at HISTORY.com for more info.`,
-  additionalDescription: null,
+  additionalDescription: undefined,
   releasedOn: new Date("2013-02-19"),
   playback: {
     type: "YOUTUBE",
@@ -28,7 +28,7 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
     duration: "PT3M7S",
     referenceId: "2e4fbf0c-d0eb-4cdc-a6aa-534df1f15400",
     maxResolutionAvailable: false,
-    _links: {
+    links: {
       createPlaybackEvent: {
         href: "https://api.boclips.com/v1/events/playback",
         templated: false,
@@ -95,7 +95,7 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
   types: [{ id: 3, name: "Instructional Clips" }],
   captionStatus: null,
   isVoiced: null,
-  _links: {
+  links: {
     self: {
       href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58",
       templated: false,

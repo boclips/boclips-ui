@@ -113,7 +113,7 @@ DEFAULT.args = {
   video: exampleVideo,
   duration,
   title: exampleVideo.title,
-  videoPlayer: <Player videoUri={exampleVideo._links.self.href} />,
+  videoPlayer: <Player videoUri={exampleVideo.links.self.href} />,
   theme: "lti",
   price: "$600",
   actions: [<ActionButtons />],
