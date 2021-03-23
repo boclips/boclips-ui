@@ -57,10 +57,7 @@ export const VideoCardV2 = ({
 
       <section className={s.cardSubHeader}>
         {video.releasedOn && video.createdBy && (
-          <ReleasedOn
-            releasedOn={video.releasedOn}
-            createdBy={video.createdBy}
-          />
+          <ReleasedOn releasedOn={video.releasedOn} />
         )}
       </section>
 

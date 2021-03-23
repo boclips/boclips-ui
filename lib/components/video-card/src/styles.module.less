@@ -1,372 +1,372 @@
-@import '~@boclips-ui/styles/src/LTIColours';
-@import '~@boclips-ui/styles/src/publishersColours';
-@import '~@boclips-ui/styles/src/breakpoints';
-
-@video-width: 304px;
-@video-height: 171px;
-@video-border-radius: 8px;
-
-:root {
-  --descriptionColor: @neutral-shade-1;
-
-  --titleColour: @neutral-shade-1;
-
-  --LTIBorder: 1px solid #e8e8e8;
-  --LTIBorderRadius: 8px;
-  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
-  --LTIDescription: @neutral-shade-1;
-
-  --HQFontFamily: Proxima Nova, Roboto, Helvetica, Arial, sans-serif;
-  --HQBoxShadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-
-  --PublishersBorderRadius: 4px;
-  --PublishersBorder: 2px solid @blue-300;
-  --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
-  --PublishersFontSize: 16px; // TODO: change to rem
-
-  --lineClampSmall: 3;
-  --lineClampRegular: 5;
-}
-
-.videoCard {
-  box-shadow: none;
-  max-height: 263px;
-
-  .cardHeader {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
-
-    .editModeInput {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.4);
-      padding: 0 4px;
-      margin-right: 15px;
-
-      &:hover {
-        border: 1px solid @dark-orange;
-      }
-    }
-
-    .cardHeaderTitle {
-      font-size: 18px;
-      font-weight: bold;
-      line-height: 22px;
-      margin-right: 12px;
-      margin-bottom: 0;
-    }
-  }
-
-  .cardSubHeader {
-    div:only-child {
-      padding: 0;
-    }
-
-    .rating {
-      display: inline-block;
-      width: auto;
-      font-size: 14px;
-      font-weight: bold;
-      line-height: 24px;
-      margin-bottom: 4px;
-      text-decoration: underline;
-    }
-  }
-
-  .cardBody {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    height: 100%;
-    @media (max-width: @screen-sm-max) {
-      width: 100%;
-      flex-wrap: wrap;
-    }
-
-    .videoPlayer {
-      background-color: black;
-
-      &.videoRoundedCorners {
-        border-radius: 4px;
-
-        &:first-child {
-          border-radius: 4px;
-        }
-      }
-
-      @media (min-width: @screen-md) {
-        height: @video-height;
-        width: @video-width;
-      }
-
-      @media (max-width: @screen-sm-max) {
-        width: 100%;
-      }
-
-      video {
-        width: 100%;
-        height: 100%;
-        background-color: black;
-      }
-
-      :global .small-player {
-        :global .plyr__menu,
-        :global .plyr__progress__container,
-        :global .plyr__time {
-          display: none;
-        }
-      }
-
-      :global .plyr--fullscreen {
-        :global .plyr__menu,
-        :global .plyr__time {
-          display: flex;
-        }
-
-        :global .plyr__progress__container {
-          display: inline-grid;
-        }
-
-      }
-    }
-
-    .bodyRight {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-
-      margin: 0 0 0 15px;
-      width: calc(100% - (@video-width + 15px));
-
-      @media (max-width: @screen-md) {
-        width: 100%;
-        margin: 0;
-        padding: 12px 0;
-      }
-
-
-      .description {
-        display: flex;
-        word-break: break-word;
-        white-space: pre-line;
-        font-size: 14px;
-        line-height: 21px;
-        overflow: hidden;
-        height: calc(21px * var(--lineClampRegular));
-        position: relative;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-
-        &.short {
-          height: calc(21px * var(--lineClampSmall));
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-        }
-      }
-
-      .videoActionButtons {
-        margin-top: auto;
-        width: 100%;
-      }
-
-      .badgeList {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        flex-direction: row;
-        padding-right: 10px;
-        position: relative;
-
-        &:last-child {
-          margin-right: 0;
-        }
-
-        @media (max-width: @screen-md) {
-          padding-right: 40px;
-        }
-      }
-
-    }
-
-  }
-
-  @media (max-width: @screen-sm-max) {
-    padding: 0;
-    flex-direction: column;
-
-    .buttons-row {
-      display: none;
-    }
-
-    .video-preview {
-      margin-top: 3px;
-      height: 0;
-      // the aspect should be 16:9
-      padding-bottom: 100% / 16 * 9;
-    }
-  }
-}
-
-.videoCard {
-  &.lti {
-    font-family: var(--LTIFontFamily);
-
-    :global .ant-card-body {
-      padding: 16px;
-    }
-
-    .cardHeader {
-      .cardHeaderTitle {
-        color: #000;
-      }
-    }
-
-    .cardSubHeader {
-      .rating {
-        color: @blue-shade-4;
-      }
-    }
-
-    .cardBody {
-      .bodyRight {
-        .description {
-          color: var(--LTIDescription);
-        }
-
-        .ltiButtons {
-          align-items: flex-end;
-          display: flex;
-
-          .ltiButton {
-            margin-left: 8px;
-          }
-        }
-      }
-
-    }
-  }
-}
-
-.videoCard {
-  &.hq {
-    box-shadow: var(--HQBoxShadow);
-    font-family: var(--HQFontFamily);
-
-    :global .ant-card-body {
-      padding: 16px;
-    }
-
-    .cardHeader {
-      .cardHeaderTitle {
-        color: #595959;
-      }
-    }
-
-    .cardSubHeader {
-      .rating {
-        color: @blue-shade-4;
-      }
-
-      .videoPromotedSvg {
-        margin-top: 4px;
-
-        svg {
-          height: 24px;
-        }
-      }
-    }
-
-    .cardBody {
-      .bodyRight {
-        .description {
-          color: var(--LTIDescription);
-        }
-      }
-    }
-  }
-}
-
-.videoCard {
-  &.publishers {
-    font-family: var(--PublishersFontFamily);
-
-    :global .ant-card-body {
-      padding: 0 0 15px 0;
-    }
-
-    .cardHeader {
-      .cardHeaderTitle {
-        color: @gray-900;
-        font-size: 16px;
-        line-height: 24px;
-        font-weight: 500;
-      }
-
-      .price {
-        color: @gray-900;
-        font-weight: bold;
-        font-size: 20px;
-      }
-    }
-
-    .cardSubHeader {
-      .rating {
-        color: @blue-shade-4;
-      }
-    }
-
-    .cardBody {
-      .bodyRight {
-        .description {
-          color: var(--LTIDescription);
-        }
-
-        .ltiButtons {
-          align-items: flex-end;
-          display: flex;
-
-          .ltiButton {
-            margin-left: 8px;
-          }
-        }
-      }
-
-    }
-
-    &.border {
-      padding: 15px 14px 0 14px;
-    }
-  }
-}
-
-.border {
-  border-radius: var(--LTIBorderRadius);
-  border: var(--PublishersBorder);
-
-}
-
-.leftBorder {
-  border-left: var(--PublishersBorder);
-  border-width: 2px;
-  border-color: @blue-300;
-  padding-left: 14px;
-}
-
-.rightBorder {
-  border-right: var(--PublishersBorder);
-  padding-right: 14px;
-}
-
-.topBorder {
-  padding-top: 14px;
-  border-top: var(--PublishersBorder);
-}
-
-.bottomBorder {
-  border-bottom: var(--PublishersBorder);
-}
+//@import '~@boclips-ui/styles/src/LTIColours';
+//@import '~@boclips-ui/styles/src/publishersColours';
+//@import '~@boclips-ui/styles/src/breakpoints';
+//
+//@video-width: 304px;
+//@video-height: 171px;
+//@video-border-radius: 8px;
+//
+//:root {
+//  --descriptionColor: @neutral-shade-1;
+//
+//  --titleColour: @neutral-shade-1;
+//
+//  --LTIBorder: 1px solid #e8e8e8;
+//  --LTIBorderRadius: 8px;
+//  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
+//  --LTIDescription: @neutral-shade-1;
+//
+//  --HQFontFamily: Proxima Nova, Roboto, Helvetica, Arial, sans-serif;
+//  --HQBoxShadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+//
+//  --PublishersBorderRadius: 4px;
+//  --PublishersBorder: 2px solid @blue-300;
+//  --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
+//  --PublishersFontSize: 16px; // TODO: change to rem
+//
+//  --lineClampSmall: 3;
+//  --lineClampRegular: 5;
+//}
+//
+//.videoCard {
+//  box-shadow: none;
+//  max-height: 263px;
+//
+//  .cardHeader {
+//    display: flex;
+//    flex-direction: row;
+//    align-content: center;
+//    align-items: center;
+//    justify-content: space-between;
+//
+//    .editModeInput {
+//      width: 100%;
+//      border-radius: 8px;
+//      border: 1px solid rgba(0, 0, 0, 0.4);
+//      padding: 0 4px;
+//      margin-right: 15px;
+//
+//      &:hover {
+//        border: 1px solid @dark-orange;
+//      }
+//    }
+//
+//    .cardHeaderTitle {
+//      font-size: 18px;
+//      font-weight: bold;
+//      line-height: 22px;
+//      margin-right: 12px;
+//      margin-bottom: 0;
+//    }
+//  }
+//
+//  .cardSubHeader {
+//    div:only-child {
+//      padding: 0;
+//    }
+//
+//    .rating {
+//      display: inline-block;
+//      width: auto;
+//      font-size: 14px;
+//      font-weight: bold;
+//      line-height: 24px;
+//      margin-bottom: 4px;
+//      text-decoration: underline;
+//    }
+//  }
+//
+//  .cardBody {
+//    display: flex;
+//    flex-direction: row;
+//    flex-wrap: nowrap;
+//    height: 100%;
+//    @media (max-width: @screen-sm-max) {
+//      width: 100%;
+//      flex-wrap: wrap;
+//    }
+//
+//    .videoPlayer {
+//      background-color: black;
+//
+//      &.videoRoundedCorners {
+//        border-radius: 4px;
+//
+//        &:first-child {
+//          border-radius: 4px;
+//        }
+//      }
+//
+//      @media (min-width: @screen-md) {
+//        height: @video-height;
+//        width: @video-width;
+//      }
+//
+//      @media (max-width: @screen-sm-max) {
+//        width: 100%;
+//      }
+//
+//      video {
+//        width: 100%;
+//        height: 100%;
+//        background-color: black;
+//      }
+//
+//      :global .small-player {
+//        :global .plyr__menu,
+//        :global .plyr__progress__container,
+//        :global .plyr__time {
+//          display: none;
+//        }
+//      }
+//
+//      :global .plyr--fullscreen {
+//        :global .plyr__menu,
+//        :global .plyr__time {
+//          display: flex;
+//        }
+//
+//        :global .plyr__progress__container {
+//          display: inline-grid;
+//        }
+//
+//      }
+//    }
+//
+//    .bodyRight {
+//      display: flex;
+//      flex-direction: column;
+//      justify-content: flex-start;
+//
+//      margin: 0 0 0 15px;
+//      width: calc(100% - (@video-width + 15px));
+//
+//      @media (max-width: @screen-md) {
+//        width: 100%;
+//        margin: 0;
+//        padding: 12px 0;
+//      }
+//
+//
+//      .description {
+//        display: flex;
+//        word-break: break-word;
+//        white-space: pre-line;
+//        font-size: 14px;
+//        line-height: 21px;
+//        overflow: hidden;
+//        height: calc(21px * var(--lineClampRegular));
+//        position: relative;
+//        display: -webkit-box;
+//        -webkit-line-clamp: 5;
+//        -webkit-box-orient: vertical;
+//
+//        &.short {
+//          height: calc(21px * var(--lineClampSmall));
+//          display: -webkit-box;
+//          -webkit-line-clamp: 3;
+//          -webkit-box-orient: vertical;
+//        }
+//      }
+//
+//      .videoActionButtons {
+//        margin-top: auto;
+//        width: 100%;
+//      }
+//
+//      .badgeList {
+//        display: flex;
+//        flex-wrap: wrap;
+//        justify-content: flex-start;
+//        flex-direction: row;
+//        padding-right: 10px;
+//        position: relative;
+//
+//        &:last-child {
+//          margin-right: 0;
+//        }
+//
+//        @media (max-width: @screen-md) {
+//          padding-right: 40px;
+//        }
+//      }
+//
+//    }
+//
+//  }
+//
+//  @media (max-width: @screen-sm-max) {
+//    padding: 0;
+//    flex-direction: column;
+//
+//    .buttons-row {
+//      display: none;
+//    }
+//
+//    .video-preview {
+//      margin-top: 3px;
+//      height: 0;
+//      // the aspect should be 16:9
+//      padding-bottom: 100% / 16 * 9;
+//    }
+//  }
+//}
+//
+//.videoCard {
+//  &.lti {
+//    font-family: var(--LTIFontFamily);
+//
+//    :global .ant-card-body {
+//      padding: 16px;
+//    }
+//
+//    .cardHeader {
+//      .cardHeaderTitle {
+//        color: #000;
+//      }
+//    }
+//
+//    .cardSubHeader {
+//      .rating {
+//        color: @blue-shade-4;
+//      }
+//    }
+//
+//    .cardBody {
+//      .bodyRight {
+//        .description {
+//          color: var(--LTIDescription);
+//        }
+//
+//        .ltiButtons {
+//          align-items: flex-end;
+//          display: flex;
+//
+//          .ltiButton {
+//            margin-left: 8px;
+//          }
+//        }
+//      }
+//
+//    }
+//  }
+//}
+//
+//.videoCard {
+//  &.hq {
+//    box-shadow: var(--HQBoxShadow);
+//    font-family: var(--HQFontFamily);
+//
+//    :global .ant-card-body {
+//      padding: 16px;
+//    }
+//
+//    .cardHeader {
+//      .cardHeaderTitle {
+//        color: #595959;
+//      }
+//    }
+//
+//    .cardSubHeader {
+//      .rating {
+//        color: @blue-shade-4;
+//      }
+//
+//      .videoPromotedSvg {
+//        margin-top: 4px;
+//
+//        svg {
+//          height: 24px;
+//        }
+//      }
+//    }
+//
+//    .cardBody {
+//      .bodyRight {
+//        .description {
+//          color: var(--LTIDescription);
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//.videoCard {
+//  &.publishers {
+//    font-family: var(--PublishersFontFamily);
+//
+//    :global .ant-card-body {
+//      padding: 0 0 15px 0;
+//    }
+//
+//    .cardHeader {
+//      .cardHeaderTitle {
+//        color: @gray-900;
+//        font-size: 16px;
+//        line-height: 24px;
+//        font-weight: 500;
+//      }
+//
+//      .price {
+//        color: @gray-900;
+//        font-weight: bold;
+//        font-size: 20px;
+//      }
+//    }
+//
+//    .cardSubHeader {
+//      .rating {
+//        color: @blue-shade-4;
+//      }
+//    }
+//
+//    .cardBody {
+//      .bodyRight {
+//        .description {
+//          color: var(--LTIDescription);
+//        }
+//
+//        .ltiButtons {
+//          align-items: flex-end;
+//          display: flex;
+//
+//          .ltiButton {
+//            margin-left: 8px;
+//          }
+//        }
+//      }
+//
+//    }
+//
+//    &.border {
+//      padding: 15px 14px 0 14px;
+//    }
+//  }
+//}
+//
+//.border {
+//  border-radius: var(--LTIBorderRadius);
+//  border: var(--PublishersBorder);
+//
+//}
+//
+//.leftBorder {
+//  border-left: var(--PublishersBorder);
+//  border-width: 2px;
+//  border-color: @blue-300;
+//  padding-left: 14px;
+//}
+//
+//.rightBorder {
+//  border-right: var(--PublishersBorder);
+//  padding-right: 14px;
+//}
+//
+//.topBorder {
+//  padding-top: 14px;
+//  border-top: var(--PublishersBorder);
+//}
+//
+//.bottomBorder {
+//  border-bottom: var(--PublishersBorder);
+//}

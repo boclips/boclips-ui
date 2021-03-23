@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 
-import ProviderBadge, { Props } from "../src";
+import ProviderBadge from "../src";
 
 export default {
   title: "Provider Badge",
@@ -15,16 +15,6 @@ export default {
   },
 } as Meta;
 
-const Template: Story<Props> = ({ isLicensed }: Props) => (
-  <ProviderBadge isLicensed={isLicensed} />
-);
+const Template: Story = () => <ProviderBadge />;
 
 export const Youtube = Template.bind({});
-Youtube.args = {
-  isLicensed: false,
-};
-
-export const Licensed = Template.bind({});
-Licensed.args = {
-  isLicensed: true,
-};

@@ -52,10 +52,6 @@
     flex-direction: row;
     flex-wrap: nowrap;
     height: 100%;
-    @media (max-width: @screen-sm-max) {
-      width: 100%;
-      flex-wrap: wrap;
-    }
 
     .videoPlayer {
       background-color: black;
@@ -65,14 +61,6 @@
         border-radius: 4px;
       }
 
-      @media (min-width: @screen-md) {
-        height: @video-height;
-        width: @video-width;
-      }
-
-      @media (max-width: @screen-sm-max) {
-        width: 100%;
-      }
 
       video {
         width: 100%;
@@ -108,11 +96,6 @@
       margin: 0 0 0 15px;
       width: calc(100% - (@video-width + 15px));
 
-      @media (max-width: @screen-md) {
-        width: 100%;
-        margin: 0;
-        padding: 12px 0;
-      }
 
       .description {
         display: flex;
@@ -153,28 +136,10 @@
           margin-right: 0;
         }
 
-        @media (max-width: @screen-md) {
-          padding-right: 40px;
-        }
       }
     }
   }
 
-  @media (max-width: @screen-sm-max) {
-    padding: 0;
-    flex-direction: column;
-
-    .buttons-row {
-      display: none;
-    }
-
-    .video-preview {
-      margin-top: 3px;
-      height: 0;
-      // the aspect should be 16:9
-      padding-bottom: 100% / 16 * 9;
-    }
-  }
 }
 
 .border {

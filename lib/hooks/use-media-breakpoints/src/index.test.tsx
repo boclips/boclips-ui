@@ -23,16 +23,8 @@ const WithWidthBreakpointComponent = () => {
 };
 
 describe("breakpoints", () => {
-  it("returns the correct label", () => {
-    setWidth(479);
-    const wrapper = mount(<WithWidthBreakpointComponent />);
-
-    expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("xs");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(480);
-  });
-
   it("injects correct props to child component when sm width", () => {
-    setWidth(575);
+    setWidth(320);
     const wrapper = mount(<WithWidthBreakpointComponent />);
 
     expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("sm");
@@ -40,7 +32,7 @@ describe("breakpoints", () => {
   });
 
   it("injects correct props to child component when md width", () => {
-    setWidth(767);
+    setWidth(768);
     const wrapper = mount(<WithWidthBreakpointComponent />);
 
     expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("md");
@@ -48,7 +40,7 @@ describe("breakpoints", () => {
   });
 
   it("injects correct props to child component when lg width", () => {
-    setWidth(991);
+    setWidth(1148);
     const wrapper = mount(<WithWidthBreakpointComponent />);
 
     expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("lg");
@@ -56,29 +48,22 @@ describe("breakpoints", () => {
   });
 
   it("injects correct props to child component when xl width", () => {
-    setWidth(1199);
+    setWidth(1680);
     const wrapper = mount(<WithWidthBreakpointComponent />);
 
     expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("xl");
     expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(1200);
   });
 
-  it("injects correct props to child component when xl width", () => {
-    setWidth(1599);
-    const wrapper = mount(<WithWidthBreakpointComponent />);
-
-    expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("xxl");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(1600);
-  });
 
   it("injects correct props to child component when window is resized", () => {
     setWidth(300);
     const wrapper = mount(<WithWidthBreakpointComponent />);
 
-    setWidth(990);
+    setWidth(1148);
     wrapper.update();
 
     expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("lg");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(992);
+    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(1148);
   });
 });
