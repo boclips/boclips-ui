@@ -1,5 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
+// @ts-ignore
 import s from "./style.module.less";
 
 import Badge, { Props } from "../src";
@@ -9,9 +10,26 @@ export default {
   component: Badge,
 } as Meta;
 
-const Template: Story<Props> = ({ icon, label, value, theme }: Props) => (
+interface StorybookProps {
+  theme: "lti" | "publishers" | "hq";
+}
+
+// @ts-ignore
+const Template: Story<Props & StorybookProps> = ({
+  icon,
+  label,
+  value,
+  customClassName,
+  // @ts-ignore
+  theme,
+}: Props) => (
   <div className={s[theme]}>
-    <Badge icon={icon} label={label} value={value} />
+    <Badge
+      icon={icon}
+      label={label}
+      value={value}
+      customClassName={customClassName}
+    />
   </div>
 );
 
@@ -24,18 +42,21 @@ HQ.args = {
   label: "test",
   value: "hq",
   theme: "hq",
+  customClassName: "customClassName",
 };
 
 LTI.args = {
   label: "test",
   value: "lti",
   theme: "lti",
+  customClassName: "customClassName",
 };
 
 PUBLISHERS.args = {
   label: "",
   value: "Elementary science",
   theme: "publishers",
+  customClassName: "customClassName",
 };
 
 DEFAULT.args = {

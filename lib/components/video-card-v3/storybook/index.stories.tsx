@@ -13,6 +13,10 @@ import PlusIcon from "../resources/plus.svg";
 // @ts-ignore
 import s from "./styles.module.less";
 
+const dur = require("dayjs/plugin/duration");
+
+dayjs.extend(dur);
+
 export default {
   title: "VideoCardThree",
   component: VideoCardV3,
@@ -29,7 +33,6 @@ const Template: Story<Props & Components & StorybookProps> = ({
   handleOnClick,
   theme,
   border,
-  topBadge,
   additionalBadges,
   title,
   duration,
@@ -43,7 +46,6 @@ const Template: Story<Props & Components & StorybookProps> = ({
       actions={actions}
       handleOnClick={handleOnClick}
       border={border}
-      topBadge={topBadge}
       additionalBadges={additionalBadges}
       title={title}
       price={price}
@@ -51,10 +53,7 @@ const Template: Story<Props & Components & StorybookProps> = ({
   </div>
 );
 
-export const LTI = Template.bind({});
-// export const HQ = Template.bind({});
-// export const PUBLISHERS = Template.bind({});
-// export const loading = Template.bind({});
+export const DEFAULT = Template.bind({});
 
 const ActionButtons = () => {
   const onClick = () => null;
@@ -109,7 +108,7 @@ const ActionButtons = () => {
 
 const duration = dayjs.duration(exampleVideo.playback.duration).format("mm:ss");
 
-LTI.args = {
+DEFAULT.args = {
   // @ts-ignore
   video: exampleVideo,
   duration,

@@ -1,5 +1,4 @@
 import React from "react";
-import c from "classnames";
 import s from "./style.module.less";
 
 export interface Props {
@@ -7,19 +6,15 @@ export interface Props {
   label?: string;
   value?: string;
   closeIcon?: React.ReactElement;
+  customClassName?: string;
 }
 
-const Badge = ({ icon, label, value, closeIcon }: Props) => (
-  <span
-    className={c(s.badge, {
-      withCloseIcon: !!closeIcon,
-    })}
-  >
+const Badge = ({ icon, label, value, closeIcon, customClassName }: Props) => (
+  <span className={`${s.badge} ${customClassName}`}>
     {icon}
     {label && <div className={s.label}>{label}</div>}
     {value && <div className={s.value}>{value}</div>}
     {closeIcon}
-    <span />
   </span>
 );
 

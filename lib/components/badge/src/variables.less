@@ -1,12 +1,19 @@
+@import "~@boclips-ui/styles/src/publishersColours";
+@import '~@boclips-ui/styles/src/breakpoints';
+
 @badge-line-height: var(--bo-ui-badge-line-height, 16px);
-@badge-border: var(--bo-ui-badge-border, none);
-@badge-padding: var(--bo-ui-badge-padding-y, 0px)
-  var(--bo-ui-badge-padding-x, 8px);
-@badge-margin: var(--bo-ui-badge-margin, 0 8px 8px 0);
-@badge-background-color: var(--bo-ui-badge-background-color, #f5f5f5);
-@badge-height: var(--bo-ui-badge-height, 32px);
-@badge-border-radius: var(--bo-ui-badge-border-radius, 8px);
+@badge-border: var(--bo-ui-badge-border, 2px solid @blue-400);
+@badge-padding: var(--bo-ui-badge-padding-y, 2px)
+  var(--bo-ui-badge-padding-x, 4px);
+@badge-margin: var(--bo-ui-badge-margin, 0 2px 2px 0);
+@badge-background-color: var(--bo-ui-badge-background-color, @blue-100);
+@badge-height: var(--bo-ui-badge-height, 24px);
+@badge-border-radius: var(--bo-ui-badge-border-radius, 4px);
 @badge-label-color: var(--bo-ui-badge-label-color);
 @badge-font-weight: var(--bo-ui-badge-font-weight);
 @badge-color: var(--bo-ui-badge-value-color);
-@badge-svg-height: var(--bo-ui-badge-svg-height, 24px);
+@badge-svg-height: var(--bo-ui-badge-svg-height, 12px);
+
+@media screen and (min-width: @screen-sm) {
+  --bo-ui-badge-margin: 4px 4px 0 0;
+}

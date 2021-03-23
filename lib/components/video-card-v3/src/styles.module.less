@@ -7,8 +7,9 @@
 .videoCard {
   width: 100%;
   height: auto;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+  box-shadow: @box-shadow;
+  border-radius: @video-card-border-radius;
+  background-color: @video-card-background-color;
 }
 
 .grid {
@@ -22,7 +23,7 @@
 
 .videoPlayer {
   background-color: black;
-  border-radius: 4px;
+  border-radius: @video-player-border-radius;
   overflow: hidden;
 }
 
@@ -36,18 +37,18 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  color: @gray-900;
+  color:@header-color;
 }
 
 .subheader {
   display: flex;
   flex-direction: row;
-  color: @gray-800;
+  color: @subheader-color;
 
   & > div:after {
     content: '•';
     padding: 0.25rem;
-    color: @blue-800;
+    color: @subheader-separator-color
   }
 
   & > div:last-child:after {
@@ -58,14 +59,14 @@
 .price {
   position: relative;
   z-index: 11;
-  border-radius: 4px;
+  border-radius: @price-border-radius;
   justify-self: flex-end;
   align-self: flex-start;
-  margin: .25rem .25rem 0 0;
+  margin: @price-margin;
   letter-spacing: 0.05px;
-  color: @gray-900;
-  font-weight: bold;
-  line-height: 1.25rem;
+  color: @price-color;
+  font-weight: @price-font-weight;
+  line-height: @price-line-height;
 }
 
 .badges {
@@ -75,8 +76,19 @@
 }
 
 .showMoreLabel {
-  margin-top: 4px;
   cursor: pointer;
+  font-weight: 500;
+  color: @show-more-label-color;
+  padding: @badge-padding;
+}
+
+.buttons {
+  margin-bottom: 4px;
+}
+
+.providerBadge {
+  --bo-ui-badge-background-color: @white;
+  --bo-ui-badge-border: 2px solid @gray-400;
 }
 
 @media screen and (min-width: @screen-sm) {
@@ -108,13 +120,6 @@
     margin-bottom: 4px;
   }
 
-  .badges {
-    grid-column-start: 1;
-    grid-column-end: 25;
-    grid-row-start: 4;
-    grid-row-end: 4;
-  }
-
   .buttons {
     grid-column-start: 1;
     grid-column-end: 25;
@@ -126,13 +131,17 @@
     display: none;
   }
 
+  .showMoreLabel {
+    display: none;
+  }
+
   .price {
     grid-row-start: 1;
     grid-row-end: 1;
     grid-column-start: 21;
     grid-column-end: 25;
     font-size: .875rem;
-    background-color: @white;
+    background-color: @price-background-color-md;
   }
 
   .badges {
@@ -182,10 +191,7 @@
 
 
   .showMoreLabel {
-    font-weight: 500;
-    color: @blue-800;
-    padding: @badge-padding;
-    background: white;
+    display: block;
   }
 
   .buttons {
@@ -213,6 +219,10 @@
     grid-template-columns: repeat(18, 1fr);
     grid-template-rows: repeat(5, min-content);
     grid-column-gap: 1.5rem;
+
+    & > :not(section:first-child) {
+      padding: 0 .5rem;
+    }
   }
 
   .videoPlayer {
@@ -263,14 +273,11 @@
     overflow: hidden;
     font-size: 1rem;
     margin-top: .5rem;
+    color: @gray-800;
   }
 
-
   .showMoreLabel {
-    font-weight: 500;
-    color: @blue-800;
-    padding: @badge-padding;
-    background: white;
+    display: block;
   }
 
   .buttons {
@@ -292,10 +299,6 @@
 @media screen and (min-width: @screen-xl) {
   .description {
     -webkit-line-clamp: 3;
-  }
-
-  .showMoreLabel {
-    display: none;
   }
 
   .buttons {

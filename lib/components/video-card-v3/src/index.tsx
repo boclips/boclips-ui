@@ -2,18 +2,14 @@ import React, { ReactElement, useMemo, useState } from "react";
 import { ExtendedVideo } from "@boclips-ui/video";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
 import SubjectBadge from "@boclips-ui/subject-badge";
-import * as dayjs from "dayjs";
 import ReleasedOn from "@boclips-ui/released-on";
 import c from "classnames";
 import ProviderBadge from "@boclips-ui/provider-badge";
 import { useMediaBreakPoint } from "@boclips-ui/use-media-breakpoints";
 import s from "./styles.module.less";
 
-const durationPlugin = require("dayjs/plugin/duration");
-
-dayjs.extend(durationPlugin);
-
 const DEFAULT_VISIBLE_BADGES = 3;
+const LARGE_SCREEN = "xxl";
 const YOUTUBE = "YOUTUBE";
 
 export interface Props {
@@ -25,7 +21,6 @@ export interface Props {
 export interface Components {
   videoPlayer?: ReactElement;
   actions?: ReactElement[];
-  topBadge?: ReactElement;
   additionalBadges?: ReactElement[];
   title?: ReactElement | string;
   price?: string;
@@ -42,22 +37,21 @@ export const VideoCardV3 = ({
   title,
 }: Props & Components): any => {
   const [showMoreBadges, setShowMoreBadges] = useState<boolean>(false);
-  const breakpoint = useMediaBreakPoint();
+  const isLargeDesktopView = useMediaBreakPoint().label === LARGE_SCREEN;
 
   const renderBadges = useMemo(() => {
     const badges = [];
 
     const badgesToDisplay = () => {
-      const isLargeDesktopView = breakpoint.label === "xxl";
+      if (isLargeDesktopView) {
+        return badges.length;
+      }
 
-      const displayAllOrDefaultNumber = () =>
-        isLargeDesktopView ? badges.length : DEFAULT_VISIBLE_BADGES;
-
-      return showMoreBadges ? badges.length : displayAllOrDefaultNumber();
+      return showMoreBadges ? badges.length : DEFAULT_VISIBLE_BADGES;
     };
 
     if (video.playback.type === YOUTUBE) {
-      badges.push(<ProviderBadge />);
+      badges.push(<ProviderBadge customClassName={s.providerBadge} />);
     }
 
     if (video.ageRange) {
@@ -78,7 +72,7 @@ export const VideoCardV3 = ({
     video.playback.type,
     video.ageRange,
     video.subjects,
-    breakpoint,
+    isLargeDesktopView,
     showMoreBadges,
   ]);
 
@@ -100,7 +94,7 @@ export const VideoCardV3 = ({
           <ReleasedOn releasedOn={video.releasedOn} />
         )}
 
-        <div> {video.channel} </div>
+        {video.channel && <div> {video.channel} </div>}
       </section>
 
       <section className={c(s.badges, { [s.badgesClosed]: !showMoreBadges })}>
