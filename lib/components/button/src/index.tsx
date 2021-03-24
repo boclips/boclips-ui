@@ -10,7 +10,7 @@ export interface Props {
   height?: string;
   width?: string;
   disabled?: boolean;
-  text: string;
+  text?: string;
 }
 
 const Button = ({

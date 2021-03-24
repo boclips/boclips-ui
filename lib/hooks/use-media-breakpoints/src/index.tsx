@@ -4,16 +4,16 @@ import MediaBreakpoints, { Breakpoint } from "@boclips-ui/media-breakpoints";
 export const getMediaBreakpoint = (): Breakpoint => {
   const { innerWidth } = window;
 
-  if (innerWidth < MediaBreakpoints.sm.width) {
+  if (innerWidth <= MediaBreakpoints.sm.width) {
     return MediaBreakpoints.sm;
   }
-  if (innerWidth < MediaBreakpoints.md.width) {
+  if (innerWidth <= MediaBreakpoints.md.width) {
     return MediaBreakpoints.md;
   }
-  if (innerWidth < MediaBreakpoints.lg.width) {
+  if (innerWidth <= MediaBreakpoints.lg.width) {
     return MediaBreakpoints.lg;
   }
-  if (innerWidth < MediaBreakpoints.xl.width) {
+  if (innerWidth <= MediaBreakpoints.xl.width) {
     return MediaBreakpoints.xl;
   }
   return MediaBreakpoints.xxl;

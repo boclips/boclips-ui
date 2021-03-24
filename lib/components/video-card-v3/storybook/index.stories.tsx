@@ -7,7 +7,6 @@ import * as dayjs from "dayjs";
 import { VideoCardV3, Props, Components } from "../src";
 import { exampleVideo } from "./videoExample";
 // @ts-ignore
-import SearchIcon from "../resources/search-icon.svg";
 import PlusIcon from "../resources/plus.svg";
 
 // @ts-ignore
@@ -32,8 +31,6 @@ const Template: Story<Props & Components & StorybookProps> = ({
   actions,
   handleOnClick,
   theme,
-  border,
-  additionalBadges,
   title,
   duration,
   price,
@@ -45,8 +42,6 @@ const Template: Story<Props & Components & StorybookProps> = ({
       videoPlayer={videoPlayer}
       actions={actions}
       handleOnClick={handleOnClick}
-      border={border}
-      additionalBadges={additionalBadges}
       title={title}
       price={price}
     />
@@ -63,45 +58,16 @@ const ActionButtons = () => {
       style={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
-        marginBottom: ".25rem",
+        justifyContent: "flex-end",
       }}
     >
-      <div>
-        <Button
-          type="outline"
-          onClick={onClick}
-          iconOnly
-          icon={<SearchIcon />}
-          width="44px"
-          height="40px"
-        />
-        <Button
-          type="outline"
-          onClick={onClick}
-          iconOnly
-          icon={<SearchIcon />}
-          width="44px"
-          height="40px"
-        />
-        <Button
-          type="outline"
-          onClick={onClick}
-          iconOnly
-          icon={<SearchIcon />}
-          width="44px"
-          height="40px"
-        />
-      </div>
-      <div>
-        <Button
-          onClick={onClick}
-          iconOnly
-          icon={<PlusIcon />}
-          width="44px"
-          height="40px"
-        />
-      </div>
+      <Button
+        onClick={onClick}
+        iconOnly
+        icon={<PlusIcon />}
+        width="44px"
+        height="40px"
+      />
     </div>
   );
 };
@@ -116,5 +82,5 @@ DEFAULT.args = {
   videoPlayer: <Player videoUri={exampleVideo.links.self.href} />,
   theme: "lti",
   price: "$600",
-  actions: [<ActionButtons />],
+  actions: <ActionButtons />,
 };

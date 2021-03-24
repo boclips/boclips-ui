@@ -9,19 +9,17 @@ import { useMediaBreakPoint } from "@boclips-ui/use-media-breakpoints";
 import s from "./styles.module.less";
 
 const DEFAULT_VISIBLE_BADGES = 3;
-const LARGE_SCREEN = "xxl";
+const LARGE_SCREEN_BREAKPOINT = "xxl";
 const YOUTUBE = "YOUTUBE";
 
 export interface Props {
   video: ExtendedVideo;
   handleOnClick?: () => void;
-  border?: "top" | "bottom" | "left" | "right" | "none" | "all";
 }
 
 export interface Components {
   videoPlayer?: ReactElement;
-  actions?: ReactElement[];
-  additionalBadges?: ReactElement[];
+  actions?: ReactElement;
   title?: ReactElement | string;
   price?: string;
   duration?: string;
@@ -36,18 +34,29 @@ export const VideoCardV3 = ({
   duration,
   title,
 }: Props & Components): any => {
-  const [showMoreBadges, setShowMoreBadges] = useState<boolean>(false);
-  const isLargeDesktopView = useMediaBreakPoint().label === LARGE_SCREEN;
+  const [
+    displayShowMoreBadgesButton,
+    setDisplayShowMoreBadgesButton,
+  ] = useState<boolean>(true);
 
-  const renderBadges = useMemo(() => {
+  const isLargeDesktopBreakpoint =
+    useMediaBreakPoint().label === LARGE_SCREEN_BREAKPOINT;
+
+  const buildBadges = useMemo(() => {
     const badges = [];
 
     const badgesToDisplay = () => {
-      if (isLargeDesktopView) {
+      if (badges.length <= 3) {
+        setDisplayShowMoreBadgesButton(false);
+      }
+
+      if (isLargeDesktopBreakpoint) {
         return badges.length;
       }
 
-      return showMoreBadges ? badges.length : DEFAULT_VISIBLE_BADGES;
+      return !displayShowMoreBadgesButton
+        ? badges.length
+        : DEFAULT_VISIBLE_BADGES;
     };
 
     if (video.playback.type === YOUTUBE) {
@@ -64,16 +73,17 @@ export const VideoCardV3 = ({
       });
     }
 
-    return badges.slice(0, badgesToDisplay()).map((badge, key) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <React.Fragment key={`badge-${key}`}>{badge}</React.Fragment>
-    ));
+    return badges
+      .slice(0, badgesToDisplay())
+      .map((badge, key) => (
+        <React.Fragment key={`badge-${key}`}>{badge}</React.Fragment>
+      ));
   }, [
     video.playback.type,
     video.ageRange,
     video.subjects,
-    isLargeDesktopView,
-    showMoreBadges,
+    isLargeDesktopBreakpoint,
+    displayShowMoreBadgesButton,
   ]);
 
   return (
@@ -88,43 +98,44 @@ export const VideoCardV3 = ({
       <section className={s.header}>{title}</section>
 
       <section className={s.subheader}>
-        {video && video.playback.duration && <div>{duration}</div>}
+        {duration && <div>{duration}</div>}
 
-        {video.releasedOn && video.createdBy && (
-          <ReleasedOn releasedOn={video.releasedOn} />
-        )}
+        {video.releasedOn && <ReleasedOn releasedOn={video.releasedOn} />}
 
-        {video.channel && <div> {video.channel} </div>}
+        {video.createdBy && <div> {video.createdBy} </div>}
       </section>
 
-      <section className={c(s.badges, { [s.badgesClosed]: !showMoreBadges })}>
-        {renderBadges}
+      <section
+        className={c(s.badges, {
+          [s.badgesClosed]: displayShowMoreBadgesButton,
+        })}
+      >
+        {buildBadges}
 
-        {!showMoreBadges && (
+        {displayShowMoreBadgesButton && (
           <span
             role="presentation"
             className={s.showMoreLabel}
-            onClick={() => setShowMoreBadges(!showMoreBadges)}
+            onClick={() =>
+              setDisplayShowMoreBadgesButton(!displayShowMoreBadgesButton)
+            }
           >
             More...
           </span>
         )}
       </section>
 
-      <section
-        className={c(s.description, { [s.twoLineClamp]: showMoreBadges })}
-      >
-        {video.description}
-      </section>
-
-      {actions && (
-        <section className={s.buttons}>
-          {actions.map((action, key) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <React.Fragment key={`${key}-action`}>{action}</React.Fragment>
-          ))}
+      {video.description && (
+        <section
+          className={c(s.description, {
+            [s.twoLineClamp]: displayShowMoreBadgesButton,
+          })}
+        >
+          {video.description}
         </section>
       )}
+
+      {actions && <section className={s.buttons}>{actions}</section>}
 
       {price && <div className={s.price}>{price}</div>}
     </div>

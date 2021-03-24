@@ -74,10 +74,7 @@ LTI.args = {
   theme: "lti",
   topBadge: (
     <div>
-      <ProviderBadge
-        isLicensed={exampleVideo?.playback?.type === "STREAM"}
-        key="provider-badge"
-      />
+      <ProviderBadge key="provider-badge" />
     </div>
   ),
 };

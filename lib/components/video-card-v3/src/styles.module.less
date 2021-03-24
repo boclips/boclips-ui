@@ -14,7 +14,6 @@
 
 .grid {
   display: grid;
-  grid-column-gap: .5rem;
 
   & > :not(section:first-child) {
     padding: 0 .25rem;
@@ -28,7 +27,6 @@
 }
 
 .header {
-  margin-top: .25rem;
   font-size: .875rem;
   line-height: 1rem;
   font-weight: bold;
@@ -37,7 +35,8 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  color:@header-color;
+  color: @header-color;
+  align-items: center;
 }
 
 .subheader {
@@ -62,7 +61,7 @@
   border-radius: @price-border-radius;
   justify-self: flex-end;
   align-self: flex-start;
-  margin: @price-margin;
+  margin: @price-margin-sm;
   letter-spacing: 0.05px;
   color: @price-color;
   font-weight: @price-font-weight;
@@ -83,7 +82,7 @@
 }
 
 .buttons {
-  margin-bottom: 4px;
+  margin-bottom: .25rem;
 }
 
 .providerBadge {
@@ -95,6 +94,7 @@
   .grid {
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(4, auto);
+    grid-column-gap: .5rem;
   }
 
   .videoPlayer {
@@ -109,6 +109,7 @@
     grid-column-end: 25;
     grid-row-start: 2;
     grid-row-end: 2;
+    margin-top: .25rem;
   }
 
   .subheader {
@@ -117,7 +118,8 @@
     grid-row-start: 3;
     grid-row-end: 3;
     font-size: 0.875rem;
-    margin-bottom: 4px;
+    margin-top: 0.125rem;
+    margin-bottom: 0.5rem;
   }
 
   .buttons {
@@ -153,28 +155,31 @@
   .grid {
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(5, min-content);
+    grid-column-gap: 1.5rem;
   }
 
   .videoPlayer {
     grid-row-start: 1;
     grid-row-end: last;
     grid-column-start: 1;
-    grid-column-end: 12;
+    grid-column-end: 10;
   }
 
   .header {
-    font-size: .875rem;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
     -webkit-line-clamp: 3;
     grid-row-start: 1;
     grid-row-end: 1;
-    grid-column-start: 12;
+    grid-column-start: 10;
     grid-column-end: 23;
   }
 
   .subheader {
     grid-row-start: 2;
     grid-row-end: 2;
-    grid-column-start: 12;
+    grid-column-start: 10;
     grid-column-end: 23;
     font-size: 0.75rem;
   }
@@ -182,7 +187,7 @@
   .badges {
     grid-row-start: 3;
     grid-row-end: 3;
-    grid-column-start: 12;
+    grid-column-start: 10;
     grid-column-end: 25;
     display: flex;
     overflow: hidden;
@@ -197,7 +202,7 @@
   .buttons {
     grid-row-start: 6;
     grid-row-end: last;
-    grid-column-start: 12;
+    grid-column-start: 10;
     grid-column-end: 25;
   }
 
@@ -211,6 +216,7 @@
     grid-column-start: 23;
     grid-column-end: 25;
     font-size: 1rem;
+    margin: @price-margin-md;
   }
 }
 
