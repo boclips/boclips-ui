@@ -112,7 +112,7 @@ export const VideoCardV3 = ({
       >
         {buildBadges}
 
-        {displayShowMoreBadgesButton && (
+        {displayShowMoreBadgesButton && !isLargeDesktopBreakpoint && (
           <span
             role="presentation"
             className={s.showMoreLabel}

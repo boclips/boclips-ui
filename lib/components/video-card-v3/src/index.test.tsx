@@ -29,4 +29,14 @@ describe("VideoCard V3", () => {
 
     expect(card.queryByText("More...")).toBeNull();
   });
+
+  it("doesn't show More... if all badges are displayed", () => {
+    // @ts-ignore
+    window.innerWidth = "1920";
+
+    // @ts-ignore
+    const card = render(<VideoCardV3 video={exampleVideo} />);
+
+    expect(card.queryByText("More...")).toBeNull();
+  });
 });
