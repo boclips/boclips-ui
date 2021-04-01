@@ -3,7 +3,8 @@ import AgeRange from "../../../types/age-range/src";
 
 export const exampleVideo = {
   id: "5c54d7cdd8eafeecae20ee58",
-  title: "TED-ED: Distorting Madonna in Medieval art - ",
+  title:
+    "TED-ED: Distorting Madonna in Medieval art TED-ED: Distorting Madonna in Medieval art TED-ED: Distorting Madonna in Medieval art TED-ED: Distorting Madonna in Medieval art TED-ED: Distorting Madonna in Medieval art TED-ED: Distorting Madonna in Medieval art",
   description: `How has the process of declaring war changed throughout the United States' history? What prompted Congress to enact the War Powers Resolution in the '70s, and what effect did it have?
 
 Subscribe for more HISTORY:
@@ -85,12 +86,12 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
   rating: null,
   yourRating: null,
   bestFor: [{ id: 1, label: "Hook" }],
-  createdBy: "TED-Ed",
+  createdBy: "TED-Ed long channel name name name",
   promoted: null,
   language: null,
   attachments: [],
   contentWarnings: [{ id: "1", label: "This is a warning" }],
-  channel: "TED-Ed",
+  channel: "TED-Ed long channel name name name",
   channelId: "5cf141cbc1475c47f717870d",
   channelVideoId: "1212_06_A",
   types: [{ id: 3, name: "Instructional Clips" }],

@@ -9,7 +9,8 @@ import { useMediaBreakPoint } from "@boclips-ui/use-media-breakpoints";
 import s from "./styles.module.less";
 
 const DEFAULT_VISIBLE_BADGES = 3;
-const LARGE_SCREEN_BREAKPOINT = "xxl";
+const DESKTOP_BREAKPOINT = "xl";
+const LARGE_DESKTOP_BREAKPOINT = "xxl";
 const YOUTUBE = "YOUTUBE";
 
 export interface Props {
@@ -39,8 +40,11 @@ export const VideoCardV3 = ({
     setDisplayShowMoreBadgesButton,
   ] = useState<boolean>(true);
 
-  const isLargeDesktopBreakpoint =
-    useMediaBreakPoint().label === LARGE_SCREEN_BREAKPOINT;
+  const breakpoint = useMediaBreakPoint();
+
+  const isDesktopBreakpoint =
+    breakpoint.label === DESKTOP_BREAKPOINT ||
+    breakpoint.label === LARGE_DESKTOP_BREAKPOINT;
 
   const buildBadges = useMemo(() => {
     const badges = [];
@@ -50,7 +54,7 @@ export const VideoCardV3 = ({
         setDisplayShowMoreBadgesButton(false);
       }
 
-      if (isLargeDesktopBreakpoint) {
+      if (isDesktopBreakpoint) {
         return badges.length;
       }
 
@@ -82,7 +86,7 @@ export const VideoCardV3 = ({
     video.playback.type,
     video.ageRange,
     video.subjects,
-    isLargeDesktopBreakpoint,
+    isDesktopBreakpoint,
     displayShowMoreBadgesButton,
   ]);
 
@@ -95,14 +99,22 @@ export const VideoCardV3 = ({
     >
       <section className={s.videoPlayer}>{videoPlayer}</section>
 
-      <section className={s.header}>{title}</section>
+      <section
+        className={c(s.header, {
+          [s.withPrice]: price,
+        })}
+      >
+        {title}
+      </section>
 
       <section className={s.subheader}>
         {duration && <div>{duration}</div>}
 
         {video.releasedOn && <ReleasedOn releasedOn={video.releasedOn} />}
 
-        {video.createdBy && <div> {video.createdBy} </div>}
+        {video.createdBy && (
+          <div className={s.createdBy}> {video.createdBy} </div>
+        )}
       </section>
 
       <section
@@ -112,7 +124,7 @@ export const VideoCardV3 = ({
       >
         {buildBadges}
 
-        {displayShowMoreBadgesButton && !isLargeDesktopBreakpoint && (
+        {displayShowMoreBadgesButton && !isDesktopBreakpoint && (
           <span
             role="presentation"
             className={s.showMoreLabel}

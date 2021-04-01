@@ -14,16 +14,13 @@
 
 .grid {
   display: grid;
-
-  & > :not(section:first-child) {
-    padding: 0 .25rem;
-  }
 }
 
 .videoPlayer {
   background-color: black;
   border-radius: @video-player-border-radius;
   overflow: hidden;
+  align-self: center;
 }
 
 .header {
@@ -43,6 +40,17 @@
   display: flex;
   flex-direction: row;
   color: @subheader-color;
+
+  & > div:nth-child(2) {
+    min-width: max-content;
+  }
+
+  .createdBy {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
   & > div:after {
     content: '•';
@@ -106,6 +114,7 @@
     grid-row-start: 2;
     grid-row-end: 2;
     margin-top: .25rem;
+    padding: 0 .25rem;
   }
 
   .subheader {
@@ -114,8 +123,8 @@
     grid-row-start: 3;
     grid-row-end: 3;
     font-size: 0.875rem;
-    margin-top: 0.125rem;
     margin-bottom: 0.5rem;
+    padding: 0 .25rem;
   }
 
   .buttons {
@@ -123,6 +132,7 @@
     grid-column-end: 25;
     grid-row-start: 5;
     grid-row-end: 5;
+    padding: 0 .25rem;
     margin-bottom: .25rem;
   }
 
@@ -141,6 +151,7 @@
     grid-column-end: 25;
     font-size: .875rem;
     background-color: @price-background-color-md;
+    padding: 0 4px;
   }
 
   .badges {
@@ -150,7 +161,7 @@
 
 @media screen and (min-width: @screen-md) {
   .grid {
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat(18, 1fr);
     grid-template-rows: repeat(5, min-content);
     grid-column-gap: 1.5rem;
   }
@@ -159,38 +170,42 @@
     grid-row-start: 1;
     grid-row-end: last;
     grid-column-start: 1;
-    grid-column-end: 10;
+    grid-column-end: 9;
   }
 
   .header {
     margin: 0;
     font-size: 1rem;
     line-height: 1.5rem;
-    -webkit-line-clamp: 3;
     grid-row-start: 1;
     grid-row-end: 1;
-    grid-column-start: 10;
-    grid-column-end: 23;
+    grid-column-start: 9;
+    grid-column-end: 19;
+    padding: 0;
+
+    &.withPrice {
+      grid-column-end: 17;
+    }
   }
 
   .subheader {
     grid-row-start: 2;
     grid-row-end: 2;
-    grid-column-start: 10;
-    grid-column-end: 23;
+    grid-column-start: 9;
+    grid-column-end: 19;
     font-size: 0.75rem;
+    padding: 0;
   }
 
   .badges {
     grid-row-start: 3;
     grid-row-end: 3;
-    grid-column-start: 10;
-    grid-column-end: 25;
+    grid-column-start: 9;
+    grid-column-end: 19;
     display: flex;
     overflow: hidden;
     max-height: 58px;
   }
-
 
   .showMoreLabel {
     display: block;
@@ -199,8 +214,9 @@
   .buttons {
     grid-row-start: 6;
     grid-row-end: last;
-    grid-column-start: 10;
-    grid-column-end: 25;
+    grid-column-start: 9;
+    grid-column-end: 19;
+    padding: 0;
   }
 
   .description {
@@ -210,8 +226,8 @@
   .price {
     grid-row-start: 1;
     grid-row-end: 2;
-    grid-column-start: 23;
-    grid-column-end: 25;
+    grid-column-start: 17;
+    grid-column-end: 19;
     font-size: 1rem;
     margin: @price-margin-md;
   }
@@ -222,10 +238,6 @@
     grid-template-columns: repeat(18, 1fr);
     grid-template-rows: repeat(5, min-content);
     grid-column-gap: 1.5rem;
-
-    & > :not(section:first-child) {
-      padding: 0 .5rem;
-    }
   }
 
   .videoPlayer {
@@ -238,11 +250,14 @@
   .header {
     font-size: 1.125rem;
     line-height: 1.5rem;
-    -webkit-line-clamp: 3;
     grid-row-start: 1;
     grid-row-end: 1;
     grid-column-start: 9;
-    grid-column-end: 18;
+    grid-column-end: 19;
+
+    &.withPrice {
+      grid-column-end: 17;
+    }
   }
 
   .subheader {
