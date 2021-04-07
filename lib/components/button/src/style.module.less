@@ -28,13 +28,12 @@
     height: 100%;
     align-items: center;
     display: flex;
-    width: 16px;
 
     svg {
       stroke: @svg-stroke-colour;
       stroke-width: 2;
-      height: 16px;
-      width: 16px;
+      height: @svg-height;
+      width: @svg-width;
     }
   }
 
@@ -92,7 +91,7 @@
   }
 
   &.iconOnly {
-    padding: 12px 10px;
+    padding: @icon-only-padding;
     height: auto;
     min-width: auto;
     width: auto;
