@@ -18,7 +18,8 @@
   --PublishersBorderRadius: 4px;
   --PublishersBorder: 1.5px solid @blue-300;
   --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
-  --PublishersFontSize: 16px; // TODO: change to rem
+  --PublishersFontSize: 1rem;
+  --PublishersMaxWidth: 612px;
 }
 
 /* AUTOCOMPLETE SETUP START */
@@ -173,7 +174,7 @@
 .publishersWrapper {
   background-color: @white;
   width: 100%;
-  max-width: 612px;
+  max-width: var(--PublishersMaxWidth);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
