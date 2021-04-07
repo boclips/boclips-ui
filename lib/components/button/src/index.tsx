@@ -11,6 +11,7 @@ export interface Props {
   width?: string;
   disabled?: boolean;
   text?: string;
+  dataQa?: string;
 }
 
 const Button = ({
@@ -22,8 +23,10 @@ const Button = ({
   width,
   icon,
   text,
+  dataQa,
 }: Props) => (
   <button
+    data-qa={dataQa}
     onClick={onClick}
     style={{ height, width }}
     disabled={disabled}
