@@ -144,7 +144,7 @@ const SelectFilter = ({
   };
 
   return (
-    <div id="dropdownArea" className={s.main}>
+    <div id={title} className={s.main}>
       <Select
         showSearch={false}
         options={getOptions}
@@ -157,7 +157,7 @@ const SelectFilter = ({
         labelInValue
         virtual
         // @ts-ignore
-        getPopupContainer={() => document.getElementById("dropdownArea")}
+        getPopupContainer={() => document.getElementById(title)}
         value={[
           {
             value: title,
