@@ -1,76 +1,71 @@
-.selectWrapper {
-  box-sizing: border-box;
-  border-radius: 4px;
-  width: 100%;
-  height: 40px;
-  color: #434656;
-  font-family: 'Work Sans';
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 16px;
-  cursor: pointer;
-  border: 1.5px solid #cfd1d2;
+@import "variables.less";
+@import '~@boclips-ui/styles/src/publishersColours';
+
+.main {
   position: relative;
+  width: @filter-width;
+  display: flex;
+  justify-content: center;
+  border: @filter-input-border;
+  border-radius: @filter-input-border-radius;
+  background-color: @white;
 
-  &.filtersSelected {
-    border: 1.5px solid #3370b6 !important;
+  * {
+    font-family: @font-family;
   }
 
-  &:hover {
-    background: #f5f8fb;
-  }
-
-  &:global.ant-select-focused.ant-select-multiple .ant-select-selector{
-    box-shadow: none;
-  }
-
-  &:global.ant-select-focused {
-    width: 100%;
-  }
-
-  &:global.ant-select-open {
-    width: 100%;
-    box-shadow: 0 0 4px 1px rgba(109, 114, 120, 0.5) !important;
-  }
-
-  // remove outline on focus
-  &:global.ant-select-focused.ant-select-focused.ant-select-open .ant-select-selector {
-    box-shadow: none;
-  }
-
-  :global .ant-select-arrow {
-    color: #346fb6;
-  }
-
-  :global .ant-select-selector {
-    height: 100%;
-    width: 100%;
-  }
-
-  :global .ant-select-selector {
-    border: 0;
+  .selectWrapper {
     background-color: transparent;
-  }
-
-  :global .ant-select-selection-item {
-    all: initial;
+    height: 48px;
     width: 100%;
-    height: 100%;
-    display: flex;
 
-    :global .ant-select-selection-item-content {
-      display: flex;
+    &:global.ant-select-focused.ant-select-multiple .ant-select-selector {
+      box-shadow: none;
+    }
+
+    &:global.ant-select-focused {
       width: 100%;
     }
 
-    :global .ant-select-selection-item-remove {
-      display: none;
+    &:global.ant-select-open {
+      width: 100%;
+      box-shadow: none !important;
+    }
+
+    &:global.ant-select-focused.ant-select-focused.ant-select-open .ant-select-selector {
+      box-shadow: none;
+    }
+
+    :global .ant-select-selector {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border-radius: 4px !important;
+      background-color: transparent;
+      border: 0;
+    }
+
+    :global .ant-select-selection-item {
+      all: initial;
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      :global .ant-select-selection-item-content {
+        display: flex;
+        width: 100%;
+      }
+
+      :global .ant-select-selection-item-remove {
+        display: none;
+      }
     }
   }
 }
 
 .optionsWrapper {
-  padding: 13px 0;
+  padding-bottom: 0.75rem;
 
   :global .ant-select-item-option-active {
     background-color: #F5F8FB;
@@ -78,7 +73,7 @@
 
   .searchInputWrapper {
     width: 100%;
-    padding: 0 12px 12px;
+    padding: 0.5rem;
 
     :global .ant-input-affix-wrapper {
       border-color: #CBCECF;
@@ -91,110 +86,86 @@
     }
 
     svg {
-      color: #346FB6;
-      margin-right: 4px;
+      fill: @filter-arrow-colour;
     }
   }
 }
-.checkboxInputWrapper{
-  position:relative;
-  display:flex;
-}
+
 
 .inputValueWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
   height: 100%;
   width: 100%;
-  color: #434656;
-  font-family: 'Work Sans';
-  font-weight: lighter;
-  font-size: 14px;
-  line-height: 16px;
+  color: @placeholder-font-color;
+  font-weight: @placeholder-font-weight;
+  font-size: @placeholder-font-size;
+  line-height: @placeholder-line-height;
   padding-left: 8px;
-  position: relative;
-  display: flex;
-  align-items: center;
   cursor: pointer;
+
 }
 
-.countWrapper {
-  height: 18px;
-  width: 18px;
-  background-color: #3370b6;
-  color: white;
-  border-radius: 100%;
-  font-size: 12px;
-  font-weight: bold;
-  position: relative;
-  left: 8px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.inputValueText{
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  max-width: 250px;
-}
 
 .checkboxWrapper {
-  color: #434656;
-  font-family: 'Work Sans';
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: 20px;
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  padding: 0 12px;
   justify-content: space-between;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  padding: 0 0.5rem;
   user-select: none;
 
-  &:hover {
-    input[type='checkbox'] {
-      ~ .checkmark {
-        border: 2px solid #3370B6;
-        background-color: #fff;
-
-        &:after {
-          top: 0px;
-          left: 4px;
-        }
-      }
-    }
-  }
-
-  input[type="checkbox"]:checked ~ .checkmark {
-    background-color: #3370B6;
-  }
-
-  input[type="checkbox"]:checked ~ .checkmark:after {
-    display: block;
-  }
-
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
     pointer-events: none;
+
+    &:checked ~ .checkmark {
+      background-color: @blue-800;
+      border: 0;
+
+      &:after {
+        top: 3px;
+        left: 7px
+      }
+    }
+
+    &:checked ~ .checkmark:after {
+      display: block;
+    }
+  }
+
+
+  .inputValueText {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 250px;
+
+    &.checkboxLabelSelected {
+      font-weight: bold;
+    }
+  }
+
+  .checkboxInputWrapper {
+    position: relative;
+    display: flex;
   }
 
   .checkmark {
     position: relative;
-    margin-right: 5px;
-    height: 18px;
-    width: 18px;
-    min-width: 18px;
+    height: 20px;
+    width: 20px;
     background-color: #fff;
-    border: 1px solid #3370B6;
-    border-radius: 2px;
+    border: 2px solid @blue-500;
+    border-radius: 4px;
+    margin-right: .5rem;
 
     &:after {
       content: "";
@@ -213,18 +184,16 @@
   }
 }
 
-.checkboxLabelSelected {
-  font-weight: bold;
-}
 
 .buttonWrapper {
   border-top: 1px solid #e8efff;
   width: 100%;
-  padding: 9px 18px 13px 18px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  &.showButton{
+  padding: .5rem;
+
+  &.showButton {
     justify-content: space-between;
   }
 }
@@ -239,39 +208,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  &.apply {
-    height: 40px;
-    width: 90px;
-    background-color: #3370b6;
-    color: white;
-
-    &:hover,
-    &:focus {
-      background-color: #3370b6;
-      color: white;
-    }
-  }
-
-  &.clear {
-    height: 40px;
-    width: auto;
-    padding: 0;
-    background-color: transparent;
-    color: #3370b6;
-    &.hide{
-      pointer-events: none;
-      visibility: hidden;
-    }
-  }
 }
 
 .filterSelectWrapper {
+  top: 48px !important;
+  left: -2px !important;
+  width: calc(100% + 4px) !important;
   padding-top: 0;
   padding-bottom: 0;
-  border: 1.5px solid #cdcecf;
+  border: 2px solid @blue-400;
   border-radius: 4px;
-  box-shadow: 2px 2px 5px 1px #e8e8e8;
-  width: 250px;
+  box-shadow: none;
+  z-index: 8;
 
   &.wideDropdown {
     width: 331px;
@@ -283,31 +231,22 @@
   }
 }
 
-.main {
-  position: relative;
-  width: 25%;
-  &:not(:first-child) {
-    padding-left: 12px;
-  }
-
-  &:nth-child(4n+1) {
-    padding-left: 0;
-  }
-}
 
 .arrowIconWrapper {
   position: absolute;
-  top: 8px;
-  right: 15px;
-  width: 12px;
+  top: 0;
+  right: 0.75rem;
+  width: 14px;
+  height: 100%;
   pointer-events: none;
+  display: flex;
 }
 
 .open {
   transform: rotate(180deg);
-  top: 10px;
 }
 
 .count {
-  color: #3370B6;
+  color: @blue-800;
+  font-size: 1rem;
 }

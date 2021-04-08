@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Button, Input, Select } from "antd";
+import { Input, Select } from "antd";
+import Button from "@boclips-ui/button";
 import c from "classnames";
 import { SelectOption } from "@boclips-ui/select-option";
 import SearchOutlined from "@ant-design/icons/SearchOutlined";
@@ -13,6 +14,7 @@ export enum DropdownAligment {
 
 export interface Props {
   options: SelectOption[];
+  displayButtons?: boolean;
   title: string;
   onApply: (selected: string[]) => void;
   allowSearch?: boolean;
@@ -32,6 +34,7 @@ const SelectFilter = ({
   touched,
   showFacets,
   updatedSelected,
+  displayButtons = true,
   dropdownAlignment = DropdownAligment.LEFT,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
@@ -49,10 +52,12 @@ const SelectFilter = ({
   };
 
   useEffect(() => {
-    if (dropdownOpen === false) {
+    if (!dropdownOpen) {
       if (updatedSelected) {
         setSelected(updatedSelected);
-      } else setSelected([]);
+      } else {
+        setSelected([]);
+      }
     }
   }, [dropdownOpen]);
 
@@ -104,7 +109,13 @@ const SelectFilter = ({
                   type="checkbox"
                 />
                 <span className={s.checkmark} />
-                <span className={s.inputValueText}>{it.label}</span>
+                <span
+                  className={c(s.inputValueText, {
+                    [s.checkboxLabelSelected]: selected.indexOf(it.id) !== -1,
+                  })}
+                >
+                  {it.label}
+                </span>
               </div>
 
               {showFacets && (
@@ -133,18 +144,20 @@ const SelectFilter = ({
   };
 
   return (
-    <div className={s.main}>
+    <div id="dropdownArea" className={s.main}>
       <Select
         showSearch={false}
         options={getOptions}
         menuItemSelectedIcon={null}
         data-qa="select-dropdown"
-        className={c(s.selectWrapper, { [s.filtersSelected]: showCount > 0 })}
+        className={s.selectWrapper}
         dropdownClassName={c(s.filterSelectWrapper, {
           [s.wideDropdown]: allowSearch,
         })}
         labelInValue
         virtual
+        // @ts-ignore
+        getPopupContainer={() => document.getElementById("dropdownArea")}
         value={[
           {
             value: title,
@@ -190,34 +203,34 @@ const SelectFilter = ({
               )}
               {i}
             </div>
-            <div
-              className={c(s.buttonWrapper, {
-                [s.showButton]: selected.length > 0,
-              })}
-            >
-              {selected.length > 0 && (
-                <Button
-                  type="text"
-                  className={c(s.filterButton, s.clear)}
-                  data-qa="clear-button"
-                  onClick={onClearButton}
-                >
-                  CLEAR
-                </Button>
-              )}
-              <Button
-                type="primary"
-                className={c(s.filterButton, s.apply)}
-                data-qa="apply-button"
-                disabled={
-                  selected.length === 0 &&
-                  (updatedSelected === undefined || updatedSelected.length < 1)
-                }
-                onClick={onClickButton}
+            {displayButtons && (
+              <div
+                className={c(s.buttonWrapper, {
+                  [s.showButton]: selected.length > 0,
+                })}
               >
-                APPLY
-              </Button>
-            </div>
+                {selected.length > 0 && (
+                  <Button
+                    type="outline"
+                    text="CLEAR"
+                    data-qa="clear-button"
+                    onClick={onClearButton}
+                    height="48px"
+                  />
+                )}
+                <Button
+                  text="APPLY"
+                  data-qa="apply-button"
+                  disabled={
+                    selected.length === 0 &&
+                    (updatedSelected === undefined ||
+                      updatedSelected.length < 1)
+                  }
+                  height="48px"
+                  onClick={onClickButton}
+                />
+              </div>
+            )}
           </>
         )}
       />
