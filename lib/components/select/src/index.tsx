@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Input, Select } from "antd";
 import Button from "@boclips-ui/button";
 import c from "classnames";
@@ -23,6 +23,7 @@ export interface Props {
   searchPlaceholder?: string;
   touched?: (touched: boolean) => void;
   dropdownAlignment?: DropdownAligment;
+  relativePositionFilters?: boolean;
 }
 
 const SelectFilter = ({
@@ -35,12 +36,16 @@ const SelectFilter = ({
   showFacets,
   updatedSelected,
   displayButtons = true,
+  relativePositionFilters = false,
   dropdownAlignment = DropdownAligment.LEFT,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
   const [showCount, setShowCount] = useState<number>(0);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [filterOptions, setFilterOptions] = useState<SelectOption[]>(options);
+  const [dropdownHeight, setDropdownHeight] = useState<number | string>("auto");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const selectRef = useRef<HTMLDivElement>(null);
 
   const onClickButton = () => {
     if (touched) {
@@ -50,16 +55,6 @@ const SelectFilter = ({
     onApply(selected);
     setDropdownOpen(false);
   };
-
-  useEffect(() => {
-    if (!dropdownOpen) {
-      if (updatedSelected) {
-        setSelected(updatedSelected);
-      } else {
-        setSelected([]);
-      }
-    }
-  }, [dropdownOpen]);
 
   const onClearButton = () => {
     if (showCount > 0) {
@@ -79,7 +74,7 @@ const SelectFilter = ({
       setSelected(updatedSelected!);
       setShowCount(updatedSelected!.length);
     }
-  }, [updatedSelected]);
+  }, [onApply, selected.length, showCount, updatedSelected]);
 
   useEffect(() => {
     setFilterOptions(options);
@@ -107,6 +102,7 @@ const SelectFilter = ({
                 <input
                   checked={selected.indexOf(it.id) !== -1}
                   type="checkbox"
+                  readOnly
                 />
                 <span className={s.checkmark} />
                 <span
@@ -143,8 +139,29 @@ const SelectFilter = ({
     }
   };
 
+  useEffect(() => {
+    if (relativePositionFilters && dropdownOpen) {
+      const dropDownClone = dropdownRef.current!!.cloneNode(
+        true
+      ) as HTMLElement;
+      dropDownClone.style.visibility = "hidden";
+      document.querySelector("html")!!.append(dropDownClone);
+      setDropdownHeight(
+        dropDownClone.offsetHeight + selectRef.current!!.offsetHeight
+      );
+      dropDownClone.remove();
+    } else {
+      setDropdownHeight("auto");
+    }
+  }, [dropdownOpen, relativePositionFilters]);
+
   return (
-    <div id={title} className={s.main}>
+    <div
+      ref={selectRef}
+      id={title}
+      style={{ height: dropdownHeight }}
+      className={s.main}
+    >
       <Select
         showSearch={false}
         options={getOptions}
@@ -190,19 +207,17 @@ const SelectFilter = ({
             : { points: ["tr", "br"] }
         }
         dropdownRender={(i) => (
-          <>
-            <div className={s.optionsWrapper}>
-              {allowSearch && (
-                <div className={s.searchInputWrapper}>
-                  <Input
-                    placeholder={searchPlaceholder}
-                    onChange={onSearch}
-                    prefix={<SearchOutlined />}
-                  />
-                </div>
-              )}
-              {i}
-            </div>
+          <div ref={dropdownRef} className={s.optionsWrapper}>
+            {allowSearch && (
+              <div className={s.searchInputWrapper}>
+                <Input
+                  placeholder={searchPlaceholder}
+                  onChange={onSearch}
+                  prefix={<SearchOutlined />}
+                />
+              </div>
+            )}
+            {i}
             {displayButtons && (
               <div
                 className={c(s.buttonWrapper, {
@@ -231,7 +246,7 @@ const SelectFilter = ({
                 />
               </div>
             )}
-          </>
+          </div>
         )}
       />
       <div className={c(s.arrowIconWrapper, { [s.open]: dropdownOpen })}>

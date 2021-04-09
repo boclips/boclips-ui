@@ -8,8 +8,7 @@
   justify-content: center;
   border: @filter-input-border;
   border-radius: @filter-input-border-radius;
-  background-color: @white;
-  ;
+  background-color: @white;;
 
   * {
     font-family: @font-family;
@@ -19,6 +18,7 @@
     background-color: transparent;
     height: 48px;
     width: 100%;
+
 
     &:global.ant-select-focused.ant-select-multiple .ant-select-selector {
       box-shadow: none;
@@ -66,7 +66,6 @@
 }
 
 .optionsWrapper {
-  padding-bottom: 0.75rem;
 
   :global .ant-select-item-option-active {
     background-color: #F5F8FB;
@@ -105,7 +104,6 @@
   line-height: @placeholder-line-height;
   padding-left: 8px;
   cursor: pointer;
-
 }
 
 
@@ -221,7 +219,6 @@
   border-radius: 4px;
   box-shadow: none;
   z-index: 8;
-
   &.wideDropdown {
     width: 331px;
   }
@@ -237,8 +234,8 @@
   position: absolute;
   top: 0;
   right: 0.75rem;
+  height: 48px;
   width: 14px;
-  height: 100%;
   pointer-events: none;
   display: flex;
 }
