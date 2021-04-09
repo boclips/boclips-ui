@@ -9,8 +9,8 @@ type Breakpoints = { [name in AntBreakpoint]: Breakpoint };
 
 export const MediaBreakpoints: Breakpoints = {
   sm: { width: 320, label: "sm", type: "mobile" },
-  md: { width: 768, label: "md", type: "tablet" },
-  lg: { width: 1148, label: "lg", type: "desktop" },
+  md: { width: 768, label: "md", type: "mobile" },
+  lg: { width: 1148, label: "lg", type: "tablet" },
   xl: { width: 1680, label: "xl", type: "desktop" },
   xxl: { width: 1920, label: "xxl", type: "desktop" },
 };
