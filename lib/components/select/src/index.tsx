@@ -102,7 +102,6 @@ const SelectFilter = ({
                 <input
                   checked={selected.indexOf(it.id) !== -1}
                   type="checkbox"
-                  readOnly
                 />
                 <span className={s.checkmark} />
                 <span
