@@ -74,7 +74,7 @@ const SelectFilter = ({
       setSelected(updatedSelected!);
       setShowCount(updatedSelected!.length);
     }
-  }, [onApply, selected.length, showCount, updatedSelected]);
+  }, [updatedSelected]);
 
   useEffect(() => {
     setFilterOptions(options);
@@ -102,6 +102,7 @@ const SelectFilter = ({
                 <input
                   checked={selected.indexOf(it.id) !== -1}
                   type="checkbox"
+                  onChange={() => console.log("checked")}
                 />
                 <span className={s.checkmark} />
                 <span
@@ -181,8 +182,8 @@ const SelectFilter = ({
               <div className={s.inputValueWrapper}>
                 {title}
                 {showCount > 0 ? (
-                  <span data-qa="count-wrapper" className={s.countWrapper}>
-                    {showCount}
+                  <span data-qa="count-wrapper" className={s.inputCount}>
+                    ({showCount})
                   </span>
                 ) : (
                   ""

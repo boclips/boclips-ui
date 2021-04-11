@@ -1,5 +1,5 @@
 @import "variables.less";
-@import '~@boclips-ui/styles/src/publishersColours';
+@import "~@boclips-ui/styles/src/publishersColours";
 
 .main {
   position: relative;
@@ -8,7 +8,7 @@
   justify-content: center;
   border: @filter-input-border;
   border-radius: @filter-input-border-radius;
-  background-color: @white;;
+  background-color: @white;
 
   * {
     font-family: @font-family;
@@ -18,7 +18,6 @@
     background-color: transparent;
     height: 48px;
     width: 100%;
-
 
     &:global.ant-select-focused.ant-select-multiple .ant-select-selector {
       box-shadow: none;
@@ -33,7 +32,8 @@
       box-shadow: none !important;
     }
 
-    &:global.ant-select-focused.ant-select-focused.ant-select-open .ant-select-selector {
+    &:global.ant-select-focused.ant-select-focused.ant-select-open
+    .ant-select-selector {
       box-shadow: none;
     }
 
@@ -66,9 +66,8 @@
 }
 
 .optionsWrapper {
-
   :global .ant-select-item-option-active {
-    background-color: #F5F8FB;
+    background-color: #f5f8fb;
   }
 
   .searchInputWrapper {
@@ -76,12 +75,12 @@
     padding: 0.5rem;
 
     :global .ant-input-affix-wrapper {
-      border-color: #CBCECF;
+      border-color: #cbcecf;
       border-radius: 4px;
       box-shadow: none;
 
       &:hover {
-        border-color: #CBCECF;
+        border-color: #cbcecf;
       }
     }
 
@@ -90,7 +89,6 @@
     }
   }
 }
-
 
 .inputValueWrapper {
   position: relative;
@@ -105,7 +103,6 @@
   padding-left: 8px;
   cursor: pointer;
 }
-
 
 .checkboxWrapper {
   width: 100%;
@@ -131,7 +128,7 @@
 
       &:after {
         top: 3px;
-        left: 7px
+        left: 7px;
       }
     }
 
@@ -139,7 +136,6 @@
       display: block;
     }
   }
-
 
   .inputValueText {
     white-space: nowrap;
@@ -164,7 +160,7 @@
     background-color: #fff;
     border: 2px solid @blue-500;
     border-radius: 4px;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
 
     &:after {
       content: "";
@@ -183,14 +179,13 @@
   }
 }
 
-
 .buttonWrapper {
   border-top: 1px solid #e8efff;
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: .5rem;
+  padding: 0.5rem;
 
   &.showButton {
     justify-content: space-between;
@@ -219,6 +214,7 @@
   border-radius: 4px;
   box-shadow: none;
   z-index: 8;
+
   &.wideDropdown {
     width: 331px;
   }
@@ -228,7 +224,6 @@
     padding: 0;
   }
 }
-
 
 .arrowIconWrapper {
   position: absolute;
@@ -242,6 +237,10 @@
 
 .open {
   transform: rotate(180deg);
+}
+
+.inputCount {
+  margin-left: 0.25rem;
 }
 
 .count {
