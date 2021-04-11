@@ -6,7 +6,7 @@ import CloseIcon from "./resources/close-icon.svg";
 export interface Props {
   id: string;
   value: string;
-  label: string;
+  label?: string;
   onClick: (value: string) => any;
 }
 
