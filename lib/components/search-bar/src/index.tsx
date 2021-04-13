@@ -1,6 +1,5 @@
 import React, { ReactElement, useState } from "react";
 import { AutoComplete, Input } from "antd";
-import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import Button from "@boclips-ui/button";
 import c from "classnames";
 import CloseIcon from "./resources/close-icon.svg";
@@ -8,16 +7,14 @@ import { Completion, completionsFor } from "./completions/completions";
 import completionsCreatedBy from "./json/completionsCreatedBy.json";
 import completionsTopics from "./json/completionsTopics.json";
 import s from "./styles.module.less";
+import SearchIcon from "./resources/search-icon.svg";
 
 export interface Props {
   onSearch: (query: string, page: number) => void;
   placeholder?: string;
   initialQuery?: string;
   autocomplete?: boolean;
-  onlySearchIconInButton?: boolean;
-  theme?: "lti" | "publishers";
-  size?: "big" | "small";
-  buttonIcon?: React.ReactElement;
+  iconOnlyButton?: boolean;
 }
 
 const getCompletions = completionsFor({
@@ -28,12 +25,9 @@ const getCompletions = completionsFor({
 const SearchBar = ({
   onSearch,
   placeholder = "Search...",
-  theme = "lti",
   initialQuery,
   autocomplete = true,
-  onlySearchIconInButton = false,
-  buttonIcon,
-  size = "big",
+  iconOnlyButton = false,
 }: Props): ReactElement => {
   const [result, setResult] = useState<Completion[]>();
   const [inputValue, setInputValue] = useState<string | undefined>(
@@ -101,11 +95,7 @@ const SearchBar = ({
     <div
       className={c({
         [s.autoCompleteSearchWrapper]: autocomplete === true,
-        [s.searchWrapper]: autocomplete === false,
-        [s.ltiWrapper]: theme === "lti",
-        [s.publishersWrapper]: theme === "publishers",
-        [s.publishersBig]: theme === "publishers" && size === "big",
-        [s.publishersSmall]: theme === "publishers" && size === "small",
+        [s.searchBarWrapper]: true,
       })}
     >
       <AutoComplete
@@ -114,8 +104,7 @@ const SearchBar = ({
         onChange={onChange}
         onKeyDown={onKeyDown}
         className={c({
-          [s.lti]: theme === "lti",
-          [s.publishers]: theme === "publishers",
+          [s.lti]: true,
         })}
         dropdownClassName={s.dropdownWrapper}
         value={inputValue}
@@ -125,7 +114,6 @@ const SearchBar = ({
           onChange={getInputValue}
           data-qa="search-input"
           aria-label="search"
-          prefix={theme === "lti" ? <SearchOutlined /> : null}
           suffix={
             <CloseIcon
               className={c(s.closeIcon, {
@@ -144,8 +132,8 @@ const SearchBar = ({
 
       <Button
         onClick={handleSearchButton}
-        icon={buttonIcon}
-        iconOnly={onlySearchIconInButton}
+        icon={<SearchIcon />}
+        iconOnly={iconOnlyButton}
         text="Search"
       />
     </div>

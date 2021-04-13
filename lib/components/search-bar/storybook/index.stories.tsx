@@ -1,7 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 // @ts-ignore
-import SearchIcon from "../src/resources/search-icon.svg";
 import SearchBar, { Props } from "../src";
 
 export default {
@@ -12,42 +11,22 @@ export default {
 const Template: Story<Props> = ({
   onSearch,
   placeholder,
-  theme,
   autocomplete,
-  onlySearchIconInButton,
-  size,
-  buttonIcon,
+  iconOnlyButton,
 }: Props) => (
   <SearchBar
     onSearch={onSearch}
     placeholder={placeholder}
-    theme={theme}
     autocomplete={autocomplete}
-    onlySearchIconInButton={onlySearchIconInButton}
-    size={size}
-    buttonIcon={buttonIcon}
+    iconOnlyButton={iconOnlyButton}
   />
 );
 
-export const LTI = Template.bind({});
-export const PUBLISHERS = Template.bind({});
+export const DEFAULT = Template.bind({});
 
-PUBLISHERS.args = {
+DEFAULT.args = {
   onSearch: () => console.log("search triggered <- it's from storybook"),
   placeholder: "Search...",
-  theme: "publishers",
-  autocomplete: false,
-  onlySearchIconInButton: false,
-  size: "big",
-  buttonIcon: <SearchIcon />,
-};
-
-LTI.args = {
-  onSearch: () => console.log("search triggered <- it's from storybook"),
-  placeholder: "Search...",
-  theme: "lti",
   autocomplete: true,
-  onlySearchIconInButton: false,
-  size: "big",
-  buttonIcon: undefined,
+  iconOnlyButton: false,
 };

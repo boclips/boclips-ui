@@ -1,28 +1,7 @@
 @import '~@boclips-ui/styles/src/LTIColours';
 @import '~@boclips-ui/styles/src/publishersColours';
+@import 'variables';
 
-:root {
-
-  /* LTI STYLE VARS */
-  --LTIFontFamily: 'Work Sans', Heebo, Helvetica Neue, Helvetica, Arial, sans-serif;
-  --LTIBorderRadius: 8px;
-  --LTISearchInputBorder: 1.5px solid @lti-gray;
-  --LTISearchInputBorderHover: 1.5px solid @blue-shade-4;
-  --LTISearchInputBorderRadius: 4px 0px 0px 4px;
-  --LTISearchInputButtonRadius: 0 4px 4px 0;
-  --LTISearchIconFill: rgba(#3e4664, 0.3);
-  --LTISearchInputTextColour: @shade-2;
-  --LTISearchButtonBackground: #346fb6;
-
-  /* PUBLISHERS STYLE VARS */
-  --PublishersBorderRadius: 4px;
-  --PublishersBorder: 1.5px solid @blue-300;
-  --PublishersFontFamily: 'Rubik', Helvetica Neue, Helvetica, Arial, sans-serif;
-  --PublishersFontSize: 1rem;
-  --PublishersMaxWidth: 612px;
-}
-
-/* AUTOCOMPLETE SETUP START */
 .autoCompleteSearchWrapper {
   .dropdownWrapper :global .ant-select-item-option {
     background-color: white;
@@ -40,7 +19,7 @@
 
   .dropdownWrapper {
     background: transparent;
-    border-radius: var(--LTIBorderRadius);
+    border-radius: 8px;
     border: 2px solid @shade-3;
     padding: 0;
   }
@@ -51,7 +30,7 @@
   font-weight: bold;
   padding: 4px 8px;
   font-size: 16px;
-  font-family: var(--LTIFontFamily);
+  font-family: @search-bar-font-family;
 
   &:hover {
     font-weight: normal;
@@ -66,138 +45,26 @@
   }
 }
 
-/* AUTOCOMPLETE SETUP END */
-
-/* LTI  START */
-.ltiWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  width: 100%;
-  height: 40px;
-
-  .lti {
-    justify-content: center;
-    width: 100%;
-
-    :global .ant-select-selector {
-      height: 100%;
-    }
-
-    input {
-      background-color: @shade-1;
-      font-size: 16px;
-      font-weight: bold;
-      height: 100%;
-      font-family: var(--LTIFontFamily);
-
-      &::placeholder {
-        color: @shade-6;
-        font-weight: normal;
-      }
-    }
-
-    span[role='img'] {
-      padding-right: 4px;
-      height: 100%;
-
-      svg[data-icon='search'] {
-        width: 16px;
-        height: 16px;
-        fill: @blue-shade-4;
-      }
-    }
-
-    .closeIcon {
-      width:22px;
-      height:22px;
-      padding: 4px;
-      border-radius: var(--PublishersBorderRadius);
-      stroke: @gray-600;
-      cursor: pointer;
-      &.hideMe{
-        pointer-events: none;
-      }
-
-      &:hover {
-        background-color: @blue-300;
-        stroke: @blue-700;
-      }
-    }
-
-    :global .ant-input-affix-wrapper {
-      background-color: @shade-1;
-      border-right: none;
-      align-items: center;
-    }
-
-    :global .ant-input-affix-wrapper {
-      background-color: @shade-1;
-      border-radius: var(--LTISearchInputBorderRadius);
-      border-left: var(--LTISearchInputBorder);
-      border-top: var(--LTISearchInputBorder);
-      border-bottom: var(--LTISearchInputBorder);
-      border-right: none;
-      height: 100%;
-
-      &:hover {
-        border-left: var(--LTISearchInputBorderHover);
-        border-top: var(--LTISearchInputBorderHover);
-        border-bottom: var(--LTISearchInputBorderHover);
-      }
-    }
-
-    :global .ant-input-affix-wrapper-focused {
-      border-left: var(--LTISearchInputBorderHover);
-      border-top: var(--LTISearchInputBorderHover);
-      border-bottom: var(--LTISearchInputBorderHover);
-      color: var(--LTISearchInputTextColour);
-    }
-  }
-
-  .searchButton {
-    height: 100%;
-    width: 102px;
-    font-weight: bold;
-    border-radius: var(--LTISearchInputButtonRadius);
-    font-size: 16px;
-    background-color: var(--LTISearchButtonBackground);
-    box-shadow: none;
-    border: 0;
-    font-family: var(--LTIFontFamily);
-  }
-}
-
-/* LTI SETUP END */
-
-/* PUBLISHERS START */
-.publishersWrapper {
+.searchBarWrapper {
   background-color: @white;
   width: 100%;
-  max-width: var(--PublishersMaxWidth);
+  max-width: @search-bar-max-width;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  padding: 4px;
+  padding: @search-bar-padding;
 
-  border-radius: var(--PublishersBorderRadius);
-  border: var(--PublishersBorder);
-  font-family: --var(--PublishersFontFamily);
-
-  &.publishersBig {
-    height: 55px;
-  }
-
-  &.publishersSmall {
-    height: 48px;
-  }
+  border-radius: @search-bar-border-radius;
+  border: @search-bar-border;
+  font-family: @search-bar-font-family;
+  height: @search-bar-height;
 
   &:hover {
-    border-color: @blue-500;
+    border-color: @search-bar-border-color;
   }
 
   &:focus-within {
-    border-color: @blue-500;
+    border-color: @search-bar-border-color;
   }
 
   :global .ant-select-customize-input {
@@ -210,19 +77,20 @@
 
       :global .ant-input-affix-wrapper {
         height: 100%;
+        cursor: default;
       }
     }
 
     input {
       height: 100%;
-      font-size: var(--PublishersFontFamily);
+      font-family: @search-bar-font-family;
       font-weight: 500;
-      color: @gray-800;
+      color: @search-bar-input-color;
 
 
       &::placeholder {
-        color: @gray-700;
-        font-weight: normal;
+        font-weight: @search-bar-placeholder-weight;
+        color: @search-bar-placeholder-color;
       }
     }
   }
@@ -232,8 +100,8 @@
     width: 124px;
     background-color: @blue-800;
     border: 0;
-    border-radius: var(--PublishersBorderRadius);
-    font-size: var(--PublishersFontSize);
+    border-radius: @search-bar-border-radius;
+    font-size: @search-bar-font-size;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -257,7 +125,7 @@
     width:22px;
     height:22px;
     padding: 4px;
-    border-radius: var(--PublishersBorderRadius);
+    border-radius: @search-bar-border-radius;
     stroke: @gray-600;
     cursor: pointer;
     &.hideMe{
@@ -271,10 +139,6 @@
   }
 }
 
-/* PUBLISHERS END */
-
-/* HELPERS START */
 .hideMe {
   display: none;
 }
-/* HELPERS END */
