@@ -1,14 +1,9 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-// @ts-ignore
-import Button from "@boclips-ui/button";
 import { Player } from "boclips-player-react";
 import * as dayjs from "dayjs";
-import { VideoCardV3, Props, Components } from "../src";
+import { Components, Props, VideoCardV3 } from "../src";
 import { exampleVideo } from "./videoExample";
-// @ts-ignore
-import PlusIcon from "../resources/plus.svg";
-
 // @ts-ignore
 import s from "./styles.module.less";
 
@@ -61,13 +56,9 @@ const ActionButtons = () => {
         justifyContent: "flex-end",
       }}
     >
-      <Button
-        onClick={onClick}
-        iconOnly
-        icon={<PlusIcon />}
-        width="44px"
-        height="40px"
-      />
+      <button type="button" onClick={onClick}>
+        I am ugly and I know it
+      </button>
     </div>
   );
 };
