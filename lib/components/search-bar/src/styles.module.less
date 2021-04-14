@@ -45,6 +45,10 @@
 }
 
 .searchBarWrapper {
+  --bo-ui-button-icon-only-padding: 11px 11px;
+  --bo-ui-button-svg-height: 18px;
+  --bo-ui-button-svg-width: 18px;
+
   background-color: @white;
   width: 100%;
   max-width: @search-bar-max-width;
@@ -76,6 +80,7 @@
       :global .ant-input-affix-wrapper {
         height: 100%;
         cursor: default;
+        padding: 8px 8px 8px 16px;
       }
     }
 
@@ -93,32 +98,10 @@
     }
   }
 
-  .searchButton {
-    height: 100%;
-    width: 124px;
-    background-color: @blue-800;
-    border: 0;
-    border-radius: @search-bar-border-radius;
-    font-size: @search-bar-font-size;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &.iconButton {
-      width: 40px;
-
-      svg {
-        margin-right: 0;
-      }
-    }
-
-    svg {
-      margin-right: 4px;
-      height: 16.5px;
-      width: 16.5px;
-    }
+  &.button.iconOnly {
+    width: 50px;
   }
+
   .closeIcon {
     width:22px;
     height:22px;
@@ -126,12 +109,13 @@
     border-radius: @search-bar-border-radius;
     stroke: @gray-600;
     cursor: pointer;
+
     &.hideMe{
       pointer-events: none;
     }
 
     &:hover {
-      background-color: @blue-300;
+      background-color: @blue-500;
       stroke: @blue-700;
     }
   }
