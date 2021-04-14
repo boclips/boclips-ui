@@ -131,6 +131,7 @@ const SearchBar = ({
       </AutoComplete>
 
       <Button
+        aria-label="search"
         dataQa="search-button"
         onClick={handleSearchButton}
         icon={<SearchIcon />}

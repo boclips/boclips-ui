@@ -2,7 +2,7 @@ import React from "react";
 import c from "classnames";
 import s from "./style.module.less";
 
-export interface Props {
+export interface Props extends React.HTMLProps<HTMLButtonElement> {
   onClick: () => void;
   iconOnly?: boolean;
   icon?: React.ReactElement;
@@ -24,6 +24,7 @@ const Button = ({
   icon,
   text,
   dataQa,
+  ...rest
 }: Props) => (
   <button
     data-qa={dataQa}
@@ -35,6 +36,8 @@ const Button = ({
       [s.iconOnly]: iconOnly,
     })}
     type="button"
+    /* eslint-disable-next-line react/jsx-props-no-spreading */
+    {...rest}
   >
     {icon && <div className={s.icon}>{icon}</div>}
     {!iconOnly && (
