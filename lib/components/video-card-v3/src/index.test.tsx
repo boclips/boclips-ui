@@ -39,4 +39,26 @@ describe("VideoCard V3", () => {
 
     expect(card.queryByText("More...")).toBeNull();
   });
+
+  it("display the duration correctly when undefined in minutes place", () => {
+    const duration = "undefined:21";
+
+    const card = render(
+      // @ts-ignore
+      <VideoCardV3 duration={duration} video={exampleVideo} />
+    );
+
+    expect(card.getByText("00:21")).toBeInTheDocument();
+  });
+
+  it("display the duration correctly when undefined in seconds place", () => {
+    const duration = "21:undefined";
+
+    const card = render(
+      // @ts-ignore
+      <VideoCardV3 duration={duration} video={exampleVideo} />
+    );
+
+    expect(card.getByText("21:00")).toBeInTheDocument();
+  });
 });

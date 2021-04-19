@@ -90,6 +90,8 @@ export const VideoCardV3 = ({
     displayShowMoreBadgesButton,
   ]);
 
+  const durationFormatter = duration?.toString().replace("undefined", "00");
+
   return (
     <div
       role="presentation"
@@ -108,7 +110,7 @@ export const VideoCardV3 = ({
       </section>
 
       <section className={s.subheader}>
-        {duration && <div>{duration}</div>}
+        {duration && <div>{durationFormatter}</div>}
 
         {video.releasedOn && <ReleasedOn releasedOn={video.releasedOn} />}
 
