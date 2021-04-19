@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/release-date-filter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "files": [
     "dist/**/*"
   ],
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/search-bar --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^2.2.0"
+    "@boclips-ui/styles": "^2.2.1"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.10"
