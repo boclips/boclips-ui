@@ -12,6 +12,7 @@ export interface Props extends React.HTMLProps<HTMLButtonElement> {
   disabled?: boolean;
   text?: string;
   dataQa?: string;
+  suffix?: React.ReactElement;
 }
 
 const Button = ({
@@ -24,6 +25,7 @@ const Button = ({
   icon,
   text,
   dataQa,
+  suffix,
   ...rest
 }: Props) => (
   <button
@@ -43,6 +45,7 @@ const Button = ({
     {!iconOnly && (
       <span className={c(s.copy, { [s.copyWithIcon]: icon })}>{text}</span>
     )}
+    {suffix && suffix}
   </button>
 );
 
