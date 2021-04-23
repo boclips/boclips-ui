@@ -6,18 +6,29 @@
   width: @filter-width;
   display: flex;
   justify-content: center;
-  border: @filter-input-border;
-  border-radius: @filter-input-border-radius;
   background-color: @white;
 
   * {
     font-family: @font-family;
   }
 
+  .filterSelectWrapper {
+    width: 100%;
+    border: 2px solid @blue-400;
+    border-radius: 4px;
+    left: 0 !important;
+  }
+
   .selectWrapper {
     background-color: transparent;
     height: 48px;
     width: 100%;
+    border: @filter-input-border;
+    border-radius: @filter-input-border-radius;
+
+    &.filterSelectOpened {
+      border: 2px solid @blue-600;
+    }
 
     &:global.ant-select-focused.ant-select-multiple .ant-select-selector {
       box-shadow: none;
@@ -32,8 +43,7 @@
       box-shadow: none !important;
     }
 
-    &:global.ant-select-focused.ant-select-focused.ant-select-open
-    .ant-select-selector {
+    &:global.ant-select-focused.ant-select-focused.ant-select-open.ant-select-selector {
       box-shadow: none;
     }
 
@@ -70,22 +80,127 @@
     background-color: #f5f8fb;
   }
 
+  :global .ant-select-item-option {
+    padding: 0.5rem;
+  }
+
   .searchInputWrapper {
     width: 100%;
     padding: 0.5rem;
 
     :global .ant-input-affix-wrapper {
-      border-color: #cbcecf;
+      border: 2px solid @blue-400!important;
+      box-sizing: border-box;
       border-radius: 4px;
+      height: 40px;
+      transition: none;
+      padding: 11px;
       box-shadow: none;
 
-      &:hover {
-        border-color: #cbcecf;
+      .ant-input-prefix {
+        margin-right: 11px;
+
+        svg {
+          fill: transparent;
+        }
+      }
+
+      input {
+        height: 100%;
+        font-size: 1rem;
+        color: @gray-900;
+      }
+
+      &.ant-input-affix-wrapper-focused {
+        outline: none;
       }
     }
 
     svg {
       fill: @filter-arrow-colour;
+    }
+  }
+
+  .checkboxWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: @filter-value-font-size;
+    color: @filter-value-color;
+    font-weight: @filter-value-font-weight;
+
+    .checkboxInputWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .checkmark {
+        position: relative;
+        height: 20px;
+        width: 20px;
+        background-color: #fff;
+        border: 2px solid @blue-500;
+        border-radius: 4px;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+
+        &:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 5px;
+          top: 1px;
+          width: 6px;
+          height: 12px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+
+      .inputValueText {
+        white-space: pre-wrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 8px;
+
+        &.checkboxLabelSelected {
+          font-weight: bold;
+        }
+      }
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      pointer-events: none;
+
+      &:checked ~ .checkmark {
+        background-color: @blue-800;
+        border: 0;
+
+        &:after {
+          top: 3px;
+          left: 7px;
+        }
+      }
+
+      &:checked ~ .checkmark:after {
+        display: block;
+      }
+    }
+
+    .count {
+      color: @blue-800;
+      font-size: 0.875rem;
+      display: flex;
+      font-weight: 400;
     }
   }
 }
@@ -97,131 +212,18 @@
   height: 100%;
   width: 100%;
   color: @placeholder-font-color;
-  font-weight: @placeholder-font-weight;
   font-size: @placeholder-font-size;
   line-height: @placeholder-line-height;
   padding-left: 8px;
   cursor: pointer;
-}
+  font-weight: @placeholder-font-weight;
 
-.checkboxWrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0.5rem;
-  user-select: none;
-
-  input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    pointer-events: none;
-
-    &:checked ~ .checkmark {
-      background-color: @blue-800;
-      border: 0;
-
-      &:after {
-        top: 3px;
-        left: 7px;
-      }
-    }
-
-    &:checked ~ .checkmark:after {
-      display: block;
-    }
+  &.boldValueWrapper {
+    font-weight: 500;
   }
 
-  .inputValueText {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 250px;
-
-    &.checkboxLabelSelected {
-      font-weight: bold;
-    }
-  }
-
-  .checkboxInputWrapper {
-    position: relative;
-    display: flex;
-  }
-
-  .checkmark {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    background-color: #fff;
-    border: 2px solid @blue-500;
-    border-radius: 4px;
-    margin-right: 0.5rem;
-
-    &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      left: 5px;
-      top: 1px;
-      width: 6px;
-      height: 12px;
-      border: solid white;
-      border-width: 0 2px 2px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
-  }
-}
-
-.buttonWrapper {
-  border-top: 1px solid #e8efff;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0.5rem;
-
-  &.showButton {
-    justify-content: space-between;
-  }
-}
-
-.filterButton {
-  border: 0;
-  border-radius: 4px;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.filterSelectWrapper {
-  top: 48px !important;
-  left: -2px !important;
-  width: calc(100% + 4px) !important;
-  padding-top: 0;
-  padding-bottom: 0;
-  border: 2px solid @blue-400;
-  border-radius: 4px;
-  box-shadow: none;
-  z-index: 8;
-
-  &.wideDropdown {
-    width: 331px;
-  }
-
-  :global .ant-select-item {
-    width: 100%;
-    padding: 0;
+  .inputCount {
+    margin-left: 0.25rem;
   }
 }
 
@@ -237,13 +239,4 @@
 
 .open {
   transform: rotate(180deg);
-}
-
-.inputCount {
-  margin-left: 0.25rem;
-}
-
-.count {
-  color: @blue-800;
-  font-size: 1rem;
 }

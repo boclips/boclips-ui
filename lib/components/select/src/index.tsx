@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Input, Select } from "antd";
-import Button from "@boclips-ui/button";
 import c from "classnames";
 import { SelectOption } from "@boclips-ui/select-option";
 import SearchOutlined from "@ant-design/icons/SearchOutlined";
@@ -24,6 +23,7 @@ export interface Props {
   touched?: (touched: boolean) => void;
   dropdownAlignment?: DropdownAligment;
   relativePositionFilters?: boolean;
+  inputPrefixIcon?: React.ReactElement;
 }
 
 const SelectFilter = ({
@@ -32,11 +32,10 @@ const SelectFilter = ({
   onApply,
   allowSearch = false,
   searchPlaceholder,
-  touched,
   showFacets,
   updatedSelected,
-  displayButtons = true,
   relativePositionFilters = false,
+  inputPrefixIcon,
   dropdownAlignment = DropdownAligment.LEFT,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
@@ -47,32 +46,13 @@ const SelectFilter = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const selectRef = useRef<HTMLDivElement>(null);
 
-  const onClickButton = () => {
-    if (touched) {
-      touched(true);
-    }
-    setShowCount(selected.length);
-    onApply(selected);
-    setDropdownOpen(false);
-  };
-
-  const onClearButton = () => {
-    if (showCount > 0) {
-      onApply([]);
-      setDropdownOpen(false);
-    }
-    setSelected([]);
-    setShowCount(0);
-  };
-
   useEffect(() => {
     if (updatedSelected && updatedSelected?.length !== selected.length) {
       if (showCount > 0) {
         onApply(updatedSelected!);
-        setDropdownOpen(false);
+        setSelected(updatedSelected!);
+        setShowCount(updatedSelected!.length);
       }
-      setSelected(updatedSelected!);
-      setShowCount(updatedSelected!.length);
     }
   }, [updatedSelected]);
 
@@ -80,7 +60,18 @@ const SelectFilter = ({
     setFilterOptions(options);
   }, [options]);
 
-  const manageSelected = (selectedValue: any) => {
+  useEffect(() => {
+    setShowCount(selected.length);
+    onApply(selected);
+  }, [selected]);
+
+  useEffect(() => {
+    if (updatedSelected) {
+      setSelected(updatedSelected);
+    }
+  }, [updatedSelected]);
+
+  const applyFilter = (selectedValue: any) => {
     if (selected.indexOf(selectedValue) !== -1) {
       const newSelected = selected.filter((v) => v !== selectedValue);
       setSelected(newSelected);
@@ -92,7 +83,7 @@ const SelectFilter = ({
   const getOptions = useMemo(
     () =>
       filterOptions
-        .filter(
+        ?.filter(
           (it) => (it.count && it.count > 0) || selected.indexOf(it.id) !== -1
         )
         .map((it: SelectOption) => ({
@@ -124,7 +115,7 @@ const SelectFilter = ({
           value: it.id,
           title: it.label,
         })),
-    [selected, filterOptions, showFacets]
+    [selected, filterOptions, showFacets, updatedSelected]
   );
 
   const onSearch = (e: any) => {
@@ -141,13 +132,11 @@ const SelectFilter = ({
 
   useEffect(() => {
     if (relativePositionFilters && dropdownOpen) {
-      const dropDownClone = dropdownRef.current!!.cloneNode(
-        true
-      ) as HTMLElement;
+      const dropDownClone = dropdownRef.current!.cloneNode(true) as HTMLElement;
       dropDownClone.style.visibility = "hidden";
-      document.querySelector("html")!!.append(dropDownClone);
+      document.querySelector("html")!.append(dropDownClone);
       setDropdownHeight(
-        dropDownClone.offsetHeight + selectRef.current!!.offsetHeight
+        dropDownClone.offsetHeight + selectRef.current!.offsetHeight
       );
       dropDownClone.remove();
     } else {
@@ -167,10 +156,8 @@ const SelectFilter = ({
         options={getOptions}
         menuItemSelectedIcon={null}
         data-qa="select-dropdown"
-        className={s.selectWrapper}
-        dropdownClassName={c(s.filterSelectWrapper, {
-          [s.wideDropdown]: allowSearch,
-        })}
+        className={c(s.selectWrapper, { [s.filterSelectOpened]: dropdownOpen })}
+        dropdownClassName={s.filterSelectWrapper}
         labelInValue
         virtual
         // @ts-ignore
@@ -179,7 +166,11 @@ const SelectFilter = ({
           {
             value: title,
             label: (
-              <div className={s.inputValueWrapper}>
+              <div
+                className={c(s.inputValueWrapper, {
+                  [s.boldValueWrapper]: showCount,
+                })}
+              >
                 {title}
                 {showCount > 0 ? (
                   <span data-qa="count-wrapper" className={s.inputCount}>
@@ -198,7 +189,7 @@ const SelectFilter = ({
           setDropdownOpen(open);
         }}
         onSelect={(it) => {
-          manageSelected(it.value);
+          applyFilter(it.value);
         }}
         dropdownMatchSelectWidth={false}
         dropdownAlign={
@@ -213,39 +204,11 @@ const SelectFilter = ({
                 <Input
                   placeholder={searchPlaceholder}
                   onChange={onSearch}
-                  prefix={<SearchOutlined />}
+                  prefix={inputPrefixIcon || <SearchOutlined />}
                 />
               </div>
             )}
             {i}
-            {displayButtons && (
-              <div
-                className={c(s.buttonWrapper, {
-                  [s.showButton]: selected.length > 0,
-                })}
-              >
-                {selected.length > 0 && (
-                  <Button
-                    type="outline"
-                    text="CLEAR"
-                    data-qa="clear-button"
-                    onClick={onClearButton}
-                    height="48px"
-                  />
-                )}
-                <Button
-                  text="APPLY"
-                  data-qa="apply-button"
-                  disabled={
-                    selected.length === 0 &&
-                    (updatedSelected === undefined ||
-                      updatedSelected.length < 1)
-                  }
-                  height="48px"
-                  onClick={onClickButton}
-                />
-              </div>
-            )}
           </div>
         )}
       />
