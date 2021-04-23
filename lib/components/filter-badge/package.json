@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/filter-badge",
-  "version": "2.0.7",
+  "version": "2.1.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/filter-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/badge": "^2.0.7",
+    "@boclips-ui/badge": "^2.1.0",
     "@boclips-ui/styles": "^2.2.4"
   },
   "devDependencies": {
