@@ -7,10 +7,11 @@ export interface Props {
   id: string;
   value: string;
   label?: string;
+  closeIcon?: React.ReactElement;
   onClick: (value: string) => any;
 }
 
-const FilterBadge = ({ id, value, label, onClick }: Props) => {
+const FilterBadge = ({ id, value, label, onClick, closeIcon }: Props) => {
   const closeAction = (
     <div
       className={s.closeIcon}
@@ -18,7 +19,7 @@ const FilterBadge = ({ id, value, label, onClick }: Props) => {
       data-qa={`${id}-remove-button`}
       onClick={() => onClick(id)}
     >
-      <CloseIcon />
+      {closeIcon || <CloseIcon />}
     </div>
   );
 
