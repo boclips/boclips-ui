@@ -24,6 +24,7 @@ export interface Components {
   title?: ReactElement | string;
   price?: string;
   duration?: string;
+  videoId?: string;
 }
 
 export const VideoCardV3 = ({
@@ -34,6 +35,7 @@ export const VideoCardV3 = ({
   price,
   duration,
   title,
+  videoId,
 }: Props & Components): any => {
   const [
     displayShowMoreBadgesButton,
@@ -113,6 +115,8 @@ export const VideoCardV3 = ({
         {duration && <div>{durationFormatter}</div>}
 
         {video.releasedOn && <ReleasedOn releasedOn={video.releasedOn} />}
+
+        {videoId && <div>{videoId}</div>}
 
         {video.createdBy && (
           <div className={s.createdBy}> {video.createdBy} </div>
