@@ -1,6 +1,7 @@
 import AgeRange from "@boclips-ui/age-range";
 import { Playback } from "boclips-api-client/dist/sub-clients/common/model/Playback";
 import { Attachment } from "boclips-api-client/dist/sub-clients/common/model/Attachment";
+import { Taxonomies } from "boclips-api-client/dist/sub-clients/videos/model/Taxonomies";
 import { Link } from "@boclips-ui/link";
 import { Types } from "boclips-api-client";
 import { Duration } from "dayjs/plugin/duration";
@@ -76,4 +77,5 @@ export enum VideoType {
 export interface ExtendedVideo extends Video {
   thumbnailUrl?: string;
   duration?: Duration;
+  taxonomy?: Taxonomies;
 }

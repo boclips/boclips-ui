@@ -19,7 +19,7 @@
     "@boclips-ui/ts-config": "^1.0.13"
   },
   "peerDependencies": {
-    "boclips-api-client": "^17.4.2",
+    "boclips-api-client": "^34.2.1",
     "dayjs": "^1.9.5",
     "react": "16.13.1"
   },
