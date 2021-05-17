@@ -1,32 +1,28 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { TaxonomyCategory } from "boclips-api-client/dist/sub-clients/videos/model/Taxonomies";
-import s from "./style.module.less";
 
-import TaxonomyCategoryBadge, { TaxonomyCategoryBadgeProps } from "../src";
+import { TaxonomyCategoryBadge, TaxonomyCategoryBadgeProps, UntaggedBadge, } from "../src";
 
 export default {
   title: "Taxonomy Category Badge",
-  component: TaxonomyCategoryBadge,
+  component: TaxonomyCategoryBadge || UntaggedBadge,
 } as Meta;
 
 interface Props extends TaxonomyCategoryBadgeProps {
-  category: TaxonomyCategory;
-  theme?: "lti" | "hq" | "publishers";
+  showUntagged: boolean;
 }
 
-const Template: Story<Props> = ({ category, theme }: Props) => (
-  <div className={s[theme]}>
+const Template: Story<Props> = ({ category, showUntagged }: Props) => {
+  return showUntagged ? (
+    <UntaggedBadge />
+  ) : (
     <TaxonomyCategoryBadge category={category} />
-  </div>
-);
+  );
+};
 
 export const DEFAULT = Template.bind({});
 
 DEFAULT.args = {
-  theme: "hq",
-  category: {
-    codeValue: "AB",
-    description: "Art, Building",
-  },
+  showUntagged: false,
+  category: { codeValue: "FMM", description: "Magical realism" },
 };

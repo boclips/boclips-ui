@@ -107,12 +107,9 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
         },
       ],
     },
-    manual: [
-      {
-        categories: { codeValue: "A", description: "The Arts" },
-        ancestors: [],
-      },
-    ],
+    manual: {
+      categories: [{ codeValue: "A", description: "The Arts" }],
+    },
   },
   links: {
     self: {

@@ -7,9 +7,6 @@ import c from "classnames";
 import ProviderBadge from "@boclips-ui/provider-badge";
 import { useMediaBreakPoint } from "@boclips-ui/use-media-breakpoints";
 import s from "./styles.module.less";
-import Badge from "@boclips-ui/badge";
-import { TaxonomyCategory } from "boclips-api-client/dist/sub-clients/videos/model/Taxonomies";
-import TaxonomyCategoryBadge from "../../taxonomy-category-badge/src";
 
 const DEFAULT_VISIBLE_BADGES = 3;
 const DESKTOP_BREAKPOINT = "xl";
@@ -28,6 +25,7 @@ export interface Components {
   price?: string;
   duration?: string;
   videoId?: string;
+  additionalBadges?: ReactElement[];
 }
 
 export const VideoCardV3 = ({
@@ -39,6 +37,7 @@ export const VideoCardV3 = ({
   duration,
   title,
   videoId,
+  additionalBadges,
 }: Props & Components): any => {
   const [
     displayShowMoreBadgesButton,
@@ -82,18 +81,8 @@ export const VideoCardV3 = ({
       });
     }
 
-    if (video.taxonomy) {
-      const listOfCategories: TaxonomyCategory[] = [];
-      video.taxonomy.manual?.categories?.forEach((category) =>
-        listOfCategories.push(category)
-      );
-      video.taxonomy.channel?.categories?.forEach((category) =>
-        listOfCategories.push(category)
-      );
-
-      listOfCategories.forEach((it) => {
-        badges.push(<TaxonomyCategoryBadge category={it} />);
-      });
+    if (additionalBadges) {
+      badges.push(additionalBadges);
     }
 
     return badges

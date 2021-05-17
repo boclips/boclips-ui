@@ -6,6 +6,7 @@ import { Components, Props, VideoCardV3 } from "../src";
 import { exampleVideo } from "./videoExample";
 // @ts-ignore
 import s from "./styles.module.less";
+import { TaxonomyCategoryBadgeFactory } from "../../taxonomy-category-badge";
 
 const dur = require("dayjs/plugin/duration");
 
@@ -29,6 +30,7 @@ const Template: Story<Props & Components & StorybookProps> = ({
   title,
   duration,
   price,
+  additionalBadges,
 }: Props & Components & StorybookProps) => (
   <div className={s[theme]}>
     <VideoCardV3
@@ -39,6 +41,7 @@ const Template: Story<Props & Components & StorybookProps> = ({
       handleOnClick={handleOnClick}
       title={title}
       price={price}
+      additionalBadges={additionalBadges}
     />
   </div>
 );
@@ -74,4 +77,7 @@ DEFAULT.args = {
   theme: "lti",
   price: "$600",
   actions: <ActionButtons />,
+  additionalBadges: TaxonomyCategoryBadgeFactory.fromTaxonomy(
+    exampleVideo.taxonomy
+  ),
 };
