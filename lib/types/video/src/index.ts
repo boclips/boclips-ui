@@ -66,6 +66,7 @@ export interface Video {
   types?: VideoType[];
   captionStatus?: CaptionStatus;
   contentWarnings?: ContentWarning[];
+  taxonomy?: Taxonomies;
 }
 
 export enum VideoType {
