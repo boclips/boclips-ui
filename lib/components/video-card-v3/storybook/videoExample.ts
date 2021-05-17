@@ -97,6 +97,20 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
   types: [{ id: 3, name: "Instructional Clips" }],
   captionStatus: null,
   isVoiced: null,
+  taxonomy: {
+    channel: {
+      categories: [
+        { codeValue: "FMM", description: "Magical realism" },
+        {
+          codeValue: "ABC",
+          description: "Conservation, restoration and care of artworks",
+        },
+      ],
+    },
+    manual: {
+      categories: [{ codeValue: "A", description: "The Arts" }],
+    },
+  },
   links: {
     self: {
       href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58",

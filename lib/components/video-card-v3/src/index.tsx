@@ -25,6 +25,7 @@ export interface Components {
   price?: string;
   duration?: string;
   videoId?: string;
+  additionalBadges?: ReactElement[];
 }
 
 export const VideoCardV3 = ({
@@ -36,6 +37,7 @@ export const VideoCardV3 = ({
   duration,
   title,
   videoId,
+  additionalBadges,
 }: Props & Components): any => {
   const [
     displayShowMoreBadgesButton,
@@ -77,6 +79,10 @@ export const VideoCardV3 = ({
       video.subjects.forEach((it) => {
         badges.push(<SubjectBadge key={it.id} subject={it} />);
       });
+    }
+
+    if (additionalBadges) {
+      badges.push(additionalBadges);
     }
 
     return badges
