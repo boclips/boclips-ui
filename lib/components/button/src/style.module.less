@@ -66,8 +66,13 @@
     color: @outline-text-colour;
 
     &:hover {
+      background: @outline-background-color-hover;
       border: @outline-border-hover;
       color: @outline-text-colour-hover;
+
+      svg {
+        stroke: @outline-svg-stroke-hover;
+      }
     }
 
     &:active {
