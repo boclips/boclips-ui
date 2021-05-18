@@ -72,7 +72,9 @@
 
       svg {
         stroke: @outline-svg-stroke-hover;
-        fill: @outline-svg-fill-hover;
+        path {
+          fill: @outline-svg-fill-hover;
+        }
       }
     }
 
@@ -83,7 +85,9 @@
 
       svg {
         stroke: @outline-svg-stroke-hover;
-        fill: @outline-svg-fill-hover;
+        path {
+          fill: @outline-svg-fill-hover;
+        }
       }
     }
 
@@ -94,8 +98,10 @@
 
     svg {
       stroke: @outline-svg-stroke;
-      fill: @outline-svg-fill;
       stroke-width: 2;
+      path {
+        fill: @outline-svg-fill;
+      }
     }
   }
 
