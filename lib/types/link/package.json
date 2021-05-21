@@ -16,7 +16,7 @@
   },
   "peerDependencies": {
     "boclips-api-client": "^17.4.2",
-    "react": "16.13.1",
+    "react": "17.0.2",
     "urijs": "^1.19.2"
   },
   "publishConfig": {

@@ -19,7 +19,7 @@
   },
   "peerDependencies": {
     "enzyme": "^3.11.0",
-    "react": "16.13.1",
+    "react": "17.0.2",
     "react-dom": "^16.13.0"
   },
   "publishConfig": {

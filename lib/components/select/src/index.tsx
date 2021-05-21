@@ -159,7 +159,6 @@ const SelectFilter = ({
         className={c(s.selectWrapper, { [s.filterSelectOpened]: dropdownOpen })}
         dropdownClassName={s.filterSelectWrapper}
         labelInValue
-        virtual
         // @ts-ignore
         getPopupContainer={() => document.getElementById(title)}
         value={[
@@ -191,7 +190,7 @@ const SelectFilter = ({
         onSelect={(it) => {
           applyFilter(it.value);
         }}
-        dropdownMatchSelectWidth={false}
+        virtual
         dropdownAlign={
           dropdownAlignment === DropdownAligment.LEFT
             ? { points: ["tl", "bl"] }
