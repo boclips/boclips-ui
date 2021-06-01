@@ -45,7 +45,7 @@ export const TaxonomyCategoryBadge = ({
     <>
       {getLabel && (
         <div data-qa="taxonomy-category-badge">
-          <Badge value={getLabel} />
+          <Badge value={getLabel} customClassName={s.tagged} />
         </div>
       )}
     </>
