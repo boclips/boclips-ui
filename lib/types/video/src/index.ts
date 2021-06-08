@@ -41,7 +41,7 @@ export interface Video {
   subjects: Subject[];
   badges: string[];
   legalRestrictions: string;
-  ageRange: AgeRange;
+  ageRange?: AgeRange;
   rating?: number;
   yourRating?: number;
   bestFor?: BestForTag[];

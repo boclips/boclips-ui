@@ -71,7 +71,7 @@ export const VideoCardV3 = ({
       badges.push(<ProviderBadge customClassName={s.providerBadge} />);
     }
 
-    if (video.ageRange) {
+    if (video?.ageRange) {
       badges.push(<AgeRangeBadge ageRange={video.ageRange} />);
     }
 
