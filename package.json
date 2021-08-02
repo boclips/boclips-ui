@@ -4,12 +4,12 @@
   "scripts": {
     "publish:git": "lerna publish from-git && git push && git push --tags",
     "version:no-push": "lerna version --no-push --force-git-tag",
-    "check": "lerna run check && eslint . --ext .js,.ts",
-    "lint": "eslint . --ext .js,.ts",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook",
-    "test": "jest"
+    "test": "jest",
+    "preversion": "npm run lint && lerna run build && npm run test"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
