@@ -15,7 +15,7 @@ const getWords = (text: string): Word[] => {
     ];
   };
 
-  return wordsWithOffsets(text.split(' '), 0);
+  return wordsWithOffsets(text.split(" "), 0);
 };
 
 interface Prefix {
@@ -32,7 +32,7 @@ const prefixes = (txt: string): Prefix[] => {
       text: words
         .map((word) => word.text)
         .slice(i)
-        .join(' '),
+        .join(" "),
       weight: -i + 1 / (txt.length + 1.0),
       offset: words[i].offset,
     }));
@@ -49,15 +49,15 @@ interface Match {
 const getMatch = (record: EnrichedEntry, txt: string): Match => {
   const matchingPrefix = prefixes(record.entry).find(
     (prefix) =>
-      prefix.text.toLowerCase().indexOf(txt.trim().toLowerCase()) === 0,
+      prefix.text.toLowerCase().indexOf(txt.trim().toLowerCase()) === 0
   );
   const matches = !!matchingPrefix;
   return {
     matches,
     list: record.list,
     text: record.entry,
-    weight: matches ? matchingPrefix!!.weight : 0,
-    offset: matches ? matchingPrefix!!.offset : 0,
+    weight: matches ? matchingPrefix!.weight : 0,
+    offset: matches ? matchingPrefix!.offset : 0,
   };
 };
 

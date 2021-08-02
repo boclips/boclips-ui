@@ -3,7 +3,7 @@ declare module "*.module.less" {
   export = resource;
 }
 
-declare module '*.svg' {
+declare module "*.svg" {
   const value: React.ComponentType<any>;
   export default value;
 }

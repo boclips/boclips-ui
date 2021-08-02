@@ -13,7 +13,7 @@ const Duration = ({ duration }: DurationProps): ReactElement => {
   return (
     <div className={s.duration}>
       <ClockCircleOutlined className={s.clock} />
-      <span>{durationFormatter(duration!!)}</span>
+      <span>{durationFormatter(duration!)}</span>
     </div>
   );
 };
