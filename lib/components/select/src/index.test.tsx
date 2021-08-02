@@ -40,7 +40,7 @@ describe("Select dropdown", () => {
     });
   });
 
-  it("Returns selected options when clicking apply", async () => {
+  it("Returns selected options when clicking an option", async () => {
     const onApply = jest.fn();
     render(
       <SelectFilter
@@ -58,8 +58,6 @@ describe("Select dropdown", () => {
 
     await fireEvent.click(option1);
     await fireEvent.click(option2);
-
-    await fireEvent.click(screen.getByText("APPLY"));
 
     expect(onApply).toHaveBeenCalledWith(["5-9", "11-14"]);
   });
