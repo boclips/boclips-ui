@@ -9,8 +9,20 @@ jobs:
   plan:
   - get: source
     trigger: true
+  - get: release-candidate-source
+    trigger: true
   - task: test
     file: source/pipeline/test.yaml
+
+- name: release
+  plan:
+  - get: release-candidate-source
+    passed: [test]
+    trigger: true
+  - task: release
+    file: source/pipeline/release.yaml
+    params:
+      NPM_TOKEN: ((npm.token))
 
 resources:
 - name: source
@@ -20,3 +32,13 @@ resources:
     branch: master
     private_key: ((boclips-ui.repo-key))
     uri: git@github.com:boclips/boclips-ui.git
+
+- name: release-candidate-source
+  type: git
+  icon: github
+  source:
+    branch: master
+    private_key: ((boclips-ui.repo-key))
+    uri: git@github.com:boclips/boclips-ui.git
+    # tweaked from here - https://semver.org/
+    tag_regex: @boclips-ui\/(.*)@(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
