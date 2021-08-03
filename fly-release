@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+NPM_TOKEN="$(bo show credential concourse-main boclips-ui.npm token)"
+
+cwd="$(cd "$(dirname "$0")" && pwd)"
+dir=$(mktemp -d -t fly-build-boclips-ui.XXXXX)
+
+tidy () {
+    rm -rf "$dir"
+}
+
+trap tidy EXIT
+
+export NPM_TOKEN
+
+fly --target ci execute \
+    --input release-candidate-source="$cwd" \
+    --config "$cwd/pipeline/release.yaml" \

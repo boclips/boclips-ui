@@ -14,7 +14,7 @@ params:
   NPM_TOKEN:
 
 run:
-  path: source/pipeline/release.sh
+  path: release-candidate-source/pipeline/release.sh
 
 caches:
 - path: ../../../root/.cache
