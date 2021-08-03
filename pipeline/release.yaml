@@ -8,7 +8,7 @@ image_resource:
     tag: '10'
 
 inputs:
-- name: source
+- name: release-candidate-source
 
 params:
   NPM_TOKEN:

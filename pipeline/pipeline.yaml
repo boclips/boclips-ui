@@ -3,6 +3,7 @@ groups:
 - name: all
   jobs:
   - test
+  - release
 
 jobs:
 - name: test
@@ -41,4 +42,4 @@ resources:
     private_key: ((boclips-ui.repo-key))
     uri: git@github.com:boclips/boclips-ui.git
     # tweaked from here - https://semver.org/
-    tag_regex: @boclips-ui\/(.*)@(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    tag_regex: '@boclips-ui\/.*@.*'
