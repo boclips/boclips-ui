@@ -1,0 +1,25 @@
+---
+groups:
+- name: all
+  jobs:
+  - test
+
+jobs:
+- name: test
+  plan:
+  - get: source
+    trigger: true
+  - task: test
+    file: source/pipeline/test.sh
+
+
+
+# have multiple resources
+resources:
+- name: source
+  type: git
+  icon: github
+  source:
+    branch: master
+    private_key: ((boclips-ui.repo-key))
+    uri: git@github.com:boclips/boclips-ui.git
