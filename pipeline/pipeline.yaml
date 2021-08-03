@@ -12,9 +12,6 @@ jobs:
   - task: test
     file: source/pipeline/test.yaml
 
-
-
-# have multiple resources
 resources:
 - name: source
   type: git
