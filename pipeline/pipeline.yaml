@@ -10,7 +10,7 @@ jobs:
   - get: source
     trigger: true
   - task: test
-    file: source/pipeline/test.sh
+    file: source/pipeline/test.yaml
 
 
 
