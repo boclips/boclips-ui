@@ -2,8 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "publish:git": "lerna publish from-git && git push && git push --tags",
-    "version:no-push": "lerna version --no-push --force-git-tag",
+    "version": "lerna version --force-git-tag",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "storybook": "start-storybook -p 6006",
