@@ -48,3 +48,4 @@ resources:
     private_key: ((boclips-ui.repo-key))
     uri: git@github.com:boclips/boclips-ui.git
     tag_regex: '@boclips-ui\/.*@.*'
+    fetch_tags: true

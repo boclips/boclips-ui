@@ -2,7 +2,7 @@
 
 set -e
 
-app=source
+app=release-candidate-source
 (
 cd ${app}
 
@@ -10,6 +10,6 @@ echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
 
 npm ci
 npx lerna bootstrap
-npx lerna build
-npx lerna publish from-git --yes
+npx lerna run build
+npx lerna publish from-git --yes --no-git-tag-version --no-push
 )
