@@ -3,6 +3,7 @@ groups:
 - name: all
   jobs:
   - test
+  - release-candidate-test
   - release
 
 jobs:
@@ -10,6 +11,11 @@ jobs:
   plan:
   - get: source
     trigger: true
+  - task: test
+    file: source/pipeline/test.yaml
+
+- name: release-candidate-test
+  plan:
   - get: release-candidate-source
     trigger: true
   - task: test
@@ -18,7 +24,7 @@ jobs:
 - name: release
   plan:
   - get: release-candidate-source
-    passed: [test]
+    passed: [release-candidate-test]
     trigger: true
   - task: release
     file: source/pipeline/release.yaml
@@ -41,5 +47,4 @@ resources:
     branch: master
     private_key: ((boclips-ui.repo-key))
     uri: git@github.com:boclips/boclips-ui.git
-    # tweaked from here - https://semver.org/
     tag_regex: '@boclips-ui\/.*@.*'
