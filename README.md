@@ -34,8 +34,7 @@ The storybook should be accessible at http://localhost:6006/
 1. Do the code changes
 1. Build the component
 1. Commit the changes
-1. Version the component 
-1. Publish to npm
+1. Version the component `npm run version` and then CI will publish your changes to the world
 
 #### AD 2. Building a component
 
