@@ -1,13 +1,13 @@
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
-import { VideoCardV3 } from "./index";
+import { VideoCard } from "./index";
 // @ts-ignore
 import { exampleVideo } from "../storybook/videoExample";
 
 describe("VideoCard V3", () => {
   it("shows only 3 badges by default, show all when clicking on More...", () => {
     // @ts-ignore
-    const card = render(<VideoCardV3 video={exampleVideo} />);
+    const card = render(<VideoCard video={exampleVideo} />);
 
     const showMoreBadges = card.getByText("More...");
     expect(showMoreBadges).toBeVisible();
@@ -23,9 +23,7 @@ describe("VideoCard V3", () => {
     exampleVideoWithoutSubjectBadge.subjects = [];
 
     // @ts-ignore
-    const card = render(
-      <VideoCardV3 video={exampleVideoWithoutSubjectBadge} />
-    );
+    const card = render(<VideoCard video={exampleVideoWithoutSubjectBadge} />);
 
     expect(card.queryByText("More...")).toBeNull();
   });
@@ -35,7 +33,7 @@ describe("VideoCard V3", () => {
     window.innerWidth = "1920";
 
     // @ts-ignore
-    const card = render(<VideoCardV3 video={exampleVideo} />);
+    const card = render(<VideoCard video={exampleVideo} />);
 
     expect(card.queryByText("More...")).toBeNull();
   });
@@ -45,7 +43,7 @@ describe("VideoCard V3", () => {
 
     const card = render(
       // @ts-ignore
-      <VideoCardV3 duration={duration} video={exampleVideo} />
+      <VideoCard duration={duration} video={exampleVideo} />
     );
 
     expect(card.getByText("00:21")).toBeInTheDocument();
@@ -56,7 +54,7 @@ describe("VideoCard V3", () => {
 
     const card = render(
       // @ts-ignore
-      <VideoCardV3 duration={duration} video={exampleVideo} />
+      <VideoCard duration={duration} video={exampleVideo} />
     );
 
     expect(card.getByText("21:00")).toBeInTheDocument();

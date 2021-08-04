@@ -2,7 +2,7 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { Player } from "boclips-player-react";
 import * as dayjs from "dayjs";
-import { Components, Props, VideoCardV3 } from "../src";
+import { Components, Props, VideoCard } from "../src";
 import { exampleVideo } from "./videoExample";
 // @ts-ignore
 import s from "./styles.module.less";
@@ -14,7 +14,7 @@ dayjs.extend(dur);
 
 export default {
   title: "VideoCardThree",
-  component: VideoCardV3,
+  component: VideoCard,
 } as Meta;
 
 interface StorybookProps {
@@ -33,7 +33,7 @@ const Template: Story<Props & Components & StorybookProps> = ({
   additionalBadges,
 }: Props & Components & StorybookProps) => (
   <div className={s[theme]}>
-    <VideoCardV3
+    <VideoCard
       video={video}
       duration={duration}
       videoPlayer={videoPlayer}

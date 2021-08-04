@@ -28,7 +28,7 @@ export interface Components {
   additionalBadges?: ReactElement[];
 }
 
-export const VideoCardV3 = ({
+export const VideoCard = ({
   video,
   videoPlayer,
   actions,
