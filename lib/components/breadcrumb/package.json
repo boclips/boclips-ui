@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
-    "build": "webpack -p --config ../../../webpack/webpack.config.js",
+    "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
     "build-dep": "lerna run build --stream --scope=@boclips-ui/breadcrumb --include-dependencies"
   },
   "dependencies": {
