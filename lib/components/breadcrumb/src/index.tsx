@@ -17,7 +17,7 @@ export interface PreviousPageProps {
 
 export const Breadcrumb = ({ previousPages, currentPage }: BreadcrumbProps) => {
   return (
-    <nav aria-label="breadcrumb" className={s.container}>
+    <nav aria-label="Breadcrumb" className={s.container}>
       {previousPages &&
         previousPages.map((page) => (
           <span key={page.label} className={s.container}>
