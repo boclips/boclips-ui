@@ -1,6 +1,5 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { BrowserRouter as Router } from "react-router-dom";
 import { Breadcrumb, BreadcrumbProps } from "../src/index";
 
 export default {
@@ -12,9 +11,7 @@ const Template: Story<BreadcrumbProps> = ({
   previousPages,
   currentPage,
 }: BreadcrumbProps) => (
-  <Router>
-    <Breadcrumb previousPages={previousPages} currentPage={currentPage} />
-  </Router>
+  <Breadcrumb previousPages={previousPages} currentPage={currentPage} />
 );
 
 export const multiplePages = Template.bind({});
@@ -26,14 +23,14 @@ multiplePages.args = {
     {
       nestingLevel: 0,
       label: "Source page",
-      url: "./source-page",
+      onClick: () => "./source-page",
     },
     {
       nestingLevel: 1,
       label: "First page",
-      url: "./first-page",
+      onClick: () => console.log("hey"),
     },
-    { nestingLevel: 2, label: "Second page", url: "./second-page" },
+    { nestingLevel: 2, label: "Second page", onClick: () => "./second-page" },
   ],
   currentPage: "Current page",
 };
@@ -43,7 +40,7 @@ twoPages.args = {
     {
       nestingLevel: 0,
       label: "Source page",
-      url: "./source-page",
+      onClick: () => "./source-page",
     },
   ],
   currentPage: "Current page",

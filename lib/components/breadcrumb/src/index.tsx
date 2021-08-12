@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import c from "classnames";
 import RightChevron from "./resources/chevron-right.svg";
 import s from "./style.module.less";
@@ -12,7 +11,7 @@ export interface BreadcrumbProps {
 export interface PreviousPageProps {
   nestingLevel: number;
   label: string;
-  url: string;
+  onClick: () => void;
 }
 
 export const Breadcrumb = ({ previousPages, currentPage }: BreadcrumbProps) => {
@@ -21,9 +20,13 @@ export const Breadcrumb = ({ previousPages, currentPage }: BreadcrumbProps) => {
       {previousPages &&
         previousPages.map((page) => (
           <span key={page.label} className={s.container}>
-            <Link to={page.url} className={s.previousPage}>
+            <button
+              type="button"
+              onClick={page.onClick}
+              className={s.previousPage}
+            >
               {page.label || ""}
-            </Link>
+            </button>
             <RightChevron className={s.chevron} />
           </span>
         ))}
