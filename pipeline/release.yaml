@@ -9,12 +9,13 @@ image_resource:
 
 inputs:
 - name: source
+- name: task-source
 
 params:
   NPM_TOKEN:
 
 run:
-  path: source/pipeline/release.sh
+  path: task-source/pipeline/release.sh
 
 caches:
 - path: ../../../root/.cache
