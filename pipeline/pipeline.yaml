@@ -12,7 +12,7 @@ jobs:
   - get: source
     trigger: true
   - task: test
-    file: release-candidate-source/pipeline/test.yaml
+    file: source/pipeline/test.yaml
 
 - name: release-candidate-test
   plan:
@@ -24,7 +24,8 @@ jobs:
 
 - name: release
   plan:
-  - get: release-candidate-source
+  - get: source
+    resource: release-candidate-source
     passed: [release-candidate-test]
     trigger: true
   - task: release

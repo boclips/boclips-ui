@@ -2,9 +2,8 @@
 
 set -e
 
-app=release-candidate-source
 (
-cd ${app}
+cd source
 
 echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
 npm ci
