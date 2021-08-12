@@ -16,20 +16,24 @@ jobs:
 
 - name: release-candidate-test
   plan:
+  - get: task-source
+    resource: source
   - get: source
     resource: release-candidate-source
     trigger: true
   - task: test
-    file: source/pipeline/test.yaml
+    file: task-source/pipeline/test.yaml
 
 - name: release
   plan:
+  - get: task-source
+    resource: source
   - get: source
     resource: release-candidate-source
     passed: [release-candidate-test]
     trigger: true
   - task: release
-    file: source/pipeline/release.yaml
+    file: task-source/pipeline/release.yaml
     params:
       NPM_TOKEN: ((npm.token))
 
