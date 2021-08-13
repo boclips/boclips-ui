@@ -15,6 +15,7 @@ export interface Props {
   initialQuery?: string;
   autocomplete?: boolean;
   iconOnlyButton?: boolean;
+  ariaLabel?: string;
 }
 
 const getCompletions = completionsFor({
@@ -28,6 +29,7 @@ const SearchBar = ({
   initialQuery,
   autocomplete = true,
   iconOnlyButton = false,
+  ariaLabel = "search",
 }: Props): ReactElement => {
   const [result, setResult] = useState<Completion[]>();
   const [inputValue, setInputValue] = useState<string | undefined>(
@@ -110,24 +112,27 @@ const SearchBar = ({
         value={inputValue}
         onSelect={(input) => onSearch(input, 0)}
       >
-        <Input
-          onChange={getInputValue}
-          data-qa="search-input"
-          aria-label="search"
-          suffix={
-            <CloseIcon
-              className={c(s.closeIcon, {
-                [s.hideMe]:
-                  inputValue?.length === 0 || inputValue?.length === undefined,
-              })}
-              onClick={() => setInputValue("")}
-            />
-          }
-          allowClear={false}
-          bordered={false}
-          value={inputValue}
-          placeholder={placeholder}
-        />
+        <div role="search">
+          <Input
+            onChange={getInputValue}
+            aria-label={ariaLabel}
+            data-qa="search-input"
+            suffix={
+              <CloseIcon
+                className={c(s.closeIcon, {
+                  [s.hideMe]:
+                    inputValue?.length === 0 ||
+                    inputValue?.length === undefined,
+                })}
+                onClick={() => setInputValue("")}
+              />
+            }
+            allowClear={false}
+            bordered={false}
+            value={inputValue}
+            placeholder={placeholder}
+          />
+        </div>
       </AutoComplete>
 
       <Button

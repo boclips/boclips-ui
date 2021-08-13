@@ -13,12 +13,14 @@ const Template: Story<Props> = ({
   placeholder,
   autocomplete,
   iconOnlyButton,
+  ariaLabel,
 }: Props) => (
   <SearchBar
     onSearch={onSearch}
     placeholder={placeholder}
     autocomplete={autocomplete}
     iconOnlyButton={iconOnlyButton}
+    ariaLabel={ariaLabel}
   />
 );
 
@@ -29,4 +31,5 @@ DEFAULT.args = {
   placeholder: "Search...",
   autocomplete: true,
   iconOnlyButton: false,
+  ariaLabel: "search for videos",
 };
