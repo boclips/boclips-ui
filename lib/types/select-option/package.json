@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/select-option",
-  "version": "1.0.15",
+  "version": "1.1.0",
   "files": [
     "dist/**/*"
   ],
