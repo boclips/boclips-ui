@@ -88,7 +88,10 @@ const SelectFilter = ({
         )
         .map((it: SelectOption) => ({
           label: (
-            <span className={s.checkboxWrapper}>
+            <span
+              className={s.checkboxWrapper}
+              aria-label={`${it.label} number of results ${it.count}`}
+            >
               <div className={s.checkboxInputWrapper}>
                 <input
                   checked={selected.indexOf(it.id) !== -1}
@@ -113,7 +116,8 @@ const SelectFilter = ({
             </span>
           ),
           value: it.id,
-          title: `${it.label} number of results ${it.count}`,
+          role: "option",
+          title: it.label,
         })),
     [selected, filterOptions, showFacets, updatedSelected]
   );
@@ -152,6 +156,8 @@ const SelectFilter = ({
       className={s.main}
     >
       <Select
+        role="listbox"
+        aria-label={`${title} filter`}
         showSearch={false}
         options={getOptions}
         menuItemSelectedIcon={null}
@@ -202,6 +208,7 @@ const SelectFilter = ({
               <div className={s.searchInputWrapper}>
                 <Input
                   placeholder={searchPlaceholder}
+                  aria-label={`search ${title} filter options`}
                   onChange={onSearch}
                   prefix={inputPrefixIcon || <SearchOutlined />}
                 />
