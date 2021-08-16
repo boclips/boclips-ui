@@ -13,14 +13,15 @@ export interface Props {
 
 const FilterBadge = ({ id, value, label, onClick, closeIcon }: Props) => {
   const closeAction = (
-    <div
+    <button
+      type="button"
       className={s.closeIcon}
-      role="presentation"
       data-qa={`${id}-remove-button`}
       onClick={() => onClick(id)}
+      aria-label={`remove ${value} filter`}
     >
       {closeIcon || <CloseIcon />}
-    </div>
+    </button>
   );
 
   return <Badge value={value} label={label} closeIcon={closeAction} />;
