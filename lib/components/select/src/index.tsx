@@ -113,7 +113,7 @@ const SelectFilter = ({
             </span>
           ),
           value: it.id,
-          title: it.label,
+          title: `${it.label} number of results ${it.count}`,
         })),
     [selected, filterOptions, showFacets, updatedSelected]
   );
