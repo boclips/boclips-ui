@@ -115,7 +115,7 @@ const SelectFilter = ({
               )}
             </span>
           ),
-          value: it.id,
+          value: `${it.label} number of results ${it.count}`,
           role: "option",
           title: it.label,
         })),
@@ -194,7 +194,11 @@ const SelectFilter = ({
           setDropdownOpen(open);
         }}
         onSelect={(it) => {
-          applyFilter(it.value);
+          const selectedOptionId = options.filter((option) =>
+            it.value.includes(option.label)
+          )[0].id;
+
+          applyFilter(selectedOptionId);
         }}
         virtual
         dropdownAlign={
