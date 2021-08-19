@@ -17,7 +17,7 @@ export interface Props {
   title: string;
   onApply: (selected: string[]) => void;
   allowSearch?: boolean;
-  updatedSelected?: string[] | undefined;
+  filtersFromContext?: string[] | undefined;
   showFacets?: boolean;
   searchPlaceholder?: string;
   touched?: (touched: boolean) => void;
@@ -33,7 +33,7 @@ const SelectFilter = ({
   allowSearch = false,
   searchPlaceholder,
   showFacets,
-  updatedSelected,
+  filtersFromContext,
   relativePositionFilters = false,
   inputPrefixIcon,
   dropdownAlignment = DropdownAligment.LEFT,
@@ -56,23 +56,23 @@ const SelectFilter = ({
   }, [selected]);
 
   useEffect(() => {
-    if (updatedSelected) {
-      setSelected(updatedSelected);
+    if (filtersFromContext) {
+      setSelected(filtersFromContext);
     }
 
-    if (updatedSelected && updatedSelected?.length !== selected.length) {
+    if (filtersFromContext && filtersFromContext?.length !== selected.length) {
       if (showCount > 0) {
-        onApply(updatedSelected!);
-        setSelected(updatedSelected!);
-        setShowCount(updatedSelected!.length);
+        onApply(filtersFromContext!);
+        setSelected(filtersFromContext!);
+        setShowCount(filtersFromContext!.length);
       }
     }
-  }, [updatedSelected]);
+  }, [filtersFromContext]);
 
   const getOptions = useMemo(
     () =>
       filterOptions
-        .filter(
+        ?.filter(
           (it) => (it.count && it.count > 0) || selected.indexOf(it.id) !== -1
         )
         .map((it: SelectOption) => ({
@@ -108,7 +108,7 @@ const SelectFilter = ({
           title: it.label,
           role: "option",
         })),
-    [selected, filterOptions, showFacets, updatedSelected]
+    [selected, filterOptions, showFacets, filtersFromContext]
   );
 
   const onSearch = (e: any) => {
@@ -189,6 +189,7 @@ const SelectFilter = ({
             ? { points: ["tl", "bl"] }
             : { points: ["tr", "br"] }
         }
+        value={filtersFromContext}
         dropdownRender={(i) => (
           <div ref={dropdownRef} className={s.optionsWrapper}>
             {allowSearch && (

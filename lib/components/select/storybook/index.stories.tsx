@@ -38,14 +38,14 @@ const Template: Story<Props> = ({
   searchPlaceholder,
   touched,
   showFacets,
-  updatedSelected,
+  filtersFromContext,
 }: Props) => (
   <div style={{ width: "240px" }}>
     <SelectFilter
       options={options}
       title={title}
       onApply={onApply}
-      updatedSelected={updatedSelected}
+      filtersFromContext={filtersFromContext}
       searchPlaceholder={searchPlaceholder}
       showFacets={showFacets}
       allowSearch={allowSearch}
