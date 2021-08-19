@@ -195,9 +195,8 @@ const SelectFilter = ({
             {allowSearch && (
               <div className={s.searchInputWrapper}>
                 <Input
-                  placeholder={
-                    searchPlaceholder || `Search ${title.toLowerCase()}`
-                  }
+                  placeholder={searchPlaceholder}
+                  arial-label={`Search ${title.toLowerCase()}`}
                   onChange={onSearch}
                   prefix={inputPrefixIcon || <SearchOutlined />}
                 />
