@@ -1,6 +1,6 @@
-@import '~@boclips-ui/styles/src/LTIColours';
-@import '~@boclips-ui/styles/src/publishersColours';
-@import 'variables';
+@import "~@boclips-ui/styles/src/LTIColours";
+@import "~@boclips-ui/styles/src/publishersColours";
+@import "variables";
 
 .autoCompleteSearchWrapper {
   .dropdownWrapper :global .ant-select-item-option {
@@ -74,7 +74,7 @@
     height: 100%;
 
     :global .ant-select-selector {
-      border:0!important;
+      border: 0 !important;
       height: 100%;
 
       :global .ant-input-affix-wrapper {
@@ -90,7 +90,6 @@
       font-size: @search-bar-font-size;
       color: @search-bar-input-color;
 
-
       &::placeholder {
         font-weight: @search-bar-placeholder-weight;
         color: @search-bar-placeholder-color;
@@ -103,14 +102,15 @@
   }
 
   .closeIcon {
-    width:22px;
-    height:22px;
+    width: 22px;
+    height: 22px;
     padding: 4px;
     border-radius: @search-bar-border-radius;
     stroke: @gray-600;
     cursor: pointer;
+    stroke-width: 2px;
 
-    &.hideMe{
+    &.hideMe {
       pointer-events: none;
     }
 

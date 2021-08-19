@@ -112,27 +112,24 @@ const SearchBar = ({
         value={inputValue}
         onSelect={(input) => onSearch(input, 0)}
       >
-        <div role="search">
-          <Input
-            onChange={getInputValue}
-            aria-label={ariaLabel}
-            data-qa="search-input"
-            suffix={
-              <CloseIcon
-                className={c(s.closeIcon, {
-                  [s.hideMe]:
-                    inputValue?.length === 0 ||
-                    inputValue?.length === undefined,
-                })}
-                onClick={() => setInputValue("")}
-              />
-            }
-            allowClear={false}
-            bordered={false}
-            value={inputValue}
-            placeholder={placeholder}
-          />
-        </div>
+        <Input
+          onChange={getInputValue}
+          aria-label={ariaLabel}
+          data-qa="search-input"
+          suffix={
+            <CloseIcon
+              className={c(s.closeIcon, {
+                [s.hideMe]:
+                  inputValue?.length === 0 || inputValue?.length === undefined,
+              })}
+              onClick={() => setInputValue("")}
+            />
+          }
+          allowClear={false}
+          bordered={false}
+          value={inputValue}
+          placeholder={placeholder}
+        />
       </AutoComplete>
 
       <Button
