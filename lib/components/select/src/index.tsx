@@ -47,16 +47,6 @@ const SelectFilter = ({
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (updatedSelected && updatedSelected?.length !== selected.length) {
-      if (showCount > 0) {
-        onApply(updatedSelected!);
-        setSelected(updatedSelected!);
-        setShowCount(updatedSelected!.length);
-      }
-    }
-  }, [updatedSelected]);
-
-  useEffect(() => {
     setFilterOptions(options);
   }, [options]);
 
@@ -69,31 +59,28 @@ const SelectFilter = ({
     if (updatedSelected) {
       setSelected(updatedSelected);
     }
-  }, [updatedSelected]);
 
-  const applyFilter = (selectedValue: any) => {
-    if (selected.indexOf(selectedValue) !== -1) {
-      const newSelected = selected.filter((v) => v !== selectedValue);
-      setSelected(newSelected);
-    } else {
-      setSelected([...selected, selectedValue]);
+    if (updatedSelected && updatedSelected?.length !== selected.length) {
+      if (showCount > 0) {
+        onApply(updatedSelected!);
+        setSelected(updatedSelected!);
+        setShowCount(updatedSelected!.length);
+      }
     }
-  };
+  }, [updatedSelected]);
 
   const getOptions = useMemo(
     () =>
       filterOptions
-        ?.filter(
+        .filter(
           (it) => (it.count && it.count > 0) || selected.indexOf(it.id) !== -1
         )
         .map((it: SelectOption) => ({
           label: (
-            <span
-              className={s.checkboxWrapper}
-              aria-label={`${it.label} number of results ${it.count}`}
-            >
+            <span className={s.checkboxWrapper}>
               <div className={s.checkboxInputWrapper}>
                 <input
+                  tabIndex={-1}
                   checked={selected.indexOf(it.id) !== -1}
                   type="checkbox"
                   onChange={() => console.log("checked")}
@@ -115,9 +102,11 @@ const SelectFilter = ({
               )}
             </span>
           ),
-          value: `${it.label} number of results ${it.count}`,
-          role: "option",
+          id: it.id,
+          value: it.id,
+          "aria-label": `${it.label}, ${it.count} results`,
           title: it.label,
+          role: "option",
         })),
     [selected, filterOptions, showFacets, updatedSelected]
   );
@@ -157,48 +146,42 @@ const SelectFilter = ({
     >
       <Select
         role="listbox"
+        placeholder={title}
         aria-label={`${title} filter`}
         showSearch={false}
         options={getOptions}
-        menuItemSelectedIcon={null}
         data-qa="select-dropdown"
         className={c(s.selectWrapper, { [s.filterSelectOpened]: dropdownOpen })}
         dropdownClassName={s.filterSelectWrapper}
-        labelInValue
+        menuItemSelectedIcon={null}
         // @ts-ignore
         getPopupContainer={() => document.getElementById(title)}
-        value={[
-          {
-            value: title,
-            label: (
-              <div
-                className={c(s.inputValueWrapper, {
-                  [s.boldValueWrapper]: showCount,
-                })}
-              >
-                {title}
-                {showCount > 0 ? (
-                  <span data-qa="count-wrapper" className={s.inputCount}>
-                    ({showCount})
-                  </span>
-                ) : (
-                  ""
-                )}
-              </div>
-            ),
-          },
-        ]}
+        tagRender={() => {
+          return (
+            <div
+              className={c(s.inputValueWrapper, {
+                [s.boldValueWrapper]: showCount,
+              })}
+            >
+              {title}
+              {showCount > 0 ? (
+                <span data-qa="count-wrapper" className={s.inputCount}>
+                  ({showCount})
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
+          );
+        }}
+        maxTagCount={1}
         mode="multiple"
         open={dropdownOpen}
         onDropdownVisibleChange={(open) => {
           setDropdownOpen(open);
         }}
-        onSelect={(it) => {
-          const selectedOptionId = options.filter((option) =>
-            it.value.includes(option.label)
-          )[0].id;
-
-          applyFilter(selectedOptionId);
+        onChange={(it) => {
+          setSelected(it as string[]);
         }}
         virtual
         dropdownAlign={
@@ -211,8 +194,9 @@ const SelectFilter = ({
             {allowSearch && (
               <div className={s.searchInputWrapper}>
                 <Input
-                  placeholder={searchPlaceholder}
-                  aria-label={`search ${title} filter options`}
+                  placeholder={
+                    searchPlaceholder || `Search ${title.toLowerCase()}`
+                  }
                   onChange={onSearch}
                   prefix={inputPrefixIcon || <SearchOutlined />}
                 />

@@ -1,12 +1,13 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { SelectOption } from "@bit/boclips.boclips-ui.types.select-option/index";
+import { SelectOption } from "@boclips-ui/select-option";
 import SelectFilter, { Props } from "../src";
 
 const sampleOptions: SelectOption[] = [
-  { id: "id1", label: "option 1", count: 2 },
-  { id: "id2", label: "option 2", count: 1 },
-  { id: "id3", label: "option 3", count: 2 },
+  { id: "id1", label: "0min - 1min", count: 2 },
+  { id: "id2", label: "2min - 5min", count: 1 },
+  { id: "id3", label: "10min - 20min", count: 2 },
+  { id: "id4", label: "10min - 26min", count: 0 },
 ];
 
 export default {
@@ -22,7 +23,7 @@ export default {
   },
   args: {
     options: sampleOptions,
-    title: "Filter by",
+    title: "Duration",
     allowSearch: true,
     searchPlaceholder: "Search...",
     showFacets: true,
@@ -39,16 +40,18 @@ const Template: Story<Props> = ({
   showFacets,
   updatedSelected,
 }: Props) => (
-  <SelectFilter
-    options={options}
-    title={title}
-    onApply={onApply}
-    updatedSelected={updatedSelected}
-    searchPlaceholder={searchPlaceholder}
-    showFacets={showFacets}
-    allowSearch={allowSearch}
-    touched={touched}
-  />
+  <div style={{ width: "240px" }}>
+    <SelectFilter
+      options={options}
+      title={title}
+      onApply={onApply}
+      updatedSelected={updatedSelected}
+      searchPlaceholder={searchPlaceholder}
+      showFacets={showFacets}
+      allowSearch={allowSearch}
+      touched={touched}
+    />
+  </div>
 );
 
 export const Sample = Template.bind({});

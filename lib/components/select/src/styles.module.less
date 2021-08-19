@@ -55,6 +55,13 @@
       border-radius: 4px !important;
       background-color: transparent;
       border: 0;
+
+      .ant-select-selection-item {
+        display: none;
+      }
+
+      .ant-select-selection-placeholder {
+      }
     }
 
     :global .ant-select-selection-item {
@@ -82,6 +89,9 @@
 
   :global .ant-select-item-option {
     padding: 0.5rem;
+    .ant-select-item-option-state {
+      //display: none;
+    }
   }
 
   .searchInputWrapper {
@@ -129,6 +139,7 @@
     font-size: @filter-value-font-size;
     color: @filter-value-color;
     font-weight: @filter-value-font-weight;
+    pointer-events: none;
 
     .checkboxInputWrapper {
       position: relative;
@@ -225,6 +236,12 @@
   .inputCount {
     margin-left: 0.25rem;
   }
+}
+:global .ant-select-selection-placeholder {
+  color: @placeholder-font-color;
+  font-size: @placeholder-font-size;
+  line-height: @placeholder-line-height;
+  font-weight: @placeholder-font-weight;
 }
 
 .arrowIconWrapper {
