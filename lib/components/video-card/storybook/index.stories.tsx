@@ -13,7 +13,7 @@ const dur = require("dayjs/plugin/duration");
 dayjs.extend(dur);
 
 export default {
-  title: "VideoCardThree",
+  title: "Video Card",
   component: VideoCard,
 } as Meta;
 
