@@ -32,7 +32,6 @@ export const VideoCard = ({
   video,
   videoPlayer,
   actions,
-  handleOnClick,
   price,
   duration,
   title,
@@ -102,20 +101,21 @@ export const VideoCard = ({
 
   return (
     <div
-      role="presentation"
-      onClick={handleOnClick}
+      role="region"
       data-qa="video-card"
       className={c(s.grid, s.videoCard)}
+      aria-labelledby={`${video.id}label`}
     >
       <section className={s.videoPlayer}>{videoPlayer}</section>
 
-      <section
+      <h5
+        id={`${video.id}label`}
         className={c(s.header, {
           [s.withPrice]: price,
         })}
       >
         {title}
-      </section>
+      </h5>
 
       <section className={s.subheader}>
         {duration && <div>{durationFormatter}</div>}
