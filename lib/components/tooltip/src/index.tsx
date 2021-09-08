@@ -8,6 +8,6 @@ export interface Props {
 }
 export const Tooltip = ({ text, children }: Props) => (
   <AntdTooltip title={text} overlayClassName={s.tooltip} placement="bottom">
-    <div className={s.hoverText}>{children}</div>
+    {children}
   </AntdTooltip>
 );
