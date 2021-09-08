@@ -23,6 +23,6 @@ lessText.args = {
 };
 moreText.args = {
   text:
-    "I am the tooltip content, I am the tooltip content, I am the tooltip content",
+    "I am the tooltip content, I am the tooltip content, I am the tooltip content, I am the tooltip content",
   children: <div>Tooltip with more text</div>,
 };
