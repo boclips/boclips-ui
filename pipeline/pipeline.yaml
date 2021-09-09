@@ -9,36 +9,39 @@ groups:
 jobs:
 - name: test
   plan:
-  - get: source
+  - get: boclips-ui
     trigger: true
   - task: test
-    file: source/pipeline/test.yaml
+    input_mapping:
+      source: boclips-ui
+    file: boclips-ui/pipeline/test.yaml
 
 - name: release-candidate-test
   plan:
-  - get: task-source
-    resource: source
-  - get: source
-    resource: release-candidate-source
+  - get: boclips-ui
+  - get: release-candidate-source
     trigger: true
   - task: test
-    file: task-source/pipeline/test.yaml
+    input_mapping:
+      source: release-candidate-source
+    file: boclips-ui/pipeline/test.yaml
 
 - name: release
   plan:
-  - get: task-source
-    resource: source
-  - get: source
-    resource: release-candidate-source
+  - get: boclips-ui
+  - get: release-candidate-source
     passed: [release-candidate-test]
     trigger: true
   - task: release
-    file: task-source/pipeline/release.yaml
+    input_mapping:
+      source: release-candidate-source
+      task-source: boclips-ui
+    file: boclips-ui/pipeline/release.yaml
     params:
       NPM_TOKEN: ((npm.token))
 
 resources:
-- name: source
+- name: boclips-ui
   type: git
   icon: github
   source:
