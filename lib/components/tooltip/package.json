@@ -15,13 +15,10 @@
     "@boclips-ui/styles": "^2.2.6"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.0",
-    "@testing-library/dom": "^8.3.0",
-    "@testing-library/react": "^10.4.7",
-    "@testing-library/user-event": "^13.2.1"
+    "@boclips-ui/ts-config": "^1.0.0"
   },
   "peerDependencies": {
-    "react": "16.13.1"
+    "react": "^17.0.2"
   },
   "publishConfig": {
     "access": "public"
