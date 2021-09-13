@@ -6,11 +6,6 @@ import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import IconOpen from "./resources/icon-down.svg";
 import s from "./styles.module.less";
 
-export enum DropdownAligment {
-  LEFT,
-  RIGHT,
-}
-
 export interface Props {
   options: SelectOption[];
   displayButtons?: boolean;
@@ -21,7 +16,6 @@ export interface Props {
   showFacets?: boolean;
   searchPlaceholder?: string;
   touched?: (touched: boolean) => void;
-  dropdownAlignment?: DropdownAligment;
   relativePositionFilters?: boolean;
   inputPrefixIcon?: React.ReactElement;
 }
@@ -36,7 +30,6 @@ const SelectFilter = ({
   filtersFromContext,
   relativePositionFilters = false,
   inputPrefixIcon,
-  dropdownAlignment = DropdownAligment.LEFT,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
   const [showCount, setShowCount] = useState<number>(0);
@@ -45,14 +38,19 @@ const SelectFilter = ({
   const [dropdownHeight, setDropdownHeight] = useState<number | string>("auto");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const selectRef = useRef<HTMLDivElement>(null);
+  const id = title.toLowerCase();
 
   useEffect(() => {
-    setFilterOptions(options);
+    if (options) {
+      setFilterOptions(options);
+    }
   }, [options]);
 
   useEffect(() => {
-    setShowCount(selected.length);
-    onApply(selected);
+    if (selected) {
+      setShowCount(selected.length);
+      onApply(selected);
+    }
   }, [selected]);
 
   useEffect(() => {
@@ -140,7 +138,7 @@ const SelectFilter = ({
   return (
     <div
       ref={selectRef}
-      id={title}
+      id={id}
       style={{ height: dropdownHeight }}
       className={s.main}
     >
@@ -155,7 +153,7 @@ const SelectFilter = ({
         dropdownClassName={s.filterSelectWrapper}
         menuItemSelectedIcon={null}
         // @ts-ignore
-        getPopupContainer={() => document.getElementById(title)}
+        getPopupContainer={() => document.getElementById(id)}
         tagRender={() => {
           return (
             <div
@@ -184,11 +182,11 @@ const SelectFilter = ({
           setSelected(it as string[]);
         }}
         virtual
-        dropdownAlign={
-          dropdownAlignment === DropdownAligment.LEFT
-            ? { points: ["tl", "bl"] }
-            : { points: ["tr", "br"] }
-        }
+        dropdownAlign={{
+          points: ["tr", "tl"],
+          offset: [0, 48],
+          overflow: { adjustX: false, adjustY: false },
+        }}
         value={filtersFromContext}
         dropdownRender={(i) => (
           <div ref={dropdownRef} className={s.optionsWrapper}>
