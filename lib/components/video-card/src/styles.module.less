@@ -62,7 +62,7 @@
   }
 }
 
-.price {
+.topBadge {
   position: relative;
   z-index: 11;
   border-radius: @price-border-radius;
@@ -82,9 +82,8 @@
 }
 
 .showMoreLabel {
-  cursor: pointer;
-  font-weight: 500;
-  color: @show-more-label-color;
+  font-weight: 400;
+  color: @gray-800;
   padding: @badge-padding;
 }
 
@@ -143,7 +142,7 @@
     display: none;
   }
 
-  .price {
+  .topBadge {
     grid-row-start: 1;
     grid-row-end: 1;
     grid-column-start: 21;
@@ -182,7 +181,7 @@
     grid-column-end: 19;
     padding: 0;
 
-    &.withPrice {
+    &.withTopBadge {
       grid-column-end: 17;
     }
   }
@@ -222,7 +221,7 @@
     display: none;
   }
 
-  .price {
+  .topBadge {
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 17;
@@ -254,7 +253,7 @@
     grid-column-start: 9;
     grid-column-end: 19;
 
-    &.withPrice {
+    &.withTopBadge {
       grid-column-end: 17;
     }
   }
@@ -305,7 +304,7 @@
     margin-bottom: 0.5rem;
   }
 
-  .price {
+  .topBadge {
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 16;
@@ -326,7 +325,7 @@
     grid-column-end: -1;
   }
 
-  .price {
+  .topBadge {
     font-size: 1.5rem;
     line-height: 2rem;
   }

@@ -22,26 +22,28 @@ export interface Components {
   videoPlayer?: ReactElement;
   actions?: ReactElement;
   title?: ReactElement | string;
-  price?: string;
   duration?: string;
   videoId?: string;
   additionalBadges?: ReactElement[];
+  topBadge?: ReactElement;
 }
 
 export const VideoCard = ({
   video,
   videoPlayer,
   actions,
-  price,
   duration,
   title,
   videoId,
   additionalBadges,
+  topBadge,
 }: Props & Components): any => {
   const [
     displayShowMoreBadgesButton,
     setDisplayShowMoreBadgesButton,
   ] = useState<boolean>(true);
+
+  const [hiddenBadges, setHiddenBadges] = useState<number>(0);
 
   const breakpoint = useMediaBreakPoint();
 
@@ -84,6 +86,8 @@ export const VideoCard = ({
       badges.push(additionalBadges);
     }
 
+    setHiddenBadges(badges.length - badgesToDisplay());
+
     return badges
       .slice(0, badgesToDisplay())
       .map((badge, key) => (
@@ -111,7 +115,7 @@ export const VideoCard = ({
       <h5
         id={`${video.id}label`}
         className={c(s.header, {
-          [s.withPrice]: price,
+          [s.withTopBadge]: topBadge,
         })}
       >
         {title}
@@ -137,15 +141,7 @@ export const VideoCard = ({
         {buildBadges}
 
         {displayShowMoreBadgesButton && !isDesktopBreakpoint && (
-          <span
-            role="presentation"
-            className={s.showMoreLabel}
-            onClick={() =>
-              setDisplayShowMoreBadgesButton(!displayShowMoreBadgesButton)
-            }
-          >
-            More...
-          </span>
+          <span className={s.showMoreLabel}>+ {hiddenBadges} more</span>
         )}
       </section>
 
@@ -161,7 +157,7 @@ export const VideoCard = ({
 
       {actions && <section className={s.buttons}>{actions}</section>}
 
-      {price && <div className={s.price}>{price}</div>}
+      {topBadge && <div className={s.topBadge}>{topBadge}</div>}
     </div>
   );
 };

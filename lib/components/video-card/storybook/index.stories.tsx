@@ -29,7 +29,6 @@ const Template: Story<Props & Components & StorybookProps> = ({
   theme,
   title,
   duration,
-  price,
   additionalBadges,
 }: Props & Components & StorybookProps) => (
   <div className={s[theme]}>
@@ -40,8 +39,8 @@ const Template: Story<Props & Components & StorybookProps> = ({
       actions={actions}
       handleOnClick={handleOnClick}
       title={title}
-      price={price}
       additionalBadges={additionalBadges}
+      topBadge={<div>$600</div>}
     />
   </div>
 );
@@ -75,9 +74,9 @@ DEFAULT.args = {
   title: exampleVideo.title,
   videoPlayer: <Player videoUri={exampleVideo.links.self.href} />,
   theme: "lti",
-  price: "$600",
   actions: <ActionButtons />,
   additionalBadges: TaxonomyCategoryBadgeFactory.fromTaxonomy(
     exampleVideo.taxonomy
   ),
+  topBadge: <div>$600</div>,
 };
