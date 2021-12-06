@@ -5,33 +5,18 @@ import { VideoCard } from "./index";
 import { exampleVideo } from "../storybook/videoExample";
 
 describe("VideoCard", () => {
-  it("shows only 3 badges by default, show '+ X more...' afterwards", () => {
+  it("shows all badges", () => {
     // @ts-ignore
     const card = render(<VideoCard video={exampleVideo} />);
 
-    expect(card.getByText("+ 5 more")).toBeVisible();
-    expect(card.queryByText("Art History 5")).toBeNull();
-  });
-
-  it("doesn't show '+ X more...' when <= 3 badges", () => {
-    const exampleVideoWithoutSubjectBadge = Object.create(exampleVideo);
-
-    exampleVideoWithoutSubjectBadge.subjects = [];
-
-    // @ts-ignore
-    const card = render(<VideoCard video={exampleVideoWithoutSubjectBadge} />);
-
-    expect(card.queryByText(/\+.*more/)).toBeNull();
-  });
-
-  it("doesn't show '+ X more...' if all badges are displayed", () => {
-    // @ts-ignore
-    window.innerWidth = "1920";
-
-    // @ts-ignore
-    const card = render(<VideoCard video={exampleVideo} />);
-
-    expect(card.queryByText(/\+.*more/)).toBeNull();
+    expect(card.getByTestId("youtube-license")).toBeInTheDocument();
+    expect(card.getByText("Ages 5-8")).toBeInTheDocument();
+    expect(card.getByText("Art History")).toBeInTheDocument();
+    expect(card.getByText("Art History 1")).toBeInTheDocument();
+    expect(card.getByText("Art History 2")).toBeInTheDocument();
+    expect(card.getByText("Art History 3")).toBeInTheDocument();
+    expect(card.getByText("Art History 4")).toBeInTheDocument();
+    expect(card.getByText("Art History 5")).toBeInTheDocument();
   });
 
   it("display the duration correctly when undefined in minutes place", () => {

@@ -1,16 +1,12 @@
-import React, { ReactElement, useMemo, useState } from "react";
+import React, { ReactElement, useMemo } from "react";
 import { ExtendedVideo } from "@boclips-ui/video";
 import AgeRangeBadge from "@boclips-ui/age-range-badge";
 import SubjectBadge from "@boclips-ui/subject-badge";
 import ReleasedOn from "@boclips-ui/released-on";
 import c from "classnames";
 import ProviderBadge from "@boclips-ui/provider-badge";
-import { useMediaBreakPoint } from "@boclips-ui/use-media-breakpoints";
 import s from "./styles.module.less";
 
-const DEFAULT_VISIBLE_BADGES = 3;
-const DESKTOP_BREAKPOINT = "xl";
-const LARGE_DESKTOP_BREAKPOINT = "xxl";
 const YOUTUBE = "YOUTUBE";
 
 export interface Props {
@@ -38,35 +34,8 @@ export const VideoCard = ({
   additionalBadges,
   topBadge,
 }: Props & Components): any => {
-  const [
-    displayShowMoreBadgesButton,
-    setDisplayShowMoreBadgesButton,
-  ] = useState<boolean>(true);
-
-  const [hiddenBadges, setHiddenBadges] = useState<number>(0);
-
-  const breakpoint = useMediaBreakPoint();
-
-  const isDesktopBreakpoint =
-    breakpoint.label === DESKTOP_BREAKPOINT ||
-    breakpoint.label === LARGE_DESKTOP_BREAKPOINT;
-
   const buildBadges = useMemo(() => {
     const badges = [];
-
-    const badgesToDisplay = () => {
-      if (badges.length <= 3) {
-        setDisplayShowMoreBadgesButton(false);
-      }
-
-      if (isDesktopBreakpoint) {
-        return badges.length;
-      }
-
-      return !displayShowMoreBadgesButton
-        ? badges.length
-        : DEFAULT_VISIBLE_BADGES;
-    };
 
     if (video.playback.type === YOUTUBE) {
       badges.push(<ProviderBadge customClassName={s.providerBadge} />);
@@ -86,20 +55,10 @@ export const VideoCard = ({
       badges.push(additionalBadges);
     }
 
-    setHiddenBadges(badges.length - badgesToDisplay());
-
-    return badges
-      .slice(0, badgesToDisplay())
-      .map((badge, key) => (
-        <React.Fragment key={`badge-${key}`}>{badge}</React.Fragment>
-      ));
-  }, [
-    video.playback.type,
-    video.ageRange,
-    video.subjects,
-    isDesktopBreakpoint,
-    displayShowMoreBadgesButton,
-  ]);
+    return badges.map((badge, key) => (
+      <React.Fragment key={`badge-${key}`}>{badge}</React.Fragment>
+    ));
+  }, [video.playback.type, video.ageRange, video.subjects]);
 
   const durationFormatter = duration?.toString().replace("undefined", "00");
 
@@ -133,26 +92,10 @@ export const VideoCard = ({
         )}
       </section>
 
-      <section
-        className={c(s.badges, {
-          [s.badgesClosed]: displayShowMoreBadgesButton,
-        })}
-      >
-        {buildBadges}
-
-        {displayShowMoreBadgesButton && !isDesktopBreakpoint && (
-          <span className={s.showMoreLabel}>+ {hiddenBadges} more</span>
-        )}
-      </section>
+      <section className={s.badges}>{buildBadges}</section>
 
       {video.description && (
-        <section
-          className={c(s.description, {
-            [s.twoLineClamp]: displayShowMoreBadgesButton,
-          })}
-        >
-          {video.description}
-        </section>
+        <section className={s.description}>{video.description}</section>
       )}
 
       {actions && <section className={s.buttons}>{actions}</section>}

@@ -79,12 +79,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
-}
-
-.showMoreLabel {
-  font-weight: 400;
-  color: @gray-800;
-  padding: @badge-padding;
+  max-height: 52px;
 }
 
 .providerBadge {
@@ -135,10 +130,6 @@
   }
 
   .description {
-    display: none;
-  }
-
-  .showMoreLabel {
     display: none;
   }
 
@@ -205,10 +196,6 @@
     max-height: 52px;
   }
 
-  .showMoreLabel {
-    display: block;
-  }
-
   .buttons {
     grid-row-start: 6;
     grid-row-end: last;
@@ -273,7 +260,7 @@
     grid-column-end: 18;
     display: flex;
     overflow: hidden;
-    max-height: 58px;
+    max-height: 52px;
   }
 
   .description {
@@ -290,10 +277,6 @@
     font-size: 1rem;
     margin-top: 0.5rem;
     color: @gray-800;
-  }
-
-  .showMoreLabel {
-    display: block;
   }
 
   .buttons {
