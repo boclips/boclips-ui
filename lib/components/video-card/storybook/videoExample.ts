@@ -82,7 +82,11 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
   badges: ["ad-free"],
   legalRestrictions:
     "No editing permitted. Please contact boclips for full pricing and availability of TED-Ed videos.",
-  ageRange: new AgeRange(5, 8),
+  ageRange: {
+    min: 5,
+    max: 8,
+    label: "5-8",
+  },
   rating: null,
   yourRating: null,
   bestFor: [{ id: 1, label: "Hook" }],

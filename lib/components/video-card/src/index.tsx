@@ -1,16 +1,15 @@
 import React, { ReactElement, useMemo } from "react";
-import { ExtendedVideo } from "@boclips-ui/video";
-import AgeRangeBadge from "@boclips-ui/age-range-badge";
-import SubjectBadge from "@boclips-ui/subject-badge";
 import ReleasedOn from "@boclips-ui/released-on";
 import c from "classnames";
+import Badge from "@boclips-ui/badge";
 import ProviderBadge from "@boclips-ui/provider-badge";
+import { Video } from "boclips-api-client/dist/sub-clients/videos/model/Video";
 import s from "./styles.module.less";
 
 const YOUTUBE = "YOUTUBE";
 
 export interface Props {
-  video: ExtendedVideo;
+  video: Video;
   handleOnClick?: () => void;
 }
 
@@ -33,7 +32,7 @@ export const VideoCard = ({
   videoId,
   additionalBadges,
   topBadge,
-}: Props & Components): any => {
+}: Props & Components): ReactElement => {
   const buildBadges = useMemo(() => {
     const badges = [];
 
@@ -42,12 +41,18 @@ export const VideoCard = ({
     }
 
     if (video?.ageRange) {
-      badges.push(<AgeRangeBadge ageRange={video.ageRange} />);
+      badges.push(<Badge value={`Ages ${video.ageRange?.label}`} />);
     }
 
-    if (video.subjects) {
+    if (video?.bestFor && video?.bestFor?.length > 0) {
+      video.bestFor.forEach((it) => {
+        badges.push(<Badge key={it.id} value={it.label} />);
+      });
+    }
+
+    if (video?.subjects) {
       video.subjects.forEach((it) => {
-        badges.push(<SubjectBadge key={it.id} subject={it} />);
+        badges.push(<Badge key={it.id} value={it.name} />);
       });
     }
 
