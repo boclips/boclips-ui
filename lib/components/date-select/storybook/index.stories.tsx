@@ -1,19 +1,19 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import ReleaseDateFilter, { ReleaseDateFilterProps } from "../src";
+import DateSelect, { DateSelectProps } from "../src";
 import s from "./style.module.less";
 
 export default {
   title: "Release Date Filter",
-  component: ReleaseDateFilter,
+  component: DateSelect,
 } as Meta;
 
-const Template: Story<ReleaseDateFilterProps> = ({
-  releaseDate,
+const Template: Story<DateSelectProps> = ({
+  date,
   onChange,
-}: ReleaseDateFilterProps) => (
+}: DateSelectProps) => (
   <div className={s.myDatePicker}>
-    <ReleaseDateFilter onChange={onChange} releaseDate={releaseDate} />
+    <DateSelect onChange={onChange} date={date} />
   </div>
 );
 
@@ -22,7 +22,7 @@ export const PLACEHOLDER = Template.bind({});
 export const INVALID_DATE = Template.bind({});
 
 DEFAULT.args = {
-  releaseDate: "04-22-2010",
+  date: "04-22-2010",
   onChange: (value, dateString) => console.log(`${value} ${dateString}`),
 };
 
@@ -31,6 +31,6 @@ PLACEHOLDER.args = {
 };
 
 INVALID_DATE.args = {
-  releaseDate: "04-22fafa-2010",
+  date: "04-22fafa-2010",
   onChange: (value, dateString) => console.log(`${value} ${dateString}`),
 };
