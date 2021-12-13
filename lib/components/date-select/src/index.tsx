@@ -9,22 +9,25 @@ export interface DateSelectProps {
   onChange: (date: string) => void;
 }
 
-const dateFormat = "MM-DD-YYYY";
+const placeholderDateFormat = "MM-DD-YYYY";
+const apiDateFormat = "YYYY-MM-DD";
 
 const DateSelect = ({ date, onChange }: DateSelectProps) => {
-  const formattedDate = date ? dayjs(date) : undefined;
+  const formattedInputDate = date ? dayjs(date) : undefined;
+
   const pickerOnChange = (_value: Dayjs | null, dateString: string) => {
-    onChange(dateString);
+    const apiDate = dayjs(dateString).format(apiDateFormat);
+    onChange(apiDate);
   };
 
   return (
     <div role="button" className={s.datePicker}>
       <DatePicker
         suffixIcon={<CalendarSVG />}
-        format={dateFormat}
-        placeholder={dateFormat}
+        format={placeholderDateFormat}
+        placeholder={placeholderDateFormat}
         showToday={false}
-        value={formattedDate?.isValid() ? formattedDate : undefined}
+        value={formattedInputDate?.isValid() ? formattedInputDate : undefined}
         dropdownClassName={s.datePickerDropdown}
         onChange={pickerOnChange}
         clearIcon={undefined}
