@@ -22,11 +22,25 @@ export class TaxonomyCategoryBadgeFactory {
         listOfCategories.push(category)
       );
 
-      listOfCategories.forEach((it) => {
+      const uniqueCategories = this.extractUniqueCategories(listOfCategories);
+
+      uniqueCategories.forEach((it) => {
         badges.push(<TaxonomyCategoryBadge category={it} />);
       });
     }
+
     return badges.length !== 0 ? badges : [<UntaggedBadge />];
+  }
+
+  private static extractUniqueCategories(categories: TaxonomyCategory[]) {
+    return categories.filter(
+      (thisCategory, index, all) =>
+        all.findIndex(
+          (otherCategory) =>
+            otherCategory.codeValue === thisCategory.codeValue &&
+            otherCategory.description === thisCategory.description
+        ) === index
+    );
   }
 }
 
