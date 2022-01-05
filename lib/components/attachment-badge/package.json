@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/attachment-badge",
-  "version": "2.0.12",
+  "version": "2.0.13",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,8 +12,8 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/attachment-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/badge": "^2.1.4",
-    "@boclips-ui/styles": "^2.2.6"
+    "@boclips-ui/badge": "^2.1.5",
+    "@boclips-ui/styles": "^3.0.0"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.13"
