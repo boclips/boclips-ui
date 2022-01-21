@@ -1,18 +1,14 @@
-export declare type ScreenSizes = "xl" | "lg" | "md" | "sm";
-
-export interface Breakpoint {
-  width: number;
-  label: ScreenSizes;
-  type: string;
+export interface Device {
+  maxWidth: number;
+  type: Breakpoint;
 }
 
-type Breakpoints = { [name in ScreenSizes]: Breakpoint };
+export declare type Breakpoint = "mobile" | "tablet" | "desktop";
 
-export const MediaBreakpoints: Breakpoints = {
-  sm: { width: 320, label: "sm", type: "mobile" },
-  md: { width: 768, label: "md", type: "tablet" },
-  lg: { width: 1148, label: "lg", type: "desktop" },
-  xl: { width: 1680, label: "xl", type: "desktop" },
+export type DeviceViews = { [name in Breakpoint]: Device };
+
+export const breakpoints: DeviceViews = {
+  mobile: { maxWidth: 768, type: "mobile" },
+  tablet: { maxWidth: 1148, type: "tablet" },
+  desktop: { maxWidth: 9999, type: "desktop" },
 };
-
-export default MediaBreakpoints;

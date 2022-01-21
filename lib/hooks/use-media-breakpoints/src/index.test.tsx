@@ -14,12 +14,7 @@ const setWidth = (width: number) => {
 const WithWidthBreakpointComponent = () => {
   const breakpoint = useMediaBreakPoint();
 
-  return (
-    <div
-      data-breakpoint-label={breakpoint.label}
-      data-breakpoint-width={breakpoint.width}
-    />
-  );
+  return <div data-breakpoint-type={breakpoint.type} />;
 };
 
 describe("breakpoints", () => {
@@ -27,32 +22,21 @@ describe("breakpoints", () => {
     setWidth(320);
     const wrapper = mount(<WithWidthBreakpointComponent />);
 
-    expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("sm");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(320);
+    expect(wrapper.find("div").prop("data-breakpoint-type")).toEqual("mobile");
   });
 
   it("injects correct props to child component when md width", () => {
     setWidth(768);
     const wrapper = mount(<WithWidthBreakpointComponent />);
 
-    expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("md");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(768);
+    expect(wrapper.find("div").prop("data-breakpoint-type")).toEqual("tablet");
   });
 
   it("injects correct props to child component when lg width", () => {
     setWidth(1148);
     const wrapper = mount(<WithWidthBreakpointComponent />);
 
-    expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("lg");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(1148);
-  });
-
-  it("injects correct props to child component when xl width", () => {
-    setWidth(1680);
-    const wrapper = mount(<WithWidthBreakpointComponent />);
-
-    expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("xl");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(1680);
+    expect(wrapper.find("div").prop("data-breakpoint-type")).toEqual("desktop");
   });
 
   it("injects correct props to child component when window is resized", () => {
@@ -62,7 +46,6 @@ describe("breakpoints", () => {
     setWidth(1148);
     wrapper.update();
 
-    expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("lg");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(1148);
+    expect(wrapper.find("div").prop("data-breakpoint-type")).toEqual("desktop");
   });
 });

@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
-import MediaBreakpoints, { Breakpoint } from "@boclips-ui/media-breakpoints";
+import { breakpoints, Device } from "@boclips-ui/media-breakpoints/src";
 
-export const getMediaBreakpoint = (): Breakpoint => {
+export const getMediaBreakpoint = (): Device => {
   const { innerWidth } = window;
 
-  if (innerWidth <= MediaBreakpoints.sm.width) {
-    return MediaBreakpoints.sm;
-  }
-  if (innerWidth <= MediaBreakpoints.md.width) {
-    return MediaBreakpoints.md;
-  }
-  if (innerWidth <= MediaBreakpoints.lg.width) {
-    return MediaBreakpoints.lg;
+  if (innerWidth < breakpoints.mobile.maxWidth) {
+    return breakpoints.mobile;
   }
 
-  return MediaBreakpoints.xl;
+  if (innerWidth < breakpoints.tablet.maxWidth) {
+    return breakpoints.tablet;
+  }
+
+  return breakpoints.desktop;
 };
 
-export const useMediaBreakPoint = (): Breakpoint => {
+export const useMediaBreakPoint = (): Device => {
   const [width, setWidth] = useState(getMediaBreakpoint());
 
   const handleResize = () => {
