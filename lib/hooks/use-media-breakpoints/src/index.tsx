@@ -13,10 +13,8 @@ export const getMediaBreakpoint = (): Breakpoint => {
   if (innerWidth <= MediaBreakpoints.lg.width) {
     return MediaBreakpoints.lg;
   }
-  if (innerWidth <= MediaBreakpoints.xl.width) {
-    return MediaBreakpoints.xl;
-  }
-  return MediaBreakpoints.xxl;
+
+  return MediaBreakpoints.xl;
 };
 
 export const useMediaBreakPoint = (): Breakpoint => {

@@ -55,14 +55,6 @@ describe("breakpoints", () => {
     expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(1680);
   });
 
-  it("injects correct props to child component when xxl width", () => {
-    setWidth(1920);
-    const wrapper = mount(<WithWidthBreakpointComponent />);
-
-    expect(wrapper.find("div").prop("data-breakpoint-label")).toEqual("xxl");
-    expect(wrapper.find("div").prop("data-breakpoint-width")).toEqual(1920);
-  });
-
   it("injects correct props to child component when window is resized", () => {
     setWidth(300);
     const wrapper = mount(<WithWidthBreakpointComponent />);
