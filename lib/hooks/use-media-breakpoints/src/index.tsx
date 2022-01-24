@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { breakpoints, Device } from "@boclips-ui/media-breakpoints/src";
+import { breakpoints, Device } from "@boclips-ui/media-breakpoints";
 
 export const getMediaBreakpoint = (): Device => {
   const { innerWidth } = window;
