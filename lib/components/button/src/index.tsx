@@ -13,6 +13,7 @@ export interface Props extends React.HTMLProps<HTMLButtonElement> {
   text?: string;
   dataQa?: string;
   suffix?: React.ReactElement;
+  ariaLabel?: string;
 }
 
 const Button = ({
@@ -26,9 +27,11 @@ const Button = ({
   text,
   dataQa,
   suffix,
+  ariaLabel,
   ...rest
 }: Props) => (
   <button
+    aria-label={ariaLabel}
     data-qa={dataQa}
     onClick={onClick}
     style={{ height, width }}
