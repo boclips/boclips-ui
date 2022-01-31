@@ -1,17 +1,8 @@
 {
   "name": "@boclips-ui/styles",
   "version": "3.0.0",
-  "main": "dist/index.less",
-  "scripts": {
-    "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
-    "build:dep": "lerna run build --stream --scope=@boclips-ui/styles --include-dependencies"
-  },
-  "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.13"
-  },
-  "peerDependencies": {
-    "antd": "^4.3.1"
-  },
+  "main": "./index.less",
+  "scripts": {},
   "publishConfig": {
     "access": "public"
   },
