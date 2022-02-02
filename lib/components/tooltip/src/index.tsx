@@ -4,7 +4,7 @@ import s from "./style.module.less";
 
 export interface Props {
   text: string;
-  placement: TooltipPlacement;
+  placement?: TooltipPlacement;
   children: React.ReactNode;
 }
 export const Tooltip = ({ text, children, placement = "bottom" }: Props) => (
