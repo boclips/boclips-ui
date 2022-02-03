@@ -1,14 +1,29 @@
-import React from "react";
-import AntdTooltip, { TooltipPlacement } from "antd/lib/tooltip";
+import React, { useState } from "react";
+import c from "classnames";
 import s from "./style.module.less";
 
 export interface Props {
   text: string;
-  placement?: TooltipPlacement;
   children: React.ReactNode;
 }
-export const Tooltip = ({ text, children, placement = "bottom" }: Props) => (
-  <AntdTooltip title={text} overlayClassName={s.tooltip} placement={placement}>
-    {children}
-  </AntdTooltip>
-);
+
+const Tooltip = ({ children, text }: Props) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  return (
+    <div
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+      className={s.wrapper}
+    >
+      {isOpen && (
+        <div className={c(s.tooltip)}>
+          <span role="figure">{text}</span>
+        </div>
+      )}
+      {children}
+    </div>
+  );
+};
+
+export default Tooltip;

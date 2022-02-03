@@ -1,17 +1,44 @@
-@import "~@boclips-ui/styles/src/colors";
+@import '~@boclips-ui/styles/src/colors';
+
+.wrapper {
+  position: relative;
+}
 
 .tooltip {
-  min-height: 50px;
-  color: @gray-800;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 20px;
+  width: max-content;
+  position: absolute;
+  bottom: 62px;
+  transform: translateX(-50%);
+  left: 50%;
+  display: none;
+  visibility: hidden;
 
-  :global .ant-tooltip-inner {
-    background-color: @gray-800;
-    border-radius: 4px;
-    text-align: center;
-    padding: 8px 16px;
+  &:after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+    transform: rotate(225deg) translateX(-50%);
+    left: -50%;
+    bottom: 0px;
+    border-radius: 2px;
+    top: 19px;
+    background: @gray-800;
   }
+
+  span {
+    background: @gray-800;
+    color: @white;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
+
+.show {
+  display: inline-block;
+  visibility: visible;
 }
