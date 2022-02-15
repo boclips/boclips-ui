@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/taxonomy-category-badge",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -14,7 +14,7 @@
   "dependencies": {
     "@boclips-ui/badge": "^2.1.7",
     "@boclips-ui/styles": "^3.0.1",
-    "@boclips-ui/video": "^3.0.3"
+    "@boclips-ui/video": "^3.0.4"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.15"
