@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/age-range-badge",
-  "version": "2.0.21",
+  "version": "2.1.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@boclips-ui/age-range": "^1.0.16",
-    "@boclips-ui/badge": "^2.1.7",
-    "@boclips-ui/styles": "^3.0.1",
+    "@boclips-ui/badge": "^2.2.0",
+    "@boclips-ui/styles": "^3.1.0",
     "@boclips-ui/video": "^3.0.4"
   },
   "devDependencies": {
