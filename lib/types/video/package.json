@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "files": [
     "dist/**/*"
   ],
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@boclips-ui/age-range": "^1.0.16",
-    "@boclips-ui/link": "^1.0.18"
+    "@boclips-ui/link": "^1.0.19"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.15"
