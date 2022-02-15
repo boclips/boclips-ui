@@ -3,7 +3,7 @@ import "urijs/src/URITemplate";
 import { Link as ApiLink } from "boclips-api-client/dist/types";
 
 /**
- * @deprecated Use `Link` type from `boclips-api-client` instead.
+ * @deprecated Use `Link` type from `boclips-api-client` instead
  */
 export class Link {
   private link: RawLink;
