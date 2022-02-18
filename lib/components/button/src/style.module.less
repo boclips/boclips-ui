@@ -48,11 +48,28 @@
     svg {
       stroke: @svg-stroke-colour-active;
     }
+    outline: none;
   }
 
+  // For any browser that doesn't focus-visible (Safari)
   &:focus {
-    outline: none;
-    box-shadow: 0px 0px 6px @box-shadow-color;
+    outline: @focus-outline;
+    outline-offset: @focus-outline-offset;
+  }
+
+  // For browsers that do support focus-visible:
+  // - turn off focus styles
+  // - apply styles only to focus-visible
+  // https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+  @supports selector(:focus-visible) {
+    &:focus {
+      outline: none;
+      outline-offset: 0;
+    }
+    &:focus-visible {
+      outline: @focus-outline;
+      outline-offset: @focus-outline-offset;
+    }
   }
 
   &:disabled {
@@ -89,11 +106,6 @@
           fill: @outline-svg-fill-hover;
         }
       }
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: 0px 0px 6px @outline-box-shadow-color;
     }
 
     svg {
