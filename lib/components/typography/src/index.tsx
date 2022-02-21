@@ -5,7 +5,7 @@ export interface BaseProps {
   className?: string;
 }
 
-export const Typeography = {
+export const Typography = {
   H1,
   H2,
   H3,
