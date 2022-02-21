@@ -1,0 +1,26 @@
+{
+  "name": "@boclips-ui/typeography",
+  "version": "1.0.0",
+  "files": [
+    "dist/**/*"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/video-card --include-dependencies"
+  },
+  "devDependencies": {
+    "@boclips-ui/ts-config": "^1.0.15"
+  },
+  "peerDependencies": {
+    "classnames": "2.2.6",
+    "react": "17.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2"
+}
