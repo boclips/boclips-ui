@@ -8,7 +8,7 @@ describe("SearchBar", () => {
     const onSearch = jest.fn();
 
     render(<SearchBar onSearch={onSearch} placeholder="test" />);
-    const searchInput = screen.getByPlaceholderText("Search for videos");
+    const searchInput = screen.getByPlaceholderText("test");
 
     expect(searchInput).toBeInTheDocument();
   });
@@ -17,9 +17,9 @@ describe("SearchBar", () => {
     const onSearch = jest.fn();
 
     render(<SearchBar onSearch={onSearch} placeholder="test" />);
-    const searchInput = screen.getByRole("button");
+    const button = screen.getByRole("button");
 
-    fireEvent.click(searchInput);
+    fireEvent.click(button);
 
     expect(onSearch).toBeCalled();
   });
@@ -28,7 +28,7 @@ describe("SearchBar", () => {
     const onSearch = jest.fn();
 
     render(<SearchBar onSearch={onSearch} placeholder="test" />);
-    const searchInput = screen.getByPlaceholderText("Search for videos");
+    const searchInput = screen.getByPlaceholderText("test");
 
     fireEvent.change(searchInput, {
       target: { value: "this is search query" },
@@ -43,7 +43,7 @@ describe("SearchBar", () => {
     const onSearch = jest.fn();
 
     render(<SearchBar onSearch={onSearch} placeholder="test" />);
-    const searchInput = screen.getByPlaceholderText("Search for videos");
+    const searchInput = screen.getByPlaceholderText("test");
 
     fireEvent.change(searchInput, {
       target: { value: "this is search query" },

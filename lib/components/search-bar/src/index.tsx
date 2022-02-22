@@ -15,12 +15,15 @@ export interface Props {
   placeholder?: string;
   initialQuery?: string;
   iconOnlyButton?: boolean;
+  buttonText?: string;
 }
 
 const SearchBar = ({
   onSearch,
   initialQuery,
   iconOnlyButton = true,
+  placeholder,
+  buttonText,
 }: Props): ReactElement => {
   const [query, setQuery] = useState<string>("");
   const ref = useRef<HTMLInputElement | null>(null);
@@ -48,7 +51,7 @@ const SearchBar = ({
         ref={ref}
         id="search"
         type="text"
-        placeholder="Search for videos"
+        placeholder={placeholder || "Search for videos"}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={onKeyDown}
         value={query}
@@ -70,7 +73,7 @@ const SearchBar = ({
           icon={<SearchIcon />}
           iconOnly={iconOnlyButton}
           onClick={() => onSearch(query, 0)}
-          text="Search"
+          text={buttonText || "Search"}
         />
       </div>
     </div>
