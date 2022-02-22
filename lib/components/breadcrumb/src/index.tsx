@@ -16,10 +16,10 @@ export interface PreviousPageProps {
 
 export const Breadcrumb = ({ previousPages, currentPage }: BreadcrumbProps) => {
   return (
-    <nav aria-label="breadcrumb" className={s.container}>
+    <ul aria-label="breadcrumb" className={s.container}>
       {previousPages &&
         previousPages.map((page) => (
-          <span key={page.label} className={s.container}>
+          <li key={page.label} className={s.container}>
             <button
               type="button"
               onClick={page.onClick}
@@ -28,7 +28,7 @@ export const Breadcrumb = ({ previousPages, currentPage }: BreadcrumbProps) => {
               {page.label || ""}
             </button>
             <RightChevron className={s.chevron} />
-          </span>
+          </li>
         ))}
       <div
         aria-current="page"
@@ -39,6 +39,6 @@ export const Breadcrumb = ({ previousPages, currentPage }: BreadcrumbProps) => {
       >
         {currentPage}
       </div>
-    </nav>
+    </ul>
   );
 };
