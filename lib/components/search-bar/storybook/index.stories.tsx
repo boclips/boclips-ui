@@ -1,7 +1,8 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
-// @ts-ignore
+import { Meta, Story } from "@storybook/react/types-6-0";
 import SearchBar, { Props } from "../src";
+// @ts-ignore
+import s from "./style.module.less";
 
 export default {
   title: "SearchBar",
@@ -11,17 +12,15 @@ export default {
 const Template: Story<Props> = ({
   onSearch,
   placeholder,
-  autocomplete,
   iconOnlyButton,
-  ariaLabel,
 }: Props) => (
-  <SearchBar
-    onSearch={onSearch}
-    placeholder={placeholder}
-    autocomplete={autocomplete}
-    iconOnlyButton={iconOnlyButton}
-    ariaLabel={ariaLabel}
-  />
+  <span className={s.wrap}>
+    <SearchBar
+      onSearch={onSearch}
+      placeholder={placeholder}
+      iconOnlyButton={iconOnlyButton}
+    />
+  </span>
 );
 
 export const DEFAULT = Template.bind({});
@@ -29,7 +28,5 @@ export const DEFAULT = Template.bind({});
 DEFAULT.args = {
   onSearch: () => console.log("search triggered <- it's from storybook"),
   placeholder: "Search...",
-  autocomplete: true,
-  iconOnlyButton: false,
-  ariaLabel: "search for videos",
+  iconOnlyButton: true,
 };
