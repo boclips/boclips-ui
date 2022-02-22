@@ -14,13 +14,19 @@ export const Body: React.FC<Props> = ({
   fontSize = "16",
   weight,
   children,
+  className,
 }: React.PropsWithChildren<Props>) => {
   return (
     <span
-      className={c(s.body, s.base, {
-        [s.small]: fontSize === "14",
-        [s.medium]: weight === "medium",
-      })}
+      className={c(
+        s.body,
+        s.base,
+        {
+          [s.small]: fontSize === "14",
+          [s.medium]: weight === "medium",
+        },
+        className
+      )}
     >
       {children}
     </span>
