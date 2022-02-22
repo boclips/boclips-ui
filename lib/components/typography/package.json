@@ -9,7 +9,7 @@
   "scripts": {
     "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
     "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
-    "build:dep": "lerna run build --stream --scope=@boclips-ui/video-card --include-dependencies"
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/typography --include-dependencies"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.15"
