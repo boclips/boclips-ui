@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/select",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/select --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/button": "^3.0.0",
+    "@boclips-ui/button": "^3.0.1",
     "@boclips-ui/select-option": "^1.2.2",
     "@boclips-ui/styles": "^4.0.0"
   },
