@@ -1,6 +1,6 @@
 {
-  "name": "@boclips-ui/typeography",
-  "version": "1.0.0",
+  "name": "@boclips-ui/typography",
+  "version": "0.0.0",
   "files": [
     "dist/**/*"
   ],
