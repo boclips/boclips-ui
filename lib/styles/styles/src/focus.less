@@ -1,0 +1,24 @@
+@import './vars';
+
+#focus {
+  // For any browser that doesn't focus-visible (Safari)
+  &:focus {
+    outline: @focus-outline;
+    outline-offset: @focus-outline-offset;
+  }
+
+  // For browsers that do support focus-visible:
+  // - turn off focus styles
+  // - apply styles only to focus-visible
+  // https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+  @supports selector(:focus-visible) {
+    &:focus {
+      outline: none;
+      outline-offset: 0;
+    }
+    &:focus-visible {
+      outline: @focus-outline;
+      outline-offset: @focus-outline-offset;
+    }
+  }
+}
