@@ -15,19 +15,19 @@ const Template: Story = () => (
     <Typography.H5>Hello, this is a H5</Typography.H5>
     <Typography.H6>Hello, this is a H6</Typography.H6>
     <div>
-      <Typography.Body>Hello, this is a Body 16</Typography.Body>
+      <Typography.Body id="hello">Hello, this is a Body</Typography.Body>
     </div>
     <div>
       <Typography.Body weight="medium">
-        Hello, this is Body 16 medium
+        Hello, this is Body medium
       </Typography.Body>
     </div>
     <div>
-      <Typography.Body fontSize="14">Hello, this is a Body 14</Typography.Body>
+      <Typography.Body size="small">Hello, this is small Body</Typography.Body>
     </div>
     <div>
-      <Typography.Body weight="medium" fontSize="14">
-        Hello, this is Body 14 medium
+      <Typography.Body weight="medium" size="small">
+        Hello, this is small Body medium
       </Typography.Body>
     </div>
   </div>

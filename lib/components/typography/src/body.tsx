@@ -10,12 +10,12 @@ export interface Props
     React.HTMLAttributes<HTMLSpanElement>,
     HTMLSpanElement
   > {
-  fontSize?: "14" | "16";
+  size?: "small";
   weight?: "medium";
 }
 
 export const Body: React.FC<Props> = ({
-  fontSize = "16",
+  size,
   weight,
   children,
   className,
@@ -27,7 +27,7 @@ export const Body: React.FC<Props> = ({
         s.body,
         s.base,
         {
-          [s.small]: fontSize === "14",
+          [s.small]: size === "small",
           [s.medium]: weight === "medium",
         },
         className
