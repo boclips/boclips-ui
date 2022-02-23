@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/search-bar",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "files": [
     "dist/**/*"
   ],
@@ -12,8 +12,8 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/search-bar --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/button": "^3.0.1",
-    "@boclips-ui/styles": "^4.0.0"
+    "@boclips-ui/button": "^3.0.2",
+    "@boclips-ui/styles": "^4.0.1"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.15"

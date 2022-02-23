@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/breadcrumb",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,7 +12,7 @@
     "build-dep": "lerna run build --stream --scope=@boclips-ui/breadcrumb --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^4.0.0",
+    "@boclips-ui/styles": "^4.0.1",
     "classnames": "2.2.6"
   },
   "devDependencies": {

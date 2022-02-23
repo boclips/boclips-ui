@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/content-warning-badge",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "files": [
     "dist/**/*"
   ],
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/content-warning-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^4.0.0",
+    "@boclips-ui/styles": "^4.0.1",
     "@boclips-ui/video": "^3.0.4"
   },
   "devDependencies": {
