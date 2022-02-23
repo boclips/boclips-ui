@@ -8,7 +8,7 @@ export default {
 
 const Template: Story = () => (
   <div>
-    <Typography.H1>Hello, this is a H1</Typography.H1>
+    <Typography.H1 id="hello">Hello, this is a H1</Typography.H1>
     <Typography.H2>Hello, this is a H2</Typography.H2>
     <Typography.H3>Hello, this is a H3</Typography.H3>
     <Typography.H4>Hello, this is a H4</Typography.H4>

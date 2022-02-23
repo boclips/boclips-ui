@@ -1,11 +1,15 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import c from "classnames";
 
 // @ts-ignore
 import s from "./styles.module.less";
-import { BaseProps } from ".";
 
-export interface Props extends BaseProps {
+export interface Props
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLSpanElement>,
+    HTMLSpanElement
+  > {
   fontSize?: "14" | "16";
   weight?: "medium";
 }
@@ -15,6 +19,7 @@ export const Body: React.FC<Props> = ({
   weight,
   children,
   className,
+  ...rest
 }: React.PropsWithChildren<Props>) => {
   return (
     <span
@@ -27,6 +32,7 @@ export const Body: React.FC<Props> = ({
         },
         className
       )}
+      {...rest}
     >
       {children}
     </span>
