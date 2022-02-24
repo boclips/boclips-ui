@@ -5,24 +5,28 @@ import c from "classnames";
 // @ts-ignore
 import s from "./styles.module.less";
 
-export interface Props
+export interface Props<T extends React.ElementType>
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLSpanElement>,
     HTMLSpanElement
   > {
   size?: "small";
   weight?: "medium";
+  as?: T;
 }
 
-export const Body: React.FC<Props> = ({
+export const Body = <T extends React.ElementType = "span">({
   size,
   weight,
   children,
   className,
+  as,
   ...rest
-}: React.PropsWithChildren<Props>) => {
+}: React.PropsWithChildren<Props<T>>): React.ReactElement => {
+  const Component = as || "span";
+
   return (
-    <span
+    <Component
       className={c(
         s.body,
         s.base,
@@ -35,6 +39,6 @@ export const Body: React.FC<Props> = ({
       {...rest}
     >
       {children}
-    </span>
+    </Component>
   );
 };

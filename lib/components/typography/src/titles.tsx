@@ -5,29 +5,38 @@ import c from "classnames";
 // @ts-ignore
 import s from "./styles.module.less";
 
-type Props = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLSpanElement>,
-  HTMLSpanElement
->;
+export interface Props<T>
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLSpanElement>,
+    HTMLSpanElement
+  > {
+  as?: T;
+}
 
-export const Title1: React.FC<Props> = ({
+export const Title1 = <T extends React.ElementType = "span">({
   children,
+  as,
   ...rest
-}: React.PropsWithChildren<Props>) => {
+}: React.PropsWithChildren<Props<T>>): React.ReactElement => {
+  const Component = as || "span";
+
   return (
-    <span className={c(s.base, s.title1)} {...rest}>
+    <Component className={c(s.base, s.title1)} {...rest}>
       {children}
-    </span>
+    </Component>
   );
 };
 
-export const Title2: React.FC<Props> = ({
+export const Title2 = <T extends React.ElementType = "span">({
   children,
+  as,
   ...rest
-}: React.PropsWithChildren<Props>) => {
+}: React.PropsWithChildren<Props<T>>): React.ReactElement => {
+  const Component = as || "span";
+
   return (
-    <span className={c(s.base, s.title2)} {...rest}>
+    <Component className={c(s.base, s.title2)} {...rest}>
       {children}
-    </span>
+    </Component>
   );
 };
