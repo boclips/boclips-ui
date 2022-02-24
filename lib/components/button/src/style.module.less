@@ -78,43 +78,57 @@
     cursor: not-allowed;
   }
 
-  &.outline {
-    background: @outline-background-color;
-    border: @outline-border;
-    color: @outline-text-colour;
+    &.label {
+      background: @outline-background-color;
+      color: @outline-text-colour;
 
-    &:hover {
-      background: @outline-background-color-hover;
-      border: @outline-border-hover;
-      color: @outline-text-colour-hover;
+      &:hover {
+        background: @outline-background-color-hover;
+        color: @outline-text-colour-hover;
 
-      svg {
-        stroke: @outline-svg-stroke-hover;
-        path {
-          fill: @outline-svg-fill-hover;
+        svg {
+          stroke: @outline-svg-stroke-hover;
+          path {
+            fill: @outline-svg-fill-hover;
+            stroke: @outline-svg-stroke-hover;
+          }
         }
       }
+
+      &:active {
+        color: @outline-color-active;
+
+        svg {
+          stroke: @outline-svg-stroke-hover;
+          path {
+            stroke: @outline-svg-stroke-hover;
+            fill: @outline-svg-fill-hover;
+          }
+        }
+      }
+
+      svg {
+        stroke: @outline-svg-stroke;
+        stroke-width: 2;
+        path {
+          stroke: @outline-svg-stroke;
+          fill: @outline-svg-fill;
+        }
+      }
+    }
+
+  &.outline {
+    .label;
+
+    border: @outline-border;
+
+    &:hover {
+      border: @outline-border-hover;
     }
 
     &:active {
-      color: @outline-color-active;
       border: @outline-border-active;
       box-shadow: none !important;
-
-      svg {
-        stroke: @outline-svg-stroke-hover;
-        path {
-          fill: @outline-svg-fill-hover;
-        }
-      }
-    }
-
-    svg {
-      stroke: @outline-svg-stroke;
-      stroke-width: 2;
-      path {
-        fill: @outline-svg-fill;
-      }
     }
   }
 

@@ -6,7 +6,7 @@ export interface Props extends React.HTMLProps<HTMLButtonElement> {
   onClick: () => void;
   iconOnly?: boolean;
   icon?: React.ReactElement;
-  type?: "outline";
+  type?: "outline" | "label";
   height?: string;
   width?: string;
   disabled?: boolean;
@@ -43,6 +43,7 @@ const Button = React.forwardRef(
       ref={ref}
       className={c(s.button, {
         [s.outline]: type === "outline",
+        [s.label]: type === "label",
         [s.iconOnly]: iconOnly,
       })}
       type="button"
