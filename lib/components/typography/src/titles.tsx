@@ -16,12 +16,13 @@ export interface Props<T>
 export const Title1 = <T extends React.ElementType = "span">({
   children,
   as,
+  className,
   ...rest
 }: React.PropsWithChildren<Props<T>>): React.ReactElement => {
   const Component = as || "span";
 
   return (
-    <Component className={c(s.base, s.title1)} {...rest}>
+    <Component className={c(s.base, s.title1, className)} {...rest}>
       {children}
     </Component>
   );
@@ -30,12 +31,13 @@ export const Title1 = <T extends React.ElementType = "span">({
 export const Title2 = <T extends React.ElementType = "span">({
   children,
   as,
+  className,
   ...rest
 }: React.PropsWithChildren<Props<T>>): React.ReactElement => {
   const Component = as || "span";
 
   return (
-    <Component className={c(s.base, s.title2)} {...rest}>
+    <Component className={c(s.base, s.title2, className)} {...rest}>
       {children}
     </Component>
   );
