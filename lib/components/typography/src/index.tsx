@@ -1,5 +1,6 @@
 import { Body } from "./body";
 import { H1, H2, H3, H4, H5, H6 } from "./headers";
+import { Title1, Title2 } from "./titles";
 
 export const Typography = {
   H1,
@@ -8,5 +9,7 @@ export const Typography = {
   H4,
   H5,
   H6,
+  Title1,
+  Title2,
   Body,
 };

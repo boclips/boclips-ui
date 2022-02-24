@@ -15,6 +15,12 @@ const Template: Story = () => (
     <Typography.H5>Hello, this is a H5</Typography.H5>
     <Typography.H6>Hello, this is a H6</Typography.H6>
     <div>
+      <Typography.Title1>Hello, this is Title1</Typography.Title1>
+    </div>
+    <div>
+      <Typography.Title2>Hello, this is Title2</Typography.Title2>
+    </div>
+    <div>
       <Typography.Body id="hello">Hello, this is a Body</Typography.Body>
     </div>
     <div>
