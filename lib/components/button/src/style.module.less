@@ -78,44 +78,41 @@
     cursor: not-allowed;
   }
 
-    &.label {
-      background: @outline-background-color;
-      color: @outline-text-colour;
+  &.label {
+    background: @outline-background-color;
+    color: @outline-text-colour;
 
-      &:hover {
-        background: @outline-background-color-hover;
-        color: @outline-text-colour-hover;
-
-        svg {
-          stroke: @outline-svg-stroke-hover;
-          path {
-            fill: @outline-svg-fill-hover;
-            stroke: @outline-svg-stroke-hover;
-          }
-        }
-      }
-
-      &:active {
-        color: @outline-color-active;
-
-        svg {
-          stroke: @outline-svg-stroke-hover;
-          path {
-            stroke: @outline-svg-stroke-hover;
-            fill: @outline-svg-fill-hover;
-          }
-        }
-      }
+    &:hover {
+      background: @outline-background-color-hover;
+      color: @outline-text-colour-hover;
 
       svg {
-        stroke: @outline-svg-stroke;
-        stroke-width: 2;
+        stroke: @outline-svg-stroke-hover;
         path {
-          stroke: @outline-svg-stroke;
-          fill: @outline-svg-fill;
+          fill: @outline-svg-fill-hover;
         }
       }
     }
+
+    &:active {
+      color: @outline-color-active;
+
+      svg {
+        stroke: @outline-svg-stroke-hover;
+        path {
+          fill: @outline-svg-fill-hover;
+        }
+      }
+    }
+
+    svg {
+      stroke: @outline-svg-stroke;
+      stroke-width: 2;
+      path {
+        fill: @outline-svg-fill;
+      }
+    }
+  }
 
   &.outline {
     .label;
