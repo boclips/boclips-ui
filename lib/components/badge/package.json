@@ -11,13 +11,12 @@
     "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/badge --include-dependencies"
   },
-  "dependencies": {
-    "@boclips-ui/styles": "^4.0.1"
-  },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.15"
   },
   "peerDependencies": {
+    "@boclips-ui/styles": "^4.0.1",
+    "@boclips-ui/typography": "^2.2.1",
     "@testing-library/react": "10.4.7",
     "classnames": "2.2.6",
     "react": "17.0.2"

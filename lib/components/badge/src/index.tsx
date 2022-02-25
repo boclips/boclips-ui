@@ -1,4 +1,5 @@
 import React from "react";
+import { Typography } from "@boclips-ui/typography";
 import s from "./style.module.less";
 
 export interface Props {
@@ -12,8 +13,16 @@ export interface Props {
 const Badge = ({ icon, label, value, closeIcon, customClassName }: Props) => (
   <span className={`${s.badge} ${customClassName}`}>
     {icon}
-    {label && <div className={s.label}>{label}</div>}
-    {value && <div className={s.value}>{value}</div>}
+    {label && (
+      <Typography.Body className={s.label} as="div">
+        {label}
+      </Typography.Body>
+    )}
+    {value && (
+      <Typography.Body className={s.value} as="div">
+        {value}
+      </Typography.Body>
+    )}
     {closeIcon}
   </span>
 );

@@ -4,6 +4,7 @@ import c from "classnames";
 import Badge from "@boclips-ui/badge";
 import ProviderBadge from "@boclips-ui/provider-badge";
 import { Video } from "boclips-api-client/dist/sub-clients/videos/model/Video";
+import { Typography } from "@boclips-ui/typography";
 import s from "./styles.module.less";
 
 const YOUTUBE = "YOUTUBE";
@@ -76,36 +77,46 @@ export const VideoCard = ({
     >
       <section className={s.videoPlayer}>{videoPlayer}</section>
 
-      <h5
+      <Typography.Title1
         id={`${video.id}label`}
         className={c(s.header, {
           [s.withTopBadge]: topBadge,
         })}
       >
         {title}
-      </h5>
+      </Typography.Title1>
 
       <section className={s.subheader}>
-        {duration && <div>{durationFormatter}</div>}
+        {duration && (
+          <Typography.Body as="div">{durationFormatter}</Typography.Body>
+        )}
 
         {video.releasedOn && <ReleasedOn releasedOn={video.releasedOn} />}
 
-        {videoId && <div>{videoId}</div>}
+        {videoId && <Typography.Body as="div">{videoId}</Typography.Body>}
 
         {video.createdBy && (
-          <div className={s.createdBy}> {video.createdBy} </div>
+          <Typography.Body as="div" className={s.createdBy}>
+            {video.createdBy}
+          </Typography.Body>
         )}
       </section>
 
       <section className={s.badges}>{buildBadges}</section>
 
       {video.description && (
-        <section className={s.description}>{video.description}</section>
+        <section className={s.description}>
+          <Typography.Body>{video.description}</Typography.Body>
+        </section>
       )}
 
       {actions && <section className={s.buttons}>{actions}</section>}
 
-      {topBadge && <div className={s.topBadge}>{topBadge}</div>}
+      {topBadge && (
+        <Typography.Title1 as="div" className={s.topBadge}>
+          {topBadge}
+        </Typography.Title1>
+      )}
     </div>
   );
 };

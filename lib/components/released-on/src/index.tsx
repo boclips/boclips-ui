@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Typography } from "@boclips-ui/typography";
 
 export interface ReleasedOnProps {
   releasedOn: Date;
@@ -11,9 +12,9 @@ const ReleasedOn = ({ releasedOn, locale }: ReleasedOnProps): ReactElement => {
   const day = releasedOn.toLocaleDateString(locale, { day: "2-digit" });
 
   return (
-    <div>
+    <Typography.Body as="div">
       {day} {month} {year}
-    </div>
+    </Typography.Body>
   );
 };
 
