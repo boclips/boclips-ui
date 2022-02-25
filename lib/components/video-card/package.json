@@ -11,6 +11,9 @@
     "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/video-card --include-dependencies"
   },
+  "dependencies": {
+    "@boclips-ui/typography": "^2.2.1"
+  },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.15",
     "boclips-api-client": "^43.5.0"
@@ -24,7 +27,6 @@
     "@boclips-ui/released-on": "^2.1.3",
     "@boclips-ui/styles": "^4.0.1",
     "@boclips-ui/subject-badge": "^2.1.3",
-    "@boclips-ui/typography": "^2.2.1",
     "antd": "^4.3.1",
     "classnames": "2.2.6",
     "dayjs": "^1.10.4",
