@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/released-on",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "files": [
     "dist/**/*"
   ],
