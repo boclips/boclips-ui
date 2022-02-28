@@ -5,10 +5,10 @@ import { dateAdapter } from "./helpers/dateAdapter";
 import useLoadScripts from "./hooks/useLoadScript";
 import useListener from "./hooks/useListener";
 
-import "./styles.less";
+import "./style.less";
 
 interface Props {
-  label: string;
+  label: string | React.ReactElement;
   onChange: (date: any) => void;
   value?: string;
   onFocus?: () => void;
@@ -37,7 +37,7 @@ const DateSelect = ({
   }, [ref.current]);
 
   return (
-    <div className="datePicker">
+    <div>
       <label htmlFor="date" className="pb-4">
         {label}
       </label>

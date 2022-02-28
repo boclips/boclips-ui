@@ -2,89 +2,85 @@
 @import "~@boclips-ui/styles/src/focus";
 
 
-.datePicker {
-  :global {
-    .duet-date {
-      &:hover {
-        .duet-date__toggle-icon {
-          color: @gray-900;
-        }
-      }
+.duet-date {
+  &:hover {
+    .duet-date__toggle-icon {
+      color: @gray-900;
+    }
+  }
 
-      .duet-date__toggle-icon {
-        color: @gray-600;
-      }
+  .duet-date__toggle-icon {
+    color: @gray-600;
+  }
 
-      .duet-date__input {
-        #focus;
-        border: 2px solid @gray-500;
-        border-radius: .25rem;
-        height: 40px;
-        background: @white;
+  .duet-date__input {
+    #focus;
+    border: 2px solid @gray-500;
+    border-radius: .25rem;
+    height: 40px;
+    background: @white;
 
-        &::placeholder {
-          color: @gray-600;
-        }
+    &::placeholder {
+      color: @gray-600;
+    }
 
-        &:hover {
-          border-color: @gray-700;
-        }
+    &:hover {
+      border-color: @gray-700;
+    }
 
-        &:active {
-          border-color: @gray-700;
-        }
-      }
+    &:active {
+      border-color: @gray-700;
+    }
+  }
 
-      .duet-date__toggle {
-        #focus;
-        height: calc(100% - .25rem);
-        width: 36px;
-        right: 2px;
-        top: 2px;
-        background: none;
-        box-shadow: none;
-      }
+  .duet-date__toggle {
+    #focus;
+    height: calc(100% - .25rem);
+    width: 36px;
+    right: 2px;
+    top: 2px;
+    background: none;
+    box-shadow: none;
+  }
 
-      .duet-date__dialog.is-active {
-        z-index: 9999;
-        background: @white;
-      }
+  .duet-date__dialog.is-active {
+    z-index: 9999;
+    background: @white;
+  }
 
-      .duet-date__day {
-        #focus;
-        color: @gray-800;
-        border-radius: .25rem;
-        font-size: 0.875rem;
-        letter-spacing: 0.0012em;
-        line-height: 150%;
-        font-style: normal;
-        font-weight: normal;
+  .duet-date__day {
+    #focus;
+    color: @gray-800;
+    border-radius: .25rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.0012em;
+    line-height: 150%;
+    font-style: normal;
+    font-weight: normal;
 
-        &.is-disabled {
-          color: @gray-600;
-        }
+    &.is-disabled {
+      color: @gray-600;
+    }
 
-        &:hover {
-          background-color: @blue-400;
-        }
-      }
+    &:hover {
+      background-color: @blue-400;
+    }
+  }
 
-      .duet-date__select select:focus + .duet-date__select-label {
-        outline: 4px solid @blue-700;
-        outline-offset: 2px;
-        border-radius: .25rem;
-      }
+  .duet-date__select select:focus + .duet-date__select-label {
+    outline: 4px solid @blue-700;
+    outline-offset: 2px;
+    border-radius: .25rem;
+  }
 
-      .duet-date__prev, .duet-date__next {
-        #focus;
-        color: @gray-800;
-        border-radius: .25rem;
-        transition: none;
+  .duet-date__prev, .duet-date__next {
+    #focus;
+    color: @gray-800;
+    border-radius: .25rem;
+    transition: none;
 
-        &:hover {
-          background-color: @blue-400;
-        }
-      }
+    &:hover {
+      background-color: @blue-400;
     }
   }
 }
