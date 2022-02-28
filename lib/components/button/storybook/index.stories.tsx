@@ -28,6 +28,7 @@ const Template: Story<Props & StorybookProps> = ({
 }: Props & StorybookProps) => (
   <div style={{ height: "55px" }} className={s[theme]}>
     <Button
+      aria-label="hello"
       onClick={onClick}
       iconOnly={iconOnly}
       type={type}

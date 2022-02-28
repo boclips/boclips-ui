@@ -30,13 +30,11 @@ const Button = React.forwardRef(
       text,
       dataQa,
       suffix,
-      ariaLabel,
       ...rest
     }: Props,
     ref: React.Ref<HTMLButtonElement>
   ) => (
     <button
-      aria-label={ariaLabel}
       data-qa={dataQa}
       onClick={onClick}
       style={{ height, width }}
