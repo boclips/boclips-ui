@@ -5,6 +5,7 @@
   &:focus {
     outline: @focus-outline;
     outline-offset: @focus-outline-offset;
+    border-radius: .25rem;
   }
 
   // For browsers that do support focus-visible:
@@ -15,10 +16,12 @@
     &:focus {
       outline: none;
       outline-offset: 0;
+      border-radius: .25rem;
     }
     &:focus-visible {
       outline: @focus-outline;
       outline-offset: @focus-outline-offset;
+      border-radius: .25rem;
     }
   }
 }
