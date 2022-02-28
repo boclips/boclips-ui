@@ -1,37 +1,48 @@
-import React from "react";
-import dayjs, { Dayjs } from "dayjs";
-import DatePicker from "./datePicker";
-import s from "./styles.module.less";
-import CalendarSVG from "./resources/calendar.svg";
+// @ts-nocheck
+import React, { useEffect, useRef } from "react";
+import { enGB } from "./helpers/localization";
+import { dateAdapter } from "./helpers/dateAdapter";
+import useLoadScripts from "./hooks/useLoadScript";
+import useListener from "./hooks/useListener";
 
-export interface DateSelectProps {
-  date?: string;
-  onChange: (date: string) => void;
+import "./styles.less";
+
+interface Props {
+  label: string;
+  onChange: (date: any) => void;
+  value?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
-const placeholderDateFormat = "MM-DD-YYYY";
-const apiDateFormat = "YYYY-MM-DD";
+const DateSelect = ({
+  onChange,
+  label,
+  value,
+  ...props
+}: Props): React.ReactElement => {
+  const ref = useRef(null);
 
-const DateSelect = ({ date, onChange }: DateSelectProps) => {
-  const formattedInputDate = date ? dayjs(date) : undefined;
+  useListener(ref, "duetChange", onChange);
 
-  const pickerOnChange = (_value: Dayjs | null, dateString: string) => {
-    const apiDate = dayjs(dateString).format(apiDateFormat);
-    onChange(apiDate);
-  };
+  useLoadScripts();
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current!.localization = enGB;
+      ref.current!.dateAdapter = dateAdapter;
+    }
+  }, [ref.current]);
 
   return (
-    <div role="button" className={s.datePicker}>
-      <DatePicker
-        suffixIcon={<CalendarSVG />}
-        format={placeholderDateFormat}
-        placeholder={placeholderDateFormat}
-        showToday={false}
-        value={formattedInputDate?.isValid() ? formattedInputDate : undefined}
-        dropdownClassName={s.datePickerDropdown}
-        onChange={pickerOnChange}
-        clearIcon={undefined}
-      />
+    <div className="datePicker">
+      <label htmlFor="date" className="pb-4">
+        {label}
+      </label>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <duet-date-picker ref={ref} identifier="date" {...props} />
     </div>
   );
 };
