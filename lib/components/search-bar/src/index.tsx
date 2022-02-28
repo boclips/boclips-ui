@@ -70,6 +70,7 @@ const SearchBar = ({
         <Button
           role="button"
           dataQa="search-button"
+          aria-label="search"
           icon={<SearchIcon />}
           iconOnly={iconOnlyButton}
           onClick={() => onSearch(query, 0)}
