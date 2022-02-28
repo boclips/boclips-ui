@@ -121,5 +121,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin({ filename: "[name]-[hash:20].css" })],
+  plugins: [new MiniCssExtractPlugin({ filename: "[name].css" })],
 };
