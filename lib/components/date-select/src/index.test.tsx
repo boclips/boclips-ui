@@ -8,14 +8,6 @@ describe("date-select", () => {
     expect(screen.getByText("date-select")).toBeInTheDocument();
   });
 
-  it("appends scripts to body", () => {
-    render(<DateSelect label="date-select" onChange={jest.fn()} />);
-
-    const scripts = document.getElementsByTagName("script");
-
-    expect(scripts).toHaveLength(2);
-  });
-
   it("adds onChange event listener", () => {
     const spy = jest.fn();
 

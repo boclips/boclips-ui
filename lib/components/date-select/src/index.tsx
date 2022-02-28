@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useEffect, useRef } from "react";
+import { defineCustomElements } from "@duetds/date-picker/dist/loader";
 import { enGB } from "./helpers/localization";
 import { dateAdapter } from "./helpers/dateAdapter";
-import useLoadScripts from "./hooks/useLoadScript";
 import useListener from "./hooks/useListener";
 
 import "./style.less";
@@ -23,11 +23,10 @@ const DateSelect = ({
   value,
   ...props
 }: Props): React.ReactElement => {
+  defineCustomElements(window);
+
   const ref = useRef(null);
-
   useListener(ref, "duetChange", onChange);
-
-  useLoadScripts();
 
   useEffect(() => {
     if (ref.current) {
@@ -41,8 +40,12 @@ const DateSelect = ({
       <label htmlFor="date" className="pb-4">
         {label}
       </label>
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <duet-date-picker ref={ref} identifier="date" {...props} />
+      {/* eslint-disable-next-line react/jsx-props-no-spreading  */ /* prettier-ignore */}
+      <duet-date-picker {...props}
+        value={value}
+        ref={ref}
+        identifier="date"
+      />
     </div>
   );
 };
