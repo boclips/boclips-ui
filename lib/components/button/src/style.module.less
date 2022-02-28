@@ -6,8 +6,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: @font-size;
-  font-weight: @font-weight;
   color: @text-colour;
   cursor: pointer;
   border: @border;
@@ -36,6 +34,10 @@
       height: @svg-height;
       width: @svg-width;
     }
+  }
+
+  & .buttonText {
+    font-size: @font-size;
   }
 
   &:hover {

@@ -1,5 +1,6 @@
 import React from "react";
 import c from "classnames";
+import { Typography } from "@boclips-ui/typography";
 import s from "./style.module.less";
 
 export interface Props extends React.HTMLProps<HTMLButtonElement> {
@@ -52,9 +53,18 @@ const Button = React.forwardRef(
     >
       {icon && <div className={s.icon}>{icon}</div>}
       {!iconOnly && (
-        <span className={c(s.copy, { [s.copyWithIcon]: icon })}>{text}</span>
+        <Typography.Body
+          weight="medium"
+          className={c(s.copy, s.buttonText, { [s.copyWithIcon]: icon })}
+        >
+          {text}
+        </Typography.Body>
       )}
-      {suffix && suffix}
+      {suffix && (
+        <Typography.Body weight="medium" className={c(s.buttonText)}>
+          {suffix}
+        </Typography.Body>
+      )}
     </button>
   )
 );
