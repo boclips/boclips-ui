@@ -28,7 +28,7 @@ const CustomPaginationButton = ({
 
   return (
     <button
-      tabIndex={currentPageActive ? -1 : 0}
+      aria-current={currentPageActive && "page"}
       type="button"
       ref={ref}
       className={c(s.button, {
