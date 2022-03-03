@@ -88,15 +88,21 @@ export const VideoCard = ({
 
       <section className={s.subheader}>
         {duration && (
-          <Typography.Body as="div">{durationFormatter}</Typography.Body>
+          <Typography.Body as="div" size="small">
+            {durationFormatter}
+          </Typography.Body>
         )}
 
         {video.releasedOn && <ReleasedOn releasedOn={video.releasedOn} />}
 
-        {videoId && <Typography.Body as="div">{videoId}</Typography.Body>}
+        {videoId && (
+          <Typography.Body as="div" size="small">
+            {videoId}
+          </Typography.Body>
+        )}
 
         {video.createdBy && (
-          <Typography.Body as="div" className={s.createdBy}>
+          <Typography.Body as="div" className={s.createdBy} size="small">
             {video.createdBy}
           </Typography.Body>
         )}

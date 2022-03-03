@@ -14,12 +14,12 @@ const Badge = ({ icon, label, value, closeIcon, customClassName }: Props) => (
   <span className={`${s.badge} ${customClassName}`}>
     {icon}
     {label && (
-      <Typography.Body className={s.label} as="div">
+      <Typography.Body className={s.label} as="div" size="small">
         {label}
       </Typography.Body>
     )}
     {value && (
-      <Typography.Body className={s.value} as="div">
+      <Typography.Body className={s.value} as="div" size="small">
         {value}
       </Typography.Body>
     )}

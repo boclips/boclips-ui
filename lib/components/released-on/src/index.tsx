@@ -12,7 +12,7 @@ const ReleasedOn = ({ releasedOn, locale }: ReleasedOnProps): ReactElement => {
   const day = releasedOn.toLocaleDateString(locale, { day: "2-digit" });
 
   return (
-    <Typography.Body as="div">
+    <Typography.Body as="div" size="small">
       {day} {month} {year}
     </Typography.Body>
   );
