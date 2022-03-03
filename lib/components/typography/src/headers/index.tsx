@@ -1,83 +1,83 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
-import c from "classnames";
-
-// @ts-ignore
-import s from "./styles.module.less";
-
-type HeaderProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLHeadingElement>,
-  HTMLHeadingElement
->;
+import { Base, HeaderProps } from "./Base";
 
 export const H1: React.FC<HeaderProps> = ({
   children,
-  className,
+  size = "xl",
   ...rest
 }: React.PropsWithChildren<HeaderProps>) => {
   return (
-    <h1 className={c(s.base, className)} {...rest}>
+    <Base as="h1" size={size} {...rest}>
       {children}
-    </h1>
+    </Base>
   );
 };
 
 export const H2: React.FC<HeaderProps> = ({
   children,
-  className,
+  size = "lg",
   ...rest
 }: React.PropsWithChildren<HeaderProps>) => {
   return (
-    <h2 className={c(s.base, className)} {...rest}>
+    <Base as="h2" size={size} {...rest}>
       {children}
-    </h2>
+    </Base>
   );
 };
 
 export const H3: React.FC<HeaderProps> = ({
   children,
-  className,
+  size = "md",
   ...rest
 }: React.PropsWithChildren<HeaderProps>) => {
   return (
-    <h3 className={c(s.base, className)} {...rest}>
+    <Base as="h3" size={size} {...rest}>
       {children}
-    </h3>
+    </Base>
   );
 };
 
 export const H4: React.FC<HeaderProps> = ({
   children,
-  className,
+  size = "sm",
   ...rest
 }: React.PropsWithChildren<HeaderProps>) => {
   return (
-    <h4 className={c(s.base, className)} {...rest}>
+    <Base as="h4" size={size} {...rest}>
       {children}
-    </h4>
+    </Base>
   );
 };
 
 export const H5: React.FC<HeaderProps> = ({
   children,
-  className,
+  size,
   ...rest
 }: React.PropsWithChildren<HeaderProps>) => {
-  return (
-    <h5 className={c(s.base, className)} {...rest}>
+  return size ? (
+    <Base as="h5" size={size} {...rest}>
       {children}
-    </h5>
+    </Base>
+  ) : (
+    <Base as="h5" size="xs" weight="medium" {...rest}>
+      {children}
+    </Base>
   );
 };
 
 export const H6: React.FC<HeaderProps> = ({
   children,
-  className,
+  size,
   ...rest
 }: React.PropsWithChildren<HeaderProps>) => {
-  return (
-    <h6 className={c(s.base, className)} {...rest}>
+  return size ? (
+    <Base as="h6" size={size} {...rest}>
       {children}
-    </h6>
+    </Base>
+  ) : (
+    <Base as="h6" size="xs" weight="regular" {...rest}>
+      {children}
+    </Base>
   );
 };

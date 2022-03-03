@@ -14,6 +14,34 @@ const Template: Story = () => (
     <Typography.H4>Hello, this is a H4</Typography.H4>
     <Typography.H5>Hello, this is a H5</Typography.H5>
     <Typography.H6>Hello, this is a H6</Typography.H6>
+
+    <hr />
+    <Typography.H1 size="sm" id="hello">
+      Hello, this is a small H1
+    </Typography.H1>
+    <Typography.H2 size="xs" weight="regular">
+      Hello, this is an xs H2
+    </Typography.H2>
+    <Typography.H3 size="lg">Hello, this is a l H3</Typography.H3>
+    <Typography.H4 size="xl">Hello, this is a xl H4</Typography.H4>
+    <Typography.H5
+      className="hello"
+      size={{ mobile: "md", tablet: "lg", desktop: "xl" }}
+    >
+      Hello, this is a dynamic H5
+    </Typography.H5>
+    <Typography.H6
+      size={{
+        mobile: "xl",
+        tablet: { size: "xs", weight: "medium" },
+        desktop: { size: "xs", weight: "regular" },
+      }}
+    >
+      Hello, this is a dynamic H6
+    </Typography.H6>
+
+    <hr />
+
     <Typography.Title1 className="hello" as="div">
       Hello, this is Title1
     </Typography.Title1>
