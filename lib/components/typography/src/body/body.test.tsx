@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { Body } from "./body";
+import { Body } from ".";
 
 describe("body", () => {
   it("can set the underlying component with a prop", () => {
