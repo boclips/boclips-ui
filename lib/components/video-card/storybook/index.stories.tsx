@@ -71,7 +71,7 @@ DEFAULT.args = {
   // @ts-ignore
   video: exampleVideo,
   duration,
-  title: exampleVideo.title,
+  title: <div className={s.truncate}>{exampleVideo.title}</div>,
   videoPlayer: <Player videoUri={exampleVideo.links.self.href} />,
   theme: "lti",
   actions: <ActionButtons />,
