@@ -60,6 +60,14 @@ const Template: Story = () => (
     <Typography.Body weight="medium" size="small" as="div">
       Hello, this is small Body medium
     </Typography.Body>
+    <hr />
+    <Typography.Title1>
+      <Typography.Link>Hello</Typography.Link>
+    </Typography.Title1>
+    <br />
+    <Typography.Link type="inline-gray">Hello</Typography.Link>
+    <br />
+    <Typography.Link type="inline-blue">Hello</Typography.Link>
   </div>
 );
 
