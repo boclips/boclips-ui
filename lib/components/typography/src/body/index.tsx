@@ -3,7 +3,7 @@ import React from "react";
 import c from "classnames";
 
 // @ts-ignore
-import s from "../styles.module.less";
+import s from "./styles.module.less";
 
 export interface Props<T extends React.ElementType>
   extends React.DetailedHTMLProps<
