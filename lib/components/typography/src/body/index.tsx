@@ -29,7 +29,6 @@ export const Body = <T extends React.ElementType = "span">({
     <Component
       className={c(
         s.body,
-        s.base,
         {
           [s.small]: size === "small",
           [s.medium]: weight === "medium",
