@@ -14,7 +14,7 @@ describe("Base", () => {
 
   it("renders correct size class name with simple size", () => {
     const wrapper = render(<Base size="lg" as="h1" />);
-    expect(wrapper.container.firstChild).toHaveClass("l");
+    expect(wrapper.container.firstChild).toHaveClass("lg");
   });
 
   it("renders correct size class for device size", () => {
@@ -24,7 +24,7 @@ describe("Base", () => {
       <Base size={{ mobile: "sm", tablet: "md" }} as="h1" />
     );
 
-    expect(wrapper.container.firstChild).toHaveClass("m");
+    expect(wrapper.container.firstChild).toHaveClass("md");
   });
 
   it("renders correct weight classname when size is xs", () => {
