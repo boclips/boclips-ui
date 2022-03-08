@@ -63,7 +63,7 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.1",
-    "boclips-api-client": "latest",
+    "boclips-api-client": "43.25.0",
     "boclips-player": "^6.4.0",
     "boclips-player-react": "^1.2.4",
     "css-loader": "^4.2.2",

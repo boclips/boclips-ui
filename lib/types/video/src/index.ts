@@ -5,6 +5,7 @@ import { Taxonomies } from "boclips-api-client/dist/sub-clients/videos/model/Tax
 import { Link } from "@boclips-ui/link";
 import { Types } from "boclips-api-client";
 import { Duration } from "dayjs/plugin/duration";
+import { EducationLevel } from "boclips-api-client/dist/sub-clients/videos/model/EducationLevel";
 
 type Subject = Types.Subject;
 
@@ -67,6 +68,7 @@ export interface Video {
   captionStatus?: CaptionStatus;
   contentWarnings?: ContentWarning[];
   taxonomy?: Taxonomies;
+  educationLevels?: EducationLevel[];
 }
 
 export enum VideoType {
