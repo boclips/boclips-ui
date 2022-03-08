@@ -9,7 +9,6 @@ describe("VideoCard", () => {
     // @ts-ignore
     const card = render(<VideoCard video={exampleVideo} />);
 
-    expect(card.getByTestId("youtube-license")).toBeInTheDocument();
     expect(card.getByText("Ages 5-8")).toBeInTheDocument();
     expect(card.getByText("Art History")).toBeInTheDocument();
     expect(card.getByText("Art History 1")).toBeInTheDocument();
