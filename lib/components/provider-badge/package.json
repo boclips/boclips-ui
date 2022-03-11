@@ -7,8 +7,8 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build:watch": "webpack -p --config ../../../webpack/webpack.config.js -w",
-    "build": "webpack -p --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
+    "build:watch": "webpack --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/provider-badge --include-dependencies"
   },
   "dependencies": {

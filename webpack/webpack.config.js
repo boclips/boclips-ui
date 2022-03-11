@@ -97,7 +97,10 @@ module.exports = {
         exclude: /node_modules/,
         oneOf: [
           {
-            loader: ["file-loader", "image-webpack-loader"],
+            use: [
+              { loader: "file-loader" },
+              { loader: "image-webpack-loader" },
+            ],
             resourceQuery: /inline/,
           },
           {
