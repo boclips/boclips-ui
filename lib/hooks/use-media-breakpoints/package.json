@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/use-media-breakpoints",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "files": [
     "dist/**/*"
   ],
