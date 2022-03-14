@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/select",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -17,8 +17,8 @@
     "@boclips-ui/styles": "^4.0.2"
   },
   "devDependencies": {
-    "@testing-library/react": "10.4.7",
-    "@boclips-ui/ts-config": "^1.0.15"
+    "@boclips-ui/ts-config": "^1.0.15",
+    "@testing-library/react": "10.4.7"
   },
   "peerDependencies": {
     "classnames": "2.2.6",
