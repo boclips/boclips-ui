@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   entry: "./src",
@@ -17,6 +18,7 @@ module.exports = {
       reactDOM: "react-dom",
     },
     /^antd[.]*/,
+    nodeExternals(),
   ],
   module: {
     rules: [
