@@ -1,5 +1,4 @@
 import URI from "urijs";
-import "urijs/src/URITemplate";
 import { Link as ApiLink } from "boclips-api-client/dist/types";
 
 /**
