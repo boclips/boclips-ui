@@ -10,7 +10,7 @@ describe(`ContentWarningBadge`, () => {
     ];
     render(<ContentWarningBadge contentWarnings={warnings} />);
 
-    expect(screen.queryByTestId("content-warning")).toBeInTheDocument();
+    expect(screen.getByTestId("content-warning")).toBeInTheDocument();
   });
   it(`does not render the badge when no content warnings are provided`, () => {
     const wrapper = render(<ContentWarningBadge contentWarnings={[]} />);
