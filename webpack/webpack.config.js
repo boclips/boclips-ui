@@ -18,7 +18,7 @@ module.exports = {
       reactDOM: "react-dom",
     },
     /^antd[.]*/,
-    nodeExternals(),
+    nodeExternals({ modulesFromFile: true }),
   ],
   module: {
     rules: [
