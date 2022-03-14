@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/taxonomy-category-badge",
-  "version": "2.1.17",
+  "version": "2.1.18",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,9 +12,9 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/taxonomy-category-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/badge": "^2.2.16",
+    "@boclips-ui/badge": "^2.2.17",
     "@boclips-ui/styles": "^4.0.2",
-    "@boclips-ui/video": "^3.0.7"
+    "@boclips-ui/video": "^3.0.8"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.15",
