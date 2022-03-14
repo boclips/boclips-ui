@@ -16,10 +16,10 @@
     "@boclips-ui/video": "^3.0.6"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.15"
+    "@boclips-ui/ts-config": "^1.0.15",
+    "@testing-library/react": "^10.4.5"
   },
   "peerDependencies": {
-    "@testing-library/react": "^10.4.5",
     "antd": "4.3.1",
     "classnames": "2.2.6",
     "react": "17.0.2",
