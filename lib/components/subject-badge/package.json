@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/subject-badge",
-  "version": "2.1.17",
+  "version": "2.1.18",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
