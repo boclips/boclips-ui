@@ -10,7 +10,7 @@ module.exports = {
   },
   moduleFileExtensions: ["ts", "tsx", "js", "less"],
 
-  testEnvironment: "jest-environment-jsdom-sixteen",
+  testEnvironment: "jsdom",
 
   testMatch: ["<rootDir>/lib/**/*.(integrationTest|test).(ts|tsx)"],
   testPathIgnorePatterns: ["node_modules"],

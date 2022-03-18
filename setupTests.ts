@@ -11,8 +11,6 @@ declare const window: any;
 
 window.open = jest.fn();
 
-window.open = jest.fn();
-
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
