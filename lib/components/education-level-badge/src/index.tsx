@@ -1,10 +1,6 @@
 import React, { ReactElement } from "react";
 import Badge from "@boclips-ui/badge";
-
-interface EducationLevel {
-  code: string;
-  label: string;
-}
+import { EducationLevel } from "boclips-api-client/dist/sub-clients/videos/model/EducationLevel";
 
 export interface EducationLevelBadgeProps {
   educationLevel: EducationLevel;

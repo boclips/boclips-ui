@@ -57,6 +57,12 @@ export const VideoCard = ({
       });
     }
 
+    if (video?.educationLevels) {
+      video.educationLevels.forEach((it) => {
+        badges.push(<Badge key={it.code} value={it.label} />);
+      });
+    }
+
     if (additionalBadges) {
       badges.push(additionalBadges);
     }

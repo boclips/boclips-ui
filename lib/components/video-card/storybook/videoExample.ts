@@ -115,6 +115,10 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
       categories: [{ codeValue: "A", description: "The Arts" }],
     },
   },
+  educationLevels: [
+    { code: "4CT", label: "Higher education" },
+    { code: "4CX", label: "Adult Education" },
+  ],
   links: {
     self: {
       href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58",

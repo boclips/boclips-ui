@@ -17,6 +17,8 @@ describe("VideoCard", () => {
     expect(card.getByText("Art History 3")).toBeInTheDocument();
     expect(card.getByText("Art History 4")).toBeInTheDocument();
     expect(card.getByText("Art History 5")).toBeInTheDocument();
+    expect(card.getByText("Higher education")).toBeInTheDocument();
+    expect(card.getByText("Adult Education")).toBeInTheDocument();
   });
 
   it("display the duration correctly when undefined in minutes place", () => {
