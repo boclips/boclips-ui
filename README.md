@@ -1,27 +1,21 @@
+# For detailed lerna guide check our slab:
+
+https://boclips.slab.com/posts/boclips-ui-guide-lerna-npm-storybook-am6l9qvt
+
 ## First run
 #### 1. Install all the packages from the root package.json:
 ```
 npm i
 ```
 
-##### If you face 'gyp: No Xcode or CLT version detected!' problem:
-
-Follow the instructions from the post:
-https://medium.com/flawless-app-stories/gyp-no-xcode-or-clt-version-detected-macos-catalina-anansewaa-38b536389e8d
-
-If the described solution doesn't work for you, please install the xcode command tools from the official website:
-https://developer.apple.com/download/more/
-
-(Look for the 'Command Line Tools for Xcode' that's compatible with your OS)
 
 #### 2. Bootstrap lerna
 
 ```
 lerna bootstrap
-lerna run build
 ```
 
-#### 3. Now storybook can be successfully build
+#### 3. Run storybook
 
 ```
 npm run storybook
@@ -52,24 +46,4 @@ To build all of the packages:
 
 ```
 lerna run build:dep
-```
-
-#### AD 4. Version the component 
-
-```
-npm run version:no-push
-```
-
-#### AD 5. Publish to npm
-
-Log in to npm (credentials can be found in LastPass - look for 'npmjs')
-
-```
-npm login
-```
-
-Do the actual publishing with:
-
-```
-npm run publish:git
 ```
