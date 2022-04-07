@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { ContentWarning } from "@boclips-ui/video";
+import { ContentWarning } from "boclips-api-client/dist/sub-clients/contentWarnings/model/ContentWarning";
 import React from "react";
 import ContentWarningBadge from "./index";
 

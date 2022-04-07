@@ -1,7 +1,7 @@
 import React from "react";
 import c from "classnames";
 import { Tooltip } from "antd";
-import { ContentWarning } from "@boclips-ui/video";
+import { ContentWarning } from "boclips-api-client/dist/sub-clients/contentWarnings/model/ContentWarning";
 import s from "./style.module.less";
 import WarningSVG from "./resources/warning.svg";
 
