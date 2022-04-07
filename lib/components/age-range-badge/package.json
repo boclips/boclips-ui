@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/age-range-badge",
-  "version": "2.1.22",
+  "version": "2.1.23",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
