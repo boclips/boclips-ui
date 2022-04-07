@@ -14,11 +14,12 @@ export interface BoInputProps extends InputProps {
   errorMessage?: string;
   icon?: React.ReactElement;
   allowClear?: boolean;
+  className?: string;
 }
 
 interface InputProps {
   showLabelText?: boolean;
-  inputType: "text" | "textarea";
+  inputType: "text" | "textarea" | "email";
   placeholder?: string;
   defaultValue?: string;
   height?: string;
@@ -52,6 +53,7 @@ export const InputText = React.forwardRef(
       showLabelText = true,
       labelText,
       allowClear = false,
+      className,
     }: BoInputProps,
     ref: React.Ref<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -64,12 +66,13 @@ export const InputText = React.forwardRef(
     const renderInput = () => {
       switch (inputType) {
         case "text":
+        case "email":
           return (
             <input
               minLength={constraints?.minLength}
               required={constraints?.required}
               placeholder={placeholder}
-              type="text"
+              type={inputType}
               id={id}
               onChange={(e) => setValue(e.target.value)}
               className={c(s.input, {
@@ -109,7 +112,7 @@ export const InputText = React.forwardRef(
     };
 
     return (
-      <label htmlFor={id} className={s.wrapper}>
+      <label htmlFor={id} className={c(s.wrapper, className)}>
         {showLabelText && (
           <Typography.Body as="div" className="text-gray-800">
             {labelText}{" "}
