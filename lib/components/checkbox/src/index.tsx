@@ -23,11 +23,11 @@ const BoCheckbox = ({
   className,
 }: Props) => {
   return (
-    <label className={s.checkboxWrapper} htmlFor={id}>
+    <label className={c(s.checkboxWrapper, className)} htmlFor={id}>
       <input
         onChange={onChange}
         type="checkbox"
-        className={c(s.checkbox, className)}
+        className={s.checkbox}
         name={name}
         id={id}
         checked={checked}
