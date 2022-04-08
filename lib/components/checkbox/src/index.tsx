@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { Typography } from "@boclips-ui/typography";
+import c from "classnames";
 import s from "./style.module.less";
 
 export interface Props {
@@ -9,15 +10,24 @@ export interface Props {
   checked: boolean;
   label?: React.ReactElement | string;
   dataQa?: string;
+  className?: string;
 }
 
-const BoCheckbox = ({ dataQa, onChange, name, id, checked, label }: Props) => {
+const BoCheckbox = ({
+  dataQa,
+  onChange,
+  name,
+  id,
+  checked,
+  label,
+  className,
+}: Props) => {
   return (
     <label className={s.checkboxWrapper} htmlFor={id}>
       <input
         onChange={onChange}
         type="checkbox"
-        className={s.checkbox}
+        className={c(s.checkbox, className)}
         name={name}
         id={id}
         checked={checked}
