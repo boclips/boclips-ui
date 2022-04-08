@@ -4,27 +4,22 @@
   position: relative;
 }
 
+.tooltipArrow {
+  position: absolute;
+  bottom: 48px;
+  transform: rotate(225deg);
+  width: 16px;
+  height: 16px;
+  left: calc(50% - 8px);
+  z-index: 98;
+  background: #2D3748;
+}
+
 .tooltip {
   width: max-content;
   position: absolute;
   bottom: 65px;
-  transform: translateX(-50%);
-  left: 50%;
   z-index: 99;
-
-  &:after {
-    content: '';
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    position: relative;
-    transform: rotate(225deg) translateX(-50%);
-    left: -50%;
-    bottom: 0px;
-    border-radius: 2px;
-    top: 19px;
-    background: @gray-800;
-  }
 
   span {
     background: @gray-800;

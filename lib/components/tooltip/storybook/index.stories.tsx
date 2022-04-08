@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Props, Tooltip } from "../src/index";
+import Tooltip, { Props } from "../src/index";
 import s from "./style.module.less";
 
 export default {
@@ -9,9 +9,11 @@ export default {
 } as Meta;
 
 const Template: Story<Props> = ({ text, children }: Props) => (
-  <Tooltip text={text}>
-    <div className={s.hoverText}>{children}</div>
-  </Tooltip>
+  <div style={{ width: 100, marginTop: 100 }}>
+    <Tooltip text={text}>
+      <div className={s.hoverText}>{children}</div>
+    </Tooltip>
+  </div>
 );
 
 export const lessText = Template.bind({});
