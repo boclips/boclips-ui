@@ -15,6 +15,7 @@ export interface Props extends React.HTMLProps<HTMLButtonElement> {
   dataQa?: string;
   suffix?: React.ReactElement;
   ariaLabel?: string;
+  className?: string;
 }
 
 const Button = React.forwardRef(
@@ -30,6 +31,7 @@ const Button = React.forwardRef(
       text,
       dataQa,
       suffix,
+      className,
       ...rest
     }: Props,
     ref: React.Ref<HTMLButtonElement>
@@ -40,7 +42,7 @@ const Button = React.forwardRef(
       style={{ height, width }}
       disabled={disabled}
       ref={ref}
-      className={c(s.button, {
+      className={c(s.button, className, {
         [s.outline]: type === "outline",
         [s.label]: type === "label",
         [s.iconOnly]: iconOnly,
