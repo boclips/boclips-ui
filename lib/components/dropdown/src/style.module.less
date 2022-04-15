@@ -1,0 +1,67 @@
+@import "./variables.less";
+@import '~@boclips-ui/styles/src/colors';
+@import '~@boclips-ui/styles/src/focus';
+
+.wrapper {
+  width: 242px;
+  position: relative;
+
+  button {
+    position: relative;
+    cursor: pointer;
+    background: @white;
+    padding: .75rem .5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 2px solid @gray-700;
+    border-radius: .25rem;
+    #focus
+  }
+
+  svg {
+    position: absolute;
+    right: .5rem;
+  }
+
+  ul {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    padding: .5rem 0 0 0;
+    list-style: none;
+    border-left: 2px solid @gray-700;
+    border-right: 2px solid @gray-700;
+    border-bottom: 2px solid @gray-700;
+    width: 100%;
+    border-radius: 0 0 .25rem .25rem;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    li {
+      padding: .75rem .5rem;
+      background: @white;
+
+      &:focus {
+        border: 2px solid red;
+      }
+    }
+  }
+}
+
+.hideCheckbox {
+  input[type="checkbox"] {
+    //visibility: hidden;
+    //position: absolute;
+    //left:-99999px;
+  }
+}
+
+.inFront {
+  z-index: 9999;
+}
+
+.below {
+  z-index: 9998;
+}
