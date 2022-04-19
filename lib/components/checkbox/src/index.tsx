@@ -11,6 +11,8 @@ export interface Props {
   label?: React.ReactElement | string;
   dataQa?: string;
   className?: string;
+  value?: string;
+  largeFont?: boolean;
 }
 
 const BoCheckbox = ({
@@ -21,6 +23,8 @@ const BoCheckbox = ({
   checked,
   label,
   className,
+  largeFont,
+  value,
 }: Props) => {
   return (
     <label className={c(s.checkboxWrapper, className)} htmlFor={id}>
@@ -32,8 +36,12 @@ const BoCheckbox = ({
         id={id}
         checked={checked}
         data-qa={dataQa}
+        value={value}
       />
-      <Typography.Body size="small" weight={checked ? "medium" : undefined}>
+      <Typography.Body
+        size={largeFont ? undefined : "small"}
+        weight={checked ? "medium" : undefined}
+      >
         {label || name}
       </Typography.Body>
     </label>
