@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/typography",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "files": [
     "dist/**/*"
   ],
@@ -25,7 +25,7 @@
   "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2",
   "dependencies": {
     "@boclips-ui/media-breakpoints": "^2.0.3",
-    "@boclips-ui/styles": "^4.0.2",
+    "@boclips-ui/styles": "^4.1.0",
     "@boclips-ui/use-media-breakpoints": "^2.0.6"
   }
 }

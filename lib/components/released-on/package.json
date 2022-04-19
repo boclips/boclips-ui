@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/released-on",
-  "version": "2.1.15",
+  "version": "2.1.16",
   "files": [
     "dist/**/*"
   ],
@@ -12,8 +12,8 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/released-on --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^4.0.2",
-    "@boclips-ui/typography": "^2.3.6"
+    "@boclips-ui/styles": "^4.1.0",
+    "@boclips-ui/typography": "^2.3.7"
   },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.15"
