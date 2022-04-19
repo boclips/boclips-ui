@@ -5,19 +5,19 @@ import Dropdown, { OptionsProps } from "./index";
 const options: OptionsProps[] = [
   {
     id: "1",
-    name: "checkbox-1",
+    name: "checkbox label 1",
     label: "checkbox label 1",
     value: "value-1",
   },
   {
     id: "2",
-    name: "checkbox-2",
+    name: "checkbox label 2",
     label: "checkbox label 2",
     value: "value-2",
   },
   {
     id: "3",
-    name: "checkbox-3",
+    name: "checkbox label 3",
     label: "checkbox label 3",
     value: "value-3",
   },
@@ -221,5 +221,97 @@ describe("Dropdown", () => {
     });
 
     expect(wrapper.getByText("checkbox label 1").previousSibling).toHaveFocus();
+  });
+
+  it("displays the search input ", () => {
+    const onUpdate = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={onUpdate}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        showSearch
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const searchInput = wrapper.getByPlaceholderText("Search...");
+
+    expect(searchInput).toBeInTheDocument();
+  });
+
+  it("displays the search input ", () => {
+    const onUpdate = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={onUpdate}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        showSearch
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const searchInput = wrapper.getByPlaceholderText("Search...");
+
+    expect(searchInput).toBeInTheDocument();
+  });
+
+  it("filters out the options when searching", () => {
+    const onUpdate = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={onUpdate}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        showSearch
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const searchInput = wrapper.getByPlaceholderText("Search...");
+
+    fireEvent.change(searchInput, { target: { value: "2" } });
+
+    expect(wrapper.getByText("checkbox label 2")).toBeInTheDocument();
+    expect(wrapper.queryByText("checkbox label 1")).not.toBeInTheDocument();
+    expect(wrapper.queryByText("checkbox label 3")).not.toBeInTheDocument();
+  });
+
+  it("searching for options is case insensitive", () => {
+    const onUpdate = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={onUpdate}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        showSearch
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const searchInput = wrapper.getByPlaceholderText("Search...");
+
+    fireEvent.change(searchInput, { target: { value: "ChEckBox Label 2" } });
+
+    expect(wrapper.getByText("checkbox label 2")).toBeInTheDocument();
+    expect(wrapper.queryByText("checkbox label 1")).not.toBeInTheDocument();
+    expect(wrapper.queryByText("checkbox label 3")).not.toBeInTheDocument();
   });
 });

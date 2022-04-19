@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import c from "classnames";
 import { Typography } from "@boclips-ui/typography";
 import Checkbox from "@boclips-ui/checkbox/src";
+import { InputText } from "@boclips-ui/input/src";
 import { useOnClickOutside } from "./hooks";
 
 import ArrowDownIcon from "../resources/down-icon.svg";
+import SearchIcon from "../resources/search-icon.svg";
 import s from "./style.module.less";
 import { onFocus, onKeyDownDropdown, onKeyDownSelect } from "./events";
 
@@ -16,6 +18,7 @@ export interface Props {
   whenSelectedLabel?: string;
   fitWidth?: boolean;
   dataQa?: string;
+  showSearch?: boolean;
 }
 
 export interface OptionsProps {
@@ -34,12 +37,29 @@ const Dropdown = ({
   whenSelectedLabel = "Selected",
   fitWidth,
   dataQa,
+  showSearch = false,
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [dropdownOptions, setDropdownOptions] = useState<
+    OptionsProps[] | undefined
+  >(options);
   const [values, setValues] = useState<Set<string>>(() => new Set());
   const [singleValue, setSingleValue] = useState<OptionsProps>();
+  const [inputTextValue, setInputTextValue] = useState<string>("");
   const dropdownRef = useRef(null);
   useOnClickOutside(dropdownRef, () => setOpen(false));
+
+  useEffect(() => {
+    if (options && inputTextValue) {
+      setDropdownOptions(() =>
+        options?.filter((it) =>
+          it.name.toLowerCase().includes(inputTextValue.toLowerCase())
+        )
+      );
+    } else {
+      setDropdownOptions(options);
+    }
+  }, [inputTextValue]);
 
   useEffect(() => {
     if (!(values.size === 0) && mode === "multiple") {
@@ -166,7 +186,20 @@ const Dropdown = ({
             [s.below]: open,
           })}
         >
-          {options?.map((option) => {
+          {showSearch && (
+            <InputText
+              showLabelText={false}
+              inputType="text"
+              onChange={(e) => setInputTextValue(e)}
+              id="dropdown-search-input"
+              placeholder="Search..."
+              className={s.textInput}
+              defaultValue={inputTextValue}
+              icon={<SearchIcon />}
+            />
+          )}
+
+          {dropdownOptions?.map((option) => {
             return (
               <React.Fragment key={option.id}>
                 {renderOptions(option)}

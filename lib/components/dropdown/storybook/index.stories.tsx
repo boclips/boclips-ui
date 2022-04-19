@@ -17,7 +17,7 @@ const options1: OptionsProps[] = numberOfOptions.map((it) => {
   const id = uuidv4();
   return {
     id: `${id}`,
-    name: `${id}`,
+    name: `checkbox ${it}`,
     label: `checkbox ${it}`,
     value: `${id}`,
   };
@@ -28,6 +28,7 @@ const Template: Story<Props> = ({
   onUpdate,
   options,
   whenSelectedLabel,
+  showSearch,
 }) => (
   <div style={{ display: "flex" }}>
     <div>
@@ -38,6 +39,7 @@ const Template: Story<Props> = ({
         mode="multiple"
         options={options}
         whenSelectedLabel={whenSelectedLabel}
+        showSearch={showSearch}
       />
     </div>
     <div style={{ marginLeft: "32px" }}>
@@ -47,6 +49,7 @@ const Template: Story<Props> = ({
         onUpdate={onUpdate}
         mode="single"
         options={options}
+        showSearch={showSearch}
       />
     </div>
   </div>
@@ -59,4 +62,5 @@ DEFAULT.args = {
   onUpdate: (it: any) => console.log(it),
   options: options1,
   mode: "multiple",
+  showSearch: true,
 };
