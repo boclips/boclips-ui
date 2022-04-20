@@ -19,6 +19,7 @@ export interface Props {
   fitWidth?: boolean;
   dataQa?: string;
   showSearch?: boolean;
+  disabled?: boolean;
 }
 
 export interface OptionsProps {
@@ -38,6 +39,7 @@ const Dropdown = ({
   fitWidth,
   dataQa,
   showSearch = false,
+  disabled,
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [dropdownOptions, setDropdownOptions] = useState<
@@ -167,6 +169,7 @@ const Dropdown = ({
         onClick={() => setOpen(!open)}
         onKeyDown={(e) => onKeyDownSelect(e, () => setOpen(true))}
         aria-expanded={open}
+        disabled={disabled}
       >
         <Typography.Body>{renderLabel()}</Typography.Body>
         <ArrowDownIcon />
