@@ -45,27 +45,23 @@ const Dropdown = ({
   >(options);
   const [values, setValues] = useState<Set<string>>(() => new Set());
   const [singleValue, setSingleValue] = useState<OptionsProps>();
-  const [inputTextValue, setInputTextValue] = useState<string>("");
+  const [inputTextValue, setInputTextValue] = useState<string>();
   const dropdownRef = useRef(null);
   useOnClickOutside(dropdownRef, () => setOpen(false));
 
   useEffect(() => {
-    if (options && inputTextValue) {
+    if (options && inputTextValue && showSearch) {
       setDropdownOptions(() =>
         options?.filter((it) =>
           it.name.toLowerCase().includes(inputTextValue.toLowerCase())
         )
       );
-    } else {
-      setDropdownOptions(options);
     }
   }, [inputTextValue]);
 
   useEffect(() => {
     if (!(values.size === 0) && mode === "multiple") {
       onUpdate([...values]);
-    } else {
-      onUpdate([]);
     }
   }, [values]);
 
@@ -76,6 +72,9 @@ const Dropdown = ({
   }, [singleValue]);
 
   useEffect(() => {
+    if (mode === "single") {
+      setDropdownOptions(options);
+    }
     if (dropdownRef.current && open) {
       (dropdownRef.current! as HTMLElement).focus();
     }
