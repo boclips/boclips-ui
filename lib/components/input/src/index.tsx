@@ -127,7 +127,12 @@ export const InputText = React.forwardRef(
             {errorMessage}
           </span>
         )}
-        <div style={{ height }} className={s.inputWrapper}>
+        <div
+          style={{ height }}
+          className={c(s.inputWrapper, {
+            [s.margin]: showLabelText,
+          })}
+        >
           {renderInput()}
           {icon && (
             <div data-qa="search-icon" className={s.icon}>

@@ -11,6 +11,7 @@
     color: @error;
     font-size: 0.875rem;
     display: inline-flex;
+
     svg {
       margin-right: 5px;
     }
@@ -23,9 +24,12 @@
 
   .inputWrapper {
     position: relative;
-    margin-top: 0.5rem;
     display: flex;
     align-items: center;
+
+    &.margin {
+      margin-top: 0.5rem;
+    }
   }
 
   .icon {
@@ -86,7 +90,7 @@
 }
 
 .checkbox {
-@apply focus:ring-0 focus:ring-offset-0;
+@apply focus: ring-0 focus: ring-offset-0;
   display: block;
   width: 20px;
   height: 20px;
