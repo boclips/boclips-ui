@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import c from "classnames";
 import { Typography } from "@boclips-ui/typography";
-import Checkbox from "@boclips-ui/checkbox/src";
-import { InputText } from "@boclips-ui/input/src";
+import Checkbox from "@boclips-ui/checkbox";
+import { InputText } from "@boclips-ui/input";
 import { useOnClickOutside } from "./hooks";
 
 import ArrowDownIcon from "../resources/down-icon.svg";
@@ -60,7 +60,7 @@ const Dropdown = ({
   }, [inputTextValue]);
 
   useEffect(() => {
-    if (!(values.size === 0) && mode === "multiple") {
+    if (mode === "multiple") {
       onUpdate([...values]);
     }
   }, [values]);
@@ -72,9 +72,8 @@ const Dropdown = ({
   }, [singleValue]);
 
   useEffect(() => {
-    if (mode === "single") {
-      setDropdownOptions(options);
-    }
+    setDropdownOptions(options);
+
     if (dropdownRef.current && open) {
       (dropdownRef.current! as HTMLElement).focus();
     }
