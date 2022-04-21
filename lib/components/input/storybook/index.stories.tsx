@@ -18,30 +18,48 @@ const Template: Story<BoInputProps> = ({
   icon,
   allowClear,
   showLabelText,
-  inputType,
   placeholder,
   defaultValue,
   height,
   constraints,
   labelText,
 }: BoInputProps) => (
-  <InputText
-    id={id}
-    onChange={onChange}
-    onFocus={onFocus}
-    onBlur={onBlur}
-    isError={isError}
-    errorMessage={errorMessage}
-    icon={icon}
-    allowClear={allowClear}
-    showLabelText={showLabelText}
-    inputType={inputType}
-    placeholder={placeholder}
-    defaultValue={defaultValue}
-    height={height}
-    constraints={constraints}
-    labelText={labelText}
-  />
+  <>
+    <InputText
+      id={id}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      isError={isError}
+      errorMessage={errorMessage}
+      icon={icon}
+      allowClear={allowClear}
+      showLabelText={showLabelText}
+      inputType="text"
+      placeholder={placeholder}
+      defaultValue={defaultValue}
+      height={height}
+      constraints={constraints}
+      labelText={labelText}
+    />
+    <InputText
+      id={id}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      isError={isError}
+      errorMessage={errorMessage}
+      icon={icon}
+      allowClear={allowClear}
+      showLabelText={showLabelText}
+      inputType="textarea"
+      placeholder={placeholder}
+      defaultValue={defaultValue}
+      height={height}
+      constraints={constraints}
+      labelText={labelText}
+    />
+  </>
 );
 
 export const Sample = Template.bind({});
