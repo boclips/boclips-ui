@@ -20,12 +20,13 @@ export interface Props {
   dataQa?: string;
   showSearch?: boolean;
   disabled?: boolean;
+  defaultValue?: string[] | string;
 }
 
 export interface OptionsProps {
   id: string;
   name: string;
-  label: React.ReactElement | string;
+  label?: React.ReactElement | string;
   value: string;
   "data-qa"?: string;
 }
@@ -40,14 +41,17 @@ const Dropdown = ({
   dataQa,
   showSearch = false,
   disabled,
+  defaultValue,
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [dropdownOptions, setDropdownOptions] = useState<
     OptionsProps[] | undefined
   >(options);
   const [values, setValues] = useState<Set<string>>(() => new Set());
+
   const [singleValue, setSingleValue] = useState<OptionsProps>();
   const [inputTextValue, setInputTextValue] = useState<string>();
+
   const dropdownRef = useRef(null);
   useOnClickOutside(dropdownRef, () => setOpen(false));
 
@@ -80,6 +84,20 @@ const Dropdown = ({
       (dropdownRef.current! as HTMLElement).focus();
     }
   }, [open]);
+
+  useEffect(() => {
+    if (defaultValue) {
+      if (mode === "single") {
+        setSingleValue(
+          dropdownOptions?.find((it) => it.value === defaultValue)
+        );
+      }
+
+      if (mode === "multiple") {
+        setValues((prevState) => new Set([...prevState, ...defaultValue]));
+      }
+    }
+  }, [defaultValue]);
 
   const onChangeMultiple = (value: string) => {
     setValues((prevState) => {

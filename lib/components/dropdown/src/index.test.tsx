@@ -314,4 +314,46 @@ describe("Dropdown", () => {
     expect(wrapper.queryByText("checkbox label 1")).not.toBeInTheDocument();
     expect(wrapper.queryByText("checkbox label 3")).not.toBeInTheDocument();
   });
+
+  it("displays default values for multiple mode", () => {
+    const onUpdate = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={onUpdate}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        defaultValue={["value-2", "value-1"]}
+      />
+    );
+
+    expect(wrapper.getByText("Selected (2)")).toBeInTheDocument();
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const checkedOption = wrapper.getAllByRole("option");
+
+    expect(checkedOption[0].getAttribute("aria-selected")).toBe("true");
+    expect(checkedOption[1].getAttribute("aria-selected")).toBe("true");
+    expect(checkedOption[2].getAttribute("aria-selected")).toBe("false");
+  });
+
+  it("displays default values for single mode", () => {
+    const onUpdate = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={onUpdate}
+        options={options}
+        mode="single"
+        whenSelectedLabel="Selected"
+        defaultValue="value-2"
+      />
+    );
+
+    expect(wrapper.getByText("checkbox label 2")).toBeInTheDocument();
+  });
 });
