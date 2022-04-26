@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/dropdown",
-  "version": "1.0.5",
+  "version": "1.0.6-alpha.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@boclips-ui/checkbox": "^1.1.0",
-    "@boclips-ui/input": "^1.0.3",
+    "@boclips-ui/input": "^1.0.4-alpha.0",
     "@boclips-ui/styles": "^4.1.0",
     "@boclips-ui/typography": "^2.3.7"
   },
