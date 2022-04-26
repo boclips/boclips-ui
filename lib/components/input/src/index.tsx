@@ -10,6 +10,7 @@ export interface BoInputProps extends InputProps {
   onChange: (text: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  onKeyDown?: (e: any) => void;
   isError?: boolean;
   errorMessage?: string;
   icon?: React.ReactElement;
@@ -38,6 +39,7 @@ export const InputText = React.forwardRef(
       onChange,
       onFocus,
       onBlur,
+      onKeyDown,
       isError = false,
       errorMessage = "there is an error",
       placeholder = "Search...",
@@ -83,6 +85,7 @@ export const InputText = React.forwardRef(
               ref={ref as Ref<HTMLInputElement>}
               onFocus={onFocus}
               onBlur={onBlur}
+              onKeyDown={onKeyDown}
             />
           );
         case "textarea":
@@ -93,6 +96,7 @@ export const InputText = React.forwardRef(
               placeholder={placeholder}
               id={id}
               onChange={(e) => setValue(e.target.value)}
+              onKeyDown={onKeyDown}
               className={c(s.input, {
                 [s.error]: isError,
               })}
