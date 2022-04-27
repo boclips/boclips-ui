@@ -24,6 +24,7 @@ interface InputProps {
   placeholder?: string;
   defaultValue?: string;
   height?: string;
+  width?: string;
   constraints?: BoInputConstraints;
   labelText?: string;
 }
@@ -47,6 +48,7 @@ export const InputText = React.forwardRef(
       defaultValue = "",
       inputType,
       height,
+      width,
       constraints = {
         required: false,
         minLength: 0,
@@ -132,7 +134,7 @@ export const InputText = React.forwardRef(
           </span>
         )}
         <div
-          style={{ height }}
+          style={{ height, width }}
           className={c(s.inputWrapper, {
             [s.margin]: showLabelText,
           })}
