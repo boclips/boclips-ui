@@ -16,6 +16,7 @@ export interface BoInputProps extends InputProps {
   icon?: React.ReactElement;
   allowClear?: boolean;
   className?: string;
+  name?: string;
 }
 
 interface InputProps {
@@ -58,6 +59,7 @@ export const InputText = React.forwardRef(
       labelText,
       allowClear = false,
       className,
+      name,
     }: BoInputProps,
     ref: React.Ref<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -77,6 +79,7 @@ export const InputText = React.forwardRef(
               required={constraints?.required}
               placeholder={placeholder}
               type={inputType}
+              name={name}
               id={id}
               onChange={(e) => setValue(e.target.value)}
               className={c(s.input, {
