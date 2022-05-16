@@ -3,7 +3,7 @@ import c from "classnames";
 import { Typography } from "@boclips-ui/typography";
 import Checkbox from "@boclips-ui/checkbox";
 import { InputText } from "@boclips-ui/input";
-import { useOnClickOutside } from "./hooks";
+import { useOnClickOutsideOrSelf } from "./hooks";
 
 import ArrowDownIcon from "../resources/down-icon.svg";
 import SearchIcon from "../resources/search-icon.svg";
@@ -52,8 +52,11 @@ const Dropdown = ({
   const [singleValue, setSingleValue] = useState<OptionsProps>();
   const [inputTextValue, setInputTextValue] = useState<string>();
 
-  const dropdownRef = useRef(null);
-  useOnClickOutside(dropdownRef, () => setOpen(false));
+  const dropdownBodyRef = useRef(null);
+  const dropdownHeaderRef = useRef(null);
+  useOnClickOutsideOrSelf(dropdownBodyRef, dropdownHeaderRef, () =>
+    setOpen(false)
+  );
 
   useEffect(() => {
     if (options && inputTextValue && showSearch) {
@@ -80,8 +83,8 @@ const Dropdown = ({
   useEffect(() => {
     setDropdownOptions(options);
 
-    if (dropdownRef.current && open) {
-      (dropdownRef.current! as HTMLElement).focus();
+    if (dropdownBodyRef.current && open) {
+      (dropdownBodyRef.current! as HTMLElement).focus();
     }
   }, [open]);
 
@@ -188,6 +191,7 @@ const Dropdown = ({
         onKeyDown={(e) => onKeyDownSelect(e, () => setOpen(true))}
         aria-expanded={open}
         disabled={disabled}
+        ref={dropdownHeaderRef}
       >
         <Typography.Body>{renderLabel()}</Typography.Body>
         <ArrowDownIcon />
@@ -200,7 +204,7 @@ const Dropdown = ({
           aria-orientation="vertical"
           onKeyDown={(e) => onKeyDownDropdown(e, () => setOpen(false))}
           onFocus={(e) => onFocus(e)}
-          ref={dropdownRef}
+          ref={dropdownBodyRef}
           className={c({
             [s.below]: open,
           })}
