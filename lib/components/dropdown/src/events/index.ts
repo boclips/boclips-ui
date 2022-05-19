@@ -9,7 +9,7 @@ export const onKeyDownSelect = (
   }
 };
 
-export const onFocus = (e: React.FocusEvent<HTMLUListElement>) => {
+export const onFocus = (e: React.FocusEvent<HTMLElement>) => {
   const currentItem = e.currentTarget;
   const allActiveElement = currentItem.querySelectorAll(
     "[aria-activedescendant]"

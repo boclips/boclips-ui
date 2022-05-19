@@ -197,7 +197,18 @@ const Dropdown = ({
         <ArrowDownIcon />
       </button>
       {open && (
-        <div className={c(s.dropdownBody)}>
+        <div
+          className={c(s.dropdownBody, {
+            [s.below]: open,
+            [s.reduceHeight]: showSearch,
+          })}
+          ref={dropdownBodyRef}
+          data-qa="dropdown"
+          tabIndex={-1}
+          onFocus={(e) => onFocus(e)}
+          onKeyDown={(e) => onKeyDownDropdown(e, () => setOpen(false))}
+          role="presentation"
+        >
           {showSearch && (
             <InputText
               showLabelText={false}
@@ -212,17 +223,9 @@ const Dropdown = ({
           )}
 
           <ul
-            tabIndex={0}
-            data-qa="dropdown"
             role="listbox"
             aria-orientation="vertical"
-            onKeyDown={(e) => onKeyDownDropdown(e, () => setOpen(false))}
-            onFocus={(e) => onFocus(e)}
-            ref={dropdownBodyRef}
-            className={c({
-              [s.below]: open,
-              [s.reduceHeight]: showSearch,
-            })}
+            className={c({ [s.reduceHeight]: showSearch })}
           >
             {dropdownOptions?.map((option) => {
               return (
