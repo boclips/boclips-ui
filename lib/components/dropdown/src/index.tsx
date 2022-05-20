@@ -197,17 +197,17 @@ const Dropdown = ({
         <ArrowDownIcon />
       </button>
       {open && (
-        <div
-          className={c(s.dropdownBody, {
-            [s.below]: open,
-            [s.reduceHeight]: showSearch,
-          })}
-          ref={dropdownBodyRef}
+        <ul
+          tabIndex={0}
           data-qa="dropdown"
-          tabIndex={-1}
-          onFocus={(e) => onFocus(e)}
+          role="listbox"
+          aria-orientation="vertical"
           onKeyDown={(e) => onKeyDownDropdown(e, () => setOpen(false))}
-          role="presentation"
+          onFocus={(e) => onFocus(e)}
+          ref={dropdownBodyRef}
+          className={c({
+            [s.below]: open,
+          })}
         >
           {showSearch && (
             <InputText
@@ -222,23 +222,16 @@ const Dropdown = ({
             />
           )}
 
-          <ul
-            role="listbox"
-            aria-orientation="vertical"
-            className={c({ [s.reduceHeight]: showSearch })}
-          >
-            {dropdownOptions?.map((option) => {
-              return (
-                <React.Fragment key={option.id}>
-                  {renderOptions(option)}
-                </React.Fragment>
-              );
-            })}
-          </ul>
-        </div>
+          {dropdownOptions?.map((option) => {
+            return (
+              <React.Fragment key={option.id}>
+                {renderOptions(option)}
+              </React.Fragment>
+            );
+          })}
+        </ul>
       )}
     </div>
   );
 };
-
 export default Dropdown;
