@@ -15,7 +15,13 @@ npm i
 lerna bootstrap
 ```
 
-#### 3. Run storybook
+#### 3. Build the components
+
+```
+npx lerna run build
+```
+
+#### 4. Run storybook
 
 ```
 npm run storybook
