@@ -12,7 +12,6 @@ const Tooltip = ({ children, text }: Props) => {
   const [leftOffset, setLeftOffset] = useState<number>(0);
 
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const childrenRef = useRef<HTMLDivElement>(null);
 
   React.useLayoutEffect(() => {
     // This covers an edge case of screen resizing and not setting the offset back to default if it can center the tooltip correctly
@@ -33,7 +32,6 @@ const Tooltip = ({ children, text }: Props) => {
   });
 
   const translateX = leftOffset ? 0 : "-50%";
-  const childrenHeight = childrenRef?.current?.clientHeight || 48;
 
   return (
     <div
@@ -43,18 +41,12 @@ const Tooltip = ({ children, text }: Props) => {
     >
       {isOpen && (
         <>
-          <div
-            className={c(s.tooltipArrow)}
-            style={{
-              bottom: childrenHeight + 8,
-            }}
-          />
+          <div className={c(s.tooltipArrow)} />
           <div
             ref={tooltipRef}
             style={{
               left: leftOffset || "50%",
               transform: `translateX(${translateX})`,
-              bottom: childrenHeight + 25,
             }}
             className={c(s.tooltip)}
           >
@@ -62,7 +54,7 @@ const Tooltip = ({ children, text }: Props) => {
           </div>
         </>
       )}
-      <span ref={childrenRef}>{children}</span>
+      {children}
     </div>
   );
 };
