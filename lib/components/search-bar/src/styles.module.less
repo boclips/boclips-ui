@@ -9,6 +9,7 @@
   }
 }
 .searchAndSuggestions {
+  position: relative;
   &:focus-within {
     .searchBarSuggestions {
       display: flex;
@@ -90,6 +91,9 @@
   border: 2px solid #6B83A8;
   border-radius: 4px;
   font-size: var(--bo-ui-search-bar-font-size, 1rem);
+  position: absolute;
+  left: 0;
+  right: 0;
 
   .suggestionItem {
     border: none;
