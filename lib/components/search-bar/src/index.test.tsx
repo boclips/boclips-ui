@@ -55,4 +55,23 @@ describe("SearchBar", () => {
 
     expect(searchInput).toHaveFocus();
   });
+
+  it("when suggestion is clicked, search query is updated", () => {
+    const onSearch = jest.fn();
+
+    render(
+      <SearchBar
+        onSearch={onSearch}
+        placeholder="test"
+        initialQuery="waters"
+        suggestions={["waterfall", "watergate", "watering can"]}
+      />
+    );
+    const searchInput = screen.getByPlaceholderText("test");
+
+    fireEvent.click(screen.getByText("waterfall"));
+
+    expect(searchInput.getAttribute("value")).toBe("waterfall");
+    expect(onSearch).toBeCalledWith("waterfall", 0);
+  });
 });

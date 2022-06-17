@@ -78,3 +78,23 @@
   }
 }
 
+.searchBarSuggestions {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #6B83A8;
+  border-radius: 4px;
+  font-size: var(--bo-ui-search-bar-font-size, 1rem);
+
+  .suggestionItem {
+    border: none;
+    text-align: left;
+    padding: 0.25rem 1rem;
+    background: white;
+    &:hover, &:focus {
+      background: @blue-400;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+}
+

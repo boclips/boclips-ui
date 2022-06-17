@@ -19,6 +19,7 @@ const Template: Story<Props> = ({
       onSearch={onSearch}
       placeholder={placeholder}
       iconOnlyButton={iconOnlyButton}
+      suggestions={["dogs", "cats", "mice"]}
     />
   </span>
 );
