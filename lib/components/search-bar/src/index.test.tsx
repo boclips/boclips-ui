@@ -74,4 +74,28 @@ describe("SearchBar", () => {
     expect(searchInput.getAttribute("value")).toBe("waterfall");
     expect(onSearch).toBeCalledWith("waterfall", 0);
   });
+
+  it(`calls onchange when value is changed`, () => {
+    const onSearch = jest.fn();
+    const onChange = jest.fn();
+
+    render(
+      <SearchBar
+        onSearch={onSearch}
+        onChange={onChange}
+        placeholder="test"
+        initialQuery=""
+        suggestions={["waterfall", "watergate", "watering can"]}
+      />
+    );
+
+    const searchInput = screen.getByPlaceholderText("test");
+    fireEvent.change(searchInput, {
+      target: { value: "this is a search query" },
+    });
+
+    expect(onChange).toHaveBeenCalledWith("this is a search query");
+    fireEvent.click(screen.getByText("waterfall"));
+    expect(onChange).toHaveBeenCalledWith("waterfall");
+  });
 });

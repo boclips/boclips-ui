@@ -17,6 +17,7 @@ export interface Props {
   iconOnlyButton?: boolean;
   buttonText?: string;
   suggestions?: string[];
+  onChange?: (search: string) => void;
 }
 
 const SearchBar = ({
@@ -26,10 +27,17 @@ const SearchBar = ({
   placeholder,
   buttonText,
   suggestions,
+  onChange,
 }: Props): ReactElement => {
   const [query, setQuery] = useState<string>("");
   const ref = useRef<HTMLInputElement | null>(null);
 
+  const onSearchChanged = (newSearch: string) => {
+    setQuery(newSearch);
+    if (onChange) {
+      onChange(newSearch);
+    }
+  };
   useEffect(() => {
     if (initialQuery) {
       setQuery(initialQuery);
@@ -43,7 +51,7 @@ const SearchBar = ({
   };
 
   const onClear = () => {
-    setQuery("");
+    onSearchChanged("");
     ref.current?.focus();
   };
   const boldMatchingText = (text: string, shouldBeBold: string) =>
@@ -71,9 +79,9 @@ const SearchBar = ({
             type="button"
             key={`${suggestion}-${index}`}
             className={s.suggestionItem}
-            onKeyDown={(e) => e.key === "enter" && setQuery(suggestion)}
+            onKeyDown={(e) => e.key === "enter" && onSearchChanged(suggestion)}
             onClick={() => {
-              setQuery(suggestion);
+              onSearchChanged(suggestion);
               onSearch(suggestion, 0);
             }}
           >
@@ -91,7 +99,7 @@ const SearchBar = ({
           id="search"
           type="text"
           placeholder={placeholder || "Search for videos"}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => onSearchChanged(e.target.value)}
           onKeyDown={onKeyDown}
           value={query}
         />
