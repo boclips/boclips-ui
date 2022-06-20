@@ -117,7 +117,8 @@ const SearchBar = ({
       });
 
   const searchSuggestions = () =>
-    suggestions && (
+    suggestions &&
+    suggestions.length > 0 && (
       <span className={s.searchBarSuggestions}>
         {suggestions.map((suggestion, index) => (
           <button
