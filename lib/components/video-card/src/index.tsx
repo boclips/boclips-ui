@@ -118,7 +118,7 @@ export const VideoCard = ({
 
       {video.description && (
         <section className={s.description}>
-          <Typography.Body>{video.description}</Typography.Body>
+          <Typography.Body size="small">{video.description}</Typography.Body>
         </section>
       )}
 
