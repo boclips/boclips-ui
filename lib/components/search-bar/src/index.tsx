@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import Button from "@boclips-ui/button";
+import c from "classnames";
 import SearchIcon from "./resources/search-icon.svg";
 import CloseIcon from "./resources/close-icon.svg";
 import s from "./styles.module.less";
@@ -30,10 +31,14 @@ const SearchBar = ({
   onChange,
 }: Props): ReactElement => {
   const [query, setQuery] = useState<string>("");
+  const [showSuggestions, setShowSuggestions] = useState<boolean>(true);
+  const [activeSuggestion, setActiveSuggestion] = useState<number>(-1);
   const ref = useRef<HTMLInputElement | null>(null);
 
   const onSearchChanged = (newSearch: string) => {
     setQuery(newSearch);
+    setShowSuggestions(true);
+    setActiveSuggestion(-1);
     if (onChange) {
       onChange(newSearch);
     }
@@ -44,9 +49,48 @@ const SearchBar = ({
     }
   }, [initialQuery]);
 
+  useEffect(() => {
+    if (
+      suggestions &&
+      activeSuggestion > -1 &&
+      suggestions.length > activeSuggestion
+    ) {
+      setQuery(suggestions[activeSuggestion]);
+    }
+  }, [activeSuggestion, suggestions]);
+
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      onSearch(query, 0);
+    switch (event.key) {
+      case "Enter":
+        onSearch(query, 0);
+        break;
+      case "Escape":
+        setShowSuggestions(false);
+        break;
+      case "ArrowUp":
+        if (showSuggestions) {
+          setActiveSuggestion(
+            suggestions && activeSuggestion !== -1
+              ? activeSuggestion - 1
+              : suggestions!.length - 1
+          );
+        } else {
+          setShowSuggestions(true);
+        }
+        break;
+      case "ArrowDown":
+        if (showSuggestions) {
+          setActiveSuggestion(
+            suggestions && activeSuggestion < suggestions.length - 1
+              ? activeSuggestion + 1
+              : -1
+          );
+        } else {
+          setShowSuggestions(true);
+        }
+        break;
+      default:
+        break;
     }
   };
 
@@ -54,18 +98,19 @@ const SearchBar = ({
     onSearchChanged("");
     ref.current?.focus();
   };
-  const boldMatchingText = (text: string, shouldBeBold: string) =>
+
+  const boldNotMatchingText = (text: string, shouldNotBeBold: string) =>
     text
-      .split(new RegExp(`(${shouldBeBold})`, "i"))
+      .split(new RegExp(`(${shouldNotBeBold})`, "i"))
       .map((item: string, index: number) => {
         return (
           <>
-            {item.toLowerCase() === shouldBeBold.toLowerCase() ? (
+            {item.toLowerCase() === shouldNotBeBold.toLowerCase() ? (
+              item
+            ) : (
               <span style={{ fontWeight: "bold" }} key={index}>
                 {item}
               </span>
-            ) : (
-              item
             )}
           </>
         );
@@ -78,14 +123,18 @@ const SearchBar = ({
           <button
             type="button"
             key={`${suggestion}-${index}`}
-            className={s.suggestionItem}
+            className={c(s.suggestionItem, {
+              [s.active]: index === activeSuggestion,
+              [s.pseudoSelectorsEnabled]: activeSuggestion === -1,
+            })}
+            onMouseEnter={() => setActiveSuggestion(-1)}
             onKeyDown={(e) => e.key === "enter" && onSearchChanged(suggestion)}
             onClick={() => {
               onSearchChanged(suggestion);
               onSearch(suggestion, 0);
             }}
           >
-            {boldMatchingText(suggestion, query)}
+            {boldNotMatchingText(suggestion, query)}
           </button>
         ))}
       </span>
@@ -103,6 +152,7 @@ const SearchBar = ({
             onChange={(e) => onSearchChanged(e.target.value)}
             onKeyDown={onKeyDown}
             value={query}
+            autoComplete="off"
           />
           <div className={s.buttons}>
             {query.length > 0 && (
@@ -126,7 +176,7 @@ const SearchBar = ({
             />
           </div>
         </div>
-        {searchSuggestions()}
+        {showSuggestions && searchSuggestions()}
       </div>
     </>
   );

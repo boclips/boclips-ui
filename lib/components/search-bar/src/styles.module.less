@@ -100,7 +100,8 @@
     text-align: left;
     padding: 0.25rem 1rem;
     background: white;
-    &:hover, &:focus {
+
+    &.active, &.pseudoSelectorsEnabled:hover, &.pseudoSelectorsEnabled:focus {
       background: @blue-400;
       cursor: pointer;
       outline: none;
