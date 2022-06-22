@@ -69,6 +69,10 @@
   flex-wrap: wrap;
   position: relative;
   max-height: 52px;
+
+  & span:first-child {
+    margin-left: 0 !important;
+  }
 }
 
 .providerBadge {
@@ -251,10 +255,10 @@
     grid-column-end: 18;
     white-space: break-spaces;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin-top: 0.5rem;
+    margin-top: 0;
     color: @gray-800;
   }
 
@@ -276,7 +280,7 @@
 
 @media screen and (min-width: @screen-xl) {
   .description {
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 5;
   }
 
   .buttons {
