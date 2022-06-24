@@ -72,7 +72,30 @@ describe("SearchBar", () => {
     fireEvent.click(screen.getByText("waterfall"));
 
     expect(searchInput.getAttribute("value")).toBe("waterfall");
-    expect(onSearch).toBeCalledWith("waterfall", 0);
+    expect(onSearch).toBeCalledWith("waterfall", 0, true);
+  });
+
+  it("when suggestion is chosen with keyboard, search query is updated", () => {
+    const onSearch = jest.fn();
+
+    render(
+      <SearchBar
+        onSearch={onSearch}
+        placeholder="test"
+        initialQuery="waters"
+        suggestions={["waterfall", "watergate", "watering can"]}
+      />
+    );
+    const searchInput = screen.getByPlaceholderText("test");
+
+    fireEvent.click(searchInput);
+    fireEvent.keyDown(searchInput, { key: "ArrowDown" });
+    fireEvent.keyDown(searchInput, { key: "ArrowDown" });
+    fireEvent.keyDown(searchInput, { key: "ArrowUp" });
+    fireEvent.keyDown(searchInput, { key: "Enter" });
+
+    expect(searchInput.getAttribute("value")).toBe("waterfall");
+    expect(onSearch).toBeCalledWith("waterfall", 0, true);
   });
 
   it(`calls onchange when value is changed`, () => {

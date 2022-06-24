@@ -12,7 +12,11 @@ import CloseIcon from "./resources/close-icon.svg";
 import s from "./styles.module.less";
 
 export interface Props {
-  onSearch: (query: string | null, page: number) => void;
+  onSearch: (
+    query: string | null,
+    page: number,
+    suggestionUsed?: boolean
+  ) => void;
   placeholder?: string;
   initialQuery?: string;
   iconOnlyButton?: boolean;
@@ -32,17 +36,26 @@ const SearchBar = ({
 }: Props): ReactElement => {
   const [query, setQuery] = useState<string>("");
   const [showSuggestions, setShowSuggestions] = useState<boolean>(true);
-  const [activeSuggestion, setActiveSuggestion] = useState<number>(-1);
+  const [suggestionUsed, setSuggestionUsed] = useState<boolean>(false);
+  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number>(
+    -1
+  );
   const ref = useRef<HTMLInputElement | null>(null);
+
+  const resetSuggestionDropdownState = () => {
+    setSuggestionUsed(false);
+    setShowSuggestions(true);
+    setActiveSuggestionIndex(-1);
+  };
 
   const onSearchChanged = (newSearch: string) => {
     setQuery(newSearch);
-    setShowSuggestions(true);
-    setActiveSuggestion(-1);
+    resetSuggestionDropdownState();
     if (onChange) {
       onChange(newSearch);
     }
   };
+
   useEffect(() => {
     if (initialQuery) {
       setQuery(initialQuery);
@@ -52,26 +65,27 @@ const SearchBar = ({
   useEffect(() => {
     if (
       suggestions &&
-      activeSuggestion > -1 &&
-      suggestions.length > activeSuggestion
+      activeSuggestionIndex > -1 &&
+      suggestions.length > activeSuggestionIndex
     ) {
-      setQuery(suggestions[activeSuggestion]);
+      setQuery(suggestions[activeSuggestionIndex]);
+      setSuggestionUsed(true);
     }
-  }, [activeSuggestion, suggestions]);
+  }, [activeSuggestionIndex, suggestions]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     switch (event.key) {
       case "Enter":
-        onSearch(query, 0);
+        onSearch(query, 0, suggestionUsed);
         break;
       case "Escape":
         setShowSuggestions(false);
         break;
       case "ArrowUp":
         if (showSuggestions) {
-          setActiveSuggestion(
-            suggestions && activeSuggestion !== -1
-              ? activeSuggestion - 1
+          setActiveSuggestionIndex(
+            suggestions && activeSuggestionIndex !== -1
+              ? activeSuggestionIndex - 1
               : suggestions!.length - 1
           );
         } else {
@@ -80,9 +94,9 @@ const SearchBar = ({
         break;
       case "ArrowDown":
         if (showSuggestions) {
-          setActiveSuggestion(
-            suggestions && activeSuggestion < suggestions.length - 1
-              ? activeSuggestion + 1
+          setActiveSuggestionIndex(
+            suggestions && activeSuggestionIndex < suggestions.length - 1
+              ? activeSuggestionIndex + 1
               : -1
           );
         } else {
@@ -125,14 +139,13 @@ const SearchBar = ({
             type="button"
             key={`${suggestion}-${index}`}
             className={c(s.suggestionItem, {
-              [s.active]: index === activeSuggestion,
-              [s.pseudoSelectorsEnabled]: activeSuggestion === -1,
+              [s.active]: index === activeSuggestionIndex,
+              [s.pseudoSelectorsEnabled]: activeSuggestionIndex === -1,
             })}
-            onMouseEnter={() => setActiveSuggestion(-1)}
-            onKeyDown={(e) => e.key === "enter" && onSearchChanged(suggestion)}
+            onMouseEnter={() => setActiveSuggestionIndex(-1)}
             onClick={() => {
               onSearchChanged(suggestion);
-              onSearch(suggestion, 0);
+              onSearch(suggestion, 0, true);
             }}
           >
             {boldNotMatchingText(suggestion, query)}
@@ -172,7 +185,7 @@ const SearchBar = ({
               aria-label="search"
               icon={<SearchIcon />}
               iconOnly={iconOnlyButton}
-              onClick={() => onSearch(query, 0)}
+              onClick={() => onSearch(query, 0, suggestionUsed)}
               text={buttonText || "Search"}
             />
           </div>

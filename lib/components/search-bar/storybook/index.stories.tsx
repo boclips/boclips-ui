@@ -27,7 +27,10 @@ const Template: Story<Props> = ({
 export const DEFAULT = Template.bind({});
 
 DEFAULT.args = {
-  onSearch: () => console.log("search triggered <- it's from storybook"),
+  onSearch: (query, _, suggestionUsed) =>
+    console.log(
+      `search triggered: ${query}, ${suggestionUsed}<- it's from storybook`
+    ),
   placeholder: "Search...",
   iconOnlyButton: true,
 };
