@@ -22,6 +22,7 @@ export interface Components {
   videoId?: string;
   additionalBadges?: ReactElement[];
   topBadge?: ReactElement;
+  createdBy?: ReactElement;
 }
 
 export const VideoCard = ({
@@ -33,6 +34,7 @@ export const VideoCard = ({
   videoId,
   additionalBadges,
   topBadge,
+  createdBy,
 }: Props & Components): ReactElement => {
   const buildBadges = useMemo(() => {
     const badges = [];
@@ -107,11 +109,12 @@ export const VideoCard = ({
           </Typography.Body>
         )}
 
-        {video.createdBy && (
-          <Typography.Body as="div" className={s.createdBy} size="small">
-            {video.createdBy}
-          </Typography.Body>
-        )}
+        {createdBy ||
+          (video.createdBy && (
+            <Typography.Body as="div" className={s.createdBy} size="small">
+              {video.createdBy}
+            </Typography.Body>
+          ))}
       </section>
 
       <section className={s.badges}>{buildBadges}</section>

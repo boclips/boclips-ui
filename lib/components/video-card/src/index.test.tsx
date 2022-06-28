@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import React from "react";
 import { VideoCard } from "./index";
 // @ts-ignore
@@ -50,5 +50,24 @@ describe("VideoCard", () => {
     );
 
     expect(card.getByText("Hello")).toBeVisible();
+  });
+
+  it(`can override createdBy with a clickable custom element`, () => {
+    const clickSpy = jest.fn();
+
+    const card = render(
+      <VideoCard
+        // @ts-ignore
+        video={exampleVideo}
+        topBadge={<div>Hello</div>}
+        createdBy={
+          <button type="button" onClick={clickSpy()}>
+            clicky
+          </button>
+        }
+      />
+    );
+    fireEvent.click(card.getByText("clicky"));
+    expect(clickSpy).toBeCalledTimes(1);
   });
 });
