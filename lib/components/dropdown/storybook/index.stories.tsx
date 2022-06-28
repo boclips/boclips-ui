@@ -20,6 +20,7 @@ const options1: OptionsProps[] = numberOfOptions.map((it) => {
     name: `checkbox ${it}`,
     label: `checkbox ${it}`,
     value: `${id}`,
+    count: it,
   };
 });
 

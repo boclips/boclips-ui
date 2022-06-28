@@ -29,6 +29,7 @@ export interface OptionsProps {
   label?: React.ReactElement | string;
   value: string;
   "data-qa"?: string;
+  count?: number;
 }
 
 const Dropdown = ({
@@ -119,21 +120,33 @@ const Dropdown = ({
   };
 
   const renderOptions = (option: OptionsProps) => {
-    const { id, name, label, value } = option;
+    const { id, name, label, value, count } = option;
+    const labelWithCount = `${label} ${
+      count === null || count === undefined ? "" : count
+    }`;
 
     switch (mode) {
       case "single": {
         const checked = value === singleValue?.value;
 
         return (
-          <li data-id={value} aria-selected={checked} role="option">
+          <li
+            data-id={value}
+            aria-selected={checked}
+            role="option"
+            aria-label={
+              count === null || count === undefined
+                ? undefined
+                : `${value}, ${count} results`
+            }
+          >
             <Checkbox
               data-qa={option["data-qa"]}
               onChange={() => onChangeSingle(option)}
               checked={checked}
               id={id}
               name={name}
-              label={label}
+              label={labelWithCount}
               value={value}
               className={s.singleMode}
               largeFont
@@ -145,14 +158,23 @@ const Dropdown = ({
         const checked = values.has(value);
 
         return (
-          <li data-id={value} aria-selected={checked} role="option">
+          <li
+            data-id={value}
+            aria-selected={checked}
+            role="option"
+            aria-label={
+              count === null || count === undefined
+                ? undefined
+                : `${value}, ${count} results`
+            }
+          >
             <Checkbox
               data-qa={option["data-qa"]}
               onChange={() => onChangeMultiple(value)}
               checked={checked}
               id={id}
               name={name}
-              label={label}
+              label={labelWithCount}
               value={value}
               largeFont
             />

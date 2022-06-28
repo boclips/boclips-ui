@@ -356,4 +356,154 @@ describe("Dropdown", () => {
 
     expect(wrapper.getByText("checkbox label 2")).toBeInTheDocument();
   });
+
+  ["single", "multiple"].forEach((mode: "single" | "multiple") => {
+    it(`displays counts for options in ${mode} mode`, () => {
+      const optionsWithCounts: OptionsProps[] = [
+        {
+          id: "1",
+          name: "checkbox label 1",
+          label: "checkbox label 1",
+          value: "value-1",
+          count: 123,
+        },
+        {
+          id: "2",
+          name: "checkbox label 2",
+          label: "checkbox label 2",
+          value: "value-2",
+          count: 456,
+        },
+      ];
+
+      const wrapper = render(
+        <Dropdown
+          placeholder="this is placeholder"
+          onUpdate={jest.fn()}
+          options={optionsWithCounts}
+          mode={mode}
+          whenSelectedLabel="Selected"
+          defaultValue="value-2"
+        />
+      );
+
+      fireEvent.click(wrapper.getByTestId("select"));
+
+      const renderedOptions = wrapper.getAllByRole("option");
+
+      expect(renderedOptions[0]).toHaveTextContent("123");
+      expect(renderedOptions[1]).toHaveTextContent("456");
+    });
+
+    it(`adds aria-label with count information for options in ${mode} mod`, () => {
+      const optionsWithCounts: OptionsProps[] = [
+        {
+          id: "1",
+          name: "checkbox label 1",
+          label: "checkbox label 1",
+          value: "value-1",
+          count: 123,
+        },
+        {
+          id: "2",
+          name: "checkbox label 2",
+          label: "checkbox label 2",
+          value: "value-2",
+          count: 456,
+        },
+      ];
+
+      const wrapper = render(
+        <Dropdown
+          placeholder="this is placeholder"
+          onUpdate={jest.fn()}
+          options={optionsWithCounts}
+          mode={mode}
+          whenSelectedLabel="Selected"
+          defaultValue="value-2"
+        />
+      );
+
+      fireEvent.click(wrapper.getByTestId("select"));
+
+      const renderedOptions = wrapper.getAllByRole("option");
+
+      expect(renderedOptions[0].getAttribute("aria-label")).toEqual(
+        "value-1, 123 results"
+      );
+      expect(renderedOptions[1].getAttribute("aria-label")).toEqual(
+        "value-2, 456 results"
+      );
+    });
+
+    it(`doesn't add aria-label if count is not provided in ${mode} mode`, () => {
+      const optionsWithCounts: OptionsProps[] = [
+        {
+          id: "1",
+          name: "checkbox label 1",
+          label: "checkbox label 1",
+          value: "value-1",
+        },
+        {
+          id: "2",
+          name: "checkbox label 2",
+          label: "checkbox label 2",
+          value: "value-2",
+          count: 456,
+        },
+      ];
+
+      const wrapper = render(
+        <Dropdown
+          placeholder="this is placeholder"
+          onUpdate={jest.fn()}
+          options={optionsWithCounts}
+          mode={mode}
+          whenSelectedLabel="Selected"
+          defaultValue="value-2"
+        />
+      );
+
+      fireEvent.click(wrapper.getByTestId("select"));
+
+      const renderedOptions = wrapper.getAllByRole("option");
+
+      expect(renderedOptions[0]).not.toHaveAttribute("aria-label");
+      expect(renderedOptions[1].getAttribute("aria-label")).toEqual(
+        "value-2, 456 results"
+      );
+    });
+
+    it(`displays count and aria-label for 0 result in ${mode} mode`, () => {
+      const optionsWithCounts: OptionsProps[] = [
+        {
+          id: "1",
+          name: "checkbox label 1",
+          label: "checkbox label 1",
+          value: "value-1",
+          count: 0,
+        },
+      ];
+
+      const wrapper = render(
+        <Dropdown
+          placeholder="this is placeholder"
+          onUpdate={jest.fn()}
+          options={optionsWithCounts}
+          mode={mode}
+          whenSelectedLabel="Selected"
+          defaultValue="value-2"
+        />
+      );
+
+      fireEvent.click(wrapper.getByTestId("select"));
+
+      const renderedOptions = wrapper.getAllByRole("option");
+
+      expect(renderedOptions[0]).toHaveTextContent("checkbox label 1 0");
+      expect(renderedOptions[0].getAttribute("aria-label")).toEqual(
+        "value-1, 0 results"
+      );
+    });
+  });
 });
