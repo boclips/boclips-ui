@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/search-bar",
-  "version": "4.5.0",
+  "version": "4.5.1",
   "files": [
     "dist/**/*"
   ],
