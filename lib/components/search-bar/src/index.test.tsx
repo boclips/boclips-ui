@@ -75,7 +75,7 @@ describe("SearchBar", () => {
     expect(onSearch).toBeCalledWith("waterfall", 0, true);
   });
 
-  it("when suggestion is chosen with keyboard, search query is updated", () => {
+  it("when suggestion is chosen with keyboard, search query is updated and suggestions are hidden", () => {
     const onSearch = jest.fn();
 
     render(
@@ -96,6 +96,7 @@ describe("SearchBar", () => {
 
     expect(searchInput.getAttribute("value")).toBe("waterfall");
     expect(onSearch).toBeCalledWith("waterfall", 0, true);
+    expect(screen.queryByText("watergate")).toBeNull();
   });
 
   it(`calls onchange when value is changed`, () => {

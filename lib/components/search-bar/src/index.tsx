@@ -76,6 +76,7 @@ const SearchBar = ({
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     switch (event.key) {
       case "Enter":
+        setShowSuggestions(false);
         onSearch(query, 0, suggestionUsed);
         break;
       case "Escape":
