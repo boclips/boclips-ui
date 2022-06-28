@@ -114,9 +114,12 @@ const SearchBar = ({
     ref.current?.focus();
   };
 
-  const boldNotMatchingText = (text: string, shouldNotBeBold: string) =>
-    text
-      .split(new RegExp(`(${shouldNotBeBold})`, "i"))
+  const escapeRegExpChars = (text: string) =>
+    text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+
+  const boldNotMatchingText = (text: string, shouldNotBeBold: string) => {
+    return text
+      .split(new RegExp(`(${escapeRegExpChars(shouldNotBeBold)})`, "i"))
       .map((item: string, index: number) => {
         return (
           <>
@@ -130,6 +133,7 @@ const SearchBar = ({
           </>
         );
       });
+  };
 
   const searchSuggestions = () =>
     suggestions &&

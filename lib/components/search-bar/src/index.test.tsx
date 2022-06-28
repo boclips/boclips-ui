@@ -122,4 +122,23 @@ describe("SearchBar", () => {
     fireEvent.click(screen.getByText("waterfall"));
     expect(onChange).toHaveBeenCalledWith("waterfall");
   });
+
+  it(`having special characters in search does not break the component`, async () => {
+    render(
+      <SearchBar
+        onSearch={jest.fn()}
+        onChange={jest.fn()}
+        placeholder="test"
+        initialQuery=""
+        suggestions={["waterfall", "watergate", "c++"]}
+      />
+    );
+
+    const searchInput = screen.getByPlaceholderText("test");
+    fireEvent.change(searchInput, {
+      target: { value: "c++" },
+    });
+
+    expect(await screen.findByText("c++")).toBeInTheDocument();
+  });
 });
