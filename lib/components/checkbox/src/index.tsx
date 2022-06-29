@@ -13,6 +13,7 @@ export interface Props {
   className?: string;
   value?: string;
   largeFont?: boolean;
+  count: number;
 }
 
 const BoCheckbox = ({
@@ -25,25 +26,31 @@ const BoCheckbox = ({
   className,
   largeFont,
   value,
+  count,
 }: Props) => {
   return (
     <label className={c(s.checkboxWrapper, className)} htmlFor={id}>
-      <input
-        onChange={onChange}
-        type="checkbox"
-        className={s.checkbox}
-        name={name}
-        id={id}
-        checked={checked}
-        data-qa={dataQa}
-        value={value}
-      />
-      <Typography.Body
-        size={largeFont ? undefined : "small"}
-        weight={checked ? "medium" : undefined}
-      >
-        {label || name}
-      </Typography.Body>
+      <div className={c(s.wrapperContent)}>
+        <input
+          onChange={onChange}
+          type="checkbox"
+          className={s.checkbox}
+          name={name}
+          id={id}
+          checked={checked}
+          data-qa={dataQa}
+          value={value}
+        />
+        <Typography.Body
+          size={largeFont ? undefined : "small"}
+          weight={checked ? "medium" : undefined}
+        >
+          {label || name}
+        </Typography.Body>
+      </div>
+      <span className={s.wrapperCount} data-qa="item-count">
+        {count}
+      </span>
     </label>
   );
 };

@@ -8,18 +8,21 @@ const options: OptionsProps[] = [
     name: "checkbox label 1",
     label: "checkbox label 1",
     value: "value-1",
+    count: 1,
   },
   {
     id: "2",
     name: "checkbox label 2",
     label: "checkbox label 2",
     value: "value-2",
+    count: 1,
   },
   {
     id: "3",
     name: "checkbox label 3",
     label: "checkbox label 3",
     value: "value-3",
+    count: 1,
   },
 ];
 
@@ -357,6 +360,7 @@ describe("Dropdown", () => {
     expect(wrapper.getByText("checkbox label 2")).toBeInTheDocument();
   });
 
+  // @ts-ignore
   ["single", "multiple"].forEach((mode: "single" | "multiple") => {
     it(`displays counts for options in ${mode} mode`, () => {
       const optionsWithCounts: OptionsProps[] = [
@@ -429,10 +433,10 @@ describe("Dropdown", () => {
       const renderedOptions = wrapper.getAllByRole("option");
 
       expect(renderedOptions[0].getAttribute("aria-label")).toEqual(
-        "value-1, 123 results"
+        "checkbox label 1, 123 results"
       );
       expect(renderedOptions[1].getAttribute("aria-label")).toEqual(
-        "value-2, 456 results"
+        "checkbox label 2, 456 results"
       );
     });
 
@@ -468,13 +472,12 @@ describe("Dropdown", () => {
 
       const renderedOptions = wrapper.getAllByRole("option");
 
-      expect(renderedOptions[0]).not.toHaveAttribute("aria-label");
-      expect(renderedOptions[1].getAttribute("aria-label")).toEqual(
-        "value-2, 456 results"
+      expect(renderedOptions[0].getAttribute("aria-label")).toEqual(
+        "checkbox label 2, 456 results"
       );
     });
 
-    it(`displays count and aria-label for 0 result in ${mode} mode`, () => {
+    it(`doesn't displays count and aria-label for 0 result in ${mode} mode`, () => {
       const optionsWithCounts: OptionsProps[] = [
         {
           id: "1",
@@ -498,12 +501,9 @@ describe("Dropdown", () => {
 
       fireEvent.click(wrapper.getByTestId("select"));
 
-      const renderedOptions = wrapper.getAllByRole("option");
+      const renderedOptions = wrapper.queryByText("option");
 
-      expect(renderedOptions[0]).toHaveTextContent("checkbox label 1 0");
-      expect(renderedOptions[0].getAttribute("aria-label")).toEqual(
-        "value-1, 0 results"
-      );
+      expect(renderedOptions).toBeNull();
     });
   });
 });

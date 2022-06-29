@@ -121,9 +121,6 @@ const Dropdown = ({
 
   const renderOptions = (option: OptionsProps) => {
     const { id, name, label, value, count } = option;
-    const labelWithCount = `${label} ${
-      count === null || count === undefined ? "" : count
-    }`;
 
     switch (mode) {
       case "single": {
@@ -134,11 +131,7 @@ const Dropdown = ({
             data-id={value}
             aria-selected={checked}
             role="option"
-            aria-label={
-              count === null || count === undefined
-                ? undefined
-                : `${value}, ${count} results`
-            }
+            aria-label={`${label}, ${count} results`}
           >
             <Checkbox
               data-qa={option["data-qa"]}
@@ -146,10 +139,11 @@ const Dropdown = ({
               checked={checked}
               id={id}
               name={name}
-              label={labelWithCount}
+              label={label}
               value={value}
               className={s.singleMode}
               largeFont
+              count={count || 0}
             />
           </li>
         );
@@ -162,11 +156,7 @@ const Dropdown = ({
             data-id={value}
             aria-selected={checked}
             role="option"
-            aria-label={
-              count === null || count === undefined
-                ? undefined
-                : `${value}, ${count} results`
-            }
+            aria-label={`${label}, ${count} results`}
           >
             <Checkbox
               data-qa={option["data-qa"]}
@@ -174,9 +164,10 @@ const Dropdown = ({
               checked={checked}
               id={id}
               name={name}
-              label={labelWithCount}
+              label={label}
               value={value}
               largeFont
+              count={count || 0}
             />
           </li>
         );
@@ -245,10 +236,14 @@ const Dropdown = ({
           )}
 
           {dropdownOptions?.map((option) => {
-            return (
+            return option.count !== null &&
+              option.count !== undefined &&
+              option.count > 0 ? (
               <React.Fragment key={option.id}>
                 {renderOptions(option)}
               </React.Fragment>
+            ) : (
+              ""
             );
           })}
         </ul>
