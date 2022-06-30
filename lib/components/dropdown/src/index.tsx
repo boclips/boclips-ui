@@ -21,6 +21,7 @@ export interface Props {
   showSearch?: boolean;
   disabled?: boolean;
   defaultValue?: string[] | string;
+  relativePositionFilters?: boolean;
 }
 
 export interface OptionsProps {
@@ -43,18 +44,20 @@ const Dropdown = ({
   showSearch = false,
   disabled,
   defaultValue,
+  relativePositionFilters = false,
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [dropdownOptions, setDropdownOptions] = useState<
     OptionsProps[] | undefined
   >(options);
   const [values, setValues] = useState<Set<string>>(() => new Set());
+  const [dropdownHeight, setDropdownHeight] = useState<number | string>("auto");
 
   const [singleValue, setSingleValue] = useState<OptionsProps>();
   const [inputTextValue, setInputTextValue] = useState<string>();
 
-  const dropdownBodyRef = useRef(null);
-  const dropdownHeaderRef = useRef(null);
+  const dropdownBodyRef = useRef<HTMLUListElement>(null);
+  const dropdownHeaderRef = useRef<HTMLButtonElement>(null);
   useOnClickOutsideOrSelf(dropdownBodyRef, dropdownHeaderRef, () =>
     setOpen(false)
   );
@@ -102,6 +105,22 @@ const Dropdown = ({
       }
     }
   }, [defaultValue]);
+
+  useEffect(() => {
+    if (relativePositionFilters && open) {
+      const dropDownClone = dropdownBodyRef.current!.cloneNode(
+        true
+      ) as HTMLElement;
+      dropDownClone.style.visibility = "hidden";
+      document.querySelector("html")!.append(dropDownClone);
+      setDropdownHeight(
+        dropDownClone.offsetHeight + dropdownHeaderRef.current!.offsetHeight
+      );
+      dropDownClone.remove();
+    } else {
+      setDropdownHeight("auto");
+    }
+  }, [open, relativePositionFilters]);
 
   const onChangeMultiple = (value: string) => {
     setValues((prevState) => {
@@ -194,6 +213,7 @@ const Dropdown = ({
         [s.fitWidth]: fitWidth,
       })}
       data-qa={dataQa}
+      style={{ height: dropdownHeight }}
     >
       <button
         data-qa="select"
@@ -207,7 +227,9 @@ const Dropdown = ({
         disabled={disabled}
         ref={dropdownHeaderRef}
       >
-        <Typography.Body>{renderLabel()}</Typography.Body>
+        <Typography.Body weight={values.size > 0 ? "medium" : undefined}>
+          {renderLabel()}
+        </Typography.Body>
         <ArrowDownIcon />
       </button>
       {open && (
