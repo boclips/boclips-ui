@@ -57,7 +57,7 @@ const Dropdown = ({
   const [inputTextValue, setInputTextValue] = useState<string>();
 
   const dropdownBodyRef = useRef<HTMLUListElement>(null);
-  const dropdownHeaderRef = useRef<HTMLButtonElement>(null);
+  const dropdownHeaderRef = useRef<HTMLDivElement>(null);
   useOnClickOutsideOrSelf(dropdownBodyRef, dropdownHeaderRef, () =>
     setOpen(false)
   );
@@ -214,6 +214,7 @@ const Dropdown = ({
       })}
       data-qa={dataQa}
       style={{ height: dropdownHeight }}
+      ref={dropdownHeaderRef}
     >
       <button
         data-qa="select"
@@ -225,7 +226,6 @@ const Dropdown = ({
         onKeyDown={(e) => onKeyDownSelect(e, () => setOpen(true))}
         aria-expanded={open}
         disabled={disabled}
-        ref={dropdownHeaderRef}
       >
         <Typography.Body weight={values.size > 0 ? "medium" : undefined}>
           {renderLabel()}
