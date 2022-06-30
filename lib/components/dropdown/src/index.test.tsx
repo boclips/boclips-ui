@@ -472,7 +472,7 @@ describe("Dropdown", () => {
 
       const renderedOptions = wrapper.getAllByRole("option");
 
-      expect(renderedOptions[0].getAttribute("aria-label")).toEqual(
+      expect(renderedOptions[1].getAttribute("aria-label")).toEqual(
         "checkbox label 2, 456 results"
       );
     });

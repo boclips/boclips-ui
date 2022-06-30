@@ -13,7 +13,7 @@ export interface Props {
   className?: string;
   value?: string;
   largeFont?: boolean;
-  count: number;
+  count?: number;
 }
 
 const BoCheckbox = ({
@@ -48,9 +48,11 @@ const BoCheckbox = ({
           {label || name}
         </Typography.Body>
       </div>
-      <span className={s.wrapperCount} data-qa="item-count">
-        {count}
-      </span>
+      {count !== undefined && count > 0 && (
+        <span className={s.wrapperCount} data-qa="item-count">
+          {count}
+        </span>
+      )}
     </label>
   );
 };

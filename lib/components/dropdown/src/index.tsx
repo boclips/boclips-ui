@@ -121,6 +121,7 @@ const Dropdown = ({
 
   const renderOptions = (option: OptionsProps) => {
     const { id, name, label, value, count } = option;
+    const ariaLabel = count ? `${label}, ${count} results` : undefined;
 
     switch (mode) {
       case "single": {
@@ -131,7 +132,7 @@ const Dropdown = ({
             data-id={value}
             aria-selected={checked}
             role="option"
-            aria-label={`${label}, ${count} results`}
+            aria-label={ariaLabel}
           >
             <Checkbox
               data-qa={option["data-qa"]}
@@ -143,7 +144,7 @@ const Dropdown = ({
               value={value}
               className={s.singleMode}
               largeFont
-              count={count || 0}
+              count={count}
             />
           </li>
         );
@@ -156,7 +157,7 @@ const Dropdown = ({
             data-id={value}
             aria-selected={checked}
             role="option"
-            aria-label={`${label}, ${count} results`}
+            aria-label={ariaLabel}
           >
             <Checkbox
               data-qa={option["data-qa"]}
@@ -167,7 +168,7 @@ const Dropdown = ({
               label={label}
               value={value}
               largeFont
-              count={count || 0}
+              count={count}
             />
           </li>
         );
@@ -236,14 +237,10 @@ const Dropdown = ({
           )}
 
           {dropdownOptions?.map((option) => {
-            return option.count !== null &&
-              option.count !== undefined &&
-              option.count > 0 ? (
+            return (
               <React.Fragment key={option.id}>
                 {renderOptions(option)}
               </React.Fragment>
-            ) : (
-              ""
             );
           })}
         </ul>
