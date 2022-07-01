@@ -108,10 +108,7 @@ const Dropdown = ({
 
   useEffect(() => {
     if (relativePositionFilters && open) {
-      setDropdownHeight(
-        dropdownBodyRef.current!.offsetHeight +
-          dropdownHeaderRef.current!.offsetHeight
-      );
+      setDropdownHeight(200 + dropdownHeaderRef.current!.offsetHeight);
     } else {
       setDropdownHeight("auto");
     }
