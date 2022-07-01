@@ -108,16 +108,10 @@ const Dropdown = ({
 
   useEffect(() => {
     if (relativePositionFilters && open) {
-      const dropDownClone = dropdownBodyRef.current!.cloneNode(
-        true
-      ) as HTMLElement;
-      dropDownClone.style.visibility = "hidden";
-      document.querySelector("html")!.append(dropDownClone);
       setDropdownHeight(
         dropdownBodyRef.current!.offsetHeight +
           dropdownHeaderRef.current!.offsetHeight
       );
-      dropDownClone.remove();
     } else {
       setDropdownHeight("auto");
     }
