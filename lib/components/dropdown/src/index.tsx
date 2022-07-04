@@ -22,6 +22,7 @@ export interface Props {
   disabled?: boolean;
   defaultValue?: string[] | string;
   relativePositionFilters?: boolean;
+  selectedOptions?: string[];
 }
 
 export interface OptionsProps {
@@ -45,6 +46,7 @@ const Dropdown = ({
   disabled,
   defaultValue,
   relativePositionFilters = false,
+  selectedOptions,
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [dropdownOptions, setDropdownOptions] = useState<
@@ -83,6 +85,19 @@ const Dropdown = ({
       onUpdate(singleValue.value);
     }
   }, [singleValue]);
+
+  useEffect(() => {
+    if (selectedOptions) {
+      if (
+        selectedOptions.length > 0 &&
+        selectedOptions.length !== values.size
+      ) {
+        setValues(new Set(selectedOptions));
+      } else {
+        setValues(new Set());
+      }
+    }
+  }, [selectedOptions]);
 
   useEffect(() => {
     setDropdownOptions(options);
@@ -166,12 +181,12 @@ const Dropdown = ({
         return (
           <li
             data-id={value}
+            data-qa={value}
             aria-selected={checked}
             role="option"
             aria-label={ariaLabel}
           >
             <Checkbox
-              data-qa={option["data-qa"]}
               onChange={() => onChangeMultiple(value)}
               checked={checked}
               id={id}

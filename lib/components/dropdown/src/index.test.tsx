@@ -506,4 +506,150 @@ describe("Dropdown", () => {
       expect(renderedOptions).toBeNull();
     });
   });
+
+  it(`selectedOptions are updated on rerender`, async () => {
+    const optionsWithCounts: OptionsProps[] = [
+      {
+        id: "1",
+        name: "checkbox label 1",
+        label: "checkbox label 1",
+        value: "value-1",
+        "data-qa": "value-1",
+        count: 1,
+      },
+      {
+        id: "2",
+        name: "checkbox label 2",
+        label: "checkbox label 2",
+        value: "value-2",
+        "data-qa": "value-2",
+        count: 2,
+      },
+      {
+        id: "3",
+        name: "checkbox label 3",
+        label: "checkbox label 3",
+        value: "value-3",
+        "data-qa": "value-3",
+        count: 3,
+      },
+    ];
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        options={optionsWithCounts}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        selectedOptions={["value-2"]}
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    expect(wrapper.getByTestId("value-2")).toHaveAttribute(
+      "aria-selected",
+      "true"
+    );
+
+    wrapper.rerender(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        options={optionsWithCounts}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        selectedOptions={["value-2", "value-3"]}
+      />
+    );
+
+    expect(wrapper.getByTestId("value-1")).toHaveAttribute(
+      "aria-selected",
+      "false"
+    );
+    expect(wrapper.getByTestId("value-2")).toHaveAttribute(
+      "aria-selected",
+      "true"
+    );
+    expect(wrapper.getByTestId("value-3")).toHaveAttribute(
+      "aria-selected",
+      "true"
+    );
+  });
+
+  it(`clear all options when selectedOptions is empty`, async () => {
+    const optionsWithCounts: OptionsProps[] = [
+      {
+        id: "1",
+        name: "checkbox label 1",
+        label: "checkbox label 1",
+        value: "value-1",
+        "data-qa": "value-1",
+        count: 1,
+      },
+      {
+        id: "2",
+        name: "checkbox label 2",
+        label: "checkbox label 2",
+        value: "value-2",
+        "data-qa": "value-2",
+        count: 2,
+      },
+      {
+        id: "3",
+        name: "checkbox label 3",
+        label: "checkbox label 3",
+        value: "value-3",
+        "data-qa": "value-3",
+        count: 3,
+      },
+    ];
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        options={optionsWithCounts}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        selectedOptions={["value-2", "value-3"]}
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    expect(wrapper.getByTestId("value-2")).toHaveAttribute(
+      "aria-selected",
+      "true"
+    );
+    expect(wrapper.getByTestId("value-3")).toHaveAttribute(
+      "aria-selected",
+      "true"
+    );
+
+    wrapper.rerender(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        options={optionsWithCounts}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        selectedOptions={[]}
+      />
+    );
+
+    expect(wrapper.getByTestId("value-1")).toHaveAttribute(
+      "aria-selected",
+      "false"
+    );
+    expect(wrapper.getByTestId("value-2")).toHaveAttribute(
+      "aria-selected",
+      "false"
+    );
+    expect(wrapper.getByTestId("value-3")).toHaveAttribute(
+      "aria-selected",
+      "false"
+    );
+  });
 });
