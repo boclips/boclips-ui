@@ -88,14 +88,7 @@ const Dropdown = ({
 
   useEffect(() => {
     if (selectedOptions) {
-      if (
-        selectedOptions.length > 0 &&
-        selectedOptions.length !== values.size
-      ) {
-        setValues(new Set(selectedOptions));
-      } else {
-        setValues(new Set());
-      }
+      setValues(new Set(selectedOptions));
     }
   }, [selectedOptions]);
 
