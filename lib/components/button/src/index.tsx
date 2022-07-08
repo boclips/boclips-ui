@@ -14,7 +14,6 @@ export interface Props extends React.HTMLProps<HTMLButtonElement> {
   text?: string;
   dataQa?: string;
   suffix?: React.ReactElement;
-  ariaLabel?: string;
   className?: string;
 }
 
