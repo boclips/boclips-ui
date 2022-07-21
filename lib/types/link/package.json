@@ -15,7 +15,7 @@
     "@boclips-ui/ts-config": "^1.0.15"
   },
   "peerDependencies": {
-    "boclips-api-client": "^43.26.2",
+    "boclips-api-client": ">=43.26.2",
     "react": "17.0.2",
     "urijs": "^1.19.2"
   },
