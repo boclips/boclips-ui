@@ -1,30 +1,30 @@
 import React from "react";
-import Badge from "@boclips-ui/badge";
-import s from "./style.module.less";
+import { Typography } from "@boclips-ui/typography";
 import CloseIcon from "./resources/close-icon.svg";
+import s from "./style.module.less";
 
 export interface Props {
-  id: string;
   value: string;
-  label?: string;
-  closeIcon?: React.ReactElement;
-  onClick: (value: string) => any;
+  sourceFilter: string;
+  label: string;
+  onClose: (sourceFilter: string, value: string) => void;
 }
 
-const FilterBadge = ({ id, value, label, onClick, closeIcon }: Props) => {
-  const closeAction = (
-    <button
-      type="button"
-      className={s.closeIcon}
-      data-qa={`${id}-remove-button`}
-      onClick={() => onClick(id)}
-      aria-label={`remove ${value} filter`}
-    >
-      {closeIcon || <CloseIcon />}
-    </button>
+const FilterBadge = ({ value, sourceFilter, label, onClose }: Props) => {
+  return (
+    <Typography.Body className={s.filterBadge}>
+      {label}
+      <button
+        type="button"
+        data-qa={`remove-filter-${value}`}
+        onKeyPress={(_) => onClose(sourceFilter, value)}
+        onClick={() => onClose(sourceFilter, value)}
+        aria-label={`remove ${label} filter`}
+      >
+        <CloseIcon />
+      </button>
+    </Typography.Body>
   );
-
-  return <Badge value={value} label={label} closeIcon={closeAction} />;
 };
 
 export default FilterBadge;
