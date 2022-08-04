@@ -23,6 +23,9 @@
     "classnames": "2.2.6",
     "react": "17.0.2"
   },
+  "overrides": {
+    "react": "17.0.2"
+  },
   "publishConfig": {
     "access": "public"
   },

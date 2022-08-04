@@ -22,6 +22,9 @@
   "peerDependencies": {
     "react": "17.0.2"
   },
+  "overrides": {
+    "react": "17.0.2"
+  },
   "publishConfig": {
     "access": "public"
   },
