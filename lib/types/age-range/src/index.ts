@@ -1,4 +1,4 @@
-export const isEqualTo = (a: AgeRange, b: AgeRange) => {
+export const isEqualTo = (a: AgeRange, b: AgeRange): boolean => {
   if (a == null || b == null) {
     return false;
   }

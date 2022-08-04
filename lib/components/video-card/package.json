@@ -19,7 +19,7 @@
     "@boclips-ui/provider-badge": "^2.2.18",
     "@boclips-ui/released-on": "^2.1.16",
     "@boclips-ui/styles": "^4.1.0",
-    "@boclips-ui/subject-badge": "^2.1.20",
+    "@boclips-ui/subject-badge": "^2.1.19",
     "@boclips-ui/typography": "^2.3.7"
   },
   "devDependencies": {
@@ -29,6 +29,11 @@
     "boclips-api-client": ">=49.0.6",
     "classnames": "2.2.6",
     "react": "17.0.2"
+  },
+  "overrides": {
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "antd": "4.3.1"
   },
   "publishConfig": {
     "access": "public"

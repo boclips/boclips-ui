@@ -9,3 +9,9 @@ lerna-debug.log
 .envrc
 tsconfig.tsbuildinfo
 .npmrc
+
+# TypeScript is generating these and I don't know how to stop it
+/lib/components/video-card/storybook/*.d.ts
+/lib/components/video-card/storybook/*.d.ts.map
+/lib/types/age-range/src/*.d.ts
+/lib/types/age-range/src/*.d.ts.map
