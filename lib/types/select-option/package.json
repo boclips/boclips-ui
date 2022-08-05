@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/select-option",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "files": [
     "dist/**/*"
   ],
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/select-option --include-dependencies"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.15"
+    "@boclips-ui/ts-config": "^1.0.16"
   },
   "publishConfig": {
     "access": "public"
