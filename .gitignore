@@ -6,9 +6,7 @@
 lerna-debug.log
 .DS_Store
 */**/.DS_Store
-.envrc
 tsconfig.tsbuildinfo
-.npmrc
 
 # TypeScript is generating these and I don't know how to stop it
 /lib/components/video-card/storybook/*.d.ts
