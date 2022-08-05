@@ -9,7 +9,7 @@ echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
 echo "about to run npm ci"
 npm ci
 echo "about to bootstrap components"
-npx lerna bootstrap
+npx lerna bootstrap --ci
 echo "about to build components"
 npx lerna run build
 echo "about to publish changed components"
