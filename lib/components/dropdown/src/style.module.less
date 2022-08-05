@@ -6,10 +6,6 @@
   width: 252px;
   position: relative;
 
-  &:hover{
-    border-color: @gray-700;
-  }
-
   &.fitWidth {
     width: 100%;
   }
@@ -24,8 +20,7 @@
     width: 100%;
     border: 2px solid @gray-500;
     border-radius: .25rem;
-    min-height: 48px;
-    height: 52px;
+    height: 48px;
 
     svg {
       position: absolute;
@@ -75,6 +70,10 @@
   }
 }
 
+.wrapper:hover button {
+  border-color: @gray-700;
+}
+
 .textInput {
   padding: .5rem 0 .25rem .5rem;
   margin-bottom: .25rem;
@@ -82,6 +81,7 @@
   position: sticky;
   top:0;
   background:white;
+  font-size: 1rem;
 
   svg {
     position: relative;
@@ -95,6 +95,10 @@
   input {
     height: 40px;
     width: 100%;
+
+    &::placeholder {
+      color: @gray-700;
+    }
   }
 }
 
