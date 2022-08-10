@@ -28,7 +28,8 @@
   "peerDependencies": {
     "boclips-api-client": ">=49.0.6",
     "classnames": "2.2.6",
-    "react": "17.0.2"
+    "react": "17.0.2",
+    "boclips-player-react": "^2.9.2"
   },
   "overrides": {
     "react": "17.0.2",
