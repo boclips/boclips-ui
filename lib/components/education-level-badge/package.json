@@ -16,15 +16,11 @@
     "@boclips-ui/styles": "^4.1.1"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^1.0.16",
-    "@testing-library/react": "^11.1.0"
+    "@boclips-ui/ts-config": "^1.0.16"
   },
   "peerDependencies": {
+    "@testing-library/react": "11.1.0",
     "react": "17.0.2"
-  },
-  "overrides": {
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
   },
   "publishConfig": {
     "access": "public"
