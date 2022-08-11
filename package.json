@@ -87,6 +87,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "boclips-player-react": "^2.9.2"
+    "boclips-player-react": "^2.9.2",
+    "@duetds/date-picker": "^1.4.0"
   }
 }
