@@ -4,7 +4,7 @@ import { enGB } from "./helpers/localization";
 import { dateAdapter } from "./helpers/dateAdapter";
 import useListener from "./hooks/useListener";
 
-import "./style.module.less";
+import "./style.less";
 
 export interface DatePickerProps {
   label: string | React.ReactElement;
