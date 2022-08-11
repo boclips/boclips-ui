@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video-card",
-  "version": "5.3.5",
+  "version": "5.3.6",
   "files": [
     "dist/**/*"
   ],
@@ -19,7 +19,7 @@
     "@boclips-ui/provider-badge": "^2.2.19",
     "@boclips-ui/released-on": "^2.1.17",
     "@boclips-ui/styles": "^4.1.1",
-    "@boclips-ui/subject-badge": "^2.1.21",
+    "@boclips-ui/subject-badge": "^2.1.22",
     "@boclips-ui/typography": "^2.3.8"
   },
   "devDependencies": {
@@ -27,9 +27,9 @@
   },
   "peerDependencies": {
     "boclips-api-client": ">=49.0.6",
+    "boclips-player-react": "^2.9.2",
     "classnames": "2.2.6",
-    "react": "17.0.2",
-    "boclips-player-react": "^2.9.2"
+    "react": "17.0.2"
   },
   "overrides": {
     "react": "17.0.2",
