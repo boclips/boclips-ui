@@ -1,5 +1,6 @@
 @import "~@boclips-ui/styles/src/colors";
 @import "~@boclips-ui/styles/src/focus";
+@import "~@boclips-ui/styles/src/breakpoints";
 
 :global {
   .duet-date {
@@ -70,9 +71,24 @@
       box-shadow: none;
     }
 
+    .duet-date__dialog {
+      @media (min-width: 576px) {
+        max-width: 320px;
+        right: 0;
+        left: unset;
+      }
+    }
+
     .duet-date__dialog.is-active {
       z-index: 9999;
       background: @white;
+    }
+
+    .duet-date__dialog-content {
+      margin-left: 0;
+      @media screen and (min-width: 576px) {
+        max-width: 320px;
+      }
     }
 
     .duet-date__day {
@@ -125,4 +141,3 @@
     }
   }
 }
-
