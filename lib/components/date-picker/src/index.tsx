@@ -40,7 +40,7 @@ const DatePicker = ({
     <label htmlFor={id}>
       {label}
       {/* eslint-disable-next-line react/jsx-props-no-spreading  */ /* prettier-ignore */ /* @ts-ignore */}
-      <duet-date-picker {...props} value={value} ref={ref} identifier={id} />
+      <duet-date-picker {...props} value={value} ref={ref} identifier={id} role="dialog" />
     </label>
   );
 };
