@@ -26,6 +26,23 @@ const options: OptionsProps[] = [
   },
 ];
 
+const optionsWithZeroCount: OptionsProps[] = [
+  {
+    id: "1",
+    name: "checkbox label 1",
+    label: "checkbox label 1",
+    value: "value-1",
+    count: 1,
+  },
+  {
+    id: "2",
+    name: "checkbox label 2",
+    label: "checkbox label 2",
+    value: "value-2",
+    count: 0,
+  },
+];
+
 describe("Dropdown", () => {
   it("renders the dropdown", () => {
     const wrapper = render(
@@ -186,6 +203,57 @@ describe("Dropdown", () => {
     const dropdownWrapper = wrapper.getByTestId("dropdown");
 
     expect(dropdownWrapper).toHaveFocus();
+  });
+
+  it("closes the dropdown when focused outside the dropdown", () => {
+    const onUpdate = jest.fn();
+
+    const wrapper = render(
+      <div>
+        <Dropdown
+          placeholder="this is placeholder 1"
+          onUpdate={onUpdate}
+          options={options}
+          mode="multiple"
+          whenSelectedLabel="Selected"
+        />
+        <button type="button">focus this</button>
+      </div>
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const dropdownWrapper = wrapper.getByTestId("dropdown");
+
+    expect(dropdownWrapper).toHaveFocus();
+
+    const button = wrapper.getByText("focus this");
+
+    button.focus();
+
+    expect(button).toHaveFocus();
+
+    wrapper.debug(wrapper.baseElement, 9999);
+
+    expect(dropdownWrapper).not.toBeInTheDocument();
+  });
+
+  it("doesn't display dropdown item when count is 0", async () => {
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        options={optionsWithZeroCount}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    expect(
+      await wrapper.queryByText("checkbox label 2")
+    ).not.toBeInTheDocument();
   });
 
   it("allows to navigate through dropdown via keyboard", () => {

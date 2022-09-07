@@ -60,9 +60,8 @@ const Dropdown = ({
 
   const dropdownBodyRef = useRef<HTMLUListElement>(null);
   const dropdownHeaderRef = useRef<HTMLButtonElement>(null);
-  useOnClickOutsideOrSelf(dropdownBodyRef, dropdownHeaderRef, () =>
-    setOpen(false)
-  );
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  useOnClickOutsideOrSelf(wrapperRef, () => setOpen(false));
 
   useEffect(() => {
     if (options && inputTextValue && showSearch) {
@@ -142,6 +141,10 @@ const Dropdown = ({
     const { id, name, label, value, count } = option;
     const ariaLabel = count ? `${label}, ${count} results` : undefined;
 
+    if (count === 0) {
+      return null;
+    }
+
     switch (mode) {
       case "single": {
         const checked = value === singleValue?.value;
@@ -214,8 +217,10 @@ const Dropdown = ({
       })}
       data-qa={dataQa}
       style={{ height: dropdownHeight }}
+      ref={wrapperRef}
     >
       <button
+        // id={`${Math.random()}`}
         data-qa="select"
         type="button"
         className={c({
@@ -232,6 +237,7 @@ const Dropdown = ({
         </Typography.Body>
         <ArrowDownIcon />
       </button>
+
       {open && (
         <ul
           tabIndex={0}
