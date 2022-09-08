@@ -11,7 +11,7 @@ export default {
   component: Dropdown,
 } as Meta;
 
-const numberOfOptions = [...Array(10).keys()];
+const numberOfOptions = [...Array(33).keys()];
 
 const options1: OptionsProps[] = numberOfOptions.map((it) => {
   const id = uuidv4();

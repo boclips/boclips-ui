@@ -57,6 +57,7 @@ const Dropdown = ({
 
   const [singleValue, setSingleValue] = useState<OptionsProps>();
   const [inputTextValue, setInputTextValue] = useState<string>();
+  const [showScrollbar, setShowScrollbar] = useState<boolean>();
 
   const dropdownBodyRef = useRef<HTMLUListElement>(null);
   const dropdownHeaderRef = useRef<HTMLButtonElement>(null);
@@ -210,6 +211,14 @@ const Dropdown = ({
     return placeholder;
   };
 
+  useEffect(() => {
+    const dropdownPanel = dropdownBodyRef.current;
+
+    if (dropdownPanel) {
+      setShowScrollbar(dropdownPanel.scrollHeight > dropdownPanel.clientHeight);
+    }
+  }, [dropdownBodyRef.current]);
+
   return (
     <div
       className={c(s.wrapper, {
@@ -220,7 +229,6 @@ const Dropdown = ({
       ref={wrapperRef}
     >
       <button
-        // id={`${Math.random()}`}
         data-qa="select"
         type="button"
         className={c({
@@ -249,6 +257,7 @@ const Dropdown = ({
           ref={dropdownBodyRef}
           className={c({
             [s.below]: open,
+            [s.hasScrollbar]: showScrollbar,
           })}
         >
           {showSearch && (
