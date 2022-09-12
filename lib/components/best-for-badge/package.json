@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/best-for-badge",
-  "version": "2.1.20",
+  "version": "2.1.21",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/best-for-badge --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/badge": "^2.2.20",
+    "@boclips-ui/badge": "^2.2.21",
     "@boclips-ui/styles": "^4.1.1"
   },
   "devDependencies": {
