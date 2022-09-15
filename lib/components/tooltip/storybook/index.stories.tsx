@@ -9,10 +9,26 @@ export default {
 } as Meta;
 
 const Template: Story<Props> = ({ text, children }: Props) => (
-  <div style={{ width: 100, marginTop: 100 }}>
-    <Tooltip text={text}>
-      <div className={s.hoverText}>{children}</div>
-    </Tooltip>
+  <div
+    style={{ display: "flex", width: "100%", justifyContent: "space-between" }}
+  >
+    <div style={{ width: 100, marginTop: 100 }}>
+      <Tooltip text={text}>
+        <div className={s.hoverText}>{children}</div>
+      </Tooltip>
+    </div>
+
+    <div style={{ width: 100, marginTop: 300 }}>
+      <Tooltip text={text}>
+        <div className={s.hoverText}>{children}</div>
+      </Tooltip>
+    </div>
+
+    <div style={{ width: 100, marginTop: 100 }}>
+      <Tooltip text={text}>
+        <div className={s.hoverText}>{children}</div>
+      </Tooltip>
+    </div>
   </div>
 );
 

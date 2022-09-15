@@ -7,6 +7,8 @@ export interface Props {
   children: React.ReactNode;
 }
 
+const PADDING_X = 2;
+
 const Tooltip = ({ children, text }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [leftOffset, setLeftOffset] = useState<number>(0);
@@ -16,7 +18,11 @@ const Tooltip = ({ children, text }: Props) => {
   React.useLayoutEffect(() => {
     // This covers an edge case of screen resizing and not setting the offset back to default if it can center the tooltip correctly
     if (tooltipRef.current) {
-      if (tooltipRef.current.getBoundingClientRect().x >= 0) {
+      if (
+        tooltipRef.current.getBoundingClientRect().x >= 0 ||
+        tooltipRef.current.getBoundingClientRect().right <=
+          document.body.clientWidth
+      ) {
         setLeftOffset(0);
       }
     }
@@ -25,13 +31,25 @@ const Tooltip = ({ children, text }: Props) => {
   React.useLayoutEffect(() => {
     // This shifts the tooltip back into the viewport
     if (tooltipRef.current) {
-      if (tooltipRef.current.getBoundingClientRect().x < 0) {
-        setLeftOffset(tooltipRef.current.getBoundingClientRect().x);
+      const boundingRect = tooltipRef.current.getBoundingClientRect();
+
+      if (boundingRect.width > document.body.clientWidth) {
+        return;
+      }
+
+      if (boundingRect.x < 0) {
+        setLeftOffset(boundingRect.x - PADDING_X);
+      } else if (boundingRect.right > document.body.clientWidth) {
+        setLeftOffset(
+          (previousOffset) =>
+            boundingRect.right -
+            document.body.clientWidth +
+            PADDING_X +
+            previousOffset
+        );
       }
     }
   });
-
-  const translateX = leftOffset ? 0 : "-50%";
 
   return (
     <div
@@ -45,8 +63,8 @@ const Tooltip = ({ children, text }: Props) => {
           <div
             ref={tooltipRef}
             style={{
-              left: leftOffset || "50%",
-              transform: `translateX(${translateX})`,
+              left: `calc(50% - ${leftOffset}px)`,
+              transform: `translateX(-50%)`,
             }}
             className={c(s.tooltip)}
           >
