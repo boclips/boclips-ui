@@ -11,6 +11,7 @@ export interface DatePickerProps {
   onChange: (date: any) => void;
   id?: string;
   value?: string;
+  ariaLabel: string;
   onFocus?: () => void;
   onBlur?: () => void;
   onOpen?: () => void;
@@ -22,6 +23,7 @@ const DatePicker = ({
   label,
   value,
   id = "date",
+  ariaLabel,
   ...props
 }: DatePickerProps): React.ReactElement => {
   defineCustomElements(window);
@@ -40,7 +42,7 @@ const DatePicker = ({
     <label htmlFor={id}>
       {label}
       {/* eslint-disable-next-line react/jsx-props-no-spreading  */ /* prettier-ignore */ /* @ts-ignore */}
-      <duet-date-picker {...props} value={value} ref={ref} identifier={id} role="dialog" />
+      <duet-date-picker {...props} value={value} ref={ref} identifier={id} role="dialog" aria-label={ariaLabel} />
     </label>
   );
 };
