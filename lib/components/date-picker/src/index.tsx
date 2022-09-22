@@ -7,11 +7,10 @@ import useListener from "./hooks/useListener";
 import "./style.module.less";
 
 export interface DatePickerProps {
-  label: string | React.ReactElement;
+  label?: string | React.ReactElement;
   onChange: (date: any) => void;
   id?: string;
   value?: string;
-  ariaLabel: string;
   onFocus?: () => void;
   onBlur?: () => void;
   onOpen?: () => void;
@@ -23,7 +22,6 @@ const DatePicker = ({
   label,
   value,
   id = "date",
-  ariaLabel,
   ...props
 }: DatePickerProps): React.ReactElement => {
   defineCustomElements(window);
@@ -42,7 +40,7 @@ const DatePicker = ({
     <label htmlFor={id}>
       {label}
       {/* eslint-disable-next-line react/jsx-props-no-spreading  */ /* prettier-ignore */ /* @ts-ignore */}
-      <duet-date-picker {...props} value={value} ref={ref} identifier={id} role="dialog" aria-label={ariaLabel} />
+      <duet-date-picker {...props} value={value} ref={ref} identifier={id} />
     </label>
   );
 };

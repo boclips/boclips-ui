@@ -1,6 +1,5 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Typography } from "@boclips-ui/typography";
 import DatePicker, { DatePickerProps } from "../src/index";
 
 export default {
@@ -10,10 +9,7 @@ export default {
 
 const Template: Story<DatePickerProps> = () => (
   <>
-    <DatePicker
-      label={<Typography.Body size="small">From:</Typography.Body>}
-      onChange={(date: any) => console.log(date)}
-    />
+    <DatePicker onChange={(date: any) => console.log(date)} />
   </>
 );
 
