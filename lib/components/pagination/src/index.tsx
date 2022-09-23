@@ -1,19 +1,22 @@
 import React, { ReactElement, ReactNode, useEffect, useRef } from "react";
 import c from "classnames";
 import s from "./styles.module.less";
-import Chevron from "../resources/chevron.svg";
+import NextPageChevron from "../resources/next-page-chevron.svg";
+import PreviousPageChevron from "../resources/previous-page-chevron.svg";
 import Ellipsis from "../resources/ellipsis.svg";
 
 interface CustomPaginationButtonProps {
   largeButton?: boolean;
   children: ReactNode;
   currentPageActive?: boolean;
+  ariaLabel: string;
 }
 
 const CustomPaginationButton = ({
   children,
   largeButton,
   currentPageActive,
+  ariaLabel,
 }: CustomPaginationButtonProps) => {
   const ref = useRef(null);
 
@@ -29,6 +32,7 @@ const CustomPaginationButton = ({
   return (
     <button
       aria-current={currentPageActive && "page"}
+      aria-label={ariaLabel}
       type="button"
       ref={ref}
       className={c(s.button, {
@@ -58,23 +62,22 @@ const Pagination = ({
 }: PaginationProps): ReactElement | null => {
   if (buttonType === "prev") {
     return page > 0 ? (
-      <CustomPaginationButton largeButton={!mobileView}>
+      <CustomPaginationButton
+        ariaLabel="go to previous page"
+        largeButton={!mobileView}
+      >
         <div className={s.prev}>
-          <Chevron />
+          <PreviousPageChevron />
         </div>
-        {!mobileView && (
-          <span aria-label="Previous page" className={s.copy}>
-            Prev
-          </span>
-        )}
+        {!mobileView && <span className={s.copy}>Prev</span>}
       </CustomPaginationButton>
     ) : null;
   }
 
   if (buttonType === "jump-prev" || buttonType === "jump-next") {
     return (
-      <CustomPaginationButton>
-        <div aria-label="skip 5 pages" className={s.ellipsis}>
+      <CustomPaginationButton ariaLabel="skip 5 pages">
+        <div className={s.ellipsis}>
           <Ellipsis />
         </div>
       </CustomPaginationButton>
@@ -83,26 +86,23 @@ const Pagination = ({
 
   if (buttonType === "page") {
     return (
-      <CustomPaginationButton currentPageActive={currentPage === page}>
-        <span
-          aria-label={page ? `Page ${page} out of ${totalItems}` : ""}
-          className={s.copy}
-        >
-          {page}
-        </span>
+      <CustomPaginationButton
+        ariaLabel={page ? `Page ${page} out of ${totalItems}` : ""}
+        currentPageActive={currentPage === page}
+      >
+        <span className={s.copy}>{page}</span>
       </CustomPaginationButton>
     );
   }
 
   if (buttonType === "next") {
     return (
-      <CustomPaginationButton largeButton={!mobileView}>
-        {!mobileView && (
-          <span aria-label="Next page" className={s.copy}>
-            Next
-          </span>
-        )}
-        <Chevron />
+      <CustomPaginationButton
+        ariaLabel="go to next page"
+        largeButton={!mobileView}
+      >
+        {!mobileView && <span className={s.copy}>Next</span>}
+        <NextPageChevron />
       </CustomPaginationButton>
     );
   }
