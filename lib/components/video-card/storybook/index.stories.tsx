@@ -31,17 +31,44 @@ const Template: Story<Props & Components & StorybookProps> = ({
   duration,
   additionalBadges,
 }: Props & Components & StorybookProps) => (
-  <div className={s[theme]}>
-    <VideoCard
-      video={video}
-      duration={duration}
-      videoPlayer={videoPlayer}
-      actions={actions}
-      handleOnClick={handleOnClick}
-      title={title}
-      additionalBadges={additionalBadges}
-      topBadge={<div>$600</div>}
-    />
+  <div
+    className={s[theme]}
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+      alignItems: "center",
+    }}
+  >
+    <div style={{ width: "1092px" }}>
+      <h5>desktop size video card on bwa</h5>
+
+      <VideoCard
+        video={video}
+        duration={duration}
+        videoPlayer={videoPlayer}
+        actions={actions}
+        handleOnClick={handleOnClick}
+        title={title}
+        additionalBadges={additionalBadges}
+        topBadge={<div>$600</div>}
+      />
+    </div>
+
+    <div style={{ width: "915px" }}>
+      <h5>desktop size video card on bwa</h5>
+
+      <VideoCard
+        video={video}
+        duration={duration}
+        videoPlayer={videoPlayer}
+        actions={actions}
+        handleOnClick={handleOnClick}
+        title={title}
+        additionalBadges={additionalBadges}
+        topBadge={<div>$600</div>}
+      />
+    </div>
   </div>
 );
 

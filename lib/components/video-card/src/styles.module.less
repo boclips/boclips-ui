@@ -255,7 +255,6 @@
     grid-column-end: 18;
     white-space: break-spaces;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-top: 0;
@@ -278,9 +277,17 @@
   }
 }
 
-@media screen and (min-width: @screen-xl) {
+@media screen and (min-width: @screen-md) {
   .description {
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 1;
+    padding-top: 0;
+  }
+}
+
+@media screen and (min-width: @screen-lg) {
+  .description {
+    -webkit-line-clamp: 2;
+    padding-top: 0.5rem;
   }
 
   .buttons {
