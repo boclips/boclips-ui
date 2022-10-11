@@ -41,33 +41,27 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
         templated: false,
       },
       download: {
-        href:
-          "https://cdnapisec.kaltura.com/p/1776261/sp/177626100/playManifest/entryId/0_0r24xtco/format/download/protocol/https/flavorParamIds/0",
+        href: "https://cdnapisec.kaltura.com/p/1776261/sp/177626100/playManifest/entryId/0_0r24xtco/format/download/protocol/https/flavorParamIds/0",
         templated: false,
       },
       thumbnail: {
-        href:
-          "https://cdnapisec.kaltura.com/p/1776261/thumbnail/entry_id/0_0r24xtco/width/{thumbnailWidth}/vid_slices/3/vid_slice/1",
+        href: "https://cdnapisec.kaltura.com/p/1776261/thumbnail/entry_id/0_0r24xtco/width/{thumbnailWidth}/vid_slices/3/vid_slice/1",
         templated: true,
       },
       setThumbnailBySecond: {
-        href:
-          "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/playback{?thumbnailSecond}",
+        href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/playback{?thumbnailSecond}",
         templated: true,
       },
       setCustomThumbnail: {
-        href:
-          "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/playback{?playbackId,thumbnailImage}",
+        href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/playback{?playbackId,thumbnailImage}",
         templated: true,
       },
       videoPreview: {
-        href:
-          "https://cdnapisec.kaltura.com/p/1776261/thumbnail/entry_id/0_0r24xtco/width/{thumbnailWidth}/vid_slices/{thumbnailCount}",
+        href: "https://cdnapisec.kaltura.com/p/1776261/thumbnail/entry_id/0_0r24xtco/width/{thumbnailWidth}/vid_slices/{thumbnailCount}",
         templated: true,
       },
       hlsStream: {
-        href:
-          "https://cdnapisec.kaltura.com/p/1776261/sp/177626100/playManifest/entryId/0_0r24xtco/format/applehttp/flavorParamIds/487041%2C487051%2C487061%2C487071%2C487081%2C487091%2C487111%2C1049881/protocol/https/video.mp4",
+        href: "https://cdnapisec.kaltura.com/p/1776261/sp/177626100/playManifest/entryId/0_0r24xtco/format/applehttp/flavorParamIds/487041%2C487051%2C487061%2C487071%2C487081%2C487091%2C487111%2C1049881/protocol/https/video.mp4",
         templated: false,
       },
     },
@@ -126,18 +120,15 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
       templated: false,
     },
     logInteraction: {
-      href:
-        "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/events?logVideoInteraction=true&type={type}",
+      href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/events?logVideoInteraction=true&type={type}",
       templated: true,
     },
     detailsProjection: {
-      href:
-        "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58?projection=details",
+      href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58?projection=details",
       templated: false,
     },
     fullProjection: {
-      href:
-        "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58?projection=full",
+      href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58?projection=full",
       templated: false,
     },
     assets: {
@@ -145,8 +136,7 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
       templated: false,
     },
     rate: {
-      href:
-        "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58?rating={rating}",
+      href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58?rating={rating}",
       templated: true,
     },
     update: {
@@ -154,8 +144,7 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
       templated: false,
     },
     addAttachment: {
-      href:
-        "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/attachments",
+      href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/attachments",
       templated: false,
     },
     tag: {
@@ -163,8 +152,7 @@ HISTORY®, now reaching more than 98 million homes, is the leading destination f
       templated: false,
     },
     transcript: {
-      href:
-        "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/transcript",
+      href: "https://api.boclips.com/v1/videos/5c54d7cdd8eafeecae20ee58/transcript",
       templated: false,
     },
   },

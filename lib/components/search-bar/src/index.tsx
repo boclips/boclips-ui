@@ -37,9 +37,8 @@ const SearchBar = ({
   const [query, setQuery] = useState<string>("");
   const [showSuggestions, setShowSuggestions] = useState<boolean>(true);
   const [suggestionUsed, setSuggestionUsed] = useState<boolean>(false);
-  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number>(
-    -1
-  );
+  const [activeSuggestionIndex, setActiveSuggestionIndex] =
+    useState<number>(-1);
   const ref = useRef<HTMLInputElement | null>(null);
 
   const resetSuggestionDropdownState = () => {
@@ -160,44 +159,42 @@ const SearchBar = ({
     );
 
   return (
-    <>
-      <div className={s.searchAndSuggestions}>
-        <div role="search" className={s.searchBarWrapper}>
-          <input
-            ref={ref}
-            id="search"
-            type="text"
-            placeholder={placeholder || "Search for videos"}
-            onChange={(e) => onSearchChanged(e.target.value)}
-            onKeyDown={onKeyDown}
-            value={query}
-            autoComplete="off"
+    <div className={s.searchAndSuggestions}>
+      <div role="search" className={s.searchBarWrapper}>
+        <input
+          ref={ref}
+          id="search"
+          type="text"
+          placeholder={placeholder || "Search for videos"}
+          onChange={(e) => onSearchChanged(e.target.value)}
+          onKeyDown={onKeyDown}
+          value={query}
+          autoComplete="off"
+        />
+        <div className={s.buttons}>
+          {query.length > 0 && (
+            <button
+              className={s.clearButton}
+              type="button"
+              aria-label="clear search text"
+              onClick={onClear}
+            >
+              <CloseIcon />
+            </button>
+          )}
+          <Button
+            role="button"
+            dataQa="search-button"
+            aria-label="search"
+            icon={<SearchIcon />}
+            iconOnly={iconOnlyButton}
+            onClick={() => onSearch(query, 0, suggestionUsed)}
+            text={buttonText || "Search"}
           />
-          <div className={s.buttons}>
-            {query.length > 0 && (
-              <button
-                className={s.clearButton}
-                type="button"
-                aria-label="clear search text"
-                onClick={onClear}
-              >
-                <CloseIcon />
-              </button>
-            )}
-            <Button
-              role="button"
-              dataQa="search-button"
-              aria-label="search"
-              icon={<SearchIcon />}
-              iconOnly={iconOnlyButton}
-              onClick={() => onSearch(query, 0, suggestionUsed)}
-              text={buttonText || "Search"}
-            />
-          </div>
         </div>
-        {showSuggestions && searchSuggestions()}
       </div>
-    </>
+      {showSuggestions && searchSuggestions()}
+    </div>
   );
 };
 

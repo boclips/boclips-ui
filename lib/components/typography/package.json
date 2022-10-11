@@ -11,20 +11,20 @@
     "build": "webpack --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
     "build:dep": "lerna run build --stream --scope=@boclips-ui/typography --include-dependencies"
   },
+  "dependencies": {
+    "@boclips-ui/media-breakpoints": "^2.0.4",
+    "@boclips-ui/styles": "^4.1.1",
+    "@boclips-ui/use-media-breakpoints": "^2.0.7"
+  },
   "devDependencies": {
     "@boclips-ui/ts-config": "^1.0.16"
   },
   "peerDependencies": {
-    "react": "17.0.2"
+    "react": "18.2.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2",
-  "dependencies": {
-    "@boclips-ui/media-breakpoints": "^2.0.4",
-    "@boclips-ui/styles": "^4.1.1",
-    "@boclips-ui/use-media-breakpoints": "^2.0.7"
-  }
+  "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2"
 }

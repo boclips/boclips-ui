@@ -1,10 +1,5 @@
 import "@testing-library/jest-dom";
-import Enzyme from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import "jest-enzyme";
 import { configure } from "@testing-library/dom";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 // create window object
 declare const window: any;

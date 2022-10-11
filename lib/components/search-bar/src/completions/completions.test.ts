@@ -1,7 +1,5 @@
 import { completionsFor } from "./completions";
 
-const objectContaining = jasmine.objectContaining;
-
 const getCompletions = (allCompletions: string[]) => (text: string) =>
   completionsFor({ test: allCompletions })(text).map(
     (completion) => completion.text
@@ -42,11 +40,11 @@ test("distinguishes between matches from different lists", () => {
   expect(
     completionsFor({ listA: ["three"], listB: ["two three"] })("thr")
   ).toEqual([
-    objectContaining({
+    expect.objectContaining({
       text: "three",
       list: "listA",
     }),
-    objectContaining({
+    expect.objectContaining({
       text: "two three",
       list: "listB",
     }),

@@ -51,17 +51,19 @@ export const onKeyDownDropdown = (
         }
 
         if (!activeElement) {
-          (activeOption.querySelector(
-            "input[type='checkbox']"
-          ) as HTMLElement).focus();
+          (
+            activeOption.querySelector("input[type='checkbox']") as HTMLElement
+          ).focus();
           activeOption.setAttribute("aria-activedescendant", id);
           break;
         }
         activeOption.removeAttribute("aria-activedescendant");
 
-        (nextSibling.querySelector(
-          "input[type='checkbox']"
-        ) as HTMLInputElement).focus();
+        (
+          nextSibling.querySelector(
+            "input[type='checkbox']"
+          ) as HTMLInputElement
+        ).focus();
 
         nextSibling.setAttribute("aria-activedescendant", id);
         break;
@@ -71,17 +73,21 @@ export const onKeyDownDropdown = (
           break;
         }
         if (!activeElement) {
-          (activeOption.querySelector(
-            "input[type='checkbox']"
-          ) as HTMLInputElement).focus();
+          (
+            activeOption.querySelector(
+              "input[type='checkbox']"
+            ) as HTMLInputElement
+          ).focus();
           activeOption.setAttribute("aria-activedescendant", id);
           return;
         }
         activeOption.removeAttribute("aria-activedescendant");
 
-        (previousSibling.querySelector(
-          "input[type='checkbox']"
-        ) as HTMLInputElement).focus();
+        (
+          previousSibling.querySelector(
+            "input[type='checkbox']"
+          ) as HTMLInputElement
+        ).focus();
 
         previousSibling.setAttribute("aria-activedescendant", id);
         break;

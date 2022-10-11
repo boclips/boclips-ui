@@ -112,5 +112,7 @@ interface EnrichedEntry {
   entry: string;
 }
 
-export const completionsFor = (lists: Lists) => (txt: string): Completion[] =>
-  txt.length >= 3 ? completions(lists, txt) : [];
+export const completionsFor =
+  (lists: Lists) =>
+  (txt: string): Completion[] =>
+    txt.length >= 3 ? completions(lists, txt) : [];

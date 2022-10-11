@@ -1,6 +1,6 @@
-import { mount } from "enzyme";
 import React from "react";
 import { act } from "react-dom/test-utils";
+import { render } from "@testing-library/react";
 import { useMediaBreakPoint } from "./index";
 
 const setWidth = (width: number) => {
@@ -14,38 +14,44 @@ const setWidth = (width: number) => {
 const WithWidthBreakpointComponent = () => {
   const breakpoint = useMediaBreakPoint();
 
-  return <div data-breakpoint-type={breakpoint.type} />;
+  return <div data-breakpoint-type={breakpoint.type}>get me</div>;
 };
 
 describe("breakpoints", () => {
   it("injects correct props to child component when sm width", () => {
     setWidth(320);
-    const wrapper = mount(<WithWidthBreakpointComponent />);
+    const wrapper = render(<WithWidthBreakpointComponent />);
 
-    expect(wrapper.find("div").prop("data-breakpoint-type")).toEqual("mobile");
+    expect(
+      wrapper.getByText("get me").getAttribute("data-breakpoint-type")
+    ).toEqual("mobile");
   });
 
   it("injects correct props to child component when md width", () => {
     setWidth(768);
-    const wrapper = mount(<WithWidthBreakpointComponent />);
+    const wrapper = render(<WithWidthBreakpointComponent />);
 
-    expect(wrapper.find("div").prop("data-breakpoint-type")).toEqual("tablet");
+    expect(
+      wrapper.getByText("get me").getAttribute("data-breakpoint-type")
+    ).toEqual("tablet");
   });
 
   it("injects correct props to child component when lg width", () => {
     setWidth(1148);
-    const wrapper = mount(<WithWidthBreakpointComponent />);
+    const wrapper = render(<WithWidthBreakpointComponent />);
 
-    expect(wrapper.find("div").prop("data-breakpoint-type")).toEqual("desktop");
+    expect(
+      wrapper.getByText("get me").getAttribute("data-breakpoint-type")
+    ).toEqual("desktop");
   });
 
   it("injects correct props to child component when window is resized", () => {
     setWidth(300);
-    const wrapper = mount(<WithWidthBreakpointComponent />);
+    const wrapper = render(<WithWidthBreakpointComponent />);
 
     setWidth(1148);
-    wrapper.update();
-
-    expect(wrapper.find("div").prop("data-breakpoint-type")).toEqual("desktop");
+    expect(
+      wrapper.getByText("get me").getAttribute("data-breakpoint-type")
+    ).toEqual("desktop");
   });
 });

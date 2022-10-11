@@ -8,9 +8,7 @@ export default {
 } as Meta;
 
 const Template: Story<DatePickerProps> = () => (
-  <>
-    <DatePicker onChange={(date: any) => console.log(date)} />
-  </>
+  <DatePicker onChange={(date: any) => console.log(date)} />
 );
 
 export const Sample = Template.bind({});

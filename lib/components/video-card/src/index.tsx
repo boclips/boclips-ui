@@ -11,7 +11,7 @@ const YOUTUBE = "YOUTUBE";
 
 export interface Props {
   video: Video;
-  handleOnClick?: () => void;
+  // handleOnClick?: () => void;
 }
 
 export interface Components {

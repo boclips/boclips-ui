@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, within } from "@testing-library/react";
+import { fireEvent, render, waitFor, within } from "@testing-library/react";
 import Dropdown, { OptionsProps } from "./index";
 
 const options: OptionsProps[] = [
@@ -233,9 +233,9 @@ describe("Dropdown", () => {
 
     expect(button).toHaveFocus();
 
-    wrapper.debug(wrapper.baseElement, 9999);
-
-    expect(dropdownWrapper).not.toBeInTheDocument();
+    waitFor(() => {
+      expect(dropdownWrapper).not.toBeInTheDocument();
+    });
   });
 
   it("doesn't display dropdown item when count is 0", async () => {

@@ -8,14 +8,14 @@ import s from "./styles.module.less";
 
 export interface Props {
   options: SelectOption[];
-  displayButtons?: boolean;
+  // displayButtons?: boolean;
   title: string;
   onApply: (selected: string[]) => void;
   allowSearch?: boolean;
   filtersFromContext?: string[] | undefined;
   showFacets?: boolean;
   searchPlaceholder?: string;
-  touched?: (touched: boolean) => void;
+  // touched?: (touched: boolean) => void;
   relativePositionFilters?: boolean;
   inputPrefixIcon?: React.ReactElement;
 }
@@ -150,7 +150,7 @@ const SelectFilter = ({
         options={getOptions}
         data-qa="select-dropdown"
         className={c(s.selectWrapper, { [s.filterSelectOpened]: dropdownOpen })}
-        dropdownClassName={s.filterSelectWrapper}
+        popupClassName={s.filterSelectWrapper}
         menuItemSelectedIcon={null}
         // @ts-ignore
         getPopupContainer={() => document.getElementById(id)}

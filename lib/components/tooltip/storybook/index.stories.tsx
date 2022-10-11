@@ -40,7 +40,6 @@ lessText.args = {
   children: <div>Tooltip with less text</div>,
 };
 moreText.args = {
-  text:
-    "I am the tooltip content, I am the tooltip content, I am the tooltip content, I am the tooltip content",
+  text: "I am the tooltip content, I am the tooltip content, I am the tooltip content, I am the tooltip content",
   children: <div>Tooltip with more text</div>,
 };
