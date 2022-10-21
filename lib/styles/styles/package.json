@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/styles",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "main": "./index.less",
   "scripts": {},
   "publishConfig": {
