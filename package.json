@@ -85,6 +85,6 @@
   },
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
-    "boclips-player-react": "^2.9.4-dev.2"
+    "boclips-player-react": "3.0.0"
   }
 }
