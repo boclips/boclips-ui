@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/dropdown",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -12,13 +12,13 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/dropdown --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/checkbox": "^2.0.0",
-    "@boclips-ui/input": "^2.0.0",
-    "@boclips-ui/styles": "^5.0.0",
-    "@boclips-ui/typography": "^3.0.0"
+    "@boclips-ui/checkbox": "^2.0.1",
+    "@boclips-ui/input": "^2.0.1",
+    "@boclips-ui/styles": "^5.0.1",
+    "@boclips-ui/typography": "^3.0.1"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^2.0.0"
+    "@boclips-ui/ts-config": "^2.0.1"
   },
   "peerDependencies": {
     "react": "18.2.0"
