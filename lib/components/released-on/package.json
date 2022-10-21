@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/released-on",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0",
   "files": [
     "dist/**/*"
   ],
@@ -12,11 +12,11 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/released-on --include-dependencies"
   },
   "dependencies": {
-    "@boclips-ui/styles": "^5.0.0-alpha.0",
-    "@boclips-ui/typography": "^3.0.0-alpha.0"
+    "@boclips-ui/styles": "^5.0.0",
+    "@boclips-ui/typography": "^3.0.0"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^2.0.0-alpha.0"
+    "@boclips-ui/ts-config": "^2.0.0"
   },
   "peerDependencies": {
     "react": "18.2.0"

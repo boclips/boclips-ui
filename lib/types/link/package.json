@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/link",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0",
   "files": [
     "dist/**/*"
   ],
@@ -12,7 +12,7 @@
     "build:dep": "lerna run build --stream --scope=@boclips-ui/link --include-dependencies"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^2.0.0-alpha.0"
+    "@boclips-ui/ts-config": "^2.0.0"
   },
   "peerDependencies": {
     "boclips-api-client": ">=43.26.2",
