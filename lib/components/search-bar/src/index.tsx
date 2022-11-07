@@ -23,6 +23,7 @@ export interface Props {
   buttonText?: string;
   suggestions?: string[];
   onChange?: (search: string) => void;
+  showSkipButton?: boolean;
 }
 
 const SearchBar = ({
@@ -33,6 +34,7 @@ const SearchBar = ({
   buttonText,
   suggestions,
   onChange,
+  showSkipButton = false,
 }: Props): ReactElement => {
   const [query, setQuery] = useState<string>("");
   const [showSuggestions, setShowSuggestions] = useState<boolean>(true);
@@ -158,9 +160,11 @@ const SearchBar = ({
       </span>
     );
 
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className={s.searchAndSuggestions}>
-      <div role="search" className={s.searchBarWrapper}>
+      <div ref={wrapperRef} role="search" className={s.searchBarWrapper}>
         <input
           ref={ref}
           id="search"
@@ -171,6 +175,15 @@ const SearchBar = ({
           value={query}
           autoComplete="off"
         />
+        {showSkipButton && (
+          <Button
+            className={s.skip}
+            onClick={() => {
+              document.querySelector("main")?.focus();
+            }}
+            text="Skip to content"
+          />
+        )}
         <div className={s.buttons}>
           {query.length > 0 && (
             <button

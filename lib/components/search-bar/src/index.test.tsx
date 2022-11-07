@@ -1,5 +1,6 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import SearchBar from "./index";
 
@@ -140,5 +141,99 @@ describe("SearchBar", () => {
     });
 
     expect(await screen.findByText("c++")).toBeInTheDocument();
+  });
+});
+
+describe("a11y", () => {
+  it("displays skip to content button when focused", async () => {
+    const wrapper = render(
+      <SearchBar
+        onSearch={jest.fn()}
+        onChange={jest.fn()}
+        placeholder="Search..."
+        initialQuery=""
+        showSkipButton
+      />
+    );
+
+    expect(
+      wrapper.getByRole("button", {
+        name: "Skip to content",
+      })
+    ).toBeInTheDocument();
+
+    expect(
+      wrapper.getByRole("button", {
+        name: "Skip to content",
+      })
+    ).toHaveClass("skip");
+
+    await userEvent.tab();
+
+    await userEvent.type(wrapper.getByPlaceholderText("Search..."), "cats");
+
+    await userEvent.tab();
+
+    await waitFor(() => {
+      expect(document.activeElement).toEqual(
+        wrapper.getByRole("button", {
+          name: "Skip to content",
+        })
+      );
+    });
+  });
+
+  it("change focus to main when button clicked", async () => {
+    const wrapper = render(
+      <>
+        <SearchBar
+          onSearch={jest.fn()}
+          onChange={jest.fn()}
+          placeholder="Search..."
+          initialQuery=""
+          showSkipButton
+        />
+        <main tabIndex={-1}> 123 </main>
+      </>
+    );
+
+    await userEvent.tab();
+
+    await userEvent.type(wrapper.getByPlaceholderText("Search..."), "cats");
+
+    await userEvent.tab();
+
+    expect(document.activeElement).toBe(
+      wrapper.getByRole("button", {
+        name: "Skip to content",
+      })
+    );
+
+    fireEvent.click(document.activeElement!);
+
+    await waitFor(() => expect(wrapper.getByRole("main")).toHaveFocus());
+  });
+
+  it("doesn't display skip button if not needed", async () => {
+    const wrapper = render(
+      <SearchBar
+        onSearch={jest.fn()}
+        onChange={jest.fn()}
+        placeholder="Search..."
+        initialQuery=""
+      />
+    );
+
+    await userEvent.tab();
+
+    await userEvent.type(wrapper.getByPlaceholderText("Search..."), "cats");
+
+    await userEvent.tab();
+
+    expect(document.activeElement).not.toBe(
+      wrapper.queryByRole("button", {
+        name: "Skip to content",
+      })
+    );
   });
 });
