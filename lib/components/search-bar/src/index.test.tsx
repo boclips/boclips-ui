@@ -214,7 +214,7 @@ describe("a11y", () => {
     await waitFor(() => expect(wrapper.getByRole("main")).toHaveFocus());
   });
 
-  it("doesn't display skip button if not needed", async () => {
+  it("doesn't display skip to content button if not needed", async () => {
     const wrapper = render(
       <SearchBar
         onSearch={jest.fn()}
