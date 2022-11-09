@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video-card",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "files": [
     "dist/**/*"
   ],
