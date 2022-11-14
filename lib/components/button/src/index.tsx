@@ -54,7 +54,10 @@ const Button = React.forwardRef(
       {!iconOnly && (
         <Typography.Body
           weight="medium"
-          className={c(s.copy, { [s.copyWithIcon]: icon })}
+          className={c(s.copy, {
+            [s.copyWithPrefixIcon]: icon,
+            [s.copyWithSuffixIcon]: suffix,
+          })}
         >
           {text}
         </Typography.Body>

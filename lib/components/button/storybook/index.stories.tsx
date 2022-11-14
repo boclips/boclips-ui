@@ -6,49 +6,42 @@ import SearchIcon from "../resources/search-icon.svg";
 // @ts-ignore
 import s from "./styles.module.less";
 
-interface StorybookProps {
-  theme: "lti" | "publishers" | "text";
-}
-
 export default {
   title: "Button",
   component: Button,
 } as Meta;
 
-const Template: Story<Props & StorybookProps> = ({
+const Template: Story<Props> = ({
   onClick,
-  theme,
   iconOnly,
   type,
   height,
   width,
   disabled,
+  suffix,
   icon,
   text,
-}: Props & StorybookProps) => (
-  <div style={{ height: "55px" }} className={s[theme]}>
-    <Button
-      aria-label="hello"
-      onClick={onClick}
-      iconOnly={iconOnly}
-      type={type}
-      height={height}
-      width={width}
-      disabled={disabled}
-      icon={icon}
-      text={text}
-    />
-  </div>
+}: Props) => (
+  <Button
+    aria-label="hello"
+    onClick={onClick}
+    iconOnly={iconOnly}
+    type={type}
+    height={height}
+    width={width}
+    disabled={disabled}
+    icon={icon}
+    suffix={suffix}
+    text={text}
+  />
 );
 
-export const LTI = Template.bind({});
-export const PUBLISHERS = Template.bind({});
-export const TEXT = Template.bind({});
+export const OUTLINED = Template.bind({});
+export const SOLID = Template.bind({});
+export const ICON_ONLY = Template.bind({});
 
-LTI.args = {
-  theme: "lti",
-  // @ts-ignore
-  type: "",
+OUTLINED.args = {
+  type: "outline",
   onClick: () => null,
   iconOnly: false,
   height: undefined,
@@ -58,7 +51,7 @@ LTI.args = {
   text: "Search",
 };
 
-PUBLISHERS.args = {
+SOLID.args = {
   theme: "publishers",
   onClick: () => null,
   iconOnly: false,
@@ -71,12 +64,11 @@ PUBLISHERS.args = {
   text: "Search",
 };
 
-TEXT.args = {
+ICON_ONLY.args = {
   theme: "text",
   onClick: () => null,
-  iconOnly: false,
-  // @ts-ignore
-  type: "",
+  iconOnly: true,
+  type: "outline",
   height: undefined,
   width: undefined,
   disabled: false,

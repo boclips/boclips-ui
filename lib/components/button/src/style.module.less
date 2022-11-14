@@ -1,4 +1,5 @@
 @import "./variables.less";
+@import "~@boclips-ui/styles/src/focus";
 
 .button {
   padding: @padding;
@@ -19,8 +20,12 @@
     display: flex;
   }
 
-  .copyWithIcon {
-    margin-left: 10px;
+  .copyWithPrefixIcon {
+    margin-left: 0.75rem;
+  }
+
+  .copyWithSuffixIcon {
+    margin-right: 0.75rem;
   }
 
   .icon {
@@ -50,26 +55,7 @@
     outline: none;
   }
 
-  // For any browser that doesn't focus-visible (Safari)
-  &:focus {
-    outline: @focus-outline;
-    outline-offset: @focus-outline-offset;
-  }
-
-  // For browsers that do support focus-visible:
-  // - turn off focus styles
-  // - apply styles only to focus-visible
-  // https://www.tpgi.com/focus-visible-and-backwards-compatibility/
-  @supports selector(:focus-visible) {
-    &:focus {
-      outline: none;
-      outline-offset: 0;
-    }
-    &:focus-visible {
-      outline: @focus-outline;
-      outline-offset: @focus-outline-offset;
-    }
-  }
+  #focus;
 
   &:disabled {
     opacity: 0.4;
