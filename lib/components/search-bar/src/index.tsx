@@ -139,10 +139,13 @@ const SearchBar = ({
   const searchSuggestions = () =>
     suggestions &&
     suggestions.length > 0 && (
-      <span className={s.searchBarSuggestions}>
+      <div className={s.searchBarSuggestions} role="listbox" id="suggestions">
         {suggestions.map((suggestion, index) => (
-          <button
-            type="button"
+          <div
+            role="option"
+            id={`suggestion-${index}`}
+            tabIndex={0}
+            aria-selected={index === activeSuggestionIndex}
             key={`${suggestion}-${index}`}
             className={c(s.suggestionItem, {
               [s.active]: index === activeSuggestionIndex,
@@ -155,9 +158,9 @@ const SearchBar = ({
             }}
           >
             {boldNotMatchingText(suggestion, query)}
-          </button>
+          </div>
         ))}
-      </span>
+      </div>
     );
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -174,6 +177,13 @@ const SearchBar = ({
           onKeyDown={onKeyDown}
           value={query}
           autoComplete="off"
+          aria-autocomplete="both"
+          aria-label="Search for videos"
+          role="combobox"
+          aria-owns="suggestions"
+          aria-controls="suggestions"
+          aria-expanded={showSuggestions}
+          aria-activedescendant={`suggestion-${activeSuggestionIndex}`}
         />
         {showSkipButton && (
           <Button
@@ -206,6 +216,16 @@ const SearchBar = ({
           />
         </div>
       </div>
+      {suggestions && suggestions.length > 0 && (
+        <div
+          className={s.visuallyHidden}
+          id="announce-suggestions"
+          aria-live="polite"
+        >
+          {suggestions.length} search suggestions are found, use up and down
+          arrows to review.
+        </div>
+      )}
       {showSuggestions && searchSuggestions()}
     </div>
   );
