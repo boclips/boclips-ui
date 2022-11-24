@@ -74,7 +74,8 @@ const SearchBar = ({
     }
   }, [activeSuggestionIndex, suggestions]);
 
-  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    event.stopPropagation();
     switch (event.key) {
       case "Enter":
         setShowSuggestions(false);
@@ -139,25 +140,29 @@ const SearchBar = ({
   const searchSuggestions = () =>
     suggestions &&
     suggestions.length > 0 && (
-      <span className={s.searchBarSuggestions}>
+      <ul className={s.searchBarSuggestions} role="listbox" id="suggestions">
         {suggestions.map((suggestion, index) => (
-          <button
-            type="button"
+          <li
+            role="option"
+            id={`suggestion-${index}`}
+            tabIndex={0}
+            aria-selected={index === activeSuggestionIndex}
             key={`${suggestion}-${index}`}
             className={c(s.suggestionItem, {
               [s.active]: index === activeSuggestionIndex,
               [s.pseudoSelectorsEnabled]: activeSuggestionIndex === -1,
             })}
             onMouseEnter={() => setActiveSuggestionIndex(-1)}
+            onKeyDown={onKeyDown}
             onClick={() => {
               onSearchChanged(suggestion);
               onSearch(suggestion, 0, true);
             }}
           >
             {boldNotMatchingText(suggestion, query)}
-          </button>
+          </li>
         ))}
-      </span>
+      </ul>
     );
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -174,6 +179,13 @@ const SearchBar = ({
           onKeyDown={onKeyDown}
           value={query}
           autoComplete="off"
+          aria-autocomplete="both"
+          aria-label="Search for videos"
+          role="combobox"
+          aria-owns="suggestions"
+          aria-controls="suggestions"
+          aria-expanded={showSuggestions}
+          aria-activedescendant={`suggestion-${activeSuggestionIndex}`}
         />
         {showSkipButton && (
           <Button
@@ -206,6 +218,16 @@ const SearchBar = ({
           />
         </div>
       </div>
+      {suggestions && suggestions.length > 0 && (
+        <div
+          className={s.visuallyHidden}
+          id="announce-suggestions"
+          aria-live="polite"
+        >
+          {suggestions.length} search suggestions are found, use up and down
+          arrows to review.
+        </div>
+      )}
       {showSuggestions && searchSuggestions()}
     </div>
   );

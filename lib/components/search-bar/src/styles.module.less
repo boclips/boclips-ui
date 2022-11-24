@@ -16,6 +16,16 @@
     }
   }
 }
+
+.visuallyHidden {
+  top:0;
+  left:-2px;
+  width:1px;
+  height:1px;
+  position:absolute;
+  overflow:hidden;
+}
+
 .searchBarWrapper {
   display: flex;
   flex-direction: row;
@@ -115,6 +125,8 @@
   position: absolute;
   left: 0;
   right: 0;
+  list-style: none;
+  padding: 0;
 
   .suggestionItem {
     border: none;
@@ -123,7 +135,7 @@
     background: white;
 
     &.active, &.pseudoSelectorsEnabled:hover, &.pseudoSelectorsEnabled:focus {
-      background: @blue-400;
+      background: @gray-100;
       cursor: pointer;
       outline: none;
     }
