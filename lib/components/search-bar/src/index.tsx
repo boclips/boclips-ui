@@ -137,11 +137,10 @@ const SearchBar = ({
       });
   };
 
-  const searchSuggestions = () =>
-    suggestions &&
-    suggestions.length > 0 && (
-      <ul className={s.searchBarSuggestions} role="listbox" id="suggestions">
-        {suggestions.map((suggestion, index) => (
+  const searchSuggestions = () => (
+    <ul className={s.searchBarSuggestions} role="listbox" id="suggestions">
+      {suggestions &&
+        suggestions.map((suggestion, index) => (
           <li
             role="option"
             id={`suggestion-${index}`}
@@ -162,8 +161,8 @@ const SearchBar = ({
             {boldNotMatchingText(suggestion, query)}
           </li>
         ))}
-      </ul>
-    );
+    </ul>
+  );
 
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -185,7 +184,11 @@ const SearchBar = ({
           aria-owns="suggestions"
           aria-controls="suggestions"
           aria-expanded={showSuggestions}
-          aria-activedescendant={`suggestion-${activeSuggestionIndex}`}
+          aria-activedescendant={
+            activeSuggestionIndex >= 0
+              ? `suggestion-${activeSuggestionIndex}`
+              : ""
+          }
         />
         {showSkipButton && (
           <Button
