@@ -50,10 +50,7 @@ export const InputText = React.forwardRef(
       inputType,
       height,
       width,
-      constraints = {
-        required: false,
-        minLength: 0,
-      },
+      constraints,
       icon,
       showLabelText = true,
       labelText,
@@ -125,7 +122,7 @@ export const InputText = React.forwardRef(
         {showLabelText && (
           <Typography.Body as="div" className="text-gray-800">
             {labelText}{" "}
-            {!constraints.required && (
+            {constraints?.required === false && (
               <span className={s.optional}>(Optional)</span>
             )}
           </Typography.Body>
