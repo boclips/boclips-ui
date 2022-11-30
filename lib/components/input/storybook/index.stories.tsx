@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 
 import { InputText, BoInputProps } from "../src";
+import SearchIcon from "./search-icon.svg";
 
 export default {
   title: "Input text",
@@ -32,7 +33,7 @@ const Template: Story<BoInputProps> = ({
       onBlur={onBlur}
       isError={isError}
       errorMessage={errorMessage}
-      icon={icon}
+      icon={<SearchIcon />}
       allowClear={allowClear}
       showLabelText={showLabelText}
       inputType="text"
