@@ -4,6 +4,8 @@
   "scripts": {
     "preversion": "npm run lint && lerna run build && npm run test",
     "version": "lerna version --force-git-tag",
+    "force-version-bump": "lerna version --force-git-tag --force-publish",
+    "force-version-bump:package": "./force-package-version-bump.sh",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "storybook": "start-storybook -p 6006",
