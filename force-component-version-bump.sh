@@ -2,7 +2,7 @@
 
 if [[ -z "$1" ]]
 then
-  echo "No package(s) specified"
+  echo "No component(s) specified"
   exit 1
 fi
 
