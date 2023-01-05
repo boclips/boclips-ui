@@ -95,7 +95,7 @@ module.exports = {
         ],
       },
       {
-        test: /.svg$/i,
+        test: /\.svg$/i,
         exclude: /node_modules/,
         oneOf: [
           {
@@ -106,11 +106,11 @@ module.exports = {
             resourceQuery: /inline/,
           },
           {
-            loader: "svg-react-loader",
+            loader: "@svgr/webpack",
             options: {
-              props: {
-                role: "img",
-              },
+              prettier: false,
+              svgo: false,
+              svgProps: { role: "img" },
             },
           },
         ],
