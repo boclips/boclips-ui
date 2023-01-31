@@ -1,21 +1,24 @@
-import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import * as React from "react";
+import { render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Tooltip from "./index";
 
 describe("tooltip", () => {
-  it("tooltip appears when mouse over is triggered", () => {
-    const text = "this is tooltip text";
+  it("tooltip appears when mouse over is triggered", async () => {
+    const text = "this is a tooltip text";
 
-    render(
-      <Tooltip text={text}>
+    const wrapper = render(
+      <Tooltip text={text} asChild>
         <button type="button">test button</button>
       </Tooltip>
     );
 
-    expect(screen.queryByText(text)).not.toBeInTheDocument();
+    expect(wrapper.queryByText(text)).not.toBeInTheDocument();
 
-    fireEvent.mouseOver(screen.getByRole("button"));
+    await userEvent.hover(wrapper.getByRole("button"));
 
-    expect(screen.getByText(text)).toBeInTheDocument();
+    await waitFor(() =>
+      expect(wrapper.getByRole("tooltip")).toBeInTheDocument()
+    );
   });
 });

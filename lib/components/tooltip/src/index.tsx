@@ -1,79 +1,54 @@
-import React, { useRef, useState } from "react";
+import React from "react";
+import {
+  Provider,
+  Root,
+  Trigger,
+  Portal,
+  Content,
+  Arrow,
+} from "@radix-ui/react-tooltip";
 import c from "classnames";
 import s from "./style.module.less";
 
 export interface Props {
   text: string;
-  children: React.ReactNode;
+  isLarge?: boolean;
+  align?: "start" | "center" | "end";
+  side?: "top" | "right" | "bottom" | "left";
+  offset?: number;
+  asChild?: boolean;
+  children: React.ReactElement;
 }
 
-const PADDING_X = 2;
-
-const Tooltip = ({ children, text }: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [leftOffset, setLeftOffset] = useState<number>(0);
-
-  const tooltipRef = useRef<HTMLDivElement>(null);
-
-  React.useLayoutEffect(() => {
-    // This covers an edge case of screen resizing and not setting the offset back to default if it can center the tooltip correctly
-    if (tooltipRef.current) {
-      if (
-        tooltipRef.current.getBoundingClientRect().x >= 0 ||
-        tooltipRef.current.getBoundingClientRect().right <=
-          document.body.clientWidth
-      ) {
-        setLeftOffset(0);
-      }
-    }
-  }, [isOpen]);
-
-  React.useLayoutEffect(() => {
-    // This shifts the tooltip back into the viewport
-    if (tooltipRef.current) {
-      const boundingRect = tooltipRef.current.getBoundingClientRect();
-
-      if (boundingRect.width > document.body.clientWidth) {
-        return;
-      }
-
-      if (boundingRect.x < 0) {
-        setLeftOffset(boundingRect.x - PADDING_X);
-      } else if (boundingRect.right > document.body.clientWidth) {
-        setLeftOffset(
-          (previousOffset) =>
-            boundingRect.right -
-            document.body.clientWidth +
-            PADDING_X +
-            previousOffset
-        );
-      }
-    }
-  });
-
+const Tooltip = ({
+  text,
+  children,
+  isLarge,
+  align = "center",
+  side = "top",
+  offset,
+  asChild = true,
+}: Props) => {
   return (
-    <div
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-      className={s.wrapper}
-    >
-      {isOpen && (
-        <>
-          <div className={c(s.tooltipArrow)} />
-          <div
-            ref={tooltipRef}
-            style={{
-              left: `calc(50% - ${leftOffset}px)`,
-              transform: `translateX(-50%)`,
-            }}
-            className={c(s.tooltip)}
+    <Provider delayDuration={0}>
+      <Root>
+        <Trigger asChild={asChild}>{children}</Trigger>
+        <Portal>
+          <Content
+            className={c(s.content, {
+              [s.small]: !isLarge,
+              [s.large]: isLarge,
+            })}
+            align={align}
+            side={side}
+            alignOffset={offset}
           >
-            <span role="figure">{text}</span>
-          </div>
-        </>
-      )}
-      {children}
-    </div>
+            {text}
+            <Arrow className={s.arrow} />
+          </Content>
+        </Portal>
+      </Root>
+    </Provider>
   );
 };
 
