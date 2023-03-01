@@ -66,7 +66,7 @@ export const InputText = React.forwardRef(
       onChange(value);
     }, [value]);
 
-    const renderInput = () => {
+    const renderInput = React.useMemo(() => {
       switch (inputType) {
         case "text":
         case "email":
@@ -111,7 +111,21 @@ export const InputText = React.forwardRef(
         default:
           return null;
       }
-    };
+    }, [
+      inputType,
+      constraints?.minLength,
+      constraints?.required,
+      placeholder,
+      name,
+      id,
+      isError,
+      icon,
+      value,
+      ref,
+      onFocus,
+      onBlur,
+      onKeyDown,
+    ]);
 
     const onClear = () => {
       setValue("");
@@ -139,7 +153,7 @@ export const InputText = React.forwardRef(
             [s.margin]: showLabelText,
           })}
         >
-          {renderInput()}
+          {renderInput}
           {icon && (
             <div data-qa="search-icon" className={s.icon}>
               {icon}
