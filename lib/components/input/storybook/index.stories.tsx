@@ -60,6 +60,23 @@ const Template: Story<BoInputProps> = ({
       constraints={constraints}
       labelText={labelText}
     />
+    <InputText
+      id={id}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      isError={isError}
+      errorMessage={errorMessage}
+      icon={icon}
+      allowClear={allowClear}
+      showLabelText={showLabelText}
+      inputType="password"
+      placeholder={placeholder}
+      defaultValue={defaultValue}
+      height={height}
+      constraints={constraints}
+      labelText="password"
+    />
   </>
 );
 

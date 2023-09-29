@@ -21,7 +21,7 @@ export interface BoInputProps extends InputProps {
 
 interface InputProps {
   showLabelText?: boolean;
-  inputType: "text" | "textarea" | "email";
+  inputType: "text" | "textarea" | "email" | "password";
   placeholder?: string;
   defaultValue?: string;
   height?: string;
@@ -70,6 +70,7 @@ export const InputText = React.forwardRef(
       switch (inputType) {
         case "text":
         case "email":
+        case "password":
           return (
             <input
               minLength={constraints?.minLength}
