@@ -12,8 +12,8 @@ import { onFocus, onKeyDownDropdown, onKeyDownSelect } from "./events";
 
 export interface Props {
   placeholder: string;
-  onUpdate: any;
-  options: OptionsProps[] | undefined;
+  onUpdate: (value: string[] | string) => void;
+  options?: OptionsProps[];
   mode: "single" | "multiple";
   whenSelectedLabel?: string;
   fitWidth?: boolean;
@@ -23,13 +23,15 @@ export interface Props {
   defaultValue?: string[] | string;
   relativePositionFilters?: boolean;
   selectedOptions?: string[];
+  showLabel?: boolean;
+  labelText?: string;
 }
 
 export interface OptionsProps {
   id: string;
   name: string;
-  label?: React.ReactElement | string;
   value: string;
+  label?: React.ReactElement | string;
   "data-qa"?: string;
   count?: number;
 }
@@ -47,6 +49,8 @@ const Dropdown = ({
   defaultValue,
   relativePositionFilters = false,
   selectedOptions,
+  showLabel = false,
+  labelText,
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [dropdownOptions, setDropdownOptions] = useState<
@@ -64,42 +68,20 @@ const Dropdown = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   useOnClickOutsideOrSelf(wrapperRef, () => setOpen(false));
 
+  // 1. Update dropdown options:
   useEffect(() => {
-    if (options && inputTextValue && showSearch) {
-      setDropdownOptions(() =>
-        options?.filter((it) =>
-          it.name.toLowerCase().includes(inputTextValue.toLowerCase())
-        )
-      );
-    }
-  }, [inputTextValue]);
+    setDropdownOptions(updateDropdownOptions());
+  }, [inputTextValue, options]);
 
+  // 2. Focus on dropdown when opened:
   useEffect(() => {
-    if (mode === "multiple") {
-      onUpdate([...values]);
-    }
-  }, [values]);
-
-  useEffect(() => {
-    if (singleValue && mode === "single") {
-      onUpdate(singleValue.value);
-    }
-  }, [singleValue]);
-
-  useEffect(() => {
-    if (selectedOptions && selectedOptions.length !== values.size) {
-      setValues(new Set(selectedOptions));
-    }
-  }, [selectedOptions]);
-
-  useEffect(() => {
-    setDropdownOptions(options);
-
-    if (dropdownBodyRef.current && open) {
-      (dropdownBodyRef.current! as HTMLElement).focus();
+    if (open && dropdownBodyRef.current) {
+      dropdownBodyRef.current.focus();
+      setShowScrollbar(options && options.length > 3);
     }
   }, [open]);
 
+  // 3. Set default value:
   useEffect(() => {
     if (defaultValue) {
       if (mode === "single") {
@@ -107,20 +89,32 @@ const Dropdown = ({
           dropdownOptions?.find((it) => it.value === defaultValue)
         );
       }
-
       if (mode === "multiple") {
         setValues((prevState) => new Set([...prevState, ...defaultValue]));
       }
     }
-  }, [defaultValue]);
+  }, [defaultValue, mode, dropdownOptions]);
 
+  // 4. Update based on `singleValue` changes:
   useEffect(() => {
-    if (relativePositionFilters && open) {
-      setDropdownHeight(200 + dropdownHeaderRef.current!.offsetHeight);
+    if (singleValue && mode === "single") {
+      onUpdate(singleValue.value);
+    }
+  }, [singleValue, mode]);
+
+  // 5. Handle relative position:
+  useEffect(() => {
+    if (relativePositionFilters && open && dropdownHeaderRef.current) {
+      setDropdownHeight(200 + dropdownHeaderRef.current.offsetHeight);
     } else {
       setDropdownHeight("auto");
     }
   }, [open, relativePositionFilters]);
+
+  // 6. Handle multiple value updates:
+  useEffect(() => {
+    handleMultipleValueUpdate();
+  }, [selectedOptions, values]);
 
   const onChangeMultiple = (value: string) => {
     setValues((prevState) => {
@@ -131,6 +125,22 @@ const Dropdown = ({
       }
       return new Set(prevState).add(value);
     });
+  };
+
+  const updateDropdownOptions = () => {
+    if (!showSearch) return options;
+    return options?.filter((it) =>
+      it.name.toLowerCase().includes(inputTextValue?.toLowerCase() ?? "")
+    );
+  };
+
+  const handleMultipleValueUpdate = () => {
+    if (selectedOptions && selectedOptions.length !== values.size) {
+      setValues(new Set(selectedOptions));
+    }
+    if (mode === "multiple") {
+      onUpdate([...values]);
+    }
   };
 
   const onChangeSingle = (option: OptionsProps) => {
@@ -202,22 +212,19 @@ const Dropdown = ({
   };
 
   const renderLabel = () => {
+    const placeholderSpan = (
+      <span className={s.placeholder}>{placeholder}</span>
+    );
+
     if (mode === "single") {
-      return singleValue?.label || singleValue?.name || placeholder;
+      return singleValue?.label || singleValue?.name || placeholderSpan;
     }
     if (mode === "multiple" && values.size > 0) {
       return `${whenSelectedLabel} (${values.size}) `;
     }
-    return placeholder;
+
+    return placeholderSpan;
   };
-
-  useEffect(() => {
-    const dropdownPanel = dropdownBodyRef.current;
-
-    if (dropdownPanel) {
-      setShowScrollbar(dropdownPanel.scrollHeight > dropdownPanel.clientHeight);
-    }
-  }, [dropdownBodyRef.current]);
 
   return (
     <div
@@ -228,6 +235,11 @@ const Dropdown = ({
       style={{ height: dropdownHeight }}
       ref={wrapperRef}
     >
+      {showLabel && (
+        <Typography.Body as="div" className={s.dropdownLabel}>
+          {labelText}
+        </Typography.Body>
+      )}
       <button
         data-qa="select"
         type="button"
@@ -258,6 +270,7 @@ const Dropdown = ({
           className={c({
             [s.below]: open,
             [s.hasScrollbar]: showScrollbar,
+            [s.hasLabel]: showLabel,
           })}
         >
           {showSearch && (

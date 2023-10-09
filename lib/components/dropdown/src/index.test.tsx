@@ -57,6 +57,22 @@ describe("Dropdown", () => {
     expect(wrapper.getByText("this is placeholder")).toBeVisible();
   });
 
+  // it("renders the dropdown with label", () => {
+  //   const wrapper = render(
+  //     <Dropdown
+  //       placeholder="this is placeholder"
+  //       onUpdate={() => {}}
+  //       options={options}
+  //       mode="single"
+  //       showLabel
+  //       labelText="Awesome dropdown"
+  //     />
+  //   );
+  //
+  //   expect(wrapper.getByText("this is placeholder")).toBeVisible();
+  //   expect(wrapper.getByLabelText("Awesome dropdown")).toBeVisible();
+  // });
+
   it("opens the dropdown when clicked", () => {
     const wrapper = render(
       <Dropdown

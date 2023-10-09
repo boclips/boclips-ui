@@ -30,6 +30,8 @@ const Template: Story<Props> = ({
   options,
   whenSelectedLabel,
   showSearch,
+  showLabel,
+  labelText,
 }) => (
   <div style={{ display: "flex" }}>
     <div>
@@ -41,6 +43,9 @@ const Template: Story<Props> = ({
         options={options}
         whenSelectedLabel={whenSelectedLabel}
         showSearch={showSearch}
+        showLabel={showLabel}
+        labelText={labelText}
+        // defaultValue={options1.map((it) => it.value)}
       />
     </div>
     <div style={{ marginLeft: "32px" }}>
@@ -51,6 +56,8 @@ const Template: Story<Props> = ({
         mode="single"
         options={options}
         showSearch={showSearch}
+        showLabel={false}
+        labelText={labelText}
       />
     </div>
   </div>
@@ -64,4 +71,6 @@ DEFAULT.args = {
   options: options1,
   mode: "multiple",
   showSearch: true,
+  showLabel: true,
+  labelText: "awesome label",
 };
