@@ -3,15 +3,27 @@
 @import "~@boclips-ui/styles/src/a11y";
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
   width: 252px;
   position: relative;
 
-  .dropdownLabel{
-    color: @gray-800;
-    margin-bottom: .5rem;
+  .errorMessage {
+    position: relative;
+    color: @error;
+    font-size: 0.875rem;
+    display: inline-flex;
+
+    svg {
+      margin-right: 5px;
+    }
   }
 
-  .placeholder{
+  .dropdownLabel {
+    color: @gray-800;
+  }
+
+  .placeholder {
     font-size: 1rem;
     font-weight: 400;
     line-height: 150%;
@@ -33,6 +45,7 @@
     border: 2px solid @gray-500;
     border-radius: 0.25rem;
     height: 48px;
+    margin-top: 0.5rem;
 
     svg {
       position: absolute;
@@ -86,7 +99,6 @@
         border-radius: 9999px;
       }
     }
-
 
     li {
       margin: 0 0.25rem 0 0;

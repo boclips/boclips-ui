@@ -736,4 +736,48 @@ describe("Dropdown", () => {
       "false"
     );
   });
+
+  it(`displays error message`, async () => {
+    const optionsWithCounts: OptionsProps[] = [
+      {
+        id: "1",
+        name: "checkbox label 1",
+        label: "checkbox label 1",
+        value: "value-1",
+        "data-qa": "value-1",
+        count: 1,
+      },
+      {
+        id: "2",
+        name: "checkbox label 2",
+        label: "checkbox label 2",
+        value: "value-2",
+        "data-qa": "value-2",
+        count: 2,
+      },
+      {
+        id: "3",
+        name: "checkbox label 3",
+        label: "checkbox label 3",
+        value: "value-3",
+        "data-qa": "value-3",
+        count: 3,
+      },
+    ];
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        options={optionsWithCounts}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        selectedOptions={["value-2", "value-3"]}
+        isError
+        errorMessage="Oops ! There is an error"
+      />
+    );
+
+    expect(wrapper.getByText("Oops ! There is an error")).toBeVisible();
+  });
 });
