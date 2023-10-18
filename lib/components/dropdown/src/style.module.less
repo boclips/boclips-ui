@@ -52,7 +52,15 @@
       right: 0.5rem;
     }
 
+    &:hover {
+      border-color: @gray-700;
+    }
+
     #focus;
+
+    &.error {
+      border: 3px solid @error;
+    }
   }
 
   ul {
@@ -111,10 +119,6 @@
       }
     }
   }
-}
-
-.wrapper:hover button {
-  border-color: @gray-700;
 }
 
 .textInput {

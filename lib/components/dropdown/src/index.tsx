@@ -254,6 +254,7 @@ const Dropdown = ({
         data-qa="select"
         type="button"
         className={c(s.button, {
+          [s.error]: isError,
           [s.inFront]: open,
         })}
         onClick={() => setOpen(!open)}
