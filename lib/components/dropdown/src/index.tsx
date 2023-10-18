@@ -281,6 +281,7 @@ const Dropdown = ({
           ref={dropdownBodyRef}
           className={c({
             [s.below]: open,
+            [s.belowError]: isError,
             [s.hasScrollbar]: showScrollbar,
             [s.hasLabel]: showLabel,
           })}
