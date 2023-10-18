@@ -4,7 +4,7 @@ import { Typography } from "@boclips-ui/typography";
 import Checkbox from "@boclips-ui/checkbox";
 import { InputText } from "@boclips-ui/input";
 import { useOnClickOutsideOrSelf } from "./hooks";
-
+import ErrorIconSVG from "../resources/error-icon.svg";
 import ArrowDownIcon from "../resources/down-icon.svg";
 import SearchIcon from "../resources/search-icon.svg";
 import s from "./style.module.less";
@@ -25,6 +25,8 @@ export interface Props {
   selectedOptions?: string[];
   showLabel?: boolean;
   labelText?: string;
+  isError?: boolean;
+  errorMessage?: string;
 }
 
 export interface OptionsProps {
@@ -51,6 +53,8 @@ const Dropdown = ({
   selectedOptions,
   showLabel = false,
   labelText,
+  isError = false,
+  errorMessage = "there is an error",
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [dropdownOptions, setDropdownOptions] = useState<
@@ -240,10 +244,16 @@ const Dropdown = ({
           {labelText}
         </Typography.Body>
       )}
+      {isError && (
+        <span className={s.errorMessage} role="alert">
+          <ErrorIconSVG />
+          {errorMessage}
+        </span>
+      )}
       <button
         data-qa="select"
         type="button"
-        className={c({
+        className={c(s.button, {
           [s.inFront]: open,
         })}
         onClick={() => setOpen(!open)}

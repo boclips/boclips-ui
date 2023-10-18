@@ -32,6 +32,7 @@ const Template: Story<Props> = ({
   showSearch,
   showLabel,
   labelText,
+  errorMessage,
 }) => (
   <div style={{ display: "flex" }}>
     <div>
@@ -45,6 +46,8 @@ const Template: Story<Props> = ({
         showSearch={showSearch}
         showLabel={showLabel}
         labelText={labelText}
+        isError
+        errorMessage={errorMessage}
         // defaultValue={options1.map((it) => it.value)}
       />
     </div>
