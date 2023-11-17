@@ -28,6 +28,13 @@ const BoCheckbox = ({
   value,
   count,
 }: Props) => {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === "Enter") {
+      const currentItem = e.currentTarget as HTMLInputElement;
+      currentItem.checked = !currentItem.checked;
+    }
+  };
+
   return (
     <label className={c(s.checkboxWrapper, className)} htmlFor={id}>
       <div className={c(s.wrapperContent)}>
@@ -40,6 +47,7 @@ const BoCheckbox = ({
           checked={checked}
           data-qa={dataQa}
           value={value}
+          onKeyDown={(event) => onKeyDown(event)}
         />
         <Typography.Body
           size={largeFont ? undefined : "small"}
