@@ -24,6 +24,7 @@ const Template: Story<BoInputProps> = ({
   height,
   constraints,
   labelText,
+  errorMessagePlacement,
 }: BoInputProps) => (
   <>
     <InputText
@@ -42,6 +43,7 @@ const Template: Story<BoInputProps> = ({
       height={height}
       constraints={constraints}
       labelText={labelText}
+      errorMessagePlacement={errorMessagePlacement}
     />
     <InputText
       id={id}
@@ -59,6 +61,7 @@ const Template: Story<BoInputProps> = ({
       height={height}
       constraints={constraints}
       labelText={labelText}
+      errorMessagePlacement={errorMessagePlacement}
     />
     <InputText
       id={id}
@@ -76,6 +79,7 @@ const Template: Story<BoInputProps> = ({
       height={height}
       constraints={constraints}
       labelText="password"
+      errorMessagePlacement={errorMessagePlacement}
     />
   </>
 );
@@ -92,10 +96,17 @@ Sample.args = {
   icon: undefined,
   allowClear: true,
   showLabelText: true,
-  inputType: "text",
   placeholder: "this is a placeholder",
   defaultValue: undefined,
   height: "48px",
   constraints: { required: true, minLength: 2 },
   labelText: "search:",
+  errorMessagePlacement: "top",
+};
+
+Sample.argTypes = {
+  errorMessagePlacement: {
+    control: { type: "select", options: ["top", "bottom"] },
+  },
+  inputType: { control: { type: "none" } },
 };

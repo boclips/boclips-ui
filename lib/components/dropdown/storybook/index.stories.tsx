@@ -33,6 +33,7 @@ const Template: Story<Props> = ({
   showLabel,
   labelText,
   errorMessage,
+  errorMessagePlacement,
 }) => (
   <div style={{ display: "flex" }}>
     <div>
@@ -48,6 +49,7 @@ const Template: Story<Props> = ({
         labelText={labelText}
         isError
         errorMessage={errorMessage}
+        errorMessagePlacement={errorMessagePlacement}
         // defaultValue={options1.map((it) => it.value)}
       />
     </div>
@@ -76,4 +78,11 @@ DEFAULT.args = {
   showSearch: true,
   showLabel: true,
   labelText: "awesome label",
+  errorMessagePlacement: "top",
+};
+
+DEFAULT.argTypes = {
+  errorMessagePlacement: {
+    control: { type: "select", options: ["top", "bottom"] },
+  },
 };

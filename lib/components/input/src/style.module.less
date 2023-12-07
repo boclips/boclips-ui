@@ -34,6 +34,9 @@
   }
 
   .icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 15px;
     position: absolute;
     left: 10px;
@@ -43,6 +46,18 @@
     position: absolute;
     right: 8px;
 
+    #focus;
+  }
+
+  .togglePasswordButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    right: 8px;
+    background-color: @white;
+    border: none;
+    cursor: pointer;
     #focus;
   }
 }

@@ -27,6 +27,7 @@ export interface Props {
   labelText?: string;
   isError?: boolean;
   errorMessage?: string;
+  errorMessagePlacement?: "top" | "bottom";
 }
 
 export interface OptionsProps {
@@ -55,6 +56,7 @@ const Dropdown = ({
   labelText,
   isError = false,
   errorMessage = "there is an error",
+  errorMessagePlacement = "top",
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const [dropdownOptions, setDropdownOptions] = useState<
@@ -244,7 +246,7 @@ const Dropdown = ({
           {labelText}
         </Typography.Body>
       )}
-      {isError && (
+      {isError && errorMessagePlacement === "top" && (
         <span className={s.errorMessage} role="alert">
           <ErrorIconSVG />
           {errorMessage}
@@ -269,7 +271,12 @@ const Dropdown = ({
         </Typography.Body>
         <ArrowDownIcon />
       </button>
-
+      {isError && errorMessagePlacement === "bottom" && (
+        <span className={s.errorMessage} role="alert">
+          <ErrorIconSVG />
+          {errorMessage}
+        </span>
+      )}
       {open && (
         <ul
           tabIndex={0}

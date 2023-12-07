@@ -3,6 +3,8 @@ import c from "classnames";
 import { Typography } from "@boclips-ui/typography";
 import ErrorIconSVG from "./resources/error-icon.svg";
 import CrossIconSVG from "./resources/cross-icon.svg";
+import PasswordHiddenIcon from "./resources/password-hidden.svg";
+import PasswordVisibleIcon from "./resources/password-visible.svg";
 import s from "./style.module.less";
 
 export interface BoInputProps extends InputProps {
@@ -17,6 +19,7 @@ export interface BoInputProps extends InputProps {
   allowClear?: boolean;
   className?: string;
   name?: string;
+  errorMessagePlacement?: "top" | "bottom";
 }
 
 interface InputProps {
@@ -57,16 +60,19 @@ export const InputText = React.forwardRef(
       allowClear = false,
       className,
       name,
+      errorMessagePlacement = "top",
     }: BoInputProps,
     ref: React.Ref<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const [value, setValue] = useState<string>(defaultValue);
+    const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
       onChange(value);
     }, [value]);
 
     const renderInput = React.useMemo(() => {
+      const passwordDisplayMode = showPassword ? "text" : "password";
       switch (inputType) {
         case "text":
         case "email":
@@ -76,7 +82,7 @@ export const InputText = React.forwardRef(
               minLength={constraints?.minLength}
               required={constraints?.required}
               placeholder={placeholder}
-              type={inputType}
+              type={inputType === "password" ? passwordDisplayMode : inputType}
               name={name}
               id={id}
               onChange={(e) => setValue(e.target.value)}
@@ -126,6 +132,7 @@ export const InputText = React.forwardRef(
       onFocus,
       onBlur,
       onKeyDown,
+      showPassword,
     ]);
 
     const onClear = () => {
@@ -142,7 +149,7 @@ export const InputText = React.forwardRef(
             )}
           </Typography.Body>
         )}
-        {isError && (
+        {isError && errorMessagePlacement === "top" && (
           <span className={s.errorMessage} role="alert">
             <ErrorIconSVG />
             {errorMessage}
@@ -160,7 +167,7 @@ export const InputText = React.forwardRef(
               {icon}
             </div>
           )}
-          {allowClear && defaultValue?.length > 0 && (
+          {inputType !== "password" && allowClear && defaultValue?.length > 0 && (
             <button
               type="button"
               className={s.clearButton}
@@ -170,7 +177,23 @@ export const InputText = React.forwardRef(
               <CrossIconSVG />
             </button>
           )}
+          {inputType === "password" && (
+            <button
+              type="button"
+              className={s.togglePasswordButton}
+              data-qa="toggle-password-icon"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <PasswordVisibleIcon /> : <PasswordHiddenIcon />}
+            </button>
+          )}
         </div>
+        {isError && errorMessagePlacement === "bottom" && (
+          <span className={s.errorMessage} role="alert">
+            <ErrorIconSVG />
+            {errorMessage}
+          </span>
+        )}
       </label>
     );
   }
