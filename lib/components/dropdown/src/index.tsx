@@ -292,7 +292,7 @@ const Dropdown = ({
           ref={dropdownBodyRef}
           className={c({
             [s.below]: open,
-            [s.belowError]: isError,
+            [s.belowError]: isError && errorMessagePlacement === "top",
             [s.hasScrollbar]: showScrollbar,
             [s.hasLabel]: showLabel,
           })}
