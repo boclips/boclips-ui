@@ -46,7 +46,7 @@ export const InputText = React.forwardRef(
       onBlur,
       onKeyDown,
       isError = false,
-      errorMessage = "there is an error",
+      errorMessage,
       placeholder = "Search...",
       id,
       defaultValue = "",
@@ -149,10 +149,12 @@ export const InputText = React.forwardRef(
             )}
           </Typography.Body>
         )}
-        {isError && errorMessagePlacement === "top" && (
+        {isError && errorMessage && errorMessagePlacement === "top" && (
           <span className={s.errorMessage} role="alert">
-            <ErrorIconSVG />
-            {errorMessage}
+            <span>
+              <ErrorIconSVG />
+            </span>
+            <span>{errorMessage}</span>
           </span>
         )}
         <div
@@ -188,10 +190,12 @@ export const InputText = React.forwardRef(
             </button>
           )}
         </div>
-        {isError && errorMessagePlacement === "bottom" && (
-          <span className={s.errorMessage} role="alert">
-            <ErrorIconSVG />
-            {errorMessage}
+        {isError && errorMessage && errorMessagePlacement === "bottom" && (
+          <span className={c(s.errorMessage, s.bottom)} role="alert">
+            <span>
+              <ErrorIconSVG />
+            </span>
+            <span>{errorMessage}</span>
           </span>
         )}
       </label>

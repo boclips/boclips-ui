@@ -12,7 +12,13 @@
     position: relative;
     color: @error;
     font-size: 0.875rem;
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+
+    &.bottom{
+      margin-top: .25rem;
+    }
 
     svg {
       margin-right: 5px;

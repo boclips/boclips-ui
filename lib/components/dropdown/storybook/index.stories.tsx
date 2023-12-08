@@ -79,6 +79,7 @@ DEFAULT.args = {
   showLabel: true,
   labelText: "awesome label",
   errorMessagePlacement: "top",
+  errorMessage: "error message",
 };
 
 DEFAULT.argTypes = {

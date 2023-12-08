@@ -246,10 +246,12 @@ const Dropdown = ({
           {labelText}
         </Typography.Body>
       )}
-      {isError && errorMessagePlacement === "top" && (
+      {isError && errorMessage && errorMessagePlacement === "top" && (
         <span className={s.errorMessage} role="alert">
-          <ErrorIconSVG />
-          {errorMessage}
+          <span>
+            <ErrorIconSVG />
+          </span>
+          <span>{errorMessage}</span>
         </span>
       )}
       <button
@@ -271,10 +273,12 @@ const Dropdown = ({
         </Typography.Body>
         <ArrowDownIcon />
       </button>
-      {isError && errorMessagePlacement === "bottom" && (
-        <span className={s.errorMessage} role="alert">
-          <ErrorIconSVG />
-          {errorMessage}
+      {isError && errorMessage && errorMessagePlacement === "bottom" && (
+        <span className={c(s.errorMessage, s.bottom)} role="alert">
+          <span>
+            <ErrorIconSVG />
+          </span>
+          <span>{errorMessage}</span>
         </span>
       )}
       {open && (
