@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent } from "react";
 import { Typography } from "@boclips-ui/typography";
 import c from "classnames";
 import s from "./style.module.less";
@@ -28,16 +28,6 @@ const BoCheckbox = ({
   value,
   count,
 }: Props) => {
-  const [isChecked, setChecked] = useState(checked);
-
-  const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      setChecked((prevChecked) => !prevChecked);
-      onChange(undefined);
-    }
-  };
-
   return (
     <label className={c(s.checkboxWrapper, className)} htmlFor={id}>
       <div className={c(s.wrapperContent)}>
@@ -47,14 +37,13 @@ const BoCheckbox = ({
           className={s.checkbox}
           name={name}
           id={id}
-          checked={isChecked}
+          checked={checked}
           data-qa={dataQa}
           value={value}
-          onKeyDown={(event) => onKeyDown(event)}
         />
         <Typography.Body
           size={largeFont ? undefined : "small"}
-          weight={isChecked ? "medium" : undefined}
+          weight={checked ? "medium" : undefined}
         >
           {label || name}
         </Typography.Body>

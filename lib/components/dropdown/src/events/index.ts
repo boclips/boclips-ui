@@ -99,3 +99,12 @@ export const onKeyDownDropdown = (
     }
   }
 };
+
+export const onEnterDown = (
+  e: React.KeyboardEvent<HTMLElement>,
+  callback: () => void
+) => {
+  if (e.key === "Enter") {
+    callback();
+  }
+};

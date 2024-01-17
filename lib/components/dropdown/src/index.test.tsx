@@ -57,22 +57,6 @@ describe("Dropdown", () => {
     expect(wrapper.getByText("this is placeholder")).toBeVisible();
   });
 
-  // it("renders the dropdown with label", () => {
-  //   const wrapper = render(
-  //     <Dropdown
-  //       placeholder="this is placeholder"
-  //       onUpdate={() => {}}
-  //       options={options}
-  //       mode="single"
-  //       showLabel
-  //       labelText="Awesome dropdown"
-  //     />
-  //   );
-  //
-  //   expect(wrapper.getByText("this is placeholder")).toBeVisible();
-  //   expect(wrapper.getByLabelText("Awesome dropdown")).toBeVisible();
-  // });
-
   it("opens the dropdown when clicked", () => {
     const wrapper = render(
       <Dropdown
@@ -779,5 +763,37 @@ describe("Dropdown", () => {
     );
 
     expect(wrapper.getByText("Oops ! There is an error")).toBeVisible();
+  });
+
+  it("allows to select dropdown options using Enter and Space", async () => {
+    const onUpdate = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={onUpdate}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const dropdownWrapper = wrapper.getByTestId("dropdown");
+
+    expect(dropdownWrapper).toHaveFocus();
+
+    fireEvent.keyDown(dropdownWrapper, {
+      key: "ArrowDown",
+    });
+
+    expect(wrapper.getByText("checkbox label 1").previousSibling).toHaveFocus();
+
+    fireEvent.keyDown(wrapper.getByText("checkbox label 1"), {
+      key: "Enter",
+    });
+
+    expect(onUpdate).toHaveBeenCalledWith(["value-1"]);
   });
 });

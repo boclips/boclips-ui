@@ -8,7 +8,12 @@ import ErrorIconSVG from "../resources/error-icon.svg";
 import ArrowDownIcon from "../resources/down-icon.svg";
 import SearchIcon from "../resources/search-icon.svg";
 import s from "./style.module.less";
-import { onFocus, onKeyDownDropdown, onKeyDownSelect } from "./events";
+import {
+  onEnterDown,
+  onFocus,
+  onKeyDownDropdown,
+  onKeyDownSelect,
+} from "./events";
 
 export interface Props {
   placeholder: string;
@@ -172,6 +177,7 @@ const Dropdown = ({
             aria-selected={checked}
             role="option"
             aria-label={ariaLabel}
+            onKeyDown={(e) => onEnterDown(e, () => onChangeSingle(option))}
           >
             <Checkbox
               data-qa={option["data-qa"]}
@@ -198,6 +204,7 @@ const Dropdown = ({
             aria-selected={checked}
             role="option"
             aria-label={ariaLabel}
+            onKeyDown={(e) => onEnterDown(e, () => onChangeMultiple(value))}
           >
             <Checkbox
               onChange={() => onChangeMultiple(value)}
