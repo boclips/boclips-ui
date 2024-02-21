@@ -24,6 +24,7 @@ export interface Props {
   suggestions?: string[];
   onChange?: (search: string) => void;
   showSkipButton?: boolean;
+  customButtonIcon?: ReactElement;
 }
 
 const SearchBar = ({
@@ -35,6 +36,7 @@ const SearchBar = ({
   suggestions,
   onChange,
   showSkipButton = false,
+  customButtonIcon,
 }: Props): ReactElement => {
   const [query, setQuery] = useState<string>("");
   const [showSuggestions, setShowSuggestions] = useState<boolean>(true);
@@ -214,7 +216,7 @@ const SearchBar = ({
             role="button"
             dataQa="search-button"
             aria-label="search"
-            icon={<SearchIcon />}
+            icon={customButtonIcon || <SearchIcon />}
             iconOnly={iconOnlyButton}
             onClick={() => onSearch(query, 0, suggestionUsed)}
             text={buttonText || "Search"}

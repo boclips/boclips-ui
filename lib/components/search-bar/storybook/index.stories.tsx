@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import SearchBar, { Props } from "../src";
+import CUSTOM_ICON from "../src/resources/close-icon.svg";
 // @ts-ignore
 import s from "./style.module.less";
 
@@ -13,12 +14,14 @@ const Template: Story<Props> = ({
   onSearch,
   placeholder,
   iconOnlyButton,
+  customButtonIcon,
 }: Props) => (
   <span className={s.wrap}>
     <SearchBar
       onSearch={onSearch}
       placeholder={placeholder}
       iconOnlyButton={iconOnlyButton}
+      customButtonIcon={customButtonIcon}
       suggestions={["dogs", "cats", "mice", "c++"]}
     />
   </span>
@@ -32,5 +35,6 @@ DEFAULT.args = {
       `search triggered: ${query}, ${suggestionUsed}<- it's from storybook`
     ),
   placeholder: "Search...",
+  // customButtonIcon: <CUSTOM_ICON />,
   iconOnlyButton: true,
 };
