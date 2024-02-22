@@ -11,8 +11,9 @@ import c from "classnames";
 import s from "./style.module.less";
 
 export interface Props {
-  text: string;
+  text: string | React.ReactElement;
   isLarge?: boolean;
+  contentClassName?: string;
   align?: "start" | "center" | "end";
   side?: "top" | "right" | "bottom" | "left";
   offset?: number;
@@ -24,6 +25,7 @@ const Tooltip = ({
   text,
   children,
   isLarge,
+  contentClassName = "",
   align = "center",
   side = "top",
   offset,
@@ -35,10 +37,14 @@ const Tooltip = ({
         <Trigger asChild={asChild}>{children}</Trigger>
         <Portal>
           <Content
-            className={c(s.content, {
-              [s.small]: !isLarge,
-              [s.large]: isLarge,
-            })}
+            className={c(
+              s.content,
+              {
+                [s.small]: !isLarge,
+                [s.large]: isLarge,
+              },
+              { contentClassName }
+            )}
             align={align}
             side={side}
             alignOffset={offset}

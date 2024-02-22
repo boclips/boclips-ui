@@ -21,4 +21,22 @@ describe("tooltip", () => {
       expect(wrapper.getByRole("tooltip")).toBeInTheDocument()
     );
   });
+
+  it("tooltip can take content as react node", async () => {
+    const wrapper = render(
+      <Tooltip text={<div>This is react node content</div>} asChild>
+        <button type="button">test button</button>
+      </Tooltip>
+    );
+
+    expect(
+      wrapper.queryByText("This is react node content")
+    ).not.toBeInTheDocument();
+
+    await userEvent.hover(wrapper.getByRole("button"));
+
+    await waitFor(() =>
+      expect(wrapper.getByRole("tooltip")).toBeInTheDocument()
+    );
+  });
 });
