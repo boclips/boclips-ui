@@ -99,7 +99,7 @@ Sample.args = {
   placeholder: "this is a placeholder",
   defaultValue: undefined,
   height: "48px",
-  constraints: { required: true, minLength: 2 },
+  constraints: { required: true, minLength: 2, maxLength: 100 },
   labelText: "search:",
   errorMessagePlacement: "top",
 };

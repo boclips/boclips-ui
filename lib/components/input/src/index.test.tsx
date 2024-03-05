@@ -1,5 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
+import userEvent from "@testing-library/user-event";
 import { InputText } from "./index";
 // @ts-ignore
 import SearchIcon from "./resources/search-icon.svg";
@@ -106,5 +107,30 @@ describe("boInput", () => {
 
     const input = await wrapper.findByPlaceholderText("Search...");
     expect(input.getAttribute("value")).toBe("");
+  });
+
+  it("should display length of max input vlue ", async () => {
+    const wrapper = render(
+      <InputText
+        inputType="text"
+        placeholder="Search..."
+        id="Input"
+        labelText="search"
+        showLabelText={false}
+        allowClear
+        onChange={jest.fn()}
+        constraints={{
+          required: true,
+          minLength: 2,
+          maxLength: 4,
+        }}
+      />
+    );
+
+    const input = wrapper.getByPlaceholderText("Search...");
+
+    await userEvent.type(input, "123456789");
+
+    expect(input.getAttribute("value")).toBe("1234");
   });
 });

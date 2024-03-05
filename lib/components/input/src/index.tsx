@@ -36,6 +36,7 @@ interface InputProps {
 interface BoInputConstraints {
   required?: boolean;
   minLength?: number;
+  maxLength?: number;
 }
 
 export const InputText = React.forwardRef(
@@ -80,6 +81,7 @@ export const InputText = React.forwardRef(
           return (
             <input
               minLength={constraints?.minLength}
+              maxLength={constraints?.maxLength}
               required={constraints?.required}
               placeholder={placeholder}
               type={inputType === "password" ? passwordDisplayMode : inputType}
