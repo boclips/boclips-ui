@@ -31,6 +31,7 @@ interface InputProps {
   width?: string;
   constraints?: BoInputConstraints;
   labelText?: string;
+  disabled?: boolean;
 }
 
 interface BoInputConstraints {
@@ -62,6 +63,7 @@ export const InputText = React.forwardRef(
       className,
       name,
       errorMessagePlacement = "top",
+      disabled = false,
     }: BoInputProps,
     ref: React.Ref<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -97,6 +99,7 @@ export const InputText = React.forwardRef(
               onFocus={onFocus}
               onBlur={onBlur}
               onKeyDown={onKeyDown}
+              disabled={disabled}
             />
           );
         case "textarea":
@@ -115,6 +118,7 @@ export const InputText = React.forwardRef(
               ref={ref as Ref<HTMLTextAreaElement>}
               onFocus={onFocus}
               onBlur={onBlur}
+              disabled={disabled}
             />
           );
         default:
