@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/dropdown",
-  "version": "2.5.6",
+  "version": "2.6.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
