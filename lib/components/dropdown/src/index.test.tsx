@@ -796,4 +796,23 @@ describe("Dropdown", () => {
 
     expect(onUpdate).toHaveBeenCalledWith(["value-1"]);
   });
+
+  it("calls onFocused on selecting the dropdown", async () => {
+    const onFocus = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onFocused={onFocus}
+        onUpdate={jest.fn()}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    expect(onFocus).toHaveBeenCalled();
+  });
 });
