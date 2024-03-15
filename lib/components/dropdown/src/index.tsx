@@ -17,6 +17,7 @@ import {
 
 export interface Props {
   placeholder: string;
+  onFocused?: () => void;
   onUpdate: (value: string[] | string) => void;
   options?: OptionsProps[];
   mode: "single" | "multiple";
@@ -46,6 +47,7 @@ export interface OptionsProps {
 
 const Dropdown = ({
   placeholder,
+  onFocused,
   onUpdate,
   options,
   mode = "single",
@@ -295,7 +297,12 @@ const Dropdown = ({
           role="listbox"
           aria-orientation="vertical"
           onKeyDown={(e) => onKeyDownDropdown(e, () => setOpen(false))}
-          onFocus={(e) => onFocus(e)}
+          onFocus={(e) => {
+            if (onFocused) {
+              onFocused();
+            }
+            onFocus(e);
+          }}
           ref={dropdownBodyRef}
           className={c({
             [s.below]: open,
