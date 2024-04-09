@@ -48,7 +48,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.1",
     "boclips-api-client": ">=49.0.6",
-    "boclips-player-react": "3.0.0",
+    "boclips-player-react": "3.2.3",
     "classnames": "^2.3.1",
     "css-loader": "^6.7.1",
     "dayjs": "^1.10.4",
