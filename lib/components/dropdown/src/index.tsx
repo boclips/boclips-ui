@@ -79,6 +79,7 @@ const Dropdown = ({
   const dropdownBodyRef = useRef<HTMLUListElement>(null);
   const dropdownHeaderRef = useRef<HTMLButtonElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   useOnClickOutsideOrSelf(wrapperRef, () => setOpen(false));
 
   // 1. Update dropdown options:
@@ -86,13 +87,20 @@ const Dropdown = ({
     setDropdownOptions(updateDropdownOptions());
   }, [inputTextValue, options]);
 
-  // 2. Focus on dropdown when opened:
+  // 2. Focus on dropdown or search as appropriate when opened:
   useEffect(() => {
-    if (open && dropdownBodyRef.current) {
+    if (!open) return;
+
+    if (showSearch) {
+      if (!searchRef.current) return;
+      searchRef.current.focus();
+    } else {
+      if (!dropdownBodyRef.current) return;
       dropdownBodyRef.current.focus();
-      setShowScrollbar(options && options.length > 3);
     }
-  }, [open]);
+
+    setShowScrollbar(options && options.length > 3);
+  }, [open, options, showSearch]);
 
   // 3. Set default value:
   useEffect(() => {
@@ -321,6 +329,16 @@ const Dropdown = ({
               className={s.textInput}
               defaultValue={inputTextValue}
               icon={<SearchIcon />}
+              ref={searchRef}
+              onKeyDown={(e) =>
+                onEnterDown(e, () => {
+                  if (!!dropdownOptions && dropdownOptions.length > 0) {
+                    if (mode === "single") {
+                      onChangeSingle(dropdownOptions[0]);
+                    }
+                  }
+                })
+              }
             />
           )}
 
