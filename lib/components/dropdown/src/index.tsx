@@ -91,11 +91,9 @@ const Dropdown = ({
   useEffect(() => {
     if (!open) return;
 
-    if (showSearch) {
-      if (!searchRef.current) return;
+    if (showSearch && searchRef.current && searchRef.current.focus) {
       searchRef.current.focus();
-    } else {
-      if (!dropdownBodyRef.current) return;
+    } else if (dropdownBodyRef.current && dropdownBodyRef.current.focus) {
       dropdownBodyRef.current.focus();
     }
 
