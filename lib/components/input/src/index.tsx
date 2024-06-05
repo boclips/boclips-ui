@@ -171,16 +171,18 @@ export const InputText = React.forwardRef(
               {icon}
             </div>
           )}
-          {inputType !== "password" && allowClear && defaultValue?.length > 0 && (
-            <button
-              type="button"
-              className={s.clearButton}
-              data-qa="clear-icon"
-              onClick={onClear}
-            >
-              <CrossIconSVG />
-            </button>
-          )}
+          {inputType !== "password" &&
+            allowClear &&
+            defaultValue?.length > 0 && (
+              <button
+                type="button"
+                className={s.clearButton}
+                data-qa="clear-icon"
+                onClick={onClear}
+              >
+                <CrossIconSVG />
+              </button>
+            )}
           {inputType === "password" && (
             <button
               type="button"

@@ -277,10 +277,10 @@ const Dropdown = ({
           [s.error]: isError,
           [s.inFront]: open,
         })}
-        onClick={() => setOpen(!open)}
         onFocus={() => {
           setOpen(true);
         }}
+        onMouseDown={() => setOpen(!open)}
         onKeyDown={(e) => onKeyDownSelect(e, () => setOpen(true))}
         aria-expanded={open}
         disabled={disabled}

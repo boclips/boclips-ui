@@ -67,7 +67,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     expect(wrapper.getByText("checkbox label 1")).toBeVisible();
   });
@@ -82,8 +82,8 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
-    fireEvent.click(wrapper.getByText("checkbox label 1"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByText("checkbox label 1"));
     expect(wrapper.getByText("checkbox label 1")).toBeVisible();
     expect(wrapper.queryByText("this is placeholder")).not.toBeInTheDocument();
   });
@@ -100,9 +100,9 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
-    fireEvent.click(wrapper.getByText("checkbox label 1"));
+    fireEvent.mouseDown(wrapper.getByText("checkbox label 1"));
 
     expect(onUpdate).toHaveBeenCalled();
 
@@ -112,9 +112,9 @@ describe("Dropdown", () => {
       within(wrapper.getByTestId("select")).getByText("checkbox label 1")
     ).toBeVisible();
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
-    fireEvent.click(wrapper.getByText("checkbox label 2"));
+    fireEvent.mouseDown(wrapper.getByText("checkbox label 2"));
 
     expect(onUpdate).toHaveBeenCalledWith("value-2");
 
@@ -136,9 +136,9 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
-    fireEvent.click(wrapper.getByText("checkbox label 1"));
+    fireEvent.mouseDown(wrapper.getByText("checkbox label 1"));
 
     expect(onUpdate).toHaveBeenCalled();
 
@@ -148,11 +148,11 @@ describe("Dropdown", () => {
       within(wrapper.getByTestId("select")).getByText("Selected (1)")
     ).toBeVisible();
 
-    fireEvent.click(wrapper.getByText("checkbox label 2"));
+    fireEvent.mouseDown(wrapper.getByText("checkbox label 2"));
 
     expect(onUpdate).toHaveBeenCalledWith(["value-1", "value-2"]);
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     expect(
       within(wrapper.getByTestId("select")).getByText("Selected (2)")
@@ -172,13 +172,13 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
-    fireEvent.click(wrapper.getByText("checkbox label 1"));
+    fireEvent.mouseDown(wrapper.getByText("checkbox label 1"));
 
-    fireEvent.click(wrapper.getByText("checkbox label 2"));
+    fireEvent.mouseDown(wrapper.getByText("checkbox label 2"));
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     expect(
       within(wrapper.getByTestId("select")).getByText("Selected (2)")
@@ -198,7 +198,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const dropdownWrapper = wrapper.getByTestId("dropdown");
 
@@ -221,7 +221,7 @@ describe("Dropdown", () => {
       </div>
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const dropdownWrapper = wrapper.getByTestId("dropdown");
 
@@ -249,7 +249,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     expect(
       await wrapper.queryByText("checkbox label 2")
@@ -269,7 +269,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const dropdownWrapper = wrapper.getByTestId("dropdown");
 
@@ -308,7 +308,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const searchInput = wrapper.getByPlaceholderText("Search...");
 
@@ -329,7 +329,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const searchInput = wrapper.getByPlaceholderText("Search...");
 
@@ -350,7 +350,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const searchInput = wrapper.getByPlaceholderText("Search...");
 
@@ -375,7 +375,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const searchInput = wrapper.getByPlaceholderText("Search...");
 
@@ -402,7 +402,7 @@ describe("Dropdown", () => {
 
     expect(wrapper.getByText("Selected (2)")).toBeInTheDocument();
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const checkedOption = wrapper.getAllByRole("option");
 
@@ -459,7 +459,7 @@ describe("Dropdown", () => {
         />
       );
 
-      fireEvent.click(wrapper.getByTestId("select"));
+      fireEvent.mouseDown(wrapper.getByTestId("select"));
 
       const renderedOptions = wrapper.getAllByRole("option");
 
@@ -496,7 +496,7 @@ describe("Dropdown", () => {
         />
       );
 
-      fireEvent.click(wrapper.getByTestId("select"));
+      fireEvent.mouseDown(wrapper.getByTestId("select"));
 
       const renderedOptions = wrapper.getAllByRole("option");
 
@@ -536,7 +536,7 @@ describe("Dropdown", () => {
         />
       );
 
-      fireEvent.click(wrapper.getByTestId("select"));
+      fireEvent.mouseDown(wrapper.getByTestId("select"));
 
       const renderedOptions = wrapper.getAllByRole("option");
 
@@ -567,7 +567,7 @@ describe("Dropdown", () => {
         />
       );
 
-      fireEvent.click(wrapper.getByTestId("select"));
+      fireEvent.mouseDown(wrapper.getByTestId("select"));
 
       const renderedOptions = wrapper.queryByText("option");
 
@@ -614,7 +614,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     expect(wrapper.getByTestId("value-2")).toHaveAttribute(
       "aria-selected",
@@ -685,7 +685,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     expect(wrapper.getByTestId("value-2")).toHaveAttribute(
       "aria-selected",
@@ -778,7 +778,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     const dropdownWrapper = wrapper.getByTestId("dropdown");
 
@@ -811,7 +811,7 @@ describe("Dropdown", () => {
       />
     );
 
-    fireEvent.click(wrapper.getByTestId("select"));
+    fireEvent.mouseDown(wrapper.getByTestId("select"));
 
     expect(onFocus).toHaveBeenCalled();
   });
