@@ -8,12 +8,7 @@ import ErrorIconSVG from "../resources/error-icon.svg";
 import ArrowDownIcon from "../resources/down-icon.svg";
 import SearchIcon from "../resources/search-icon.svg";
 import s from "./style.module.less";
-import {
-  onEnterDown,
-  onFocus,
-  onKeyDownDropdown,
-  onKeyDownSelect,
-} from "./events";
+import { onEnterDown, onFocus, onKeyDownDropdown } from "./events";
 
 export interface Props {
   placeholder: string;
@@ -277,11 +272,7 @@ const Dropdown = ({
           [s.error]: isError,
           [s.inFront]: open,
         })}
-        onFocus={() => {
-          setOpen(true);
-        }}
-        onMouseDown={() => setOpen(!open)}
-        onKeyDown={(e) => onKeyDownSelect(e, () => setOpen(true))}
+        onClick={() => setOpen(!open)}
         aria-expanded={open}
         disabled={disabled}
         ref={dropdownHeaderRef}
