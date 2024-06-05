@@ -335,6 +335,7 @@ const Dropdown = ({
                 onEnterDown(e, () => {
                   if (!!dropdownOptions && dropdownOptions.length > 0) {
                     if (mode === "single") {
+                      e.preventDefault();
                       onChangeSingle(dropdownOptions[0]);
                     }
                   }
