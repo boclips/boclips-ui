@@ -26,6 +26,7 @@ const options1: OptionsProps[] = numberOfOptions.map((it) => {
 
 const Template: Story<Props> = ({
   placeholder,
+  onSearch,
   onUpdate,
   options,
   whenSelectedLabel,
@@ -40,6 +41,7 @@ const Template: Story<Props> = ({
       multiple:
       <Dropdown
         placeholder={placeholder}
+        onSearch={onSearch}
         onUpdate={onUpdate}
         mode="multiple"
         options={options}
@@ -57,6 +59,7 @@ const Template: Story<Props> = ({
       single:
       <Dropdown
         placeholder={placeholder}
+        onSearch={onSearch}
         onUpdate={onUpdate}
         mode="single"
         options={options}
@@ -72,7 +75,8 @@ export const DEFAULT = Template.bind({});
 
 DEFAULT.args = {
   placeholder: "Select video types",
-  onUpdate: (it: any) => console.log(it),
+  onUpdate: (it: any) => console.log(`onUpdate:${it}`),
+  onSearch: (it: any) => console.log(`onSearch:${it}`),
   options: options1,
   mode: "multiple",
   showSearch: true,

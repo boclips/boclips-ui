@@ -19,12 +19,15 @@ export interface Props {
   placeholder: string;
   onFocused?: () => void;
   onUpdate: (value: string[] | string) => void;
+  onSearch?: (value: string) => void;
+  onSearchTimeout?: number;
   options?: OptionsProps[];
   mode: "single" | "multiple";
   whenSelectedLabel?: string;
   fitWidth?: boolean;
   dataQa?: string;
   showSearch?: boolean;
+  filterBySearch?: boolean;
   disabled?: boolean;
   defaultValue?: string[] | string;
   relativePositionFilters?: boolean;
@@ -49,12 +52,15 @@ const Dropdown = ({
   placeholder,
   onFocused,
   onUpdate,
+  onSearch,
+  onSearchTimeout = 300,
   options,
   mode = "single",
   whenSelectedLabel = "Selected",
   fitWidth,
   dataQa,
   showSearch = false,
+  filterBySearch = true,
   disabled,
   defaultValue,
   relativePositionFilters = false,
@@ -86,6 +92,15 @@ const Dropdown = ({
   useEffect(() => {
     setDropdownOptions(updateDropdownOptions());
   }, [inputTextValue, options]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (onSearch && inputTextValue) {
+        onSearch(inputTextValue);
+      }
+    }, onSearchTimeout);
+    return () => clearTimeout(timer);
+  }, [onSearch, onSearchTimeout, inputTextValue]);
 
   // 2. Focus on dropdown or search as appropriate when opened:
   useEffect(() => {
@@ -147,7 +162,7 @@ const Dropdown = ({
   };
 
   const updateDropdownOptions = () => {
-    if (!showSearch) return options;
+    if (!showSearch || !filterBySearch) return options;
     return options?.filter((it) =>
       it.name.toLowerCase().includes(inputTextValue?.toLowerCase() ?? "")
     );

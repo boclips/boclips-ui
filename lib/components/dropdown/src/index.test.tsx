@@ -386,6 +386,86 @@ describe("Dropdown", () => {
     expect(wrapper.queryByText("checkbox label 3")).not.toBeInTheDocument();
   });
 
+  it("does not filter out the options when searching if filterBySearch is false", () => {
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        showSearch
+        filterBySearch={false}
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const searchInput = wrapper.getByPlaceholderText("Search...");
+
+    fireEvent.change(searchInput, { target: { value: "2" } });
+
+    expect(wrapper.getByText("checkbox label 1")).toBeInTheDocument();
+    expect(wrapper.getByText("checkbox label 2")).toBeInTheDocument();
+    expect(wrapper.getByText("checkbox label 3")).toBeInTheDocument();
+  });
+
+  it("calls onSearch with search value", () => {
+    jest.useFakeTimers();
+    const onSearch = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        onSearch={onSearch}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        showSearch
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const searchInput = wrapper.getByPlaceholderText("Search...");
+
+    fireEvent.change(searchInput, { target: { value: "2" } });
+
+    jest.runAllTimers();
+
+    expect(onSearch).toHaveBeenCalledWith("2");
+  });
+
+  it("doesn't call onSearch callback more frequently than debounce timeout", async () => {
+    jest.useFakeTimers();
+    const onSearch = jest.fn();
+
+    const wrapper = render(
+      <Dropdown
+        placeholder="this is placeholder"
+        onUpdate={jest.fn()}
+        onSearch={onSearch}
+        options={options}
+        mode="multiple"
+        whenSelectedLabel="Selected"
+        showSearch
+      />
+    );
+
+    fireEvent.click(wrapper.getByTestId("select"));
+
+    const searchInput = wrapper.getByPlaceholderText("Search...");
+
+    for (let i = 0; i < 1000; i++) {
+      fireEvent.change(searchInput, { target: { value: i } });
+    }
+
+    jest.runAllTimers();
+
+    expect(onSearch).toHaveBeenCalledTimes(1);
+  });
+
   it("displays default values for multiple mode", () => {
     const onUpdate = jest.fn();
 
