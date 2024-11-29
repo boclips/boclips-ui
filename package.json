@@ -21,7 +21,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.5.1",
+    "@ant-design/icons": "^5.5.2",
     "@duetds/date-picker": "^1.4.0",
     "@radix-ui/react-tooltip": "^1.1.4",
     "antd": "^5.22.2",
