@@ -1,6 +1,5 @@
 {
   "name": "boclips-ui",
-  "private": true,
   "files": [
     "dist"
   ],
