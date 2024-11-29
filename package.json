@@ -13,6 +13,7 @@
     }
   },
   "scripts": {
+    "audit": "audit-ci -m",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -47,6 +48,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
+    "audit-ci": "^7.1.0",
     "boclips-player-react": "^4.0.7",
     "dayjs": "^1.11.13",
     "eslint": "^9.15.0",
