@@ -11,6 +11,10 @@ inputs:
   - name: source
   - name: version
 
+outputs:
+- name: dist
+- name: release
+
 params:
   NPM_TOKEN:
 
