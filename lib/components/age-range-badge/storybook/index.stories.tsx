@@ -1,46 +1,24 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
-import AgeRange from "@boclips-ui/age-range";
-import s from "./style.module.less";
+import { Meta, StoryObj } from '@storybook/react';
+import { AgeRange } from '@/types/age-range';
+import { AgeRangeBadge as AgeRangeBadgeComponent } from '..';
 
-import AgeRangeBadge, { AgeRangeBadgeProps } from "../src";
+const meta = {
+  title: 'Age Range Badge',
+  component: AgeRangeBadgeComponent,
+} satisfies Meta<typeof AgeRangeBadgeComponent>;
 
-export default {
-  title: "Age Range Badge",
-  component: AgeRangeBadge,
-  argTypes: {
-    theme: {
-      control: {
-        type: "select",
-        options: ["lti", "hq", "custom"],
-      },
-    },
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const AgeRangeBadge: Story = {
+  args: {
+    ageRange: new AgeRange(5, 16),
   },
-} as Meta;
-
-interface Props extends AgeRangeBadgeProps {
-  min: number;
-  max: number;
-  theme?: "lti" | "hq" | "publishers";
-}
-
-const Template: Story<Props> = ({ min, max, theme }: Props) => (
-  <div className={s[theme]}>
-    <AgeRangeBadge ageRange={new AgeRange(min, max)} />
-  </div>
-);
-
-export const LTI = Template.bind({});
-export const BACKOFFICE = Template.bind({});
-
-LTI.args = {
-  min: 5,
-  max: 16,
-  theme: "lti",
-};
-
-BACKOFFICE.args = {
-  min: 5,
-  max: 16,
-  theme: "hq",
+  render: args => (
+    <AgeRangeBadgeComponent
+      ageRange={
+        new AgeRange(args.ageRange.resolveMin(), args.ageRange.resolveMax())
+      }
+    />
+  ),
 };

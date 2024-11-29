@@ -1,65 +1,67 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
-import { SelectOption } from "@boclips-ui/select-option";
-import SelectFilter, { Props } from "../src";
+import { Meta, StoryObj } from '@storybook/react';
+import { Select as SelectComponent } from '..';
+import { SelectOption } from '..';
 
 const sampleOptions: SelectOption[] = [
-  { id: "id1", label: "0min - 1min", count: 2 },
-  { id: "id2", label: "2min - 5min", count: 1 },
-  { id: "id3", label: "10min - 20min", count: 2 },
-  { id: "id4", label: "10min - 26min", count: 0 },
+  { id: 'id1', label: '0min - 1min', count: 2 },
+  { id: 'id2', label: '2min - 5min', count: 1 },
+  { id: 'id3', label: '10min - 20min', count: 2 },
+  { id: 'id4', label: '10min - 26min', count: 0 },
 ];
 
-export default {
-  title: "Select",
-  component: SelectFilter,
+const meta = {
+  title: 'Select',
+  component: SelectComponent,
   argTypes: {
-    options: { control: { type: "object" } },
-    title: { control: { type: "text" } },
-    searchPlaceholder: { control: { type: "text" } },
-    allowSearch: { control: { type: "boolean" } },
-    showFacets: { control: { type: "boolean" } },
-    onApply: { action: "onApply" },
+    options: { control: { type: 'object' } },
+    title: { control: { type: 'text' } },
+    searchPlaceholder: { control: { type: 'text' } },
+    allowSearch: { control: { type: 'boolean' } },
+    showFacets: { control: { type: 'boolean' } },
+    onApply: { action: 'onApply' },
   },
   args: {
     options: sampleOptions,
-    title: "Duration",
+    title: 'Duration',
     allowSearch: true,
-    searchPlaceholder: "Search...",
+    searchPlaceholder: 'Search...',
     showFacets: true,
   },
-} as Meta;
+  decorators: [
+    Story => (
+      <div style={{ width: '32rem' }}>
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof SelectComponent>;
 
-const Template: Story<Props> = ({
-  options,
-  title,
-  onApply,
-  allowSearch,
-  searchPlaceholder,
-  touched,
-  showFacets,
-  filtersFromContext,
-}: Props) => (
-  <div style={{ width: "240px" }}>
-    <SelectFilter
-      options={options}
-      title={title}
-      onApply={onApply}
-      filtersFromContext={filtersFromContext}
-      searchPlaceholder={searchPlaceholder}
-      showFacets={showFacets}
-      allowSearch={allowSearch}
-      touched={touched}
-    />
-  </div>
-);
+export default meta;
 
-export const Sample = Template.bind({});
-export const WithoutFacets = Template.bind({});
-WithoutFacets.args = {
-  showFacets: false,
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    onApply: (selected: string[]) => {
+      console.log('Selected options:', selected);
+    },
+  },
 };
-export const WithoutSearch = Template.bind({});
-WithoutSearch.args = {
-  allowSearch: false,
+
+export const WithoutFacets: Story = {
+  args: {
+    onApply: (selected: string[]) => {
+      console.log('Selected options:', selected);
+    },
+    showFacets: false,
+  },
+};
+
+export const WithoutSearch: Story = {
+  args: {
+    onApply: (selected: string[]) => {
+      console.log('Selected options:', selected);
+    },
+    allowSearch: false,
+  },
 };

@@ -1,0 +1,16 @@
+@import '@styles/colors.less';
+@import '@styles/breakpoints.less';
+
+@badge-border: var(--bo-ui-badge-border, 2px solid @gray-100);
+@badge-padding: var(--bo-ui-badge-padding, 2px 4px 2px 4px);
+@badge-margin: var(--bo-ui-badge-margin, 0 2px 2px 0);
+@badge-background-color: var(--bo-ui-badge-background-color, @gray-100);
+@badge-height: var(--bo-ui-badge-height, 24px);
+@badge-border-radius: var(--bo-ui-badge-border-radius, 4px);
+@badge-label-color: var(--bo-ui-badge-label-color, @gray-700);
+@badge-color: var(--bo-ui-badge-value-color, @gray-700);
+@badge-svg-height: var(--bo-ui-badge-svg-height, 10px);
+
+@media screen and (min-width: @screen-sm) {
+  --bo-ui-badge-margin: 4px 4px 0 0;
+}

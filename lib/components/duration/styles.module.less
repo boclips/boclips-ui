@@ -1,0 +1,21 @@
+@import '@styles/breakpoints.less';
+
+.duration {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-start;
+  align-items: center;
+  min-width: 68px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  margin-bottom: 0;
+  width:75px;
+  @media (max-width: @screen-md) {
+    display: none;
+  }
+}
+
+.clock {
+  margin-right: 4px;
+}

@@ -1,112 +1,75 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
+import { Meta, StoryObj } from '@storybook/react';
 
-import { InputText, BoInputProps } from "../src";
-import SearchIcon from "./search-icon.svg";
+import { Input } from '..';
+import SearchIcon from './search-icon.svg?react';
 
-export default {
-  title: "Input text",
-  component: InputText,
-} as Meta;
+const meta = {
+  title: 'Input text',
+  component: Input,
+} satisfies Meta<typeof Input>;
 
-const Template: Story<BoInputProps> = ({
-  id,
-  onChange,
-  onFocus,
-  onBlur,
-  isError,
-  errorMessage,
-  icon,
-  allowClear,
-  showLabelText,
-  placeholder,
-  defaultValue,
-  height,
-  constraints,
-  labelText,
-  errorMessagePlacement,
-}: BoInputProps) => (
-  <>
-    <InputText
-      id={id}
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      isError={isError}
-      errorMessage={errorMessage}
-      icon={<SearchIcon />}
-      allowClear={allowClear}
-      showLabelText={showLabelText}
-      inputType="text"
-      placeholder={placeholder}
-      defaultValue={defaultValue}
-      height={height}
-      constraints={constraints}
-      labelText={labelText}
-      errorMessagePlacement={errorMessagePlacement}
-    />
-    <InputText
-      id={id}
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      isError={isError}
-      errorMessage={errorMessage}
-      icon={icon}
-      allowClear={allowClear}
-      showLabelText={showLabelText}
-      inputType="textarea"
-      placeholder={placeholder}
-      defaultValue={defaultValue}
-      height={height}
-      constraints={constraints}
-      labelText={labelText}
-      errorMessagePlacement={errorMessagePlacement}
-    />
-    <InputText
-      id={id}
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      isError={isError}
-      errorMessage={errorMessage}
-      icon={icon}
-      allowClear={allowClear}
-      showLabelText={showLabelText}
-      inputType="password"
-      placeholder={placeholder}
-      defaultValue={defaultValue}
-      height={height}
-      constraints={constraints}
-      labelText="password"
-      errorMessagePlacement={errorMessagePlacement}
-    />
-  </>
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Sample = Template.bind({});
-
-Sample.args = {
-  id: "input-id",
-  onChange: () => console.log("onChange"),
-  onFocus: () => console.log("onFocus"),
-  onBlur: () => console.log("onBlur"),
-  isError: false,
-  errorMessage: "error message",
-  icon: undefined,
-  allowClear: true,
-  showLabelText: true,
-  placeholder: "this is a placeholder",
-  defaultValue: undefined,
-  height: "48px",
-  constraints: { required: true, minLength: 2, maxLength: 100 },
-  labelText: "search:",
-  errorMessagePlacement: "top",
+export const Text: Story = {
+  args: {
+    id: 'input-id',
+    onChange: () => console.log('onChange'),
+    onFocus: () => console.log('onFocus'),
+    onBlur: () => console.log('onBlur'),
+    isError: false,
+    errorMessage: 'error message',
+    icon: <SearchIcon />,
+    allowClear: true,
+    showLabelText: true,
+    placeholder: 'this is a placeholder',
+    defaultValue: undefined,
+    height: '48px',
+    constraints: { required: true, minLength: 2, maxLength: 100 },
+    labelText: 'search:',
+    errorMessagePlacement: 'top',
+    inputType: 'text',
+  },
 };
 
-Sample.argTypes = {
-  errorMessagePlacement: {
-    control: { type: "select", options: ["top", "bottom"] },
+export const TextArea: Story = {
+  args: {
+    id: 'input-id',
+    onChange: () => console.log('onChange'),
+    onFocus: () => console.log('onFocus'),
+    onBlur: () => console.log('onBlur'),
+    isError: false,
+    errorMessage: 'error message',
+    icon: undefined,
+    allowClear: true,
+    showLabelText: true,
+    placeholder: 'this is a placeholder',
+    defaultValue: undefined,
+    height: '48px',
+    constraints: { required: true, minLength: 2, maxLength: 100 },
+    labelText: 'Text Area:',
+    errorMessagePlacement: 'top',
+    inputType: 'textarea',
   },
-  inputType: { control: { type: "none" } },
+};
+
+export const Password: Story = {
+  args: {
+    id: 'input-id',
+    onChange: () => console.log('onChange'),
+    onFocus: () => console.log('onFocus'),
+    onBlur: () => console.log('onBlur'),
+    isError: false,
+    errorMessage: 'error message',
+    icon: undefined,
+    allowClear: true,
+    showLabelText: true,
+    placeholder: 'this is a placeholder',
+    defaultValue: undefined,
+    height: '48px',
+    constraints: { required: true, minLength: 2, maxLength: 100 },
+    labelText: 'Password:',
+    errorMessagePlacement: 'top',
+    inputType: 'password',
+  },
 };

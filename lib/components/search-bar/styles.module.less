@@ -1,0 +1,153 @@
+@import '@styles/colors';
+@import 'variables';
+
+#focus {
+  &:focus {
+    outline: 0.25rem solid @blue-700;
+    outline-offset: 2px;
+    border-color: @gray-700;
+  }
+}
+.searchAndSuggestions {
+  position: relative;
+  &:focus-within {
+    .searchBarSuggestions {
+      display: flex;
+    }
+  }
+}
+
+.visuallyHidden {
+  top: 0;
+  left: -2px;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.searchBarWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  height: @search-bar-height;
+  width: @search-bar-width;
+
+  &:focus-within {
+    .skip {
+      visibility: visible;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+    border: @search-bar-border;
+    border-radius: @search-bar-border-radius;
+    padding: @search-bar-padding;
+    font-style: normal;
+    font-weight: 500;
+    font-size: @search-bar-font-size;
+    line-height: 150%;
+    color: @search-bar-text-color;
+
+    &::placeholder {
+      color: @search-bar-placeholder-color;
+      font-weight: @search-bar-placeholder-weight;
+    }
+
+    &:hover,
+    &:active,
+    &:focus-visible {
+      border-color: @gray-700;
+    }
+
+    #focus;
+  }
+
+  .skip {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    &:focus {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    #focus;
+  }
+
+  .buttons {
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem;
+    height: 100%;
+
+    .clearButton {
+      background: none;
+      border: 0;
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 0.25rem;
+
+      &:hover,
+      &:active {
+        background: @blue-400;
+      }
+
+      svg {
+        height: 14px;
+        width: 14px;
+        stroke: @gray-800;
+      }
+
+      #focus;
+    }
+  }
+}
+
+.searchBarSuggestions {
+  display: none;
+  flex-direction: column;
+  border: 2px solid #6b83a8;
+  border-radius: 4px;
+  font-size: var(--bo-ui-search-bar-font-size, 1rem);
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  list-style: none;
+  padding: 0;
+
+  &:empty {
+    border: none;
+  }
+
+  .suggestionItem {
+    border: none;
+    text-align: left;
+    padding: 0.25rem 1rem;
+    background: white;
+
+    &.active,
+    &.pseudoSelectorsEnabled:hover,
+    &.pseudoSelectorsEnabled:focus {
+      background: @gray-100;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+}

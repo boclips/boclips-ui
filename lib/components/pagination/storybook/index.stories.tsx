@@ -1,59 +1,60 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
-import { List } from "antd";
-import c from "classnames";
-import Pagination from "../src";
-// @ts-ignore
-import s from "../src/styles.module.less";
+import { Meta, StoryObj } from '@storybook/react';
+import { List, ConfigProvider } from 'antd';
+import { Pagination as PaginationComponent } from '..';
 
-export default {
-  title: "Pagination",
-  component: Pagination,
-} as Meta;
+const meta = {
+  title: 'Pagination',
+  component: PaginationComponent,
+} satisfies Meta<typeof PaginationComponent>;
 
-interface Props {
-  mobile: boolean;
-}
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-const currentPage = 2;
-const totalItems = 133;
-const pageSize = 10;
-
-const Template: Story<Props> = ({ mobile }: Props) => (
-  <div>
-    <List
-      itemLayout="vertical"
-      size="large"
-      pagination={{
-        total: totalItems,
-        className: c(s.pagination, {
-          [s.paginationEmpty]: false,
-        }),
-        pageSize: 10,
-        showSizeChanger: false,
-        current: currentPage,
-        responsive: false,
-        size: "small",
-        showLessItems: mobile,
-        prefixCls: "bo-pagination",
-        itemRender: (page, type) => {
-          return (
-            <Pagination
+export const Pagination: Story = {
+  args: {
+    mobileView: false,
+    currentPage: 2,
+    totalItems: 133,
+    buttonType: 'prev',
+    page: 1,
+  },
+  argTypes: {
+    mobileView: {
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
+  render: ({ mobileView, currentPage, totalItems }) => (
+    <ConfigProvider
+      theme={{
+        hashed: false,
+      }}
+    >
+      <List
+        itemLayout="vertical"
+        size="large"
+        pagination={{
+          total: totalItems,
+          pageSize: 10,
+          showSizeChanger: false,
+          current: currentPage,
+          responsive: false,
+          size: 'small',
+          align: 'start',
+          showLessItems: mobileView,
+          prefixCls: 'bo-pagination',
+          itemRender: (page, type) => (
+            <PaginationComponent
               buttonType={type}
               page={page}
-              mobileView={mobile}
+              mobileView={mobileView}
               currentPage={currentPage}
-              totalItems={Math.ceil(totalItems / pageSize)}
+              totalItems={Math.ceil(totalItems / 10)}
             />
-          );
-        },
-      }}
-    />
-  </div>
-);
-
-export const BASE = Template.bind({});
-
-BASE.args = {
-  mobile: false,
+          ),
+        }}
+      />
+    </ConfigProvider>
+  ),
 };

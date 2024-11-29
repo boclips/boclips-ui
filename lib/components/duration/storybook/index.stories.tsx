@@ -1,18 +1,16 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
-import Duration, { DurationProps } from "../src";
+import { Meta, StoryObj } from '@storybook/react';
+import { Duration as DurationComponent } from '..';
 
-export default {
-  title: "Duration",
-  component: Duration,
-} as Meta;
+const meta = {
+  title: 'Duration',
+  component: DurationComponent,
+} satisfies Meta<typeof DurationComponent>;
 
-const Template: Story<DurationProps> = ({ duration }: DurationProps) => (
-  <Duration duration={duration} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Sample = Template.bind({});
-
-Sample.args = {
-  duration: "PT2M32S",
+export const Duration: Story = {
+  args: {
+    duration: 'PT2M32S',
+  },
 };

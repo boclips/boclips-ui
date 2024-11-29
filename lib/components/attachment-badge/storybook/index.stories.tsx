@@ -1,13 +1,11 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
+import { Meta, StoryObj } from '@storybook/react';
+import { AttachmentBadge as AttachmentBadgeComponent } from '..';
 
-import AttachmentBadge from "../src";
+const meta = {
+  title: 'Attachment Badge',
+  component: AttachmentBadgeComponent,
+} satisfies Meta<typeof AttachmentBadgeComponent>;
 
-export default {
-  title: "Attachment Badge",
-  component: AttachmentBadge,
-} as Meta;
-
-const Template: Story = () => <AttachmentBadge />;
-
-export const Sample = Template.bind({});
+export default meta;
+type Story = StoryObj<typeof meta>;
+export const AttachmentBadge: Story = {};

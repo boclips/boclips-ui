@@ -1,39 +1,17 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
+import { Meta, StoryObj } from '@storybook/react';
+import { SubjectBadge as SubjectBadgeComponent } from '..';
 
-import SubjectBadge, { SubjectBadgeProps } from "../src";
-import s from "./style.module.less";
+const meta = {
+  title: 'Subject Badge',
+  component: SubjectBadgeComponent,
+} satisfies Meta<typeof SubjectBadgeComponent>;
 
-export default {
-  title: "Subject Badge",
-  component: SubjectBadge,
-} as Meta;
+export default meta;
 
-interface Props extends SubjectBadgeProps {
-  theme?: "lti" | "hq" | "publishers";
-}
+type Story = StoryObj<typeof meta>;
 
-const Template: Story<Props> = ({ subject, theme }: Props) => (
-  <div className={s[theme]}>
-    <SubjectBadge subject={subject} />
-  </div>
-);
-
-export const BACKOFFICE = Template.bind({});
-export const LTI = Template.bind({});
-export const CUSTOM = Template.bind({});
-
-BACKOFFICE.args = {
-  subject: { id: "hello", name: "Technology and computing" },
-  theme: "hq",
-};
-
-LTI.args = {
-  subject: { id: "hello", name: "Technology and computing" },
-  theme: "lti",
-};
-
-CUSTOM.args = {
-  subject: { id: "hello", name: "Technology and computing" },
-  theme: "custom",
+export const SubjectBadge: Story = {
+  args: {
+    subject: { id: 'hello', name: 'Technology and computing' },
+  },
 };

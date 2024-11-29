@@ -1,17 +1,25 @@
 #!/usr/bin/env bash
 
-set -e
+set -x -e
 
-(
-cd source
+app=source
+version="$(< version/version)"
+release_name="v$version"
+echo "$release_name" \
+    > release/name
+echo "This is $release_name" \
+    > release/notes
 
-echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-echo "about to run npm ci"
-npm ci
-echo "about to bootstrap components"
-npx lerna bootstrap --ci
-echo "about to build components"
-npx lerna run build
-echo "about to publish changed components"
-npx lerna publish from-git --yes --no-git-tag-version --no-push
-)
+corepack enable
+corepack prepare pnpm@latest-9 --activate
+pnpm config set store-dir ../../../root/.pnpm-store
+
+pushd $app
+    pnpm install --frozen-lockfile
+    pnpm run build
+    pnpm version "$version" \
+    --no-git-tag-version \
+    --force
+popd
+
+cp -R ${app}/dist/ ${app}/package.json ${app}/README.md dist/
