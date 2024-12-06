@@ -8,9 +8,7 @@
     ".": {
       "import": "./dist/boclips-ui.js"
     },
-    "./dist/style.css": {
-      "import": "./dist/style.css"
-    }
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
     "audit": "audit-ci -m",
