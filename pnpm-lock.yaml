@@ -21,8 +21,8 @@ importers:
         specifier: ^5.22.2
         version: 5.22.2(date-fns@2.30.0)(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       boclips-api-client:
-        specifier: ^96.0.0
-        version: 96.0.0
+        specifier: ^96.0.2
+        version: 96.0.2
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -601,6 +601,7 @@ packages:
   '@pact-foundation/pact-core@15.2.1':
     resolution: {integrity: sha512-IhWwc026bqffjHAVjOfVnDzmhRlr7FBVrLeg/pKjhrcIi0Z/bWahU0u3LEKKctnMkICSH4nAVTYZEg3kUNTxag==}
     engines: {node: '>=16'}
+    cpu: [x64, ia32, arm64]
     os: [darwin, linux, win32]
 
   '@pact-foundation/pact@13.2.0':
@@ -1826,8 +1827,8 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  boclips-api-client@96.0.0:
-    resolution: {integrity: sha512-HhYpHmnc8ESo2RMUtU2G6wvgj1XxJ3fHm1v+ZTNBrTMWKuoVITu89QhRcqaWUALeGgYnXs5jZsZ5VO4qF0PHKw==}
+  boclips-api-client@96.0.2:
+    resolution: {integrity: sha512-MN2brhmbzJK3uaXx42f0I5d5Tpe427oWZFqUXp34rQEuFMOfCvYybm7dXEeuMShU3y5j04rHSi9KYuqI25XX1A==}
     engines: {node: '>=20.18.0 <21'}
 
   boclips-js-security@13.0.1:
@@ -6455,7 +6456,7 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
-  boclips-api-client@96.0.0:
+  boclips-api-client@96.0.2:
     dependencies:
       '@pact-foundation/pact': 13.2.0
       axios: 1.7.7
