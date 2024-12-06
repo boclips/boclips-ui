@@ -8,7 +8,8 @@
     ".": {
       "import": "./dist/boclips-ui.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./styles/*":  "./dist/styles/*"
   },
   "scripts": {
     "audit": "audit-ci -m",
@@ -68,6 +69,7 @@
     "uuid": "^11.0.3",
     "vite": "^5.4.11",
     "vite-plugin-dts": "^4.3.0",
+    "vite-plugin-static-copy": "^2.2.0",
     "vite-plugin-svgr": "^4.3.0",
     "vitest": "^2.1.5"
   },

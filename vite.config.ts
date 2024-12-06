@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -49,6 +50,11 @@ export default defineConfig({
       // rollupTypes: true,
     }),
     svgr(),
+    viteStaticCopy({
+      targets: [
+        { src: resolve(__dirname, 'lib/styles/*.less'), dest: 'styles' }
+      ]
+    }),
   ],
   test: {
     include: ['**/*.test.tsx'],
