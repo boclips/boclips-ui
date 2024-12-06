@@ -91,8 +91,8 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0
       boclips-player-react:
-        specifier: ^4.0.7
-        version: 4.0.7(axios@1.7.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^4.0.8
+        version: 4.0.8(axios@1.7.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -1820,13 +1820,13 @@ packages:
     resolution: {integrity: sha512-HhYpHmnc8ESo2RMUtU2G6wvgj1XxJ3fHm1v+ZTNBrTMWKuoVITu89QhRcqaWUALeGgYnXs5jZsZ5VO4qF0PHKw==}
     engines: {node: '>=20.18.0 <21'}
 
-  boclips-js-security@13.0.1:
-    resolution: {integrity: sha512-7s/YSUCJvKbzLp6uAc9TLsoFJbCDl3lLmcd1vpd1FZZMrMSJusN/P7vL8C0W5Gw+x3YWUPbOSuIuBSjD7Zu2xA==}
+  boclips-js-security@14.0.0:
+    resolution: {integrity: sha512-RbFAS6tjS53CXp763E0O2YNozzHhP/ZgvA2gkaEzdlVwc8ftTsYS1zkUVPienENOXVuiyTYorxINXg5Tvw6BxQ==}
     peerDependencies:
-      axios: '>=0.21.1 <1.0.0'
+      axios: '>=1.7.7 <2.0.0'
 
-  boclips-player-react@4.0.7:
-    resolution: {integrity: sha512-EP1DcbCicZClRWMA0O1vU18TSFPDp1nZ8++W7MbpmYQp1QkdrfY3PgstZjZZ7a3fNUNvXCbxG52Bh572O1Qb2g==}
+  boclips-player-react@4.0.8:
+    resolution: {integrity: sha512-Y5auQ/XJufhQSfHKLlk4CpqDfHjAXqcpcTBE6MgBk88u3c7mn/AM/idzdEpjTX5Pg4OG5smZz94g7gBkbdv5jw==}
     peerDependencies:
       react: ^18.3.1
       react-dom: ^18.3.1
@@ -6426,7 +6426,7 @@ snapshots:
       - debug
       - supports-color
 
-  boclips-js-security@13.0.1(axios@1.7.7):
+  boclips-js-security@14.0.0(axios@1.7.7):
     dependencies:
       axios: 1.7.7
       jest-environment-jsdom: 29.7.0
@@ -6438,9 +6438,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  boclips-player-react@4.0.7(axios@1.7.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  boclips-player-react@4.0.8(axios@1.7.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      boclips-js-security: 13.0.1(axios@1.7.7)
+      boclips-js-security: 14.0.0(axios@1.7.7)
       boclips-player: 7.16.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
