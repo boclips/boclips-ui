@@ -58,7 +58,7 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "eslint-plugin-storybook": "^0.11.1",
     "globals": "^15.12.0",
-    "globals-vitest": "^2.1.5",
+    "globals-vitest": "^2.1.8",
     "jsdom": "^25.0.1",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
@@ -71,7 +71,7 @@
     "vite-plugin-dts": "^4.3.0",
     "vite-plugin-static-copy": "^2.2.0",
     "vite-plugin-svgr": "^4.3.0",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.8"
   },
   "peerDependencies": {
     "react": "^18.3.1",
