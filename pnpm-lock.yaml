@@ -91,8 +91,8 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0
       boclips-player-react:
-        specifier: ^4.0.7
-        version: 4.0.7(axios@1.7.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^4.1.0
+        version: 4.1.0(axios@1.7.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -1833,19 +1833,19 @@ packages:
     resolution: {integrity: sha512-HhYpHmnc8ESo2RMUtU2G6wvgj1XxJ3fHm1v+ZTNBrTMWKuoVITu89QhRcqaWUALeGgYnXs5jZsZ5VO4qF0PHKw==}
     engines: {node: '>=20.18.0 <21'}
 
-  boclips-js-security@13.0.1:
-    resolution: {integrity: sha512-7s/YSUCJvKbzLp6uAc9TLsoFJbCDl3lLmcd1vpd1FZZMrMSJusN/P7vL8C0W5Gw+x3YWUPbOSuIuBSjD7Zu2xA==}
+  boclips-js-security@14.1.0:
+    resolution: {integrity: sha512-EQxlqHGrjFV2bgOtNvj0dhLchRbRHzNiM+OyYuCC/BLwayN7PeGOz3I3Jn4mHi/8vYLnN2Y7TPuqFfpTLk72Lg==}
     peerDependencies:
-      axios: '>=0.21.1 <1.0.0'
+      axios: '>=1.7.7 <2.0.0'
 
-  boclips-player-react@4.0.7:
-    resolution: {integrity: sha512-EP1DcbCicZClRWMA0O1vU18TSFPDp1nZ8++W7MbpmYQp1QkdrfY3PgstZjZZ7a3fNUNvXCbxG52Bh572O1Qb2g==}
+  boclips-player-react@4.1.0:
+    resolution: {integrity: sha512-OE1cBPJkfJEglp1wz+d9kbNgLzZ4KU/N9oHnGEc8g00JdotgVjjnoAOFI5WFLWVY5ddsD/XGU8Rh259xdA66wA==}
     peerDependencies:
       react: ^18.3.1
       react-dom: ^18.3.1
 
-  boclips-player@7.16.0:
-    resolution: {integrity: sha512-Y4JcdO4rji7eHvuN1BS94fSnrxdqcJSnauyqY6aX8eJJhqSwQjT/2xBthO0bHdojuxbtDpEXFj9hRudQ5LxSJA==}
+  boclips-player@7.16.1:
+    resolution: {integrity: sha512-wz8SB2iXyE1OOgPx4jgulbVbmBkmg64I6fyYnDDnKPPuUljQLNyLAjiXlr0k6Pbo2Fiq20aDaxj4K09sDuAeJA==}
 
   body-parser@1.20.3:
     resolution: {integrity: sha512-7rAxByjUMqQ3/bHJy7D6OGXvx/MMc4IqBn/X0fcM1QUcAItpZrBEYhWGem+tzXH90c+G01ypMcYJBO9Y30203g==}
@@ -6477,7 +6477,7 @@ snapshots:
       - debug
       - supports-color
 
-  boclips-js-security@13.0.1(axios@1.7.7):
+  boclips-js-security@14.1.0(axios@1.7.7):
     dependencies:
       axios: 1.7.7
       jest-environment-jsdom: 29.7.0
@@ -6489,10 +6489,10 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  boclips-player-react@4.0.7(axios@1.7.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  boclips-player-react@4.1.0(axios@1.7.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      boclips-js-security: 13.0.1(axios@1.7.7)
-      boclips-player: 7.16.0
+      boclips-js-security: 14.1.0(axios@1.7.7)
+      boclips-player: 7.16.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
@@ -6507,7 +6507,7 @@ snapshots:
       - utf-8-validate
       - webpack
 
-  boclips-player@7.16.0:
+  boclips-player@7.16.1:
     dependencies:
       '@types/url-template': 2.0.31
       axios: 1.7.7
