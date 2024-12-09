@@ -6,7 +6,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/boclips-ui.js"
+      "import": "./dist/boclips-ui.js",
+      "types": "./dist/lib/main.d.ts"
     },
     "./style.css": "./dist/style.css",
     "./styles/*": "./dist/styles/*"
