@@ -50,7 +50,7 @@
     "audit-ci": "^7.1.0",
     "boclips-player-react": "^4.1.0",
     "dayjs": "^1.11.13",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.2",
