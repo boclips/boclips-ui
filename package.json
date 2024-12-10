@@ -25,7 +25,7 @@
     "@ant-design/icons": "^5.5.1",
     "@duetds/date-picker": "^1.4.0",
     "@radix-ui/react-tooltip": "^1.1.4",
-    "antd": "^5.22.2",
+    "antd": "^5.22.4",
     "boclips-api-client": "^96.0.0",
     "classnames": "^2.5.1"
   },
