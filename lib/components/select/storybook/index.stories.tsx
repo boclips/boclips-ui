@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Select as SelectComponent } from '..';
+import {Select, Select as SelectComponent} from '..';
 import { SelectOption } from '..';
 
 const sampleOptions: SelectOption[] = [
@@ -9,7 +9,7 @@ const sampleOptions: SelectOption[] = [
   { id: 'id4', label: '10min - 26min', count: 0 },
 ];
 
-const meta = {
+const meta: Meta<typeof Select> = {
   title: 'Select',
   component: SelectComponent,
   argTypes: {

@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "types": [
+      "vitest/globals",
+      "@testing-library/jest-dom",
+      "@testing-library/react",
+      "@types/css-modules"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["lib/*"],
+      "@components/*": ["lib/components/*"],
+      "@styles/*": ["lib/styles/*"],
+      "@hooks/*": ["lib/hooks/*"]
+    }
+  },
+  "include": ["lib", "stories", ".storybook", "vite-env.d.ts", "setupTests.ts"],
+  "exclude": ["node_modules", "dist"]
+}

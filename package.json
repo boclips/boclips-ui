@@ -7,14 +7,16 @@
   "exports": {
     ".": {
       "import": "./dist/boclips-ui.js",
-      "types": "./dist/lib/main.d.ts"
+      "types": "./dist/lib/main.d.ts",
+      "require": "./dist-cjs/boclips-ui.js"
     },
     "./style.css": "./dist/style.css",
     "./styles/*": "./dist/styles/*"
   },
   "scripts": {
     "audit": "audit-ci -m",
-    "build": "tsc -b && vite build",
+    "build:cjs": "tsc -b tsconfig.cjs.json",
+    "build": "tsc -b && vite build && pnpm run build:cjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",

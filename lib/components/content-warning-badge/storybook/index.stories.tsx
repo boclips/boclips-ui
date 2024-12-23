@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ContentWarningBadge } from '..';
 
-const meta = {
+const meta: Meta<typeof ContentWarningBadge> = {
   title: 'Content warning badge',
   component: ContentWarningBadge,
 } satisfies Meta<typeof ContentWarningBadge>;

@@ -43,7 +43,7 @@ const CustomPaginationButton = ({
   );
 };
 
-interface PaginationProps {
+export interface PaginationProps {
   buttonType: 'prev' | 'jump-prev' | 'page' | 'jump-next' | 'next';
   page: number;
   mobileView: boolean;
