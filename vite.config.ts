@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import { viteStaticCopy } from "vite-plugin-static-copy";
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,8 +12,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
       name: 'boclips-ui',
-      formats: ['es'],
-      fileName: 'boclips-ui',
+      formats: ['es', 'cjs'],
+      fileName: (format) => `boclips-ui.${format === 'es' ? '' : 'cjs'}`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
@@ -56,7 +55,6 @@ export default defineConfig({
         { src: resolve(__dirname, 'lib/styles/*.less'), dest: 'styles' }
       ]
     }),
-    cssInjectedByJsPlugin(),
   ],
   test: {
     include: ['**/*.test.tsx'],
