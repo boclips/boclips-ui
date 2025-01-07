@@ -1,0 +1,92 @@
+@import "~@boclips-ui/styles/src/colors";
+@import "~@boclips-ui/styles/src/focus";
+
+.arrow {
+  fill: @gray-800;
+}
+
+.content {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 150%;
+  color: @white;
+  background-color: @gray-800;
+  user-select: none;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  text-align: center;
+  z-index: 99999;
+
+  &.large {
+    min-width: 206px;
+  }
+
+  &.small {
+    max-width: 154px;
+  }
+}
+
+.content[data-state="delayed-open"][data-side="top"] {
+  animation-name: slideDownAndFade;
+}
+
+.content[data-state="delayed-open"][data-side="right"] {
+  animation-name: slideLeftAndFade;
+}
+
+.content[data-state="delayed-open"][data-side="bottom"] {
+  animation-name: slideUpAndFade;
+}
+
+.content[data-state="delayed-open"][data-side="left"] {
+  animation-name: slideRightAndFade;
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

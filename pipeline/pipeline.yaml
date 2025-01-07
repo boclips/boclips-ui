@@ -1,135 +1,60 @@
 ---
 groups:
-  - name: all
-    jobs:
-      - test
-      - pre-release
-      - major
-      - minor
-      - release
-  - name: develop
-    jobs:
-      - test
-      - pre-release
-  - name: release
-    jobs:
-      - major
-      - minor
-      - release
+- name: all
+  jobs:
+  - test
+  - release-candidate-test
+  - release
 
 jobs:
-  - name: test
-    plan:
-      - get: once-per-weekday
-        trigger: true
-      - get: source
-        trigger: true
-      - task: test
-        file: source/pipeline/test.yaml
+- name: test
+  plan:
+  - get: boclips-ui
+    trigger: true
+  - task: test
+    input_mapping:
+      source: boclips-ui
+    file: boclips-ui/pipeline/test.yaml
 
-  - name: pre-release
-    plan:
-    - get: source
-      passed: [test]
-      trigger: true
-    - put: version
-      params:
-        pre: dev
-    - task: release
-      file: source/pipeline/release.yaml
-    - put: npm-registry
-      params:
-        version: version/version
-        path: dist
-        tag: dev
-    - put: version
-      params:
-        file: version/version
+- name: release-candidate-test
+  plan:
+  - get: boclips-ui
+  - get: release-candidate-source
+    trigger: true
+  - task: test
+    input_mapping:
+      source: release-candidate-source
+    file: boclips-ui/pipeline/test.yaml
 
-  - name: major
-    plan:
-      - put: version
-        params:
-          bump: major
-
-  - name: minor
-    plan:
-      - put: version
-        params:
-          bump: minor
-
-  - name: release
-    plan:
-      - get: source
-        passed: [pre-release]
-      - get: version
-        params:
-          bump: final
-      - task: release
-        file: source/pipeline/release.yaml
-      - put: npm-registry
-        params:
-          version: version/version
-          path: dist
-      - put: github-release
-        params:
-          name: release/name
-          tag: release/name
-          body: release/notes
-          commitish: source/.git/ref
-      - put: version
-        params:
-          bump: patch
+- name: release
+  plan:
+  - get: boclips-ui
+  - get: release-candidate-source
+    passed: [release-candidate-test]
+    trigger: true
+  - task: release
+    input_mapping:
+      source: release-candidate-source
+      task-source: boclips-ui
+    file: boclips-ui/pipeline/release.yaml
+    params:
+      NPM_TOKEN: ((npm.token))
 
 resources:
-  - name: source
-    type: git
-    source:
-      branch: main
-      private_key: ((boclips-ui.repo-key))
-      uri: git@github.com:boclips/boclips-ui.git
+- name: boclips-ui
+  type: git
+  icon: github
+  source:
+    branch: main
+    private_key: ((boclips-ui.repo-key))
+    uri: git@github.com:boclips/boclips-ui.git
 
-  - name: version
-    type: semver
-    source:
-      initial_version: '0.1.0'
-      driver: git
-      uri: git@github.com:boclips/versions.git
-      branch: main
-      file: boclips-ui
-      private_key: |
-        ((versions.repo-key))
-
-  - name: npm-registry
-    type: npm-resource
-    source:
-      package: boclips-ui
-      registry:
-        token: ((npm.automation-token))
-
-  - name: once-per-weekday
-    type: time
-    source:
-      start: 09:30 AM
-      stop: 12:30 PM
-      days: [Monday, Tuesday, Wednesday, Thursday, Friday]
-      location: Europe/London
-
-  - name: github-release
-    type: github-release
-    source:
-      owner: boclips
-      repository: boclips-ui
-      access_token: ((boclips-ui.github-access-token))
-
-resource_types:
-  - name: npm-resource
-    type: registry-image
-    source:
-      repository: boclipsconcourse/npm-resource
-      tag: 0.7.0
-
-  - name: github-release
-    type: registry-image
-    source:
-      repository: concourse/github-release-resource
+- name: release-candidate-source
+  type: git
+  icon: github
+  source:
+    branch: main
+    private_key: ((boclips-ui.repo-key))
+    uri: git@github.com:boclips/boclips-ui.git
+    tag_regex: '@boclips-ui\/.*@.*'
+    fetch_tags: true

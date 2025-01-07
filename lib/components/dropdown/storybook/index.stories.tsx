@@ -1,16 +1,19 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { v4 as uuidv4 } from 'uuid';
-import { Dropdown as DropdownComponent, OptionsProps } from '..';
+import React from "react";
+import { Story, Meta } from "@storybook/react/types-6-0";
+// @ts-ignore
+import { v4 as uuidv4 } from "uuid";
+import Dropdown, { OptionsProps, Props } from "../src";
+// @ts-ignore
+import s from "./styles.module.less";
 
-const meta = {
-  title: 'Dropdown',
-  component: DropdownComponent,
-} satisfies Meta<typeof DropdownComponent>;
+export default {
+  title: "Dropdown",
+  component: Dropdown,
+} as Meta;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+const numberOfOptions = [...Array(33).keys()];
 
-const options1: OptionsProps[] = [...Array(33).keys()].map(it => {
+const options1: OptionsProps[] = numberOfOptions.map((it) => {
   const id = uuidv4();
   return {
     id: `${id}`,
@@ -21,32 +24,70 @@ const options1: OptionsProps[] = [...Array(33).keys()].map(it => {
   };
 });
 
-export const SingleSelect: Story = {
-  args: {
-    placeholder: 'Select video type',
-    onUpdate: it => console.log(`onUpdate:${it}`),
-    onSearch: it => console.log(`onSearch:${it}`),
-    options: options1,
-    mode: 'single',
-    showSearch: true,
-    showLabel: true,
-    labelText: 'awesome label',
-    errorMessagePlacement: 'top',
-    errorMessage: 'error message',
-  },
+const Template: Story<Props> = ({
+  placeholder,
+  onSearch,
+  onUpdate,
+  options,
+  whenSelectedLabel,
+  showSearch,
+  showLabel,
+  labelText,
+  errorMessage,
+  errorMessagePlacement,
+}) => (
+  <div style={{ display: "flex" }}>
+    <div>
+      multiple:
+      <Dropdown
+        placeholder={placeholder}
+        onSearch={onSearch}
+        onUpdate={onUpdate}
+        mode="multiple"
+        options={options}
+        whenSelectedLabel={whenSelectedLabel}
+        showSearch={showSearch}
+        showLabel={showLabel}
+        labelText={labelText}
+        isError
+        errorMessage={errorMessage}
+        errorMessagePlacement={errorMessagePlacement}
+        // defaultValue={options1.map((it) => it.value)}
+      />
+    </div>
+    <div style={{ marginLeft: "32px" }}>
+      single:
+      <Dropdown
+        placeholder={placeholder}
+        onSearch={onSearch}
+        onUpdate={onUpdate}
+        mode="single"
+        options={options}
+        showSearch={showSearch}
+        showLabel={false}
+        labelText={labelText}
+      />
+    </div>
+  </div>
+);
+
+export const DEFAULT = Template.bind({});
+
+DEFAULT.args = {
+  placeholder: "Select video types",
+  onUpdate: (it: any) => console.log(`onUpdate:${it}`),
+  onSearch: (it: any) => console.log(`onSearch:${it}`),
+  options: options1,
+  mode: "multiple",
+  showSearch: true,
+  showLabel: true,
+  labelText: "awesome label",
+  errorMessagePlacement: "top",
+  errorMessage: "error message",
 };
 
-export const MultiSelect: Story = {
-  args: {
-    placeholder: 'Select video types',
-    onUpdate: it => console.log(`onUpdate:${it}`),
-    onSearch: it => console.log(`onSearch:${it}`),
-    options: options1,
-    mode: 'multiple',
-    showSearch: true,
-    showLabel: true,
-    labelText: 'awesome label',
-    errorMessagePlacement: 'top',
-    errorMessage: 'error message',
+DEFAULT.argTypes = {
+  errorMessagePlacement: {
+    control: { type: "select", options: ["top", "bottom"] },
   },
 };

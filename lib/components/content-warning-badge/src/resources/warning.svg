@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="146px" height="24px" viewBox="0 0 146 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Phase-1-design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="S&amp;E---How-does-it-work?-small" transform="translate(-327.000000, -603.000000)">
+            <g id="How-does-it-work-copy" transform="translate(258.000000, 118.000000)">
+                <g id="How-does-it-work?-common-info" transform="translate(59.000000, 37.000000)">
+                    <g id="Content-warnings" transform="translate(0.000000, 390.000000)">
+                        <g id="Content-warnings-explanation" transform="translate(10.000000, 54.000000)">
+                            <g id="tags-/-badge-ready" transform="translate(0.000000, 4.000000)">
+                                <rect id="Rectangle" stroke="#D24000" fill="#FFFFFF" x="0.5" y="0.5" width="145" height="23" rx="6"></rect>
+                                <g id="Group" transform="translate(7.000000, 4.000000)">
+                                    <text id="Licensed" font-family="WorkSans-SemiBold, Work Sans" font-size="14" font-weight="500" fill="#545454">
+                                        <tspan x="17.556" y="13">Content Warning</tspan>
+                                    </text>
+                                    <g id="Icons-/-licensed" transform="translate(0.000000, 3.000000)" fill="#D84900" fill-rule="nonzero">
+                                        <g id="round-warning-24px">
+                                            <path d="M4.91096467,0.63 C5.39567982,-0.21 6.60432018,-0.21 7.08903533,0.63 L7.08903533,0.63 L11.8291718,8.84684211 C12.3138869,9.68684211 11.7095667,10.7415789 10.7401364,10.7415789 L10.7401364,10.7415789 L1.25986356,10.7415789 C0.29043326,10.7415789 -0.313886924,9.68684211 0.170828223,8.84684211 L0.170828223,8.84684211 Z M6.03157895,7.57894737 C5.59556467,7.57894737 5.24210526,7.93240678 5.24210526,8.36842105 C5.24210526,8.80443533 5.59556467,9.15789474 6.03157895,9.15789474 C6.46759322,9.15789474 6.82105263,8.80443533 6.82105263,8.36842105 C6.82105263,7.93240678 6.46759322,7.57894737 6.03157895,7.57894737 Z M6.03157895,2.52631579 L5.92483096,2.53210892 C5.540625,2.57412281 5.24210526,2.83947368 5.24210526,3.15789474 L5.24210526,3.15789474 L5.24210526,5.68421053 C5.24210526,6.03157895 5.59736842,6.31578947 6.03157895,6.31578947 L6.03157895,6.31578947 L6.13832694,6.30999635 C6.52253289,6.26798246 6.82105263,6.00263158 6.82105263,5.68421053 L6.82105263,5.68421053 L6.82105263,3.15789474 C6.82105263,2.81052632 6.46578947,2.52631579 6.03157895,2.52631579 L6.03157895,2.52631579 Z" id="Shape"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

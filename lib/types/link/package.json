@@ -1,0 +1,27 @@
+{
+  "name": "@boclips-ui/link",
+  "version": "2.0.2",
+  "files": [
+    "dist/**/*"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build:watch": "webpack --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/link --include-dependencies"
+  },
+  "devDependencies": {
+    "@boclips-ui/ts-config": "^2.0.2"
+  },
+  "peerDependencies": {
+    "boclips-api-client": ">=43.26.2",
+    "react": "18.2.0",
+    "urijs": "^1.19.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "gitHead": "b6a7aa614a67950faf8c17b189a1468e703f65e2"
+}

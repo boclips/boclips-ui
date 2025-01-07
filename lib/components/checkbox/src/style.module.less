@@ -1,0 +1,63 @@
+@import '~@boclips-ui/styles/src/colors';
+@import '~@boclips-ui/styles/src/focus';
+
+.checkboxWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+
+  div.wrapperContent {
+    color: @gray-800;
+    display: flex;
+    align-items: center;
+  }
+
+  .wrapperCount {
+    color: @blue-800;
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+}
+
+.checkbox {
+  appearance: unset;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  background-color: @white;
+  border-radius: 4px;
+  border: 2px solid @gray-500;
+  cursor: pointer;
+  flex-shrink: 0;
+
+
+  &:checked {
+    border: 0;
+    background-color: @blue-800;
+    background-size: 70%;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='14' height='10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.75 5.75l3 3 7.5-7.5' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &:hover {
+    border-color: @blue-700;
+  }
+
+  #focus;
+
+  &:active {
+    border-color: @blue-900;
+    background-color: @blue-900;
+    outline: none;
+  }
+
+  &:checked:active,
+  &:checked:hover,
+  &:checked:focus {
+    background-color: @blue-900;
+  }
+}

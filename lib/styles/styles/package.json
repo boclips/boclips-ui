@@ -1,0 +1,11 @@
+{
+  "name": "@boclips-ui/styles",
+  "version": "5.0.2",
+  "main": "./index.less",
+  "scripts": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2"
+}

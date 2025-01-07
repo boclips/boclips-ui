@@ -1,17 +1,31 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { NoResults as NoResultsComponent } from '..';
+import React from "react";
+import { Meta, Story } from "@storybook/react/types-6-0";
+import NoResults from "../src";
 
-const meta = {
-  title: 'No Results',
-  component: NoResultsComponent,
-} satisfies Meta<typeof NoResultsComponent>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const NoResults: Story = {
-  args: {
-    searchQuery: 'bad search query',
-    filtersApplied: false,
+export default {
+  title: "No Results",
+  component: NoResults,
+  argTypes: {
+    filtersApplied: { control: { type: "boolean" }, defaultValue: false },
+    searchQuery: {
+      control: { type: "string" },
+      defaultValue: "bad search query",
+    },
   },
+} as Meta;
+
+interface Props {
+  searchQuery: string;
+  filtersApplied?: boolean;
+}
+
+const Template: Story<Props> = ({ searchQuery, filtersApplied }: Props) => (
+  <NoResults searchQuery={searchQuery} filtersApplied={filtersApplied} />
+);
+
+export const WithoutFilters = Template.bind({});
+export const WithFiltersApplied = Template.bind({});
+
+WithFiltersApplied.args = {
+  filtersApplied: true,
 };

@@ -1,12 +1,12 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { VideoCardPlaceholder as VideoCardPlaceholderComponent } from '..';
+import React from "react";
+import { Meta, Story } from "@storybook/react/types-6-0";
+import VideoCardPlaceholder from "../src";
 
-const meta = {
-  title: 'Video Card Placeholder',
-  component: VideoCardPlaceholderComponent,
-} satisfies Meta<typeof VideoCardPlaceholderComponent>;
+export default {
+  title: "Video Card Placeholder",
+  component: VideoCardPlaceholder,
+} as Meta;
 
-export default meta;
+const Template: Story = () => <VideoCardPlaceholder />;
 
-type Story = StoryObj<typeof meta>;
-export const VideoCardPlaceholder: Story = {};
+export const Default = Template.bind({});

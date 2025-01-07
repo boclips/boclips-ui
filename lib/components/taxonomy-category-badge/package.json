@@ -1,0 +1,29 @@
+{
+  "name": "@boclips-ui/taxonomy-category-badge",
+  "version": "3.0.2",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build:watch": "webpack --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/taxonomy-category-badge --include-dependencies"
+  },
+  "dependencies": {
+    "@boclips-ui/badge": "^3.0.2",
+    "@boclips-ui/styles": "^5.0.2"
+  },
+  "devDependencies": {
+    "@boclips-ui/ts-config": "^2.0.2"
+  },
+  "peerDependencies": {
+    "react": "18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2"
+}

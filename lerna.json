@@ -1,0 +1,14 @@
+{
+  "packages": [
+    "lib/*/**"
+  ],
+  "version": "independent",
+  "npmClient": "npm",
+  "private": true,
+  "command": {
+    "publish": {
+      "ignoreChanges": ["ignored-file", "*.md", "*.stories.tsx"],
+      "allowBranch": "main"
+    }
+  }
+}

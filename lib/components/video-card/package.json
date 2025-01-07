@@ -1,0 +1,38 @@
+{
+  "name": "@boclips-ui/video-card",
+  "version": "7.0.6",
+  "files": [
+    "dist/**/*"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build:watch": "webpack --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
+    "build:dep": "lerna run build --stream --scope=@boclips-ui/video-card --include-dependencies"
+  },
+  "dependencies": {
+    "@boclips-ui/age-range-badge": "^3.0.2",
+    "@boclips-ui/attachment-badge": "^3.0.2",
+    "@boclips-ui/badge": "^3.0.2",
+    "@boclips-ui/content-warning-badge": "^2.0.3",
+    "@boclips-ui/provider-badge": "^3.0.2",
+    "@boclips-ui/released-on": "^3.0.2",
+    "@boclips-ui/styles": "^5.0.2",
+    "@boclips-ui/subject-badge": "^3.0.2",
+    "@boclips-ui/typography": "^3.0.2"
+  },
+  "devDependencies": {
+    "@boclips-ui/ts-config": "^2.0.2"
+  },
+  "peerDependencies": {
+    "boclips-api-client": ">=49.0.6",
+    "boclips-player-react": ">=3.0.0",
+    "react": "18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "gitHead": "16303107676919ce6cc5b925cb6cece5974a00a2"
+}

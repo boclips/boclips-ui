@@ -1,21 +1,46 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { Checkbox as CheckboxComponent } from '..';
+import React from "react";
+import { Meta, Story } from "@storybook/react/types-6-0";
 
-const meta = {
-  title: 'Checkbox',
-  component: CheckboxComponent,
-} satisfies Meta<typeof CheckboxComponent>;
+import Checkbox, { Props } from "../src";
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default {
+  title: "Checkbox",
+  component: Checkbox,
+} as Meta;
 
-export const Checkbox: Story = {
-  args: {
-    onChange: () => console.log('checked'),
-    name: 'checkbox',
-    id: 'checkbox',
-    label: 'checkbox',
-    dataQa: 'checkbox',
-    checked: false,
-  },
+const Template: Story<Props> = ({
+  onChange,
+  name,
+  id,
+  label,
+  dataQa,
+}: Props) => (
+  <>
+    <Checkbox
+      onChange={onChange}
+      name={name}
+      id={id}
+      checked={false}
+      label={label}
+      dataQa={dataQa}
+    />
+    <Checkbox
+      onChange={onChange}
+      name={name}
+      id={id}
+      checked
+      label={label}
+      dataQa={dataQa}
+    />
+  </>
+);
+
+export const Sample = Template.bind({});
+
+Sample.args = {
+  onChange: () => console.log("checked"),
+  name: "checkbox",
+  id: "checkbox",
+  label: "checkbox",
+  dataQa: "checkbox",
 };

@@ -1,31 +1,36 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { ContentWarningBadge } from '..';
+import React from "react";
+import { Meta, Story } from "@storybook/react/types-6-0";
+import { ContentWarning } from "@boclips-ui/video";
+import ContentWarningBadge from "../src";
 
-const meta = {
-  title: 'Content warning badge',
+export default {
+  title: "Content warning badge",
   component: ContentWarningBadge,
-} satisfies Meta<typeof ContentWarningBadge>;
+} as Meta;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+interface Props {
+  contentWarnings: ContentWarning[] | undefined;
+}
 
-export const NoWarnings: Story = {
-  args: {
-    contentWarnings: undefined,
-  },
+const Template: Story<Props> = ({ contentWarnings }: Props) => (
+  <ContentWarningBadge contentWarnings={contentWarnings} />
+);
+
+export const NoWarnings = Template.bind({});
+export const OneWarning = Template.bind({});
+export const TwoWarnings = Template.bind({});
+
+NoWarnings.args = {
+  contentWarnings: undefined,
 };
-export const OneWarning = {
-  args: {
-    contentWarnings: [
-      { id: '321', label: 'Lots and lots and lots of swearing' },
-    ],
-  },
+
+OneWarning.args = {
+  contentWarnings: [{ id: "321", label: "Lots and lots and lots of swearing" }],
 };
-export const TwoWarnings = {
-  args: {
-    contentWarnings: [
-      { id: '123', label: 'Lots and lots and lots of swearing' },
-      { id: '456', label: 'Even more swearing, far too much' },
-    ],
-  },
+
+TwoWarnings.args = {
+  contentWarnings: [
+    { id: "123", label: "Lots and lots and lots of swearing" },
+    { id: "456", label: "Even more swearing, far too much" },
+  ],
 };

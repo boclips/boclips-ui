@@ -1,40 +1,31 @@
-/**
- * @vitest-environment jsdom
- */
+import "@testing-library/jest-dom";
+import { configure } from "@testing-library/dom";
 
-import { expect, afterEach, vi } from 'vitest';
-import { cleanup } from '@testing-library/react';
-import * as matchers from '@testing-library/jest-dom/matchers';
-import { configure } from '@testing-library/dom';
+// create window object
+declare const window: any;
 
-expect.extend(matchers);
+window.open = jest.fn();
 
-window.open = vi.fn();
-
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: vi.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
-    addListener: vi.fn(), // deprecated
-    removeListener: vi.fn(), // deprecated
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
   })),
 });
 
-configure({ testIdAttribute: 'data-qa' });
+configure({ testIdAttribute: "data-qa" });
 
 window.ResizeObserver =
   window.ResizeObserver ||
-  vi.fn().mockImplementation(() => ({
-    disconnect: vi.fn(),
-    observe: vi.fn(),
-    unobserve: vi.fn(),
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
   }));
-
-afterEach(() => {
-  cleanup();
-});

@@ -1,0 +1,28 @@
+{
+  "name": "@boclips-ui/tooltip",
+  "version": "4.1.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build:watch": "webpack --config ../../../webpack/webpack.config.js -w",
+    "build": "webpack --config ../../../webpack/webpack.config.js && tsc --build --force ./tsconfig.json",
+    "build-dep": "lerna run build --stream --scope=@boclips-ui/tooltip --include-dependencies"
+  },
+  "dependencies": {
+    "@boclips-ui/styles": "^5.0.2"
+  },
+  "devDependencies": {
+    "@boclips-ui/ts-config": "^2.0.2"
+  },
+  "peerDependencies": {
+    "@radix-ui/react-tooltip": "^1.0.3",
+    "react": "18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "SEE LICENSE IN LICENSE"
+}
