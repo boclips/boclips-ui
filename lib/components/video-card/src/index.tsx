@@ -39,6 +39,7 @@ export const VideoCard = ({
   const buildBadges = useMemo(() => {
     const badges = [];
 
+    // @ts-ignore
     if (video.playback.type === YOUTUBE) {
       badges.push(<ProviderBadge customClassName={s.providerBadge} />);
     }
