@@ -27,7 +27,7 @@
   },
   "peerDependencies": {
     "boclips-api-client": ">=49.0.6",
-    "boclips-player-react": ">=5.0.0",
+    "boclips-player-react": ">=5.0.1",
     "react": "18.2.0"
   },
   "publishConfig": {
