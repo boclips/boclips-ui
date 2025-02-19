@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video-card",
-  "version": "7.1.1",
+  "version": "7.1.2",
   "files": [
     "dist/**/*"
   ],
@@ -15,7 +15,7 @@
     "@boclips-ui/age-range-badge": "^3.0.2",
     "@boclips-ui/attachment-badge": "^3.0.2",
     "@boclips-ui/badge": "^3.0.2",
-    "@boclips-ui/content-warning-badge": "^2.0.3",
+    "@boclips-ui/content-warning-badge": "^2.0.4",
     "@boclips-ui/provider-badge": "^3.0.2",
     "@boclips-ui/released-on": "^3.0.2",
     "@boclips-ui/styles": "^5.0.2",
