@@ -11,7 +11,7 @@ describe("boInput", () => {
       <InputText
         id="Input"
         isError={false}
-        errorMessage={"Shouldn't see me"}
+        errorMessage="Shouldn't see me"
         inputType="text"
         onChange={jest.fn()}
       />
