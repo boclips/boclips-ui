@@ -6,6 +6,8 @@ image_resource:
   source:
     repository: boclipsconcourse/node-with-git
     tag: '0.6.0'
+    username: ((docker-hub.username))
+    password: ((docker-hub.password))
 
 inputs:
 - name: source
