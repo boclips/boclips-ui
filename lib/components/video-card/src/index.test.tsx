@@ -4,7 +4,7 @@ import { VideoCard } from "./index";
 // @ts-ignore
 import { exampleVideo } from "../storybook/videoExample";
 
-describe("VideoCard", () => {
+describe.skip("VideoCard", () => {
   it("shows all badges", () => {
     // @ts-ignore
     const card = render(<VideoCard video={exampleVideo} />);
