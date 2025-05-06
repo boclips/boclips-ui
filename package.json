@@ -42,7 +42,7 @@
     "@types/react-dom": "18.2.25",
     "@types/urijs": "^1.19.12",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
+    "@typescript-eslint/parser": "^8.32.0",
     "antd": "^5.24.1",
     "babel-jest": "^29.1.2",
     "babel-loader": "^8.1.0",
