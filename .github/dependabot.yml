@@ -12,3 +12,11 @@ updates:
       applies-to: version-updates
       patterns:
       - "@storybook/*"
+    typescript-eslint:
+      applies-to: version-updates
+      patterns:
+      - "@typescript-eslint/*"
+    babel:
+      applies-to: version-updates
+      patterns:
+      - "@babel/*"
