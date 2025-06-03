@@ -11,27 +11,13 @@ const filters = [
 
 describe("Select dropdown", () => {
   it("Renders select dropdown", () => {
-    render(
-      <SelectFilter
-        touched={jest.fn()}
-        options={filters}
-        title="Ages"
-        onApply={() => {}}
-      />
-    );
+    render(<SelectFilter options={filters} title="Ages" onApply={() => {}} />);
 
     expect(screen.getByText("Ages")).toBeInTheDocument();
   });
 
   it("Renders dropdown options", async () => {
-    render(
-      <SelectFilter
-        touched={jest.fn()}
-        options={filters}
-        title="Ages"
-        onApply={() => {}}
-      />
-    );
+    render(<SelectFilter options={filters} title="Ages" onApply={() => {}} />);
 
     await fireEvent.mouseDown(screen.getByText("Ages"));
 
@@ -42,14 +28,7 @@ describe("Select dropdown", () => {
 
   it("Returns selected options when clicking an option", async () => {
     const onApply = jest.fn();
-    render(
-      <SelectFilter
-        touched={jest.fn()}
-        options={filters}
-        title="Ages"
-        onApply={onApply}
-      />
-    );
+    render(<SelectFilter options={filters} title="Ages" onApply={onApply} />);
 
     await fireEvent.mouseDown(screen.getByText("Ages"));
 
@@ -65,7 +44,6 @@ describe("Select dropdown", () => {
   it("show search input when allowSearch true", () => {
     render(
       <SelectFilter
-        touched={jest.fn()}
         options={filters}
         title="Ages"
         onApply={jest.fn()}
@@ -84,7 +62,6 @@ describe("Select dropdown", () => {
   it("can filter options when allowSearch is set -  case insensitive", () => {
     render(
       <SelectFilter
-        touched={jest.fn()}
         options={[
           { id: "id1", label: "other option", count: 2 },
           { id: "id2", label: "option", count: 2 },
@@ -110,7 +87,6 @@ describe("Select dropdown", () => {
   it("shows facets when requested", () => {
     render(
       <SelectFilter
-        touched={jest.fn()}
         options={[
           { id: "id1", label: "other option", count: 46 },
           { id: "id2", label: "option", count: 53 },
