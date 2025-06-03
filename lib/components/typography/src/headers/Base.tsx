@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useMediaBreakPoint } from "@boclips-ui/use-media-breakpoints";
 import c from "classnames";
 import { findSizeFromCurrentDevice } from "./utils/sizeResolver";
@@ -35,7 +35,7 @@ export const Base = ({
   const Component = as;
   const currentBreakpoint = useMediaBreakPoint();
 
-  const resolvedSize = React.useMemo(
+  const resolvedSize = useMemo(
     () =>
       typeof size === "string"
         ? size
