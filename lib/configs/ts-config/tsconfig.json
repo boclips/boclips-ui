@@ -36,5 +36,6 @@
     "dist",
     "./**/module.d.ts",
     "./**/*.test.tsx"
-  ]
+  ],
+  "types": ["node", "jest", "@testing-library/jest-dom"]
 }

@@ -22,5 +22,6 @@
     "outDir": "dist"
   },
   "include": ["./**/*.ts", "./**/*.tsx"],
-  "exclude": ["node_modules/**/*", ".idea/**/*", "dist", "./**/module.d.ts"]
+  "exclude": ["node_modules/**/*", ".idea/**/*", "dist", "./**/module.d.ts"],
+  "types": ["node", "jest", "@testing-library/jest-dom"]
 }
