@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/video-card-placeholder",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -15,7 +15,7 @@
     "@boclips-ui/styles": "^5.0.2"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^2.0.2"
+    "@boclips-ui/ts-config": "^2.0.3"
   },
   "peerDependencies": {
     "react": "18.2.0"

@@ -1,6 +1,6 @@
 {
   "name": "@boclips-ui/date-picker",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -15,8 +15,8 @@
     "@boclips-ui/styles": "^5.0.2"
   },
   "devDependencies": {
-    "@boclips-ui/ts-config": "^2.0.2",
-    "@boclips-ui/typography": "^3.1.0"
+    "@boclips-ui/ts-config": "^2.0.3",
+    "@boclips-ui/typography": "^3.1.1"
   },
   "peerDependencies": {
     "@duetds/date-picker": "^1.4.0",
