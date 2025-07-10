@@ -26,4 +26,5 @@ updates:
       - "@types/jest"
       - "jest"
       - "jest-environment-jsdom"
+      - "babel-jest"
       - "ts-jest"
